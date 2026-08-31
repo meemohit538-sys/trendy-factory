@@ -1200,9 +1200,96 @@ sizes:["S","M","L","XL","XXL"]
 PRODUCT STORAGE
 ========================= */
 
-let products = JSON.parse(
-localStorage.getItem("trendyProducts") || "null"
-);
+const defaultProducts = [
+
+{
+id:1,
+name:"Premium Linen Shirt",
+price:1999,
+category:"shirts",
+image:"LINEN SHIRT",
+description:"Premium breathable linen shirt with a clean modern fit.",
+sizes:["S","M","L","XL","XXL"]
+},
+
+{
+id:2,
+name:"Oxford Classic Shirt",
+price:2299,
+category:"shirts",
+image:"OXFORD SHIRT",
+description:"Classic Oxford shirt designed for everyday and formal styling.",
+sizes:["S","M","L","XL","XXL"]
+},
+
+{
+id:3,
+name:"Oversized Essential T-Shirt",
+price:1199,
+category:"tshirts",
+image:"OVERSIZED T-SHIRT",
+description:"Heavyweight cotton oversized t-shirt with a relaxed silhouette.",
+sizes:["S","M","L","XL","XXL"]
+},
+
+{
+id:4,
+name:"Minimal Cotton T-Shirt",
+price:999,
+category:"tshirts",
+image:"COTTON T-SHIRT",
+description:"Soft premium cotton t-shirt for everyday comfort.",
+sizes:["S","M","L","XL","XXL"]
+},
+
+{
+id:5,
+name:"Relaxed Fit Trouser",
+price:2499,
+category:"pants",
+image:"RELAXED TROUSER",
+description:"Modern relaxed fit trousers with comfortable everyday tailoring.",
+sizes:["28","30","32","34","36","38","40"]
+},
+
+{
+id:6,
+name:"Classic Straight Jeans",
+price:2799,
+category:"pants",
+image:"STRAIGHT JEANS",
+description:"Classic straight fit jeans designed for timeless everyday style.",
+sizes:["28","30","32","34","36","38","40"]
+},
+
+{
+id:7,
+name:"Minimal Bomber Jacket",
+price:3999,
+category:"jackets",
+image:"BOMBER JACKET",
+description:"Clean minimal bomber jacket for a refined modern look.",
+sizes:["S","M","L","XL","XXL"]
+},
+
+{
+id:8,
+name:"Classic Oversized Jacket",
+price:4499,
+category:"jackets",
+image:"OVERSIZED JACKET",
+description:"Premium oversized jacket with a contemporary relaxed fit.",
+sizes:["S","M","L","XL","XXL"]
+}
+
+];
+
+let products = JSON.parse(localStorage.getItem("trendyProducts"));
+
+if (!Array.isArray(products) || products.length === 0) {
+    products = [...defaultProducts];
+    localStorage.setItem("trendyProducts", JSON.stringify(products));
+  }
 
 if(!Array.isArray(products) || products.length === 0){
 
