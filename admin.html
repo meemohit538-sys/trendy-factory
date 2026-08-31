@@ -319,12 +319,12 @@ const defaultProducts=[
 
 ];
 
-let adminProducts=JSON.parse(localStorage.getItem("trendyProducts"));
+ let adminProducts = JSON.parse(localStorage.getItem("trendyProducts") || "null");
 
-if(!adminProducts){
-adminProducts=defaultProducts;
-localStorage.setItem("trendyProducts",JSON.stringify(adminProducts));
-}
+if (!Array.isArray(adminProducts) || adminProducts.length === 0) {
+    adminProducts = [...defaultProducts];
+    localStorage.setItem("trendyProducts", JSON.stringify(adminProducts));
+  }
 
 
 /* PRODUCTS */
