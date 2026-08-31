@@ -6,344 +6,77 @@
 <title>TRENDY FACTORY — Luxury Fashion</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#f5f0e8;color:#211e1a}
+header{height:72px;background:#fbf8f3;display:flex;justify-content:space-between;align-items:center;padding:0 6%;border-bottom:1px solid #ddd5ca;position:sticky;top:0;z-index:100}
+.logo{font-size:18px;letter-spacing:3px;font-weight:700}
+nav{display:flex;gap:18px}
+nav a{border:0;background:none;text-decoration:none;color:#211e1a;font-size:11px;letter-spacing:1px;cursor:pointer}
 
-html{
-  scroll-behavior:smooth;
-}
+.hero{min-height:75vh;background:linear-gradient(120deg,#cbb9a5,#e3d5c5);padding:8% 7%;display:flex;align-items:flex-end}
+.hero p{font-size:11px;letter-spacing:3px;margin-bottom:22px}
+.hero h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(55px,10vw,130px);line-height:.88;margin-bottom:30px}
+.btn{display:inline-block;background:#211e1a;color:#fff;padding:15px 25px;text-decoration:none;font-size:11px;letter-spacing:1.5px;border:none;cursor:pointer}
 
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f5f0e8;
-  color:#211e1a;
-}
+.section{padding:75px 6%}
+.section-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px}
+.section h2{font-family:Georgia,serif;font-weight:400;font-size:40px}
+.section-title a{font-size:11px;color:#211e1a}
 
-header{
-  height:72px;
-  background:#fbf8f3;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:0 6%;
-  border-bottom:1px solid #ddd5ca;
-  position:sticky;
-  top:0;
-  z-index:100;
-}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.category{height:380px;background:#d8c7b5;padding:25px;display:flex;align-items:flex-end;cursor:pointer}
+.category:nth-child(2){background:#bda993}
+.category:nth-child(3){background:#e4d8ca}
+.category h3{font-family:Georgia,serif;font-size:32px;font-weight:400}
 
-.logo{
-  font-size:18px;
-  letter-spacing:3px;
-  font-weight:700;
-}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{background:#fffaf4}
+.product-image{height:340px;background:#ddd0c0;display:flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:2px}
+.product-info{padding:16px}
+.product-info h3{font-size:14px;font-weight:500;margin-bottom:8px}
+.product-info p{font-size:13px;margin-bottom:12px;color:#625a52}
+.add-btn{width:100%;padding:12px;border:1px solid #211e1a;background:transparent;cursor:pointer;font-size:10px;letter-spacing:1px}
+.add-btn:hover{background:#211e1a;color:#fff}
 
-nav{
-  display:flex;
-  gap:22px;
-}
+.banner{background:#29241f;color:#f5f0e8;padding:90px 8%;text-align:center}
+.banner p{font-size:11px;letter-spacing:3px;margin-bottom:20px}
+.banner h2{font-family:Georgia,serif;font-size:clamp(40px,7vw,85px);font-weight:400;margin-bottom:25px}
 
-nav a{
-  text-decoration:none;
-  color:#211e1a;
-  font-size:11px;
-  letter-spacing:1px;
-}
+.newsletter{text-align:center;padding:80px 6%}
+.newsletter h2{font-family:Georgia,serif;font-size:42px;font-weight:400;margin-bottom:12px}
+.newsletter p{color:#70675e;margin-bottom:25px}
+.email-box{max-width:500px;margin:auto;display:flex;border-bottom:1px solid #211e1a}
+.email-box input{flex:1;border:none;background:transparent;padding:15px 5px;outline:none}
+.email-box button{border:none;background:none;font-size:11px;cursor:pointer}
 
-.hero{
-  min-height:78vh;
-  background:linear-gradient(120deg,#cbb9a5,#e3d5c5);
-  padding:8% 7%;
-  display:flex;
-  align-items:flex-end;
-}
+.cart-panel{position:fixed;right:-420px;top:0;width:380px;max-width:100%;height:100vh;background:#fbf8f3;z-index:1000;padding:25px;transition:.35s;box-shadow:-5px 0 20px rgba(0,0,0,.15);overflow:auto}
+.cart-panel.active{right:0}
+.cart-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ddd;padding-bottom:18px}
+.close{border:none;background:none;font-size:25px;cursor:pointer}
+.cart-item{display:flex;justify-content:space-between;padding:18px 0;border-bottom:1px solid #ddd;font-size:13px}
+.remove{border:none;background:none;text-decoration:underline;cursor:pointer;font-size:11px}
+.cart-total{font-size:18px;padding:20px 0}
+.checkout-btn{width:100%;background:#211e1a;color:white;padding:16px;border:none;cursor:pointer}
 
-.hero-content{
-  max-width:850px;
-}
-
-.hero p{
-  font-size:11px;
-  letter-spacing:3px;
-  margin-bottom:22px;
-}
-
-.hero h1{
-  font-family:Georgia,serif;
-  font-weight:400;
-  font-size:clamp(55px,10vw,130px);
-  line-height:.88;
-  margin-bottom:30px;
-}
-
-.btn{
-  display:inline-block;
-  background:#211e1a;
-  color:white;
-  padding:16px 28px;
-  text-decoration:none;
-  font-size:11px;
-  letter-spacing:1.5px;
-  transition:.3s;
-}
-
-.btn:hover{
-  background:#6b5d50;
-}
-
-.section{
-  padding:85px 6%;
-}
-
-.section-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:end;
-  margin-bottom:35px;
-}
-
-.section h2{
-  font-family:Georgia,serif;
-  font-weight:400;
-  font-size:42px;
-}
-
-.section-title a{
-  color:#211e1a;
-  font-size:11px;
-  letter-spacing:1px;
-}
-
-.categories{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.category{
-  height:430px;
-  background:#d8c7b5;
-  display:flex;
-  align-items:flex-end;
-  padding:25px;
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-}
-
-.category:nth-child(2){
-  background:#bda993;
-}
-
-.category:nth-child(3){
-  background:#e4d8ca;
-}
-
-.category h3{
-  font-family:Georgia,serif;
-  font-size:32px;
-  font-weight:400;
-  position:relative;
-  z-index:2;
-}
-
-.category span{
-  position:absolute;
-  top:25px;
-  right:25px;
-  font-size:11px;
-  letter-spacing:1px;
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.product{
-  cursor:pointer;
-}
-
-.product-image{
-  height:360px;
-  background:#ddd0c0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#76695d;
-  letter-spacing:2px;
-  font-size:11px;
-  transition:.3s;
-}
-
-.product:hover .product-image{
-  transform:scale(.98);
-}
-
-.product-info{
-  padding:15px 0;
-}
-
-.product-info h3{
-  font-size:13px;
-  font-weight:500;
-  margin-bottom:8px;
-}
-
-.product-info p{
-  font-size:13px;
-  color:#625a52;
-}
-
-.banner{
-  background:#29241f;
-  color:#f5f0e8;
-  padding:100px 8%;
-  text-align:center;
-}
-
-.banner p{
-  font-size:11px;
-  letter-spacing:3px;
-  margin-bottom:25px;
-}
-
-.banner h2{
-  font-family:Georgia,serif;
-  font-weight:400;
-  font-size:clamp(40px,7vw,90px);
-  margin-bottom:30px;
-}
-
-.banner .btn{
-  background:#f5f0e8;
-  color:#211e1a;
-}
-
-.newsletter{
-  padding:90px 6%;
-  text-align:center;
-}
-
-.newsletter h2{
-  font-family:Georgia,serif;
-  font-weight:400;
-  font-size:45px;
-  margin-bottom:15px;
-}
-
-.newsletter p{
-  color:#70675e;
-  margin-bottom:25px;
-}
-
-.email-box{
-  max-width:500px;
-  margin:auto;
-  display:flex;
-  border-bottom:1px solid #211e1a;
-}
-
-.email-box input{
-  flex:1;
-  border:none;
-  background:transparent;
-  padding:15px 5px;
-  outline:none;
-}
-
-.email-box button{
-  border:none;
-  background:transparent;
-  font-size:11px;
-  letter-spacing:1px;
-  cursor:pointer;
-}
-
-footer{
-  background:#e6ddd2;
-  padding:50px 6%;
-}
-
-.footer-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:30px;
-}
-
-footer h3{
-  font-size:15px;
-  letter-spacing:2px;
-  margin-bottom:15px;
-}
-
-footer p,footer a{
-  display:block;
-  font-size:12px;
-  color:#625a52;
-  text-decoration:none;
-  margin:10px 0;
-}
-
-.copyright{
-  border-top:1px solid #cfc3b5;
-  margin-top:35px;
-  padding-top:20px;
-  font-size:10px;
-  color:#70675e;
-}
+footer{background:#e6ddd2;padding:50px 6%}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer h3{font-size:14px;letter-spacing:2px;margin-bottom:15px}
+footer p,footer a{display:block;font-size:12px;color:#625a52;text-decoration:none;margin:9px 0}
+.copyright{border-top:1px solid #cfc3b5;margin-top:35px;padding-top:20px;font-size:10px}
 
 @media(max-width:800px){
-
-  header{
-    padding:0 5%;
-  }
-
-  nav{
-    gap:12px;
-  }
-
-  nav a{
-    font-size:9px;
-  }
-
-  .hero{
-    min-height:70vh;
-    padding:10% 7%;
-  }
-
-  .categories{
-    grid-template-columns:1fr;
-  }
-
-  .category{
-    height:300px;
-  }
-
-  .products{
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-  }
-
-  .product-image{
-    height:250px;
-  }
-
-  .section{
-    padding:60px 5%;
-  }
-
-  .section h2{
-    font-size:32px;
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr 1fr;
-  }
+header{padding:0 5%}
+nav{gap:10px}
+nav a{font-size:9px}
+.hero{min-height:68vh}
+.categories{grid-template-columns:1fr}
+.category{height:260px}
+.products{grid-template-columns:repeat(2,1fr);gap:12px}
+.product-image{height:230px}
+.section{padding:60px 5%}
+.section h2{font-size:31px}
+.footer-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -351,158 +84,199 @@ footer p,footer a{
 <body>
 
 <header>
-  <div class="logo">TRENDY FACTORY</div>
-
-  <nav>
-    <a href="#shop">SHOP</a>
-    <a href="#women">WOMEN</a>
-    <a href="#men">MEN</a>
-    <a href="#new">NEW</a>
-    <a href="#bag">BAG (0)</a>
-  </nav>
+<div class="logo">TRENDY FACTORY</div>
+<nav>
+<a href="#shop">SHOP</a>
+<a href="#women">WOMEN</a>
+<a href="#men">MEN</a>
+<a href="#new">NEW</a>
+<button onclick="openCart()">BAG (<span id="cartCount">0</span>)</button>
+</nav>
 </header>
 
 <section class="hero">
-  <div class="hero-content">
-    <p>NEW COLLECTION · 2026</p>
-
-    <h1>
-      Quiet Luxury.<br>
-      Everyday.
-    </h1>
-
-    <a href="#shop" class="btn">SHOP COLLECTION</a>
-  </div>
+<div>
+<p>NEW COLLECTION · 2026</p>
+<h1>Quiet Luxury.<br>Everyday.</h1>
+<a href="#shop" class="btn">SHOP COLLECTION</a>
+</div>
 </section>
 
 <section class="section">
-  <div class="section-title">
-    <h2>Explore Collections</h2>
-    <a href="#shop">VIEW ALL →</a>
-  </div>
+<div class="section-title">
+<h2>Explore Collections</h2>
+<a href="#shop">VIEW ALL →</a>
+</div>
 
-  <div class="categories">
-
-    <div class="category">
-      <span>01</span>
-      <h3>Women</h3>
-    </div>
-
-    <div class="category">
-      <span>02</span>
-      <h3>Men</h3>
-    </div>
-
-    <div class="category">
-      <span>03</span>
-      <h3>Accessories</h3>
-    </div>
-
-  </div>
+<div class="categories">
+<div class="category" id="women"><h3>Women</h3></div>
+<div class="category" id="men"><h3>Men</h3></div>
+<div class="category"><h3>Accessories</h3></div>
+</div>
 </section>
 
 <section class="section" id="shop">
+<div class="section-title">
+<h2>New Arrivals</h2>
+<a href="#shop">SHOP ALL →</a>
+</div>
 
-  <div class="section-title">
-    <h2>New Arrivals</h2>
-    <a href="#">SHOP ALL →</a>
-  </div>
+<div class="products">
 
-  <div class="products">
+<div class="product">
+<div class="product-image">LINEN SHIRT</div>
+<div class="product-info">
+<h3>Essential Linen Shirt</h3>
+<p>₹1,999</p>
+<button class="add-btn" onclick="addToCart('Essential Linen Shirt',1999)">ADD TO BAG</button>
+</div>
+</div>
 
-    <div class="product">
-      <div class="product-image">PRODUCT 01</div>
-      <div class="product-info">
-        <h3>Essential Linen Shirt</h3>
-        <p>₹1,999</p>
-      </div>
-    </div>
+<div class="product">
+<div class="product-image">COTTON TROUSER</div>
+<div class="product-info">
+<h3>Relaxed Cotton Trouser</h3>
+<p>₹2,499</p>
+<button class="add-btn" onclick="addToCart('Relaxed Cotton Trouser',2499)">ADD TO BAG</button>
+</div>
+</div>
 
-    <div class="product">
-      <div class="product-image">PRODUCT 02</div>
-      <div class="product-info">
-        <h3>Relaxed Cotton Trouser</h3>
-        <p>₹2,499</p>
-      </div>
-    </div>
+<div class="product">
+<div class="product-image">OVERSIZED BLAZER</div>
+<div class="product-info">
+<h3>Classic Oversized Blazer</h3>
+<p>₹3,999</p>
+<button class="add-btn" onclick="addToCart('Classic Oversized Blazer',3999)">ADD TO BAG</button>
+</div>
+</div>
 
-    <div class="product">
-      <div class="product-image">PRODUCT 03</div>
-      <div class="product-info">
-        <h3>Classic Oversized Blazer</h3>
-        <p>₹3,999</p>
-      </div>
-    </div>
+<div class="product">
+<div class="product-image">MINIMAL TOTE</div>
+<div class="product-info">
+<h3>Minimal Everyday Tote</h3>
+<p>₹1,799</p>
+<button class="add-btn" onclick="addToCart('Minimal Everyday Tote',1799)">ADD TO BAG</button>
+</div>
+</div>
 
-    <div class="product">
-      <div class="product-image">PRODUCT 04</div>
-      <div class="product-info">
-        <h3>Minimal Everyday Tote</h3>
-        <p>₹1,799</p>
-      </div>
-    </div>
-
-  </div>
+</div>
 </section>
 
 <section class="banner">
-
-  <p>TRENDY FACTORY ESSENTIALS</p>
-
-  <h2>
-    Designed for the<br>
-    modern wardrobe.
-  </h2>
-
-  <a href="#shop" class="btn">DISCOVER NOW</a>
-
+<p>TRENDY FACTORY ESSENTIALS</p>
+<h2>Designed for the<br>modern wardrobe.</h2>
+<a href="#shop" class="btn">DISCOVER NOW</a>
 </section>
 
 <section class="newsletter">
-
-  <h2>Stay in the know.</h2>
-
-  <p>New collections, exclusive offers and more.</p>
-
-  <div class="email-box">
-    <input type="email" placeholder="Your email address">
-    <button>SUBSCRIBE →</button>
-  </div>
-
+<h2>Stay in the know.</h2>
+<p>New collections, exclusive offers and more.</p>
+<div class="email-box">
+<input type="email" placeholder="Your email address">
+<button>SUBSCRIBE →</button>
+</div>
 </section>
 
 <footer>
-
-  <div class="footer-grid">
-
-    <div>
-      <h3>TRENDY FACTORY</h3>
-      <p>Modern essentials. Timeless style.</p>
-    </div>
-
-    <div>
-      <h3>SHOP</h3>
-      <a href="#">Women</a>
-      <a href="#">Men</a>
-      <a href="#">Accessories</a>
-      <a href="#">New Arrivals</a>
-    </div>
-
-    <div>
-      <h3>HELP</h3>
-      <a href="#">Contact</a>
-      <a href="#">Shipping</a>
-      <a href="#">Returns</a>
-      <a href="#">Privacy</a>
-    </div>
-
-  </div>
-
-  <div class="copyright">
-    © 2026 TRENDY FACTORY. ALL RIGHTS RESERVED.
-  </div>
-
+<div class="footer-grid">
+<div>
+<h3>TRENDY FACTORY</h3>
+<p>Modern essentials. Timeless style.</p>
+</div>
+<div>
+<h3>SHOP</h3>
+<a href="#women">Women</a>
+<a href="#men">Men</a>
+<a href="#shop">New Arrivals</a>
+</div>
+<div>
+<h3>HELP</h3>
+<a href="#">Contact</a>
+<a href="#">Shipping</a>
+<a href="#">Returns</a>
+</div>
+</div>
+<div class="copyright">© 2026 TRENDY FACTORY. ALL RIGHTS RESERVED.</div>
 </footer>
 
+<div class="cart-panel" id="cartPanel">
+<div class="cart-header">
+<h2>Your Bag</h2>
+<button class="close" onclick="closeCart()">×</button>
+</div>
+
+<div id="cartItems"></div>
+
+<div class="cart-total">
+<strong>Total: ₹<span id="cartTotal">0</span></strong>
+</div>
+
+<button class="checkout-btn" onclick="checkout()">PROCEED TO CHECKOUT</button>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("trendyCart")) || [];
+
+function addToCart(name, price){
+  cart.push({name, price});
+  saveCart();
+  alert(name + " added to bag!");
+}
+
+function saveCart(){
+  localStorage.setItem("trendyCart", JSON.stringify(cart));
+  updateCart();
+}
+
+function updateCart(){
+  document.getElementById("cartCount").textContent = cart.length;
+
+  const items = document.getElementById("cartItems");
+  items.innerHTML = "";
+
+  let total = 0;
+
+  cart.forEach((item,index)=>{
+    total += item.price;
+
+    items.innerHTML += `
+      <div class="cart-item">
+        <div>
+          <strong>${item.name}</strong><br>
+          ₹${item.price}
+        </div>
+        <button class="remove" onclick="removeItem(${index})">REMOVE</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("cartTotal").textContent = total;
+}
+
+function removeItem(index){
+  cart.splice(index,1);
+  saveCart();
+}
+
+function openCart(){
+  document.getElementById("cartPanel").classList.add("active");
+}
+
+function closeCart(){
+  document.getElementById("cartPanel").classList.remove("active");
+}
+
+function checkout(){
+  if(cart.length === 0){
+    alert("Your bag is empty!");
+    return;
+  }
+
+  alert("Checkout feature will be connected in the next V4 update.");
+}
+
+updateCart();
+</script>
+
 </body>
-                                             </html>
+  </html>
