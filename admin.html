@@ -4,13 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Trendy Factory - Admin Panel</title>
 
 <style>
-
-/* ================= RESET ================= */
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -21,10 +17,9 @@
     --primary:#2563eb;
     --primary-dark:#1d4ed8;
     --dark:#111827;
-    --dark-light:#1f2937;
-    --background:#f3f4f6;
-    --white:#ffffff;
     --gray:#6b7280;
+    --light:#f3f4f6;
+    --white:#ffffff;
     --border:#e5e7eb;
     --danger:#dc2626;
     --success:#16a34a;
@@ -33,7 +28,7 @@
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:var(--background);
+    background:var(--light);
     color:#111827;
 }
 
@@ -49,7 +44,7 @@ button{
     cursor:pointer;
 }
 
-/* ================= LOGIN PAGE ================= */
+/* LOGIN */
 
 #loginPage{
     min-height:100vh;
@@ -63,10 +58,10 @@ button{
 .login-card{
     width:100%;
     max-width:420px;
-    background:#ffffff;
     padding:32px;
+    background:#ffffff;
     border-radius:16px;
-    box-shadow:0 20px 50px rgba(0,0,0,0.30);
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
 }
 
 .login-card h1{
@@ -79,10 +74,7 @@ button{
     text-align:center;
     color:var(--gray);
     margin-bottom:25px;
-    font-size:14px;
 }
-
-/* ================= FORMS ================= */
 
 .form-group{
     margin-bottom:16px;
@@ -90,9 +82,9 @@ button{
 
 .form-group label{
     display:block;
+    margin-bottom:7px;
     font-size:13px;
     font-weight:bold;
-    margin-bottom:7px;
 }
 
 .form-group input,
@@ -103,14 +95,13 @@ button{
     border:1px solid #d1d5db;
     border-radius:8px;
     outline:none;
-    background:#ffffff;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus{
     border-color:var(--primary);
-    box-shadow:0 0 0 3px rgba(37,99,235,0.10);
+    box-shadow:0 0 0 3px rgba(37,99,235,.1);
 }
 
 .form-group textarea{
@@ -118,21 +109,14 @@ button{
     resize:vertical;
 }
 
-/* ================= BUTTONS ================= */
-
 .btn{
     padding:11px 16px;
     border-radius:8px;
     font-weight:bold;
-    transition:0.2s ease;
-}
-
-.btn:hover{
-    opacity:0.9;
 }
 
 .btn:disabled{
-    opacity:0.6;
+    opacity:.6;
     cursor:not-allowed;
 }
 
@@ -144,11 +128,6 @@ button{
 .btn-secondary{
     background:#e5e7eb;
     color:#111827;
-}
-
-.btn-danger{
-    background:var(--danger);
-    color:#ffffff;
 }
 
 .login-btn{
@@ -165,7 +144,7 @@ button{
     font-weight:bold;
 }
 
-/* ================= ADMIN APP ================= */
+/* ADMIN APP */
 
 #adminApp{
     display:none;
@@ -176,25 +155,24 @@ button{
     display:flex;
 }
 
-/* ================= SIDEBAR ================= */
+/* SIDEBAR */
 
 .sidebar{
     position:fixed;
-    left:0;
     top:0;
+    left:0;
     bottom:0;
     width:250px;
+    padding:20px 14px;
     background:var(--dark);
     color:#ffffff;
-    padding:20px 14px;
     z-index:100;
 }
 
 .brand{
+    padding:10px 12px 28px;
     font-size:21px;
     font-weight:800;
-    padding:10px 12px 28px;
-    letter-spacing:0.5px;
 }
 
 .nav-btn{
@@ -227,7 +205,7 @@ button{
     font-weight:bold;
 }
 
-/* ================= MAIN ================= */
+/* MAIN */
 
 .main{
     margin-left:250px;
@@ -237,12 +215,12 @@ button{
 
 .topbar{
     height:70px;
+    padding:0 25px;
     background:#ffffff;
     border-bottom:1px solid var(--border);
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 25px;
     position:sticky;
     top:0;
     z-index:50;
@@ -265,9 +243,9 @@ button{
 
 .mobile-menu{
     display:none;
+    padding:8px 12px;
     background:var(--dark);
     color:#ffffff;
-    padding:8px 12px;
     border-radius:7px;
 }
 
@@ -275,7 +253,7 @@ button{
     padding:25px;
 }
 
-/* ================= PAGES ================= */
+/* PAGES */
 
 .page{
     display:none;
@@ -285,7 +263,7 @@ button{
     display:block;
 }
 
-/* ================= DASHBOARD ================= */
+/* DASHBOARD */
 
 .stats-grid{
     display:grid;
@@ -295,18 +273,18 @@ button{
 }
 
 .stat-card{
-    background:#ffffff;
     padding:20px;
+    background:#ffffff;
     border-radius:12px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
 
 .stat-label{
     display:block;
+    margin-bottom:10px;
     font-size:12px;
     color:var(--gray);
     font-weight:bold;
-    margin-bottom:10px;
 }
 
 .stat-value{
@@ -314,14 +292,14 @@ button{
     font-weight:800;
 }
 
-/* ================= CARD ================= */
+/* CARD */
 
 .card{
-    background:#ffffff;
     padding:22px;
-    border-radius:12px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.05);
     margin-bottom:22px;
+    background:#ffffff;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
 
 .card-header{
@@ -332,7 +310,7 @@ button{
     margin-bottom:20px;
 }
 
-/* ================= PRODUCT FORM ================= */
+/* FORMS */
 
 .form-grid{
     display:grid;
@@ -357,14 +335,14 @@ button{
     font-size:14px;
 }
 
-/* ================= IMAGE UPLOAD ================= */
+/* IMAGE UPLOAD */
 
 .upload-box{
+    padding:25px;
+    text-align:center;
     border:2px dashed #cbd5e1;
     background:#f8fafc;
-    padding:25px;
     border-radius:10px;
-    text-align:center;
 }
 
 .upload-box input[type="file"]{
@@ -382,9 +360,9 @@ button{
 }
 
 .upload-help{
+    margin-top:10px;
     font-size:12px;
     color:var(--gray);
-    margin-top:10px;
 }
 
 .preview-grid{
@@ -397,9 +375,9 @@ button{
 .preview-item{
     position:relative;
     aspect-ratio:1;
-    border-radius:8px;
     overflow:hidden;
     border:1px solid var(--border);
+    border-radius:8px;
 }
 
 .preview-item img{
@@ -420,7 +398,7 @@ button{
     font-size:18px;
 }
 
-/* ================= TABLE ================= */
+/* TABLE */
 
 .table-wrap{
     overflow-x:auto;
@@ -428,15 +406,15 @@ button{
 
 table{
     width:100%;
-    border-collapse:collapse;
     min-width:700px;
+    border-collapse:collapse;
 }
 
 th,
 td{
     padding:12px;
-    border-bottom:1px solid var(--border);
     text-align:left;
+    border-bottom:1px solid var(--border);
     font-size:14px;
 }
 
@@ -454,11 +432,11 @@ th{
 
 .action-btn{
     padding:7px 10px;
+    margin-right:5px;
     border-radius:6px;
     color:#ffffff;
     font-size:12px;
     font-weight:bold;
-    margin-right:5px;
 }
 
 .action-edit{
@@ -477,22 +455,22 @@ th{
 }
 
 .empty{
-    text-align:center;
     padding:28px;
+    text-align:center;
     color:var(--gray);
 }
 
-/* ================= MODAL ================= */
+/* MODAL */
 
 .modal{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.55);
-    padding:20px;
     z-index:1000;
+    padding:20px;
     align-items:center;
     justify-content:center;
+    background:rgba(0,0,0,.55);
 }
 
 .modal.show{
@@ -504,10 +482,10 @@ th{
     width:100%;
     max-width:700px;
     max-height:90vh;
+    padding:25px;
     overflow-y:auto;
     background:#ffffff;
     border-radius:14px;
-    padding:25px;
 }
 
 .close-modal{
@@ -518,21 +496,19 @@ th{
     font-size:28px;
 }
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
 
 @media(max-width:950px){
-
     .stats-grid{
         grid-template-columns:repeat(2,1fr);
     }
-
 }
 
 @media(max-width:700px){
 
     .sidebar{
         transform:translateX(-100%);
-        transition:0.25s ease;
+        transition:.25s ease;
     }
 
     .sidebar.open{
@@ -540,8 +516,8 @@ th{
     }
 
     .main{
-        margin-left:0;
         width:100%;
+        margin-left:0;
     }
 
     .mobile-menu{
@@ -576,883 +552,851 @@ th{
 
 <body>
 
-<!-- ================= LOGIN PAGE ================= -->
+<!-- LOGIN -->
 
 <div id="loginPage">
 
+```
 <div class="login-card">
 
-<h1>TRENDY FACTORY</h1>
+    <h1>TRENDY FACTORY</h1>
+    <p>Admin Panel Login</p>
 
-<p>Admin Panel Login</p>
+    <form id="loginForm">
 
-<form id="loginForm">
+        <div class="form-group">
+            <label for="email">Admin Email</label>
+            <input
+                id="email"
+                type="email"
+                placeholder="Enter admin email"
+                required>
+        </div>
 
-<div class="form-group">
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input
+                id="password"
+                type="password"
+                placeholder="Enter password"
+                required>
+        </div>
 
-<label for="email">
-Admin Email
-</label>
+        <button
+            id="loginBtn"
+            type="submit"
+            class="btn btn-primary login-btn">
+            LOGIN
+        </button>
 
-<input
-id="email"
-type="email"
-placeholder="Enter admin email"
-required>
+        <div
+            id="loginError"
+            class="login-error">
+        </div>
+
+    </form>
+
+</div>
+```
 
 </div>
 
-<div class="form-group">
-
-<label for="password">
-Password
-</label>
-
-<input
-id="password"
-type="password"
-placeholder="Enter password"
-required>
-
-</div>
-
-<button
-id="loginBtn"
-type="submit"
-class="btn btn-primary login-btn">
-
-LOGIN
-
-</button>
-
-<div
-id="loginError"
-class="login-error">
-</div>
-
-</form>
-
-</div>
-
-</div>
-
-<!-- ================= ADMIN APPLICATION ================= -->
+<!-- ADMIN APP -->
 
 <div id="adminApp">
 
+```
 <!-- SIDEBAR -->
 
 <aside id="sidebar" class="sidebar">
 
-<div class="brand">
-TRENDY FACTORY
-</div>
+    <div class="brand">
+        TRENDY FACTORY
+    </div>
 
-<button
-type="button"
-class="nav-btn active"
-data-page="dashboard">
+    <button
+        type="button"
+        class="nav-btn active"
+        data-page="dashboard">
+        📊 Dashboard
+    </button>
 
-📊 Dashboard
+    <button
+        type="button"
+        class="nav-btn"
+        data-page="products">
+        📦 Products
+    </button>
 
-</button>
+    <button
+        type="button"
+        class="nav-btn"
+        data-page="addProduct">
+        ➕ Add Product
+    </button>
 
-<button
-type="button"
-class="nav-btn"
-data-page="products">
+    <button
+        type="button"
+        class="nav-btn"
+        data-page="orders">
+        🛒 Orders
+    </button>
 
-📦 Products
-
-</button>
-
-<button
-type="button"
-class="nav-btn"
-data-page="addProduct">
-
-➕ Add Product
-
-</button>
-
-<button
-type="button"
-class="nav-btn"
-data-page="orders">
-
-🛒 Orders
-
-</button>
-
-<button
-id="logoutBtn"
-type="button"
-class="logout-btn">
-
-LOGOUT
-
-</button>
+    <button
+        id="logoutBtn"
+        type="button"
+        class="logout-btn">
+        LOGOUT
+    </button>
 
 </aside>
 
-<!-- MAIN AREA -->
+
+<!-- MAIN -->
 
 <main class="main">
 
-<!-- TOP BAR -->
+    <header class="topbar">
 
-<header class="topbar">
+        <div class="topbar-left">
 
-<div class="topbar-left">
+            <button
+                id="mobileMenu"
+                type="button"
+                class="mobile-menu">
+                ☰
+            </button>
 
-<button
-id="mobileMenu"
-type="button"
-class="mobile-menu">
+            <h2 id="pageTitle">
+                Dashboard
+            </h2>
 
-☰
+        </div>
 
-</button>
+        <div id="adminEmail"></div>
 
-<h2 id="pageTitle">
-Dashboard
-</h2>
+    </header>
 
-</div>
 
-<div id="adminEmail">
-</div>
-
-</header>
-
-<!-- PAGE CONTENT -->
-
-<div class="content">
-    <!-- ================= DASHBOARD PAGE ================= -->
+    <div class="content">
+```
+    <!-- DASHBOARD PAGE -->
 
 <section id="dashboardPage" class="page active">
 
+```
 <div class="stats-grid">
 
-<div class="stat-card">
-<span class="stat-label">TOTAL PRODUCTS</span>
-<strong id="totalProducts" class="stat-value">0</strong>
+    <div class="stat-card">
+        <span class="stat-label">TOTAL PRODUCTS</span>
+        <strong id="totalProducts" class="stat-value">0</strong>
+    </div>
+
+    <div class="stat-card">
+        <span class="stat-label">TOTAL ORDERS</span>
+        <strong id="totalOrders" class="stat-value">0</strong>
+    </div>
+
+    <div class="stat-card">
+        <span class="stat-label">PENDING ORDERS</span>
+        <strong id="pendingOrders" class="stat-value">0</strong>
+    </div>
+
+    <div class="stat-card">
+        <span class="stat-label">TOTAL REVENUE</span>
+        <strong id="totalRevenue" class="stat-value">₹0</strong>
+    </div>
+
 </div>
 
-<div class="stat-card">
-<span class="stat-label">TOTAL ORDERS</span>
-<strong id="totalOrders" class="stat-value">0</strong>
-</div>
-
-<div class="stat-card">
-<span class="stat-label">PENDING ORDERS</span>
-<strong id="pendingOrders" class="stat-value">0</strong>
-</div>
-
-<div class="stat-card">
-<span class="stat-label">TOTAL REVENUE</span>
-<strong id="totalRevenue" class="stat-value">₹0</strong>
-</div>
-
-</div>
 
 <div class="card">
 
-<div class="card-header">
+    <div class="card-header">
 
-<h3>Recent Orders</h3>
+        <h3>Recent Orders</h3>
 
-<button
-id="viewOrdersBtn"
-type="button"
-class="btn btn-secondary">
+        <button
+            id="viewOrdersBtn"
+            type="button"
+            class="btn btn-secondary">
+            VIEW ALL
+        </button>
 
-VIEW ALL
+    </div>
 
-</button>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="recentOrdersBody">
+
+                <tr>
+                    <td colspan="4" class="empty">
+                        No orders yet.
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-<tr>
-<th>Order ID</th>
-<th>Customer</th>
-<th>Total</th>
-<th>Status</th>
-</tr>
-</thead>
-
-<tbody id="recentOrdersBody">
-
-<tr>
-<td colspan="4" class="empty">
-No orders yet.
-</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
+```
 
 </section>
 
-<!-- ================= PRODUCTS PAGE ================= -->
+<!-- PRODUCTS PAGE -->
 
 <section id="productsPage" class="page">
 
+```
 <div class="card">
 
-<div class="card-header">
+    <div class="card-header">
 
-<h3>All Products</h3>
+        <h3>All Products</h3>
 
-<button
-id="goAddBtn"
-type="button"
-class="btn btn-primary">
+        <button
+            id="goAddBtn"
+            type="button"
+            class="btn btn-primary">
+            ➕ ADD PRODUCT
+        </button>
 
-➕ ADD PRODUCT
+    </div>
 
-</button>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="productsBody">
+
+                <tr>
+                    <td colspan="6" class="empty">
+                        Loading products...
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-<tr>
-<th>Image</th>
-<th>Name</th>
-<th>Category</th>
-<th>Price</th>
-<th>Stock</th>
-<th>Action</th>
-</tr>
-</thead>
-
-<tbody id="productsBody">
-
-<tr>
-<td colspan="6" class="empty">
-Loading products...
-</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
+```
 
 </section>
 
-<!-- ================= ADD PRODUCT PAGE ================= -->
+<!-- ADD PRODUCT PAGE -->
 
 <section id="addProductPage" class="page">
 
+```
 <div class="card">
 
-<div class="card-header">
+    <div class="card-header">
 
-<h3>Add New Product</h3>
+        <h3>Add New Product</h3>
 
-<button
-id="clearBtn"
-type="button"
-class="btn btn-secondary">
+        <button
+            id="clearBtn"
+            type="button"
+            class="btn btn-secondary">
+            CLEAR FORM
+        </button>
 
-CLEAR FORM
+    </div>
 
-</button>
+
+    <form id="productForm">
+
+        <div class="form-grid">
+
+
+            <div class="form-group">
+
+                <label for="productName">
+                    Product Name
+                </label>
+
+                <input
+                    id="productName"
+                    type="text"
+                    placeholder="Enter product name"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="productCategory">
+                    Category
+                </label>
+
+                <select
+                    id="productCategory"
+                    required>
+
+                    <option value="">
+                        Select Category
+                    </option>
+
+                    <option value="T-Shirt">
+                        T-Shirt
+                    </option>
+
+                    <option value="Shirt">
+                        Shirt
+                    </option>
+
+                    <option value="Jeans">
+                        Jeans
+                    </option>
+
+                    <option value="Hoodie">
+                        Hoodie
+                    </option>
+
+                    <option value="Jacket">
+                        Jacket
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="productPrice">
+                    Price (₹)
+                </label>
+
+                <input
+                    id="productPrice"
+                    type="number"
+                    min="0"
+                    step="1"
+                    placeholder="Enter price"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="productStock">
+                    Stock Quantity
+                </label>
+
+                <input
+                    id="productStock"
+                    type="number"
+                    min="0"
+                    step="1"
+                    placeholder="Enter stock quantity"
+                    required>
+
+            </div>
+
+
+            <div class="form-group full-width">
+
+                <label for="productDescription">
+                    Description
+                </label>
+
+                <textarea
+                    id="productDescription"
+                    placeholder="Write product description">
+                </textarea>
+
+            </div>
+
+
+            <!-- PRODUCT IMAGES -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Product Photos (Maximum 5)
+                </label>
+
+                <div class="upload-box">
+
+                    <input
+                        id="productImages"
+                        type="file"
+                        accept="image/*"
+                        multiple>
+
+                    <label
+                        for="productImages"
+                        class="upload-label">
+                        📷 CHOOSE PHOTOS FROM GALLERY
+                    </label>
+
+                    <p class="upload-help">
+                        You can select maximum 5 product photos.
+                    </p>
+
+                    <div
+                        id="imagePreview"
+                        class="preview-grid">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT SIZES -->
+
+            <div class="form-group full-width">
+
+                <label>
+                    Available Sizes
+                </label>
+
+                <div class="sizes">
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="productSize"
+                            value="S">
+                        S
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="productSize"
+                            value="M">
+                        M
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="productSize"
+                            value="L">
+                        L
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="productSize"
+                            value="XL">
+                        XL
+                    </label>
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="productSize"
+                            value="XXL">
+                        XXL
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group full-width">
+
+                <button
+                    id="saveBtn"
+                    type="submit"
+                    class="btn btn-primary">
+                    SAVE PRODUCT
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </form>
 
 </div>
-
-<form id="productForm">
-
-<div class="form-grid">
-
-<!-- PRODUCT NAME -->
-
-<div class="form-group">
-
-<label for="productName">
-Product Name
-</label>
-
-<input
-id="productName"
-type="text"
-placeholder="Enter product name"
-required>
-
-</div>
-
-<!-- CATEGORY -->
-
-<div class="form-group">
-
-<label for="productCategory">
-Category
-</label>
-
-<select
-id="productCategory"
-required>
-
-<option value="">
-Select Category
-</option>
-
-<option value="T-Shirt">
-T-Shirt
-</option>
-
-<option value="Shirt">
-Shirt
-</option>
-
-<option value="Jeans">
-Jeans
-</option>
-
-<option value="Hoodie">
-Hoodie
-</option>
-
-<option value="Jacket">
-Jacket
-</option>
-
-<option value="Other">
-Other
-</option>
-
-</select>
-
-</div>
-
-<!-- PRICE -->
-
-<div class="form-group">
-
-<label for="productPrice">
-Price (₹)
-</label>
-
-<input
-id="productPrice"
-type="number"
-min="0"
-step="1"
-placeholder="Enter price"
-required>
-
-</div>
-
-<!-- STOCK -->
-
-<div class="form-group">
-
-<label for="productStock">
-Stock Quantity
-</label>
-
-<input
-id="productStock"
-type="number"
-min="0"
-step="1"
-placeholder="Enter stock quantity"
-required>
-
-</div>
-
-<!-- DESCRIPTION -->
-
-<div class="form-group full-width">
-
-<label for="productDescription">
-Description
-</label>
-
-<textarea
-id="productDescription"
-placeholder="Write product description">
-</textarea>
-
-</div>
-
-<!-- PRODUCT IMAGES -->
-
-<div class="form-group full-width">
-
-<label>
-Product Photos (Maximum 5)
-</label>
-
-<div class="upload-box">
-
-<input
-id="productImages"
-type="file"
-accept="image/*"
-multiple>
-
-<label
-for="productImages"
-class="upload-label">
-
-📷 CHOOSE PHOTOS FROM GALLERY
-
-</label>
-
-<p class="upload-help">
-You can select maximum 5 product photos.
-</p>
-
-<div
-id="imagePreview"
-class="preview-grid">
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT SIZES -->
-
-<div class="form-group full-width">
-
-<label>
-Available Sizes
-</label>
-
-<div class="sizes">
-
-<label>
-<input
-type="checkbox"
-name="productSize"
-value="S">
-S
-</label>
-
-<label>
-<input
-type="checkbox"
-name="productSize"
-value="M">
-M
-</label>
-
-<label>
-<input
-type="checkbox"
-name="productSize"
-value="L">
-L
-</label>
-
-<label>
-<input
-type="checkbox"
-name="productSize"
-value="XL">
-XL
-</label>
-
-<label>
-<input
-type="checkbox"
-name="productSize"
-value="XXL">
-XXL
-</label>
-
-</div>
-
-</div>
-
-<!-- SAVE BUTTON -->
-
-<div class="form-group full-width">
-
-<button
-id="saveBtn"
-type="submit"
-class="btn btn-primary">
-
-SAVE PRODUCT
-
-</button>
-
-</div>
-
-</div>
-
-</form>
-
-</div>
+```
 
 </section>
 
-<!-- ================= ORDERS PAGE ================= -->
+<!-- ORDERS PAGE -->
 
 <section id="ordersPage" class="page">
 
+```
 <div class="card">
 
-<div class="card-header">
+    <div class="card-header">
 
-<h3>All Orders</h3>
+        <h3>All Orders</h3>
 
-<button
-id="refreshOrdersBtn"
-type="button"
-class="btn btn-secondary">
+        <button
+            id="refreshOrdersBtn"
+            type="button"
+            class="btn btn-secondary">
+            ↻ REFRESH
+        </button>
 
-↻ REFRESH
+    </div>
 
-</button>
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                    <th>Payment</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody id="ordersBody">
+
+                <tr>
+                    <td colspan="8" class="empty">
+                        Loading orders...
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-<th>Order ID</th>
-<th>Customer</th>
-<th>Phone</th>
-<th>Items</th>
-<th>Total</th>
-<th>Payment</th>
-<th>Status</th>
-<th>Update</th>
-</tr>
-
-</thead>
-
-<tbody id="ordersBody">
-
-<tr>
-<td colspan="8" class="empty">
-Loading orders...
-</td>
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
+```
 
 </section>
 
 <!-- CLOSE CONTENT -->
 
-</div>
+```
+    </div>
 
 </main>
 
-<!-- ================= EDIT PRODUCT MODAL ================= -->
+
+<!-- EDIT PRODUCT MODAL -->
 
 <div
-id="editModal"
-class="modal">
+    id="editModal"
+    class="modal">
 
-<div class="modal-box">
+    <div class="modal-box">
 
-<button
-id="closeModal"
-type="button"
-class="close-modal"
-aria-label="Close">
+        <button
+            id="closeModal"
+            type="button"
+            class="close-modal"
+            aria-label="Close">
+            ×
+        </button>
 
-×
 
-</button>
+        <h2 style="margin-bottom:20px;">
+            Edit Product
+        </h2>
 
-<h2 style="margin-bottom:20px;">
-Edit Product
-</h2>
 
-<form id="editForm">
+        <form id="editForm">
 
-<input
-id="editId"
-type="hidden">
+            <input
+                id="editId"
+                type="hidden">
 
-<div class="form-grid">
 
-<!-- EDIT NAME -->
+            <div class="form-grid">
 
-<div class="form-group">
 
-<label for="editName">
-Product Name
-</label>
+                <div class="form-group">
 
-<input
-id="editName"
-type="text"
-required>
+                    <label for="editName">
+                        Product Name
+                    </label>
+
+                    <input
+                        id="editName"
+                        type="text"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="editCategory">
+                        Category
+                    </label>
+
+                    <select
+                        id="editCategory"
+                        required>
+
+                        <option value="T-Shirt">
+                            T-Shirt
+                        </option>
+
+                        <option value="Shirt">
+                            Shirt
+                        </option>
+
+                        <option value="Jeans">
+                            Jeans
+                        </option>
+
+                        <option value="Hoodie">
+                            Hoodie
+                        </option>
+
+                        <option value="Jacket">
+                            Jacket
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="editPrice">
+                        Price (₹)
+                    </label>
+
+                    <input
+                        id="editPrice"
+                        type="number"
+                        min="0"
+                        step="1"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="editStock">
+                        Stock Quantity
+                    </label>
+
+                    <input
+                        id="editStock"
+                        type="number"
+                        min="0"
+                        step="1"
+                        required>
+
+                </div>
+
+
+                <div class="form-group full-width">
+
+                    <label for="editDescription">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="editDescription">
+                    </textarea>
+
+                </div>
+
+
+                <!-- EDIT IMAGES -->
+
+                <div class="form-group full-width">
+
+                    <label>
+                        Product Photos (Maximum 5)
+                    </label>
+
+                    <div class="upload-box">
+
+                        <input
+                            id="editImages"
+                            type="file"
+                            accept="image/*"
+                            multiple>
+
+                        <label
+                            for="editImages"
+                            class="upload-label">
+                            📷 ADD PHOTOS FROM GALLERY
+                        </label>
+
+                        <p class="upload-help">
+                            Maximum 5 photos allowed in total.
+                        </p>
+
+                        <div
+                            id="editPreview"
+                            class="preview-grid">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EDIT SIZES -->
+
+                <div class="form-group full-width">
+
+                    <label>
+                        Available Sizes
+                    </label>
+
+                    <div class="sizes">
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="editSize"
+                                value="S">
+                            S
+                        </label>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="editSize"
+                                value="M">
+                            M
+                        </label>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="editSize"
+                                value="L">
+                            L
+                        </label>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="editSize"
+                                value="XL">
+                            XL
+                        </label>
+
+                        <label>
+                            <input
+                                type="checkbox"
+                                name="editSize"
+                                value="XXL">
+                            XXL
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group full-width">
+
+                    <button
+                        id="updateBtn"
+                        type="submit"
+                        class="btn btn-primary">
+                        UPDATE PRODUCT
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+```
 
 </div>
 
-<!-- EDIT CATEGORY -->
-
-<div class="form-group">
-
-<label for="editCategory">
-Category
-</label>
-
-<select
-id="editCategory"
-required>
-
-<option value="T-Shirt">
-T-Shirt
-</option>
-
-<option value="Shirt">
-Shirt
-</option>
-
-<option value="Jeans">
-Jeans
-</option>
-
-<option value="Hoodie">
-Hoodie
-</option>
-
-<option value="Jacket">
-Jacket
-</option>
-
-<option value="Other">
-Other
-</option>
-
-</select>
-
-</div>
-
-<!-- EDIT PRICE -->
-
-<div class="form-group">
-
-<label for="editPrice">
-Price (₹)
-</label>
-
-<input
-id="editPrice"
-type="number"
-min="0"
-step="1"
-required>
-
-</div>
-
-<!-- EDIT STOCK -->
-
-<div class="form-group">
-
-<label for="editStock">
-Stock Quantity
-</label>
-
-<input
-id="editStock"
-type="number"
-min="0"
-step="1"
-required>
-
-</div>
-
-<!-- EDIT DESCRIPTION -->
-
-<div class="form-group full-width">
-
-<label for="editDescription">
-Description
-</label>
-
-<textarea
-id="editDescription">
-</textarea>
-
-</div>
-
-<!-- EDIT PRODUCT IMAGES -->
-
-<div class="form-group full-width">
-
-<label>
-Product Photos (Maximum 5)
-</label>
-
-<div class="upload-box">
-
-<input
-id="editImages"
-type="file"
-accept="image/*"
-multiple>
-
-<label
-for="editImages"
-class="upload-label">
-
-📷 ADD PHOTOS FROM GALLERY
-
-</label>
-
-<p class="upload-help">
-Maximum 5 photos allowed in total.
-</p>
-
-<div
-id="editPreview"
-class="preview-grid">
-</div>
-
-</div>
-
-</div>
-
-<!-- EDIT SIZES -->
-
-<div class="form-group full-width">
-
-<label>
-Available Sizes
-</label>
-
-<div class="sizes">
-
-<label>
-<input
-type="checkbox"
-name="editSize"
-value="S">
-S
-</label>
-
-<label>
-<input
-type="checkbox"
-name="editSize"
-value="M">
-M
-</label>
-
-<label>
-<input
-type="checkbox"
-name="editSize"
-value="L">
-L
-</label>
-
-<label>
-<input
-type="checkbox"
-name="editSize"
-value="XL">
-XL
-</label>
-
-<label>
-<input
-type="checkbox"
-name="editSize"
-value="XXL">
-XXL
-</label>
-
-</div>
-
-</div>
-
-<!-- UPDATE BUTTON -->
-
-<div class="form-group full-width">
-
-<button
-id="updateBtn"
-type="submit"
-class="btn btn-primary">
-
-UPDATE PRODUCT
-
-</button>
-
-</div>
-
-</div>
-
-</form>
-
-</div>
-
-</div>
-
-<!-- CLOSE ADMIN APP -->
-
-</div>
-
-<!-- ================= FIREBASE + JAVASCRIPT ================= -->
+<!-- FIREBASE JAVASCRIPT STARTS IN PART 3 -->
 
 <script type="module">
 
 import { db, auth, storage } from "./firebase.js";
 
 import {
-signInWithEmailAndPassword,
-signOut,
-onAuthStateChanged
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 import {
-collection,
-addDoc,
-getDocs,
-updateDoc,
-deleteDoc,
-doc,
-serverTimestamp
+    collection,
+    addDoc,
+    getDocs,
+    updateDoc,
+    deleteDoc,
+    doc,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
-ref,
-uploadBytes,
-getDownloadURL
+    ref,
+    uploadBytes,
+    getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-
-/* ================= VARIABLES ================= */
 
 let products = [];
 let orders = [];
@@ -1463,8 +1407,8 @@ let editExistingImages = [];
 let editNewImages = [];
 
 
-
-    /* ================= LOGIN ================= */
+/* PART 3 STARTS BELOW */
+/* ================= LOGIN ================= */
 
 const loginForm = document.getElementById("loginForm");
 const loginBtn = document.getElementById("loginBtn");
@@ -1484,8 +1428,10 @@ const password =
 loginError.textContent = "";
 
 if (!email || !password) {
+
     loginError.textContent =
         "Please enter email and password.";
+
     return;
 }
 
@@ -1505,6 +1451,7 @@ try {
     console.error("Login error:", error);
 
     const errorMessages = {
+
         "auth/invalid-email":
             "Invalid email address.",
 
@@ -1525,11 +1472,12 @@ try {
 
         "auth/too-many-requests":
             "Too many login attempts. Try again later."
+
     };
 
     loginError.textContent =
         errorMessages[error.code] ||
-        "Login failed. Please check your details.";
+        "Login failed: " + error.message;
 
 } finally {
 
@@ -1543,78 +1491,89 @@ try {
 
 /* ================= AUTH STATE ================= */
 
-onAuthStateChanged(auth, async function(user) {
+onAuthStateChanged(
+auth,
+async function(user) {
 
 ```
-if (user) {
+    if (user) {
 
-    document.getElementById("loginPage").style.display =
-        "none";
+        document
+            .getElementById("loginPage")
+            .style.display = "none";
 
-    document
-        .getElementById("adminApp")
-        .classList
-        .add("show");
+        document
+            .getElementById("adminApp")
+            .classList
+            .add("show");
 
-    document.getElementById("adminEmail").textContent =
-        user.email || "";
+        document
+            .getElementById("adminEmail")
+            .textContent =
+                user.email || "";
 
-    try {
+        try {
 
-        await loadProducts();
-        await loadOrders();
-        await loadDashboard();
+            await loadProducts();
+            await loadOrders();
+            await loadDashboard();
 
-    } catch (error) {
+        } catch (error) {
 
-        console.error(
-            "Admin loading error:",
-            error
-        );
+            console.error(
+                "Admin loading error:",
+                error
+            );
+
+        }
+
+    } else {
+
+        document
+            .getElementById("loginPage")
+            .style.display = "flex";
+
+        document
+            .getElementById("adminApp")
+            .classList
+            .remove("show");
 
     }
-
-} else {
-
-    document.getElementById("loginPage").style.display =
-        "flex";
-
-    document
-        .getElementById("adminApp")
-        .classList
-        .remove("show");
 
 }
 ```
 
-});
+);
 
 /* ================= LOGOUT ================= */
 
 document
 .getElementById("logoutBtn")
-.addEventListener("click", async function() {
+.addEventListener(
+"click",
+async function() {
 
 ```
-    try {
+        try {
 
-        await signOut(auth);
+            await signOut(auth);
 
-    } catch (error) {
+        } catch (error) {
 
-        console.error(
-            "Logout error:",
-            error
-        );
+            console.error(
+                "Logout error:",
+                error
+            );
 
-        alert(
-            "Logout failed: " +
-            error.message
-        );
+            alert(
+                "Logout failed: " +
+                error.message
+            );
+
+        }
 
     }
-
-});
+);
 ```
 
 /* ================= NAVIGATION ================= */
@@ -1710,40 +1669,49 @@ document
 
 document
 .getElementById("goAddBtn")
-.addEventListener("click", function() {
+.addEventListener(
+"click",
+function() {
 
 ```
-    showPage("addProduct");
+        showPage("addProduct");
 
-});
+    }
+);
 ```
 
 document
 .getElementById("viewOrdersBtn")
-.addEventListener("click", function() {
+.addEventListener(
+"click",
+function() {
 
 ```
-    showPage("orders");
+        showPage("orders");
 
-});
+    }
+);
 ```
 
 /* ================= MOBILE MENU ================= */
 
 document
 .getElementById("mobileMenu")
-.addEventListener("click", function() {
+.addEventListener(
+"click",
+function() {
 
 ```
-    document
-        .getElementById("sidebar")
-        .classList
-        .toggle("open");
+        document
+            .getElementById("sidebar")
+            .classList
+            .toggle("open");
 
-});
+    }
+);
 ```
 
-/* ================= HTML ESCAPE ================= */
+/* ================= ESCAPE HTML ================= */
 
 function escapeHtml(value) {
 
@@ -1764,22 +1732,22 @@ return div.innerHTML;
 function getCheckedValues(name) {
 
 ```
-return Array.from(
-
-    document.querySelectorAll(
-        `input[name="${name}"]:checked`
+return Array
+    .from(
+        document.querySelectorAll(
+            `input[name="${name}"]:checked`
+        )
     )
+    .map(function(input) {
 
-).map(function(input) {
+        return input.value;
 
-    return input.value;
-
-});
+    });
 ```
 
 }
 
-/* ================= IMAGE PREVIEW ================= */
+/* ================= PRODUCT IMAGE PREVIEW ================= */
 
 function renderImagePreview() {
 
@@ -1833,10 +1801,7 @@ selectedImages.forEach(
         );
 
         item.appendChild(image);
-
-        item.appendChild(
-            removeButton
-        );
+        item.appendChild(removeButton);
 
         preview.appendChild(item);
 
@@ -1941,10 +1906,7 @@ editExistingImages.forEach(
         );
 
         item.appendChild(image);
-
-        item.appendChild(
-            removeButton
-        );
+        item.appendChild(removeButton);
 
         preview.appendChild(item);
 
@@ -1994,10 +1956,7 @@ editNewImages.forEach(
         );
 
         item.appendChild(image);
-
-        item.appendChild(
-            removeButton
-        );
+        item.appendChild(removeButton);
 
         preview.appendChild(item);
 
@@ -2050,7 +2009,7 @@ function(event) {
 );
 ```
 
-/* ================= UPLOAD IMAGES ================= */
+/* ================= UPLOAD PRODUCT IMAGES ================= */
 
 async function uploadProductImages(files) {
 
@@ -2404,22 +2363,16 @@ ${Number(product.stock || 0)}
 <td>
 
 <button
-type="button"
-class="action-btn action-edit"
-data-edit="${product.id}">
-
-EDIT
-
-</button>
+ type="button"
+ class="action-btn action-edit"
+ data-edit="${product.id}">
+EDIT </button>
 
 <button
-type="button"
-class="action-btn action-delete"
-data-delete="${product.id}">
-
-DELETE
-
-</button>
+ type="button"
+ class="action-btn action-delete"
+ data-delete="${product.id}">
+DELETE </button>
 
 </td>
 
@@ -2429,6 +2382,7 @@ DELETE
 ```
         }
     ).join("");
+
 
 document
     .querySelectorAll("[data-edit]")
@@ -2449,6 +2403,7 @@ document
         }
     );
 
+
 document
     .querySelectorAll("[data-delete]")
     .forEach(
@@ -2467,9 +2422,11 @@ document
 
         }
     );
+```
 
 }
 
+/* PART 3B CONTINUES BELOW */
 /* ================= OPEN EDIT MODAL ================= */
 
 function openEditModal(id) {
@@ -3166,4 +3123,3 @@ function(event) {
 
 </body>
 </html>
-    
