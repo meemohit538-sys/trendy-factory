@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TRENDY FACTORY — Admin Panel</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+TRENDY FACTORY — Admin Panel
+</title>
 
 <style>
 
@@ -49,10 +56,10 @@ background:linear-gradient(135deg,#211e1a,#514438);
 .login-box{
 width:100%;
 max-width:400px;
-background:white;
+background:#fff;
 padding:35px 28px;
 border-radius:14px;
-box-shadow:0 10px 30px rgba(0,0,0,0.25);
+box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
 .login-logo{
@@ -69,6 +76,8 @@ color:#777;
 font-size:14px;
 margin-bottom:28px;
 }
+
+/* ================= FORM ================= */
 
 .form-group{
 margin-bottom:16px;
@@ -116,7 +125,7 @@ min-height:20px;
 width:100%;
 padding:13px 16px;
 background:#211e1a;
-color:white;
+color:#fff;
 border-radius:7px;
 font-weight:bold;
 }
@@ -136,7 +145,7 @@ font-weight:bold;
 .danger-btn{
 padding:9px 13px;
 background:#c9362b;
-color:white;
+color:#fff;
 border-radius:6px;
 font-size:12px;
 font-weight:bold;
@@ -145,13 +154,13 @@ font-weight:bold;
 .edit-btn{
 padding:9px 13px;
 background:#d97b36;
-color:white;
+color:#fff;
 border-radius:6px;
 font-size:12px;
 font-weight:bold;
 }
 
-/* ================= ADMIN LAYOUT ================= */
+/* ================= ADMIN ================= */
 
 .admin-app{
 display:none;
@@ -270,7 +279,7 @@ margin-bottom:30px;
 background:white;
 padding:22px;
 border-radius:12px;
-box-shadow:0 3px 12px rgba(0,0,0,0.06);
+box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
 .stat-card h3{
@@ -291,7 +300,7 @@ color:#211e1a;
 background:white;
 border-radius:12px;
 padding:24px;
-box-shadow:0 3px 12px rgba(0,0,0,0.06);
+box-shadow:0 3px 12px rgba(0,0,0,.06);
 margin-bottom:25px;
 }
 
@@ -307,8 +316,6 @@ margin-bottom:20px;
 font-size:20px;
 }
 
-/* ================= PRODUCT FORM ================= */
-
 .product-form-grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
@@ -319,18 +326,69 @@ gap:16px;
 grid-column:1/-1;
 }
 
-.checkbox-row{
-display:flex;
-gap:15px;
-flex-wrap:wrap;
-align-items:center;
+/* ================= IMAGE UPLOAD ================= */
+
+.image-upload-box{
+border:2px dashed #b9b2aa;
+border-radius:10px;
+padding:25px;
+text-align:center;
+background:#faf9f7;
 }
 
-.checkbox-row label{
-display:flex;
-align-items:center;
-gap:6px;
-font-size:14px;
+.image-upload-box input{
+display:none;
+}
+
+.choose-images-btn{
+display:inline-block;
+padding:12px 20px;
+background:#211e1a;
+color:white;
+border-radius:7px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.upload-note{
+font-size:12px;
+color:#777;
+margin-top:10px;
+}
+
+.image-preview-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+margin-top:18px;
+}
+
+.image-preview{
+position:relative;
+aspect-ratio:1/1;
+border-radius:8px;
+overflow:hidden;
+background:#eee;
+border:1px solid #ddd;
+}
+
+.image-preview img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.remove-image-btn{
+position:absolute;
+top:4px;
+right:4px;
+width:24px;
+height:24px;
+border-radius:50%;
+background:#c9362b;
+color:white;
+font-size:16px;
+line-height:24px;
 }
 
 /* ================= TABLE ================= */
@@ -380,48 +438,26 @@ background:white;
 font-size:12px;
 }
 
-/* ================= STATUS ================= */
-
-.status-badge{
-display:inline-block;
-padding:5px 9px;
-border-radius:20px;
-font-size:11px;
-font-weight:bold;
-background:#eee;
+.checkbox-row{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+align-items:center;
 }
 
-.status-Pending{
-background:#fff1c7;
-color:#8a6200;
+.checkbox-row label{
+display:flex;
+align-items:center;
+gap:6px;
+font-size:14px;
 }
-
-.status-Confirmed{
-background:#d9edff;
-color:#1261a0;
-}
-
-.status-Shipped{
-background:#e5dcff;
-color:#5935a5;
-}
-
-.status-Delivered{
-background:#d7f5df;
-color:#17733a;
-}
-
-.status-Cancelled{
-background:#ffe0de;
-color:#b3261e;
-}
-/* ================= MODAL ================= */
+  /* ================= MODAL ================= */
 
 .modal{
 display:none;
 position:fixed;
 inset:0;
-background:rgba(0,0,0,0.5);
+background:rgba(0,0,0,.5);
 z-index:1000;
 padding:20px;
 overflow-y:auto;
@@ -461,7 +497,7 @@ padding:40px;
 color:#777;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= MOBILE ================= */
 
 .mobile-menu-btn{
 display:none;
@@ -496,7 +532,7 @@ display:block;
 
 .sidebar{
 transform:translateX(-100%);
-transition:transform 0.3s ease;
+transition:transform .3s ease;
 width:250px;
 }
 
@@ -550,6 +586,10 @@ grid-template-columns:1fr;
 grid-column:auto;
 }
 
+.image-preview-grid{
+grid-template-columns:repeat(3,1fr);
+}
+
 }
 
 </style>
@@ -557,9 +597,11 @@ grid-column:auto;
 
 <body>
 
-<!-- ================= LOGIN ================= -->
+<!-- ================= LOGIN PAGE ================= -->
 
-<div id="loginPage" class="login-page">
+<div
+id="loginPage"
+class="login-page">
 
 <div class="login-box">
 
@@ -613,6 +655,7 @@ class="login-error">
 </form>
 
 </div>
+
 </div>
 
 <!-- ================= ADMIN APP ================= -->
@@ -621,7 +664,7 @@ class="login-error">
 id="adminApp"
 class="admin-app">
 
-<!-- SIDEBAR -->
+<!-- ================= SIDEBAR ================= -->
 
 <aside
 id="sidebar"
@@ -677,13 +720,18 @@ LOGOUT
 
 </aside>
 
-<!-- MAIN -->
+<!-- ================= MAIN ================= -->
 
 <main class="admin-main">
 
 <div class="topbar">
 
-<div style="display:flex;align-items:center;gap:12px;">
+<div
+style="
+display:flex;
+align-items:center;
+gap:12px;
+">
 
 <button
 class="mobile-menu-btn"
@@ -718,7 +766,9 @@ class="page active">
 
 <div class="stat-card">
 
-<h3>TOTAL PRODUCTS</h3>
+<h3>
+TOTAL PRODUCTS
+</h3>
 
 <div
 id="totalProducts"
@@ -732,7 +782,9 @@ class="number">
 
 <div class="stat-card">
 
-<h3>TOTAL ORDERS</h3>
+<h3>
+TOTAL ORDERS
+</h3>
 
 <div
 id="totalOrders"
@@ -746,7 +798,9 @@ class="number">
 
 <div class="stat-card">
 
-<h3>PENDING ORDERS</h3>
+<h3>
+PENDING ORDERS
+</h3>
 
 <div
 id="pendingOrders"
@@ -760,7 +814,9 @@ class="number">
 
 <div class="stat-card">
 
-<h3>TOTAL REVENUE</h3>
+<h3>
+TOTAL REVENUE
+</h3>
 
 <div
 id="totalRevenue"
@@ -800,13 +856,21 @@ VIEW ALL
 
 <tr>
 
-<th>Order ID</th>
+<th>
+Order ID
+</th>
 
-<th>Customer</th>
+<th>
+Customer
+</th>
 
-<th>Total</th>
+<th>
+Total
+</th>
 
-<th>Status</th>
+<th>
+Status
+</th>
 
 </tr>
 
@@ -837,7 +901,7 @@ Loading...
 
 </section>
 
-<!-- ================= PRODUCTS ================= -->
+<!-- ================= PRODUCTS PAGE ================= -->
 
 <section
 id="productsPage"
@@ -869,17 +933,29 @@ onclick="showPageByName('addProduct')">
 
 <tr>
 
-<th>Image</th>
+<th>
+Image
+</th>
 
-<th>Name</th>
+<th>
+Name
+</th>
 
-<th>Category</th>
+<th>
+Category
+</th>
 
-<th>Price</th>
+<th>
+Price
+</th>
 
-<th>Stock</th>
+<th>
+Stock
+</th>
 
-<th>Actions</th>
+<th>
+Actions
+</th>
 
 </tr>
 
@@ -909,8 +985,7 @@ Loading products...
 </div>
 
 </section>
-
-<!-- ================= ADD PRODUCT ================= -->
+<!-- ================= ADD PRODUCT PAGE ================= -->
 
 <section
 id="addProductPage"
@@ -928,6 +1003,7 @@ Add New Product
 </h2>
 
 <button
+type="button"
 class="secondary-btn"
 onclick="resetProductForm()">
 
@@ -946,9 +1022,13 @@ id="editProductId">
 
 <div class="product-form-grid">
 
+<!-- PRODUCT NAME -->
+
 <div class="form-group">
 
-<label>PRODUCT NAME</label>
+<label>
+PRODUCT NAME
+</label>
 
 <input
 type="text"
@@ -958,9 +1038,13 @@ placeholder="Enter product name">
 
 </div>
 
+<!-- CATEGORY -->
+
 <div class="form-group">
 
-<label>CATEGORY</label>
+<label>
+CATEGORY
+</label>
 
 <select
 id="productCategory"
@@ -990,9 +1074,13 @@ Hoodie
 
 </div>
 
+<!-- PRICE -->
+
 <div class="form-group">
 
-<label>PRICE (₹)</label>
+<label>
+PRICE (₹)
+</label>
 
 <input
 type="number"
@@ -1003,9 +1091,13 @@ placeholder="Enter price">
 
 </div>
 
+<!-- STOCK -->
+
 <div class="form-group">
 
-<label>STOCK</label>
+<label>
+STOCK
+</label>
 
 <input
 type="number"
@@ -1016,20 +1108,13 @@ placeholder="Available quantity">
 
 </div>
 
-<div class="form-group full-width">
-
-<label>IMAGE URL</label>
-
-<input
-type="url"
-id="productImage"
-placeholder="https://example.com/product.jpg">
-
-</div>
+<!-- DESCRIPTION -->
 
 <div class="form-group full-width">
 
-<label>DESCRIPTION</label>
+<label>
+DESCRIPTION
+</label>
 
 <textarea
 id="productDescription"
@@ -1038,61 +1123,123 @@ placeholder="Enter product description">
 
 </div>
 
+<!-- IMAGE UPLOAD -->
+
 <div class="form-group full-width">
 
-<label>AVAILABLE SIZES</label>
+<label>
+PRODUCT IMAGES
+</label>
+
+<div class="image-upload-box">
+
+<input
+type="file"
+id="productImages"
+accept="image/*"
+multiple>
+
+<label
+for="productImages"
+class="choose-images-btn">
+
+📷 CHOOSE IMAGES
+
+</label>
+
+<div class="upload-note">
+
+Select maximum 5 images from your gallery
+
+</div>
+
+<div
+id="imagePreviewGrid"
+class="image-preview-grid">
+</div>
+
+</div>
+
+</div>
+
+<!-- SIZES -->
+
+<div class="form-group full-width">
+
+<label>
+AVAILABLE SIZES
+</label>
 
 <div class="checkbox-row">
 
 <label>
+
 <input
 type="checkbox"
 name="size"
 value="S">
+
 S
+
 </label>
 
 <label>
+
 <input
 type="checkbox"
 name="size"
 value="M">
+
 M
+
 </label>
 
 <label>
+
 <input
 type="checkbox"
 name="size"
 value="L">
+
 L
+
 </label>
 
 <label>
+
 <input
 type="checkbox"
 name="size"
 value="XL">
+
 XL
+
 </label>
 
 <label>
+
 <input
 type="checkbox"
 name="size"
 value="XXL">
+
 XXL
+
 </label>
 
 </div>
 
 </div>
 
-<div class="form-group full-width">
+<!-- SAVE -->
+
+<div
+class="form-group full-width">
 
 <button
 type="submit"
-class="primary-btn">
+class="primary-btn"
+id="saveProductBtn">
 
 SAVE PRODUCT
 
@@ -1107,7 +1254,8 @@ SAVE PRODUCT
 </div>
 
 </section>
-  <!-- ================= ORDERS ================= -->
+
+<!-- ================= ORDERS PAGE ================= -->
 
 <section
 id="ordersPage"
@@ -1139,21 +1287,37 @@ onclick="loadOrders()">
 
 <tr>
 
-<th>Order ID</th>
+<th>
+Order ID
+</th>
 
-<th>Customer</th>
+<th>
+Customer
+</th>
 
-<th>Phone</th>
+<th>
+Phone
+</th>
 
-<th>Items</th>
+<th>
+Items
+</th>
 
-<th>Total</th>
+<th>
+Total
+</th>
 
-<th>Payment</th>
+<th>
+Payment
+</th>
 
-<th>Status</th>
+<th>
+Status
+</th>
 
-<th>Action</th>
+<th>
+Action
+</th>
 
 </tr>
 
@@ -1199,10 +1363,13 @@ class="modal">
 <div class="modal-box">
 
 <button
+type="button"
 class="modal-close"
 onclick="closeEditModal()">
 
-× </button>
+×
+
+</button>
 
 <h2
 style="margin-bottom:20px;">
@@ -1220,7 +1387,9 @@ id="modalEditProductId">
 
 <div class="form-group">
 
-<label>PRODUCT NAME</label>
+<label>
+PRODUCT NAME
+</label>
 
 <input
 type="text"
@@ -1231,7 +1400,9 @@ required>
 
 <div class="form-group">
 
-<label>CATEGORY</label>
+<label>
+CATEGORY
+</label>
 
 <select
 id="modalProductCategory"
@@ -1259,7 +1430,9 @@ Hoodie
 
 <div class="form-group">
 
-<label>PRICE (₹)</label>
+<label>
+PRICE (₹)
+</label>
 
 <input
 type="number"
@@ -1271,7 +1444,9 @@ min="0">
 
 <div class="form-group">
 
-<label>STOCK</label>
+<label>
+STOCK
+</label>
 
 <input
 type="number"
@@ -1283,17 +1458,9 @@ min="0">
 
 <div class="form-group">
 
-<label>IMAGE URL</label>
-
-<input
-type="url"
-id="modalProductImage">
-
-</div>
-
-<div class="form-group">
-
-<label>DESCRIPTION</label>
+<label>
+DESCRIPTION
+</label>
 
 <textarea
 id="modalProductDescription">
@@ -1303,7 +1470,46 @@ id="modalProductDescription">
 
 <div class="form-group">
 
-<label>AVAILABLE SIZES</label>
+<label>
+ADD / REPLACE PRODUCT IMAGES
+</label>
+
+<div class="image-upload-box">
+
+<input
+type="file"
+id="modalProductImages"
+accept="image/*"
+multiple>
+
+<label
+for="modalProductImages"
+class="choose-images-btn">
+
+📷 CHOOSE IMAGES
+
+</label>
+
+<div class="upload-note">
+
+Maximum 5 images total
+
+</div>
+
+<div
+id="modalImagePreviewGrid"
+class="image-preview-grid">
+</div>
+
+</div>
+
+</div>
+
+<div class="form-group">
+
+<label>
+AVAILABLE SIZES
+</label>
 
 <div class="checkbox-row">
 
@@ -1353,7 +1559,8 @@ XXL
 
 <button
 type="submit"
-class="primary-btn">
+class="primary-btn"
+id="updateProductBtn">
 
 UPDATE PRODUCT
 
@@ -1367,25 +1574,29 @@ UPDATE PRODUCT
 
 <script type="module">
 
-/* ================= FIREBASE IMPORTS ================= */
+/* ================= FIREBASE ================= */
 
 import {
-initializeApp
+app,
+db,
+auth,
+storage
 }
 from
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+"./firebase.js";
 
 import {
-getAuth,
+
 signInWithEmailAndPassword,
 signOut,
 onAuthStateChanged
+
 }
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 import {
-getFirestore,
+
 collection,
 getDocs,
 addDoc,
@@ -1394,55 +1605,22 @@ deleteDoc,
 doc,
 serverTimestamp,
 query,
-orderBy,
-limit
+orderBy
+
 }
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-/* ================= FIREBASE CONFIG ================= */
+import {
 
-const firebaseConfig = {
+ref,
+uploadBytes,
+getDownloadURL,
+deleteObject
 
-apiKey:
-"AIzaSyCZjafz8Ze5p6xSoir4j5IdKc_MJE_Eyns",
-
-authDomain:
-"trendy-factory.firebaseapp.com",
-
-projectId:
-"trendy-factory",
-
-storageBucket:
-"trendy-factory.firebasestorage.app",
-
-messagingSenderId:
-"811817163762",
-
-appId:
-"1:811817163762:web:c9aecc5db2cb332a13696b",
-
-measurementId:
-"G-8YDMBE9T7C"
-
-};
-
-/* ================= INITIALIZE ================= */
-
-const app =
-initializeApp(
-firebaseConfig
-);
-
-const auth =
-getAuth(
-app
-);
-
-const db =
-getFirestore(
-app
-);
+}
+from
+"https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 /* ================= GLOBAL DATA ================= */
 
@@ -1450,7 +1628,14 @@ let allProducts = [];
 
 let allOrders = [];
 
-/* ================= LOGIN ================= */
+let selectedImages = [];
+
+let existingImages = [];
+
+let modalSelectedImages = [];
+
+let modalExistingImages = [];
+  /* ================= LOGIN ================= */
 
 const loginForm =
 document.getElementById(
@@ -1492,10 +1677,13 @@ password
 }
 catch(error){
 
-console.error(error);
+console.error(
+"Login error:",
+error
+);
 
 errorBox.textContent =
-"Invalid email or password.";
+error.message;
 
 }
 
@@ -1506,7 +1694,7 @@ errorBox.textContent =
 
 onAuthStateChanged(
 auth,
-function(user){
+async function(user){
 
 if(user){
 
@@ -1532,11 +1720,11 @@ document
 .textContent =
 user.email;
 
-loadDashboard();
+await loadDashboard();
 
-loadProducts();
+await loadProducts();
 
-loadOrders();
+await loadOrders();
 
 }
 else{
@@ -1575,7 +1763,10 @@ auth
 }
 catch(error){
 
-console.error(error);
+console.error(
+"Logout error:",
+error
+);
 
 alert(
 "Logout failed."
@@ -1604,14 +1795,19 @@ page.classList.remove(
 }
 );
 
-document
-.getElementById(
+const selectedPage =
+document.getElementById(
 pageName +
 "Page"
-)
-.classList.add(
+);
+
+if(selectedPage){
+
+selectedPage.classList.add(
 "active"
 );
+
+}
 
 document
 .querySelectorAll(
@@ -1673,8 +1869,7 @@ window.showPageByName =
 function(pageName){
 
 const button =
-Array
-.from(
+Array.from(
 document.querySelectorAll(
 ".nav-btn"
 )
@@ -1682,9 +1877,10 @@ document.querySelectorAll(
 .find(
 function(btn){
 
-return btn
-.getAttribute(
+return (
+btn.getAttribute(
 "onclick"
+) || ""
 )
 .includes(
 "'" +
@@ -1722,36 +1918,313 @@ document
 function escapeHtml(value){
 
 return String(
-value || ""
+value ?? ""
 )
 
 .replace(
 /&/g,
-"&amp;"
+"&"
 )
 
 .replace(
 /</g,
-"&lt;"
+"<"
 )
 
 .replace(
 />/g,
-"&gt;"
+">"
 )
 
 .replace(
 /"/g,
-"&quot;"
+"""
 )
 
 .replace(
 /'/g,
-"&#039;"
+"'"
 );
 
 }
-  /* ================= DASHBOARD ================= */
+
+/* ================= IMAGE PREVIEW ================= */
+
+function renderImagePreviews(
+files,
+containerId,
+removeFunctionName
+){
+
+const container =
+document.getElementById(
+containerId
+);
+
+container.innerHTML =
+"";
+
+files.forEach(
+function(file,index){
+
+const preview =
+document.createElement(
+"div"
+);
+
+preview.className =
+"image-preview";
+
+const image =
+document.createElement(
+"img"
+);
+
+image.src =
+URL.createObjectURL(
+file
+);
+
+const removeButton =
+document.createElement(
+"button"
+);
+
+removeButton.type =
+"button";
+
+removeButton.className =
+"remove-image-btn";
+
+removeButton.textContent =
+"×";
+
+removeButton.onclick =
+function(){
+
+window[
+removeFunctionName
+](index);
+
+};
+
+preview.appendChild(
+image
+);
+
+preview.appendChild(
+removeButton
+);
+
+container.appendChild(
+preview
+);
+
+}
+);
+
+}
+
+/* ================= PRODUCT IMAGE SELECT ================= */
+
+document
+.getElementById(
+"productImages"
+)
+.addEventListener(
+"change",
+function(event){
+
+const newFiles =
+Array.from(
+event.target.files
+);
+
+const combined =
+[
+...selectedImages,
+...newFiles
+];
+
+if(
+combined.length >
+5
+){
+
+alert(
+"Maximum 5 images allowed."
+);
+
+event.target.value =
+"";
+
+return;
+
+}
+
+selectedImages =
+combined;
+
+renderImagePreviews(
+selectedImages,
+"imagePreviewGrid",
+"removeSelectedImage"
+);
+
+event.target.value =
+"";
+
+}
+);
+
+window.removeSelectedImage =
+function(index){
+
+selectedImages.splice(
+index,
+1
+);
+
+renderImagePreviews(
+selectedImages,
+"imagePreviewGrid",
+"removeSelectedImage"
+);
+
+};
+
+/* ================= MODAL IMAGE SELECT ================= */
+
+document
+.getElementById(
+"modalProductImages"
+)
+.addEventListener(
+"change",
+function(event){
+
+const newFiles =
+Array.from(
+event.target.files
+);
+
+const combined =
+[
+...modalSelectedImages,
+...newFiles
+];
+
+if(
+combined.length >
+5
+){
+
+alert(
+"Maximum 5 images allowed."
+);
+
+event.target.value =
+"";
+
+return;
+
+}
+
+modalSelectedImages =
+combined;
+
+renderImagePreviews(
+modalSelectedImages,
+"modalImagePreviewGrid",
+"removeModalSelectedImage"
+);
+
+event.target.value =
+"";
+
+}
+);
+
+window.removeModalSelectedImage =
+function(index){
+
+modalSelectedImages.splice(
+index,
+1
+);
+
+renderImagePreviews(
+modalSelectedImages,
+"modalImagePreviewGrid",
+"removeModalSelectedImage"
+);
+
+/* ================= UPLOAD IMAGES ================= */
+
+async function uploadImages(
+files,
+folderName
+){
+
+const uploadedUrls =
+[];
+
+for(
+let i = 0;
+i < files.length;
+i++
+){
+
+const file =
+files[i];
+
+const safeName =
+file.name
+.replace(
+/[^a-zA-Z0-9.*-]/g,
+"*"
+);
+
+const fileName =
+Date.now()
++
+"*"
++
+i
++
+"*"
++
+safeName;
+
+const storageReference =
+ref(
+storage,
+folderName +
+"/" +
+fileName
+);
+
+await uploadBytes(
+storageReference,
+file
+);
+
+const downloadUrl =
+await getDownloadURL(
+storageReference
+);
+
+uploadedUrls.push(
+downloadUrl
+);
+
+}
+
+return uploadedUrls;
+
+}
+
+/* ================= DASHBOARD ================= */
 
 async function loadDashboard(){
 
@@ -1781,8 +2254,12 @@ ordersSnapshot.docs.map(
 function(orderDoc){
 
 return {
-id:orderDoc.id,
+
+id:
+orderDoc.id,
+
 ...orderDoc.data()
+
 };
 
 }
@@ -1795,8 +2272,10 @@ const pendingCount =
 ordersData.filter(
 function(order){
 
-return order.status ===
-"Pending";
+return (
+order.status ||
+"Pending"
+) === "Pending";
 
 }
 ).length;
@@ -1807,7 +2286,8 @@ function(total,order){
 
 return total +
 Number(
-order.total || 0
+order.total ||
+0
 );
 
 },
@@ -1841,7 +2321,9 @@ document
 )
 .textContent =
 "₹" +
-revenue.toFixed(2);
+revenue.toFixed(
+2
+);
 
 renderRecentOrders(
 ordersData
@@ -1917,41 +2399,46 @@ body.innerHTML =
 recent.map(
 function(order){
 
+const customer =
+order.customer ||
+{};
+
+const status =
+order.status ||
+"Pending";
+
 return `
 
 <tr>
 
 <td>
-${escapeHtml(order.id)}
+${escapeHtml(
+order.id
+)}
 </td>
 
 <td>
 ${escapeHtml(
-order.customer &&
-order.customer.name
-?
-order.customer.name
-:
+customer.name ||
 "Unknown"
 )}
 </td>
 
 <td>
 ₹${Number(
-order.total || 0
-).toFixed(2)}
+order.total ||
+0
+).toFixed(
+2
+)}
 </td>
 
 <td>
 
 <span
-class="status-badge status-${escapeHtml(
-order.status || "Pending"
-)}">
+class="status-badge status-${escapeHtml(status)}">
 
-${escapeHtml(
-order.status || "Pending"
-)}
+${escapeHtml(status)}
 
 </span>
 
@@ -1966,7 +2453,8 @@ order.status || "Pending"
 ""
 );
 
-}
+  }
+  }
 
 /* ================= LOAD PRODUCTS ================= */
 
@@ -2047,9 +2535,28 @@ body.innerHTML =
 allProducts.map(
 function(product){
 
-const image =
-product.image ||
-product.imageUrl ||
+const images =
+Array.isArray(
+product.images
+)
+?
+product.images
+:
+(
+product.image
+?
+[
+product.image
+]
+:
+[]
+);
+
+const mainImage =
+images.length > 0
+?
+images[0]
+:
 "";
 
 return `
@@ -2059,11 +2566,11 @@ return `
 <td>
 
 ${
-image
+mainImage
 ?
 `<img
-src="${escapeHtml(image)}"
-alt="${escapeHtml(product.name)}"
+src="${escapeHtml(mainImage)}"
+alt="${escapeHtml(product.name || "Product")}"
 class="product-thumb">`
 :
 '<div class="product-thumb"></div>'
@@ -2087,13 +2594,17 @@ product.category ||
 
 <td>
 ₹${Number(
-product.price || 0
+product.price ||
+0
+).toFixed(
+2
 )}
 </td>
 
 <td>
 ${Number(
-product.stock || 0
+product.stock ||
+0
 )}
 </td>
 
@@ -2102,6 +2613,7 @@ product.stock || 0
 <div class="action-buttons">
 
 <button
+type="button"
 class="edit-btn"
 onclick="openEditProduct('${product.id}')">
 
@@ -2110,6 +2622,7 @@ EDIT
 </button>
 
 <button
+type="button"
 class="danger-btn"
 onclick="deleteProduct('${product.id}')">
 
@@ -2132,7 +2645,7 @@ DELETE
 
 }
 
-/* ================= GET SELECTED SIZES ================= */
+/* ================= GET SIZES ================= */
 
 function getSelectedSizes(
 inputName
@@ -2167,6 +2680,31 @@ async function(event){
 
 event.preventDefault();
 
+if(
+selectedImages.length === 0
+){
+
+alert(
+"Please select at least one product image."
+);
+
+return;
+
+}
+
+const saveButton =
+document.getElementById(
+"saveProductBtn"
+);
+
+saveButton.disabled =
+true;
+
+saveButton.textContent =
+"UPLOADING...";
+
+try{
+
 const name =
 document.getElementById(
 "productName"
@@ -2191,11 +2729,6 @@ document.getElementById(
 ).value
 );
 
-const image =
-document.getElementById(
-"productImage"
-).value.trim();
-
 const description =
 document.getElementById(
 "productDescription"
@@ -2206,10 +2739,11 @@ getSelectedSizes(
 "size"
 );
 
-const editId =
-document.getElementById(
-"editProductId"
-).value;
+const imageUrls =
+await uploadImages(
+selectedImages,
+"products"
+);
 
 const productData = {
 
@@ -2225,42 +2759,25 @@ price,
 stock:
 stock,
 
-image:
-image,
-
 description:
 description,
 
 sizes:
 sizes,
 
+images:
+imageUrls,
+
+image:
+imageUrls[0],
+
+createdAt:
+serverTimestamp(),
+
 updatedAt:
 serverTimestamp()
 
 };
-
-try{
-
-if(editId){
-
-await updateDoc(
-doc(
-db,
-"products",
-editId
-),
-productData
-);
-
-alert(
-"Product updated successfully."
-);
-
-}
-else{
-
-productData.createdAt =
-serverTimestamp();
 
 await addDoc(
 collection(
@@ -2273,8 +2790,6 @@ productData
 alert(
 "Product added successfully."
 );
-
-}
 
 resetProductForm();
 
@@ -2290,13 +2805,23 @@ showPageByName(
 catch(error){
 
 console.error(
-"Save product error:",
+"Add product error:",
 error
 );
 
 alert(
-"Unable to save product."
+"Unable to save product: " +
+error.message
 );
+
+}
+finally{
+
+saveButton.disabled =
+false;
+
+saveButton.textContent =
+"SAVE PRODUCT";
 
 }
 
@@ -2309,6 +2834,16 @@ window.resetProductForm =
 function(){
 
 productForm.reset();
+
+selectedImages =
+[];
+
+document
+.getElementById(
+"imagePreviewGrid"
+)
+.innerHTML =
+"";
 
 document
 .getElementById(
@@ -2325,7 +2860,8 @@ document
 "Add New Product";
 
 };
-  /* ================= OPEN EDIT PRODUCT ================= */
+
+/* ================= OPEN EDIT PRODUCT ================= */
 
 window.openEditProduct =
 function(id){
@@ -2340,7 +2876,9 @@ return item.id === id;
 );
 
 if(!product){
+
 return;
+
 }
 
 document
@@ -2372,7 +2910,8 @@ document
 )
 .value =
 Number(
-product.price || 0
+product.price ||
+0
 );
 
 document
@@ -2381,17 +2920,9 @@ document
 )
 .value =
 Number(
-product.stock || 0
+product.stock ||
+0
 );
-
-document
-.getElementById(
-"modalProductImage"
-)
-.value =
-product.image ||
-product.imageUrl ||
-"";
 
 document
 .getElementById(
@@ -2400,6 +2931,30 @@ document
 .value =
 product.description ||
 "";
+
+modalExistingImages =
+Array.isArray(
+product.images
+)
+?
+[
+...product.images
+]
+:
+(
+product.image
+?
+[
+product.image
+]
+:
+[]
+);
+
+modalSelectedImages =
+[];
+
+renderExistingModalImages();
 
 const sizes =
 Array.isArray(
@@ -2435,7 +2990,81 @@ document
 
 };
 
-/* ================= CLOSE EDIT MODAL ================= */
+/* ================= RENDER EXISTING MODAL IMAGES ================= */
+
+function renderExistingModalImages(){
+
+const container =
+document.getElementById(
+"modalImagePreviewGrid"
+);
+
+container.innerHTML =
+"";
+
+modalExistingImages.forEach(
+function(url,index){
+
+const preview =
+document.createElement(
+"div"
+);
+
+preview.className =
+"image-preview";
+
+const image =
+document.createElement(
+"img"
+);
+
+image.src =
+url;
+
+const removeButton =
+document.createElement(
+"button"
+);
+
+removeButton.type =
+"button";
+
+removeButton.className =
+"remove-image-btn";
+
+removeButton.textContent =
+"×";
+
+removeButton.onclick =
+function(){
+
+modalExistingImages.splice(
+index,
+1
+);
+
+renderExistingModalImages();
+
+};
+
+preview.appendChild(
+image
+);
+
+preview.appendChild(
+removeButton
+);
+
+container.appendChild(
+preview
+);
+
+}
+);
+
+}
+
+/* ================= CLOSE MODAL ================= */
 
 window.closeEditModal =
 function(){
@@ -2469,7 +3098,64 @@ document.getElementById(
 ).value;
 
 if(!id){
+
 return;
+
+}
+
+const updateButton =
+document.getElementById(
+"updateProductBtn"
+);
+
+updateButton.disabled =
+true;
+
+updateButton.textContent =
+"UPDATING...";
+
+try{
+
+if(
+modalSelectedImages.length +
+modalExistingImages.length >
+5
+){
+
+alert(
+"Maximum 5 images allowed."
+);
+
+return;
+
+}
+
+const newImageUrls =
+modalSelectedImages.length > 0
+?
+await uploadImages(
+modalSelectedImages,
+"products"
+)
+:
+[];
+
+const finalImages =
+[
+...modalExistingImages,
+...newImageUrls
+];
+
+if(
+finalImages.length === 0
+){
+
+alert(
+"Please keep at least one image."
+);
+
+return;
+
 }
 
 const productData = {
@@ -2498,11 +3184,6 @@ document.getElementById(
 ).value
 ),
 
-image:
-document.getElementById(
-"modalProductImage"
-).value.trim(),
-
 description:
 document.getElementById(
 "modalProductDescription"
@@ -2513,12 +3194,16 @@ getSelectedSizes(
 "modalSize"
 ),
 
+images:
+finalImages,
+
+image:
+finalImages[0],
+
 updatedAt:
 serverTimestamp()
 
 };
-
-try{
 
 await updateDoc(
 doc(
@@ -2548,8 +3233,18 @@ error
 );
 
 alert(
-"Unable to update product."
+"Unable to update product: " +
+error.message
 );
+
+}
+finally{
+
+updateButton.disabled =
+false;
+
+updateButton.textContent =
+"UPDATE PRODUCT";
 
 }
 
@@ -2570,23 +3265,24 @@ return item.id === id;
 }
 );
 
-const productName =
+const confirmed =
+confirm(
+"Are you sure you want to delete " +
+(
 product &&
 product.name
 ?
 product.name
 :
-"this product";
-
-const confirmed =
-confirm(
-"Are you sure you want to delete " +
-productName +
+"this product"
+) +
 "?"
 );
 
 if(!confirmed){
+
 return;
+
 }
 
 try{
@@ -2677,14 +3373,9 @@ renderOrdersTable();
 catch(error){
 
 console.error(
-"Orders error:",
+"Orders query error:",
 error
 );
-
-/*
-Fallback if Firestore orderBy
-has issues with old documents
-*/
 
 try{
 
@@ -2743,6 +3434,7 @@ renderOrdersTable();
 catch(secondError){
 
 console.error(
+"Orders load error:",
 secondError
 );
 
@@ -2805,7 +3497,8 @@ item.name ||
 " × "
 +
 Number(
-item.quantity || 0
+item.quantity ||
+0
 )
 );
 
@@ -2850,8 +3543,11 @@ itemsText
 
 <td>
 ₹${Number(
-order.total || 0
-).toFixed(2)}
+order.total ||
+0
+).toFixed(
+2
+)}
 </td>
 
 <td>
@@ -2862,14 +3558,9 @@ order.paymentMethod ||
 </td>
 
 <td>
-
-<span
-class="status-badge status-${escapeHtml(status)}">
-
-${escapeHtml(status)}
-
-</span>
-
+${escapeHtml(
+status
+)}
 </td>
 
 <td>
@@ -2965,7 +3656,7 @@ await loadDashboard();
 catch(error){
 
 console.error(
-"Status update error:",
+"Order status error:",
 error
 );
 
@@ -2977,7 +3668,7 @@ alert(
 
 };
 
-/* ================= CLOSE MODAL BACKGROUND ================= */
+/* ================= CLOSE MODAL ON BACKGROUND ================= */
 
 document
 .getElementById(
