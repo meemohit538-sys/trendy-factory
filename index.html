@@ -816,7 +816,7 @@ container.innerHTML+=`
 <div class="product" onclick="openProduct(${product.id})">
 
 <div class="product-image">
-${product.image}
+${product.image || product.name}
 </div>
 
 <div class="product-info">
