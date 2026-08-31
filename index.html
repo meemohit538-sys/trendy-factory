@@ -3,76 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>TRENDY FACTORY — Men's Fashion</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:#f5f0e8;color:#211e1a}
-button,input,textarea{font:inherit}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#f5f0e8;
+color:#211e1a;
+}
+
+button,input,textarea,select{
+font:inherit;
+}
+
+/* HEADER */
 
 header{
-height:70px;background:#fbf8f3;display:flex;justify-content:space-between;
-align-items:center;padding:0 6%;border-bottom:1px solid #ddd5ca;
-position:sticky;top:0;z-index:100
+height:70px;
+background:#fbf8f3;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 6%;
+border-bottom:1px solid #ddd5ca;
+position:sticky;
+top:0;
+z-index:100;
 }
 
-.logo{font-size:18px;letter-spacing:3px;font-weight:bold}
-
-nav{display:flex;gap:15px;align-items:center}
-
-nav a,nav button{
-border:none;background:none;color:#211e1a;text-decoration:none;
-font-size:10px;letter-spacing:1px;cursor:pointer
+.logo{
+font-size:18px;
+letter-spacing:3px;
+font-weight:bold;
 }
+
+nav{
+display:flex;
+gap:15px;
+align-items:center;
+}
+
+nav a,
+nav button{
+border:none;
+background:none;
+color:#211e1a;
+text-decoration:none;
+font-size:10px;
+letter-spacing:1px;
+cursor:pointer;
+}
+
+/* HERO */
 
 .hero{
-min-height:72vh;padding:8% 7%;display:flex;align-items:flex-end;
-background:linear-gradient(120deg,#b8a58f,#dfd2c2)
+min-height:72vh;
+padding:8% 7%;
+display:flex;
+align-items:flex-end;
+background:linear-gradient(120deg,#b8a58f,#dfd2c2);
 }
 
-.hero p{font-size:11px;letter-spacing:3px;margin-bottom:20px}
+.hero p{
+font-size:11px;
+letter-spacing:3px;
+margin-bottom:20px;
+}
 
 .hero h1{
-font-family:Georgia,serif;font-weight:400;
-font-size:clamp(55px,10vw,125px);line-height:.9;margin-bottom:28px
+font-family:Georgia,serif;
+font-weight:400;
+font-size:clamp(55px,10vw,125px);
+line-height:.9;
+margin-bottom:28px;
 }
 
 .btn{
-background:#211e1a;color:white;padding:15px 25px;border:none;
-cursor:pointer;text-decoration:none;display:inline-block;
-font-size:11px;letter-spacing:1px
+background:#211e1a;
+color:white;
+padding:15px 25px;
+border:none;
+cursor:pointer;
+text-decoration:none;
+display:inline-block;
+font-size:11px;
+letter-spacing:1px;
 }
 
-.section{padding:70px 6%}
-.section-title{margin-bottom:30px}
+/* PRODUCTS */
+
+.section{
+padding:70px 6%;
+}
+
+.section-title{
+margin-bottom:30px;
+}
 
 .section h2{
-font-family:Georgia,serif;font-size:40px;font-weight:400
+font-family:Georgia,serif;
+font-size:40px;
+font-weight:400;
 }
 
 .filters{
-display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:30px;
 }
 
 .filter-btn{
-background:transparent;border:1px solid #211e1a;padding:10px 16px;
-font-size:10px;cursor:pointer;letter-spacing:1px
+background:transparent;
+border:1px solid #211e1a;
+padding:10px 16px;
+font-size:10px;
+cursor:pointer;
+letter-spacing:1px;
 }
 
-.filter-btn.active,.filter-btn:hover{
-background:#211e1a;color:white
+.filter-btn.active,
+.filter-btn:hover{
+background:#211e1a;
+color:white;
 }
 
 .products{
-display:grid;grid-template-columns:repeat(4,1fr);gap:18px
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
 }
 
 .product{
-background:#fffaf4;cursor:pointer;transition:.25s
+background:#fffaf4;
+cursor:pointer;
+transition:.25s;
 }
 
-.product:hover{transform:translateY(-5px)}
+.product:hover{
+transform:translateY(-5px);
+}
 
 .product-image{
 height:330px;
@@ -82,127 +163,229 @@ align-items:center;
 justify-content:center;
 font-size:11px;
 letter-spacing:2px;
-color:#66594d
+color:#66594d;
+text-align:center;
+padding:20px;
 }
 
-.product-info{padding:15px}
+.product-info{
+padding:15px;
+}
 
 .product-info h3{
-font-size:14px;font-weight:500;margin-bottom:8px
+font-size:14px;
+font-weight:500;
+margin-bottom:8px;
 }
 
 .product-info p{
-font-size:13px;color:#625a52
+font-size:13px;
+color:#625a52;
 }
 
+/* BANNER */
+
 .banner{
-background:#29241f;color:#f5f0e8;text-align:center;padding:90px 8%
+background:#29241f;
+color:#f5f0e8;
+text-align:center;
+padding:90px 8%;
 }
 
 .banner p{
-font-size:11px;letter-spacing:3px;margin-bottom:20px
+font-size:11px;
+letter-spacing:3px;
+margin-bottom:20px;
 }
 
 .banner h2{
-font-family:Georgia,serif;font-size:clamp(38px,7vw,80px);font-weight:400
+font-family:Georgia,serif;
+font-size:clamp(38px,7vw,80px);
+font-weight:400;
 }
 
 /* PRODUCT MODAL */
 
 .modal{
-display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
-z-index:900;align-items:center;justify-content:center;padding:15px
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+z-index:900;
+align-items:center;
+justify-content:center;
+padding:15px;
 }
 
-.modal.active{display:flex}
+.modal.active{
+display:flex;
+}
 
 .modal-content{
-width:900px;max-width:94%;max-height:90vh;overflow:auto;
-background:#fbf8f3;display:grid;grid-template-columns:1fr 1fr;
-position:relative
+width:900px;
+max-width:94%;
+max-height:90vh;
+overflow:auto;
+background:#fbf8f3;
+display:grid;
+grid-template-columns:1fr 1fr;
+position:relative;
 }
 
 .modal-image{
-min-height:520px;background:#d8c9b8;display:flex;align-items:center;
-justify-content:center;font-size:12px;letter-spacing:2px
+min-height:520px;
+background:#d8c9b8;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:12px;
+letter-spacing:2px;
+text-align:center;
+padding:20px;
 }
 
-.modal-info{padding:45px}
+.modal-info{
+padding:45px;
+}
 
 .modal-info h2{
-font-family:Georgia,serif;font-size:36px;font-weight:400;margin-bottom:15px
+font-family:Georgia,serif;
+font-size:36px;
+font-weight:400;
+margin-bottom:15px;
 }
 
-.modal-price{font-size:18px;margin-bottom:25px}
+.modal-price{
+font-size:18px;
+margin-bottom:25px;
+}
 
 .description{
-color:#655d55;font-size:14px;line-height:1.6;margin-bottom:28px
+color:#655d55;
+font-size:14px;
+line-height:1.6;
+margin-bottom:28px;
 }
 
 .label{
-display:block;font-size:10px;letter-spacing:1px;margin-bottom:12px
+display:block;
+font-size:10px;
+letter-spacing:1px;
+margin-bottom:12px;
 }
 
 .sizes{
-display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-bottom:25px;
 }
 
 .size-btn{
-min-width:45px;height:40px;padding:0 10px;background:transparent;
-border:1px solid #aaa;cursor:pointer
+min-width:45px;
+height:40px;
+padding:0 10px;
+background:transparent;
+border:1px solid #aaa;
+cursor:pointer;
 }
 
 .size-btn.active{
-background:#211e1a;color:white
+background:#211e1a;
+color:white;
 }
 
 .quantity{
-display:flex;align-items:center;gap:18px;margin-bottom:25px
+display:flex;
+align-items:center;
+gap:18px;
+margin-bottom:25px;
 }
 
 .quantity button{
-width:38px;height:38px;border:1px solid #aaa;background:white;cursor:pointer
+width:38px;
+height:38px;
+border:1px solid #aaa;
+background:white;
+cursor:pointer;
 }
 
 .modal-close{
-position:absolute;right:15px;top:10px;border:none;background:none;
-font-size:28px;cursor:pointer
+position:absolute;
+right:15px;
+top:10px;
+border:none;
+background:none;
+font-size:28px;
+cursor:pointer;
 }
 
 /* CART */
 
 .cart-panel{
-position:fixed;top:0;right:-420px;width:380px;max-width:100%;
-height:100vh;background:#fbf8f3;z-index:1000;padding:25px;
-transition:.35s;overflow:auto;box-shadow:-5px 0 20px rgba(0,0,0,.15)
+position:fixed;
+top:0;
+right:-420px;
+width:380px;
+max-width:100%;
+height:100vh;
+background:#fbf8f3;
+z-index:1000;
+padding:25px;
+transition:.35s;
+overflow:auto;
+box-shadow:-5px 0 20px rgba(0,0,0,.15);
 }
 
-.cart-panel.active{right:0}
+.cart-panel.active{
+right:0;
+}
 
 .cart-header{
-display:flex;justify-content:space-between;align-items:center;
-padding-bottom:18px;border-bottom:1px solid #ddd
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding-bottom:18px;
+border-bottom:1px solid #ddd;
 }
 
 .close{
-border:none;background:none;font-size:26px;cursor:pointer
+border:none;
+background:none;
+font-size:26px;
+cursor:pointer;
 }
 
 .cart-item{
-display:flex;justify-content:space-between;padding:18px 0;
-border-bottom:1px solid #ddd;font-size:13px
+display:flex;
+justify-content:space-between;
+padding:18px 0;
+border-bottom:1px solid #ddd;
+font-size:13px;
+gap:10px;
 }
 
 .remove{
-border:none;background:none;text-decoration:underline;
-cursor:pointer;font-size:10px
+border:none;
+background:none;
+text-decoration:underline;
+cursor:pointer;
+font-size:10px;
 }
 
-.cart-total{padding:20px 0;font-size:18px}
+.cart-total{
+padding:20px 0;
+font-size:18px;
+}
 
 .checkout-btn{
-width:100%;padding:16px;border:none;background:#211e1a;color:white;
-cursor:pointer;letter-spacing:1px
+width:100%;
+padding:16px;
+border:none;
+background:#211e1a;
+color:white;
+cursor:pointer;
+letter-spacing:1px;
 }
 
 /* CHECKOUT */
@@ -211,72 +394,83 @@ cursor:pointer;letter-spacing:1px
 display:none;
 min-height:100vh;
 background:#f5f0e8;
-padding:50px 6%
+padding:50px 6%;
 }
 
-.checkout-page.active{display:block}
+.checkout-page.active{
+display:block;
+}
 
 .checkout-container{
 max-width:1100px;
-margin:auto
+margin:auto;
 }
 
 .back-btn{
-border:none;background:none;cursor:pointer;margin-bottom:25px;
-letter-spacing:1px;font-size:11px
+border:none;
+background:none;
+cursor:pointer;
+margin-bottom:25px;
+letter-spacing:1px;
+font-size:11px;
 }
 
 .checkout-title{
 font-family:Georgia,serif;
 font-size:48px;
 font-weight:400;
-margin-bottom:40px
+margin-bottom:40px;
 }
 
 .checkout-grid{
 display:grid;
 grid-template-columns:1.3fr .7fr;
-gap:50px
+gap:50px;
 }
 
-.form-card,.summary-card{
+.form-card,
+.summary-card{
 background:#fffaf4;
-padding:30px
+padding:30px;
 }
 
-.form-card h3,.summary-card h3{
+.form-card h3,
+.summary-card h3{
 font-family:Georgia,serif;
 font-size:25px;
 font-weight:400;
-margin-bottom:25px
+margin-bottom:25px;
 }
 
-.form-group{margin-bottom:18px}
+.form-group{
+margin-bottom:18px;
+}
 
 .form-group label{
 display:block;
 font-size:10px;
 letter-spacing:1px;
-margin-bottom:8px
+margin-bottom:8px;
 }
 
-.form-group input,.form-group textarea{
+.form-group input,
+.form-group textarea{
 width:100%;
 border:1px solid #cfc3b5;
 background:#fff;
 padding:13px;
-outline:none
+outline:none;
 }
 
 .form-group textarea{
 resize:vertical;
-min-height:90px
+min-height:90px;
 }
 
 .form-row{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:15px
+gap:15px;
 }
 
 .order-item{
@@ -284,7 +478,8 @@ display:flex;
 justify-content:space-between;
 padding:13px 0;
 border-bottom:1px solid #ddd5ca;
-font-size:13px
+font-size:13px;
+gap:10px;
 }
 
 /* COUPON */
@@ -292,19 +487,19 @@ font-size:13px
 .coupon-box{
 margin:25px 0;
 padding:18px;
-border:1px solid #ddd5ca
+border:1px solid #ddd5ca;
 }
 
 .coupon-box label{
 display:block;
 font-size:10px;
 letter-spacing:1px;
-margin-bottom:10px
+margin-bottom:10px;
 }
 
 .coupon-row{
 display:flex;
-gap:8px
+gap:8px;
 }
 
 .coupon-row input{
@@ -312,7 +507,7 @@ flex:1;
 padding:11px;
 border:1px solid #cfc3b5;
 background:white;
-text-transform:uppercase
+text-transform:uppercase;
 }
 
 .coupon-row button{
@@ -322,25 +517,24 @@ color:white;
 border:none;
 cursor:pointer;
 font-size:10px;
-letter-spacing:1px
 }
 
 .coupon-message{
 font-size:11px;
 margin-top:10px;
-min-height:15px
+min-height:15px;
 }
 
 .order-line{
 display:flex;
 justify-content:space-between;
 padding:10px 0;
-font-size:14px
+font-size:14px;
 }
 
 .discount-line{
 color:#147a3d;
-font-weight:bold
+font-weight:bold;
 }
 
 .order-total{
@@ -349,7 +543,7 @@ justify-content:space-between;
 font-size:19px;
 padding-top:18px;
 margin-top:10px;
-border-top:1px solid #ddd5ca
+border-top:1px solid #ddd5ca;
 }
 
 .place-order{
@@ -360,8 +554,10 @@ background:#211e1a;
 color:#fff;
 border:none;
 cursor:pointer;
-letter-spacing:1px
+letter-spacing:1px;
 }
+
+/* SUCCESS */
 
 .success{
 display:none;
@@ -369,109 +565,189 @@ text-align:center;
 background:#fffaf4;
 padding:70px 20px;
 max-width:650px;
-margin:50px auto
+margin:50px auto;
 }
 
 .success h2{
 font-family:Georgia,serif;
 font-size:42px;
 font-weight:400;
-margin-bottom:15px
+margin-bottom:15px;
 }
+
+/* FOOTER */
 
 footer{
 background:#e6ddd2;
 padding:45px 6%;
 text-align:center;
-font-size:11px
+font-size:11px;
 }
+
+/* MOBILE */
 
 @media(max-width:800px){
 
-header{padding:0 5%}
-nav{gap:9px}
+header{
+padding:0 5%;
+}
 
-nav a,nav button{font-size:8px}
+nav{
+gap:9px;
+}
 
-.section{padding:55px 5%}
+nav a,
+nav button{
+font-size:8px;
+}
 
-.section h2{font-size:31px}
+.section{
+padding:55px 5%;
+}
+
+.section h2{
+font-size:31px;
+}
 
 .products{
 grid-template-columns:repeat(2,1fr);
-gap:12px
+gap:12px;
 }
 
-.product-image{height:230px}
+.product-image{
+height:230px;
+}
 
 .modal-content{
-grid-template-columns:1fr
+grid-template-columns:1fr;
 }
 
-.modal-image{min-height:280px}
+.modal-image{
+min-height:280px;
+}
 
-.modal-info{padding:30px 20px}
+.modal-info{
+padding:30px 20px;
+}
 
-.checkout-page{padding:35px 5%}
+.checkout-page{
+padding:35px 5%;
+}
 
 .checkout-grid{
 grid-template-columns:1fr;
-gap:20px
+gap:20px;
 }
 
-.checkout-title{font-size:38px}
+.checkout-title{
+font-size:38px;
+}
 
-.form-row{grid-template-columns:1fr}
+.form-row{
+grid-template-columns:1fr;
+}
+
 }
 </style>
 </head>
 
 <body>
 
+<!-- MAIN WEBSITE -->
+
 <div id="mainWebsite">
 
 <header>
+
 <div class="logo">TRENDY FACTORY</div>
 
 <nav>
 <a href="#shop">SHOP</a>
 <a href="#shop">NEW</a>
+
 <button onclick="openCart()">
 BAG (<span id="cartCount">0</span>)
 </button>
+
 </nav>
+
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero">
+
 <div>
+
 <p>MEN'S COLLECTION · 2026</p>
-<h1>Modern.<br>Everyday.</h1>
-<a href="#shop" class="btn">SHOP MEN'S COLLECTION</a>
+
+<h1>
+Modern.<br>
+Everyday.
+</h1>
+
+<a href="#shop" class="btn">
+SHOP MEN'S COLLECTION
+</a>
+
 </div>
+
 </section>
+
+
+<!-- SHOP -->
 
 <section class="section" id="shop">
 
 <div class="section-title">
+
 <h2>Men's Collection</h2>
+
 </div>
 
+
 <div class="filters">
-<button class="filter-btn active" onclick="filterProducts('all',this)">ALL</button>
-<button class="filter-btn" onclick="filterProducts('shirts',this)">SHIRTS</button>
-<button class="filter-btn" onclick="filterProducts('tshirts',this)">T-SHIRTS</button>
-<button class="filter-btn" onclick="filterProducts('pants',this)">PANTS</button>
-<button class="filter-btn" onclick="filterProducts('jackets',this)">JACKETS</button>
+
+<button class="filter-btn active" onclick="filterProducts('all',this)">
+ALL
+</button>
+
+<button class="filter-btn" onclick="filterProducts('shirts',this)">
+SHIRTS
+</button>
+
+<button class="filter-btn" onclick="filterProducts('tshirts',this)">
+T-SHIRTS
+</button>
+
+<button class="filter-btn" onclick="filterProducts('pants',this)">
+PANTS
+</button>
+
+<button class="filter-btn" onclick="filterProducts('jackets',this)">
+JACKETS
+</button>
+
 </div>
+
 
 <div class="products" id="productsContainer"></div>
 
 </section>
 
+
 <section class="banner">
+
 <p>TRENDY FACTORY MEN</p>
-<h2>Built for the<br>modern wardrobe.</h2>
+
+<h2>
+Built for the<br>
+modern wardrobe.
+</h2>
+
 </section>
+
 
 <footer>
 © 2026 TRENDY FACTORY · ALL RIGHTS RESERVED
@@ -488,7 +764,10 @@ BAG (<span id="cartCount">0</span>)
 
 <button class="modal-close" onclick="closeProduct()">×</button>
 
-<div class="modal-image" id="modalImage">PRODUCT</div>
+<div class="modal-image" id="modalImage">
+PRODUCT
+</div>
+
 
 <div class="modal-info">
 
@@ -500,24 +779,41 @@ BAG (<span id="cartCount">0</span>)
 
 <p class="description" id="modalDescription"></p>
 
-<span class="label">SELECT SIZE</span>
+
+<span class="label">
+SELECT SIZE
+</span>
 
 <div class="sizes" id="sizeContainer"></div>
 
-<span class="label">QUANTITY</span>
+
+<span class="label">
+QUANTITY
+</span>
 
 <div class="quantity">
-<button onclick="changeQty(-1)">−</button>
+
+<button onclick="changeQty(-1)">
+−
+</button>
+
 <span id="quantity">1</span>
-<button onclick="changeQty(1)">+</button>
+
+<button onclick="changeQty(1)">
++
+</button>
+
 </div>
+
 
 <button class="btn" onclick="addSelectedProduct()">
 ADD TO BAG
 </button>
 
 </div>
+
 </div>
+
 </div>
 
 
@@ -526,15 +822,27 @@ ADD TO BAG
 <div class="cart-panel" id="cartPanel">
 
 <div class="cart-header">
+
 <h2>Your Bag</h2>
-<button class="close" onclick="closeCart()">×</button>
+
+<button class="close" onclick="closeCart()">
+×
+</button>
+
 </div>
+
 
 <div id="cartItems"></div>
 
+
 <div class="cart-total">
-<strong>Total: ₹<span id="cartTotal">0</span></strong>
+
+<strong>
+Total: ₹<span id="cartTotal">0</span>
+</strong>
+
 </div>
+
 
 <button class="checkout-btn" onclick="openCheckout()">
 PROCEED TO CHECKOUT
@@ -549,59 +857,126 @@ PROCEED TO CHECKOUT
 
 <div class="checkout-container">
 
+
 <button class="back-btn" onclick="backToShop()">
 ← BACK TO SHOP
 </button>
 
-<h1 class="checkout-title">Checkout</h1>
+
+<h1 class="checkout-title">
+Checkout
+</h1>
+
 
 <div class="checkout-grid" id="checkoutContent">
+
+
+<!-- CUSTOMER FORM -->
 
 <div class="form-card">
 
 <h3>Delivery Details</h3>
 
+
 <div class="form-group">
+
 <label>FULL NAME</label>
-<input id="customerName" type="text" placeholder="Enter your full name">
+
+<input
+id="customerName"
+type="text"
+placeholder="Enter your full name"
+>
+
 </div>
+
 
 <div class="form-row">
 
+
 <div class="form-group">
+
 <label>MOBILE NUMBER</label>
-<input id="customerPhone" type="tel" placeholder="10 digit number">
+
+<input
+id="customerPhone"
+type="tel"
+placeholder="10 digit number"
+>
+
 </div>
 
+
 <div class="form-group">
+
 <label>EMAIL</label>
-<input id="customerEmail" type="email" placeholder="you@email.com">
-</div>
+
+<input
+id="customerEmail"
+type="email"
+placeholder="you@email.com"
+>
 
 </div>
+
+
+</div>
+
 
 <div class="form-group">
+
 <label>FULL ADDRESS</label>
-<textarea id="customerAddress" placeholder="House no, street, area"></textarea>
+
+<textarea
+id="customerAddress"
+placeholder="House no, street, area"
+></textarea>
+
 </div>
+
 
 <div class="form-row">
 
+
 <div class="form-group">
+
 <label>CITY</label>
-<input id="customerCity" type="text" placeholder="City">
+
+<input
+id="customerCity"
+type="text"
+placeholder="City"
+>
+
 </div>
 
+
 <div class="form-group">
+
 <label>STATE</label>
-<input id="customerState" type="text" placeholder="State">
-</div>
+
+<input
+id="customerState"
+type="text"
+placeholder="State"
+>
 
 </div>
+
+
+</div>
+
 
 <div class="form-group">
+
 <label>PIN CODE</label>
-<input id="customerPin" type="text" placeholder="PIN Code">
+
+<input
+id="customerPin"
+type="text"
+placeholder="PIN Code"
+>
+
 </div>
 
 </div>
@@ -624,9 +999,9 @@ PROCEED TO CHECKOUT
 
 <div class="coupon-row">
 
-<input 
-id="couponCode" 
-type="text" 
+<input
+id="couponCode"
+type="text"
 placeholder="ENTER COUPON CODE"
 >
 
@@ -636,7 +1011,10 @@ APPLY
 
 </div>
 
-<div class="coupon-message" id="couponMessage"></div>
+<div
+class="coupon-message"
+id="couponMessage"
+></div>
 
 </div>
 
@@ -644,28 +1022,49 @@ APPLY
 <!-- TOTAL -->
 
 <div class="order-line">
+
 <span>Subtotal</span>
-<strong>₹<span id="checkoutSubtotal">0</span></strong>
+
+<strong>
+₹<span id="checkoutSubtotal">0</span>
+</strong>
+
 </div>
 
-<div class="order-line discount-line" id="discountRow" style="display:none">
+
+<div
+class="order-line discount-line"
+id="discountRow"
+style="display:none"
+>
 
 <span>Discount</span>
 
-<strong>-₹<span id="checkoutDiscount">0</span></strong>
+<strong>
+-₹<span id="checkoutDiscount">0</span>
+</strong>
 
 </div>
+
 
 <div class="order-total">
 
 <strong>Total</strong>
 
-<strong>₹<span id="checkoutTotal">0</span></strong>
+<strong>
+₹<span id="checkoutTotal">0</span>
+</strong>
 
 </div>
 
-<button class="place-order" onclick="placeOrder()">
+
+<button
+class="place-order"
+onclick="placeOrder()"
+>
+
 PLACE ORDER
+
 </button>
 
 </div>
@@ -679,25 +1078,40 @@ PLACE ORDER
 
 <h2>Order Received!</h2>
 
-<p>Thank you for shopping with Trendy Factory.</p>
+<p>
+Thank you for shopping with Trendy Factory.
+</p>
 
-<p id="orderNumber" style="margin-top:15px;font-weight:bold"></p>
+<p
+id="orderNumber"
+style="margin-top:15px;font-weight:bold"
+></p>
 
-<button class="btn" style="margin-top:25px" onclick="backToShop()">
+<button
+class="btn"
+style="margin-top:25px"
+onclick="backToShop()"
+>
+
 CONTINUE SHOPPING
+
 </button>
 
 </div>
 
+
 </div>
+
 </div>
 
 
 <script>
 
-/* PRODUCTS */
+/* =========================
+DEFAULT PRODUCTS
+========================= */
 
-let products = JSON.parse(localStorage.getItem("trendyProducts")) || [
+const defaultProducts = [
 
 {
 id:1,
@@ -782,48 +1196,129 @@ sizes:["S","M","L","XL","XXL"]
 ];
 
 
-/* CART */
+/* =========================
+PRODUCT STORAGE
+========================= */
 
-let cart=JSON.parse(localStorage.getItem("trendyCart"))||[];
+let products = JSON.parse(
+localStorage.getItem("trendyProducts") || "null"
+);
 
-let currentProduct=null;
-let selectedSize="";
-let qty=1;
+if(!Array.isArray(products) || products.length === 0){
+
+products = [...defaultProducts];
+
+localStorage.setItem(
+"trendyProducts",
+JSON.stringify(products)
+);
+
+}
 
 
-/* COUPON VARIABLES */
+/* =========================
+CART
+========================= */
 
-let discount=0;
-let appliedCoupon="";
+let cart = JSON.parse(
+localStorage.getItem("trendyCart") || "[]"
+);
+
+let currentProduct = null;
+let selectedSize = "";
+let qty = 1;
 
 
-/* DISPLAY PRODUCTS */
+/* =========================
+COUPON
+========================= */
+
+let discount = 0;
+let appliedCoupon = "";
+
+
+/* =========================
+DISPLAY PRODUCTS
+========================= */
 
 function displayProducts(category="all"){
 
-const container=document.getElementById("productsContainer");
+products = JSON.parse(
+localStorage.getItem("trendyProducts") || "[]"
+);
 
-container.innerHTML="";
+if(!Array.isArray(products) || products.length === 0){
 
-const filtered=category==="all"
-?products
-:products.filter(p=>p.category===category);
+products = [...defaultProducts];
 
-filtered.forEach(product=>{
+localStorage.setItem(
+"trendyProducts",
+JSON.stringify(products)
+);
 
-container.innerHTML+=`
+}
 
-<div class="product" onclick="openProduct(${product.id})">
+const container =
+document.getElementById("productsContainer");
+
+container.innerHTML = "";
+
+
+const filtered =
+category === "all"
+? products
+: products.filter(
+product => product.category === category
+);
+
+
+if(filtered.length === 0){
+
+container.innerHTML = `
+<p style="
+grid-column:1/-1;
+text-align:center;
+padding:40px;
+color:#766d63
+">
+No products found.
+</p>
+`;
+
+return;
+
+}
+
+
+filtered.forEach(product => {
+
+const productImage =
+product.image || product.name;
+
+
+container.innerHTML += `
+
+<div
+class="product"
+onclick="openProduct(${product.id})"
+>
 
 <div class="product-image">
-${product.image || product.name}
+
+${productImage}
+
 </div>
+
 
 <div class="product-info">
 
-<h3>${product.name}</h3>
+<h3>
+${product.name}
+</h3>
 
-<p>₹${product.price}</p>
+<p>
+₹${product.price}
+</p>
 
 </div>
 
@@ -836,12 +1331,18 @@ ${product.image || product.name}
 }
 
 
-/* FILTER */
+/* =========================
+FILTER PRODUCTS
+========================= */
 
 function filterProducts(category,button){
 
-document.querySelectorAll(".filter-btn").forEach(btn=>{
+document
+.querySelectorAll(".filter-btn")
+.forEach(btn => {
+
 btn.classList.remove("active");
+
 });
 
 button.classList.add("active");
@@ -851,97 +1352,197 @@ displayProducts(category);
 }
 
 
-/* OPEN PRODUCT */
+/* =========================
+OPEN PRODUCT
+========================= */
 
 function openProduct(id){
 
-currentProduct=products.find(p=>p.id===id);
+products = JSON.parse(
+localStorage.getItem("trendyProducts") || "[]"
+);
 
-document.getElementById("modalTitle").textContent=currentProduct.name;
+currentProduct =
+products.find(product => product.id == id);
 
-document.getElementById("modalPrice").textContent=currentProduct.price;
 
-document.getElementById("modalDescription").textContent=currentProduct.description;
+if(!currentProduct){
 
-document.getElementById("modalImage").textContent=currentProduct.image;
+alert("Product not found.");
 
-const sizeContainer=document.getElementById("sizeContainer");
+return;
 
-sizeContainer.innerHTML="";
+}
 
-currentProduct.sizes.forEach((size,index)=>{
 
-const button=document.createElement("button");
+document
+.getElementById("modalTitle")
+.textContent =
+currentProduct.name;
 
-button.className="size-btn";
 
-button.textContent=size;
+document
+.getElementById("modalPrice")
+.textContent =
+currentProduct.price;
 
-button.onclick=function(){
 
-selectSize(this,size);
+document
+.getElementById("modalDescription")
+.textContent =
+currentProduct.description || "";
+
+
+document
+.getElementById("modalImage")
+.textContent =
+currentProduct.image || currentProduct.name;
+
+
+const sizeContainer =
+document.getElementById("sizeContainer");
+
+
+sizeContainer.innerHTML = "";
+
+
+const productSizes =
+Array.isArray(currentProduct.sizes)
+? currentProduct.sizes
+: [];
+
+
+productSizes.forEach((size,index) => {
+
+const button =
+document.createElement("button");
+
+button.className =
+"size-btn";
+
+button.textContent =
+size;
+
+
+button.onclick = function(){
+
+selectSize(
+this,
+size
+);
 
 };
 
-if(index===0){
+
+if(index === 0){
 
 button.classList.add("active");
 
-selectedSize=size;
+selectedSize = size;
 
 }
+
 
 sizeContainer.appendChild(button);
 
 });
 
-qty=1;
 
-document.getElementById("quantity").textContent=qty;
+qty = 1;
 
-document.getElementById("productModal").classList.add("active");
+document
+.getElementById("quantity")
+.textContent =
+qty;
+
+
+document
+.getElementById("productModal")
+.classList.add("active");
 
 }
 
+
+/* =========================
+CLOSE PRODUCT
+========================= */
 
 function closeProduct(){
 
-document.getElementById("productModal").classList.remove("active");
+document
+.getElementById("productModal")
+.classList.remove("active");
 
 }
 
 
-/* SELECT SIZE */
+/* =========================
+SELECT SIZE
+========================= */
 
 function selectSize(button,size){
 
-selectedSize=size;
+selectedSize = size;
 
-document.querySelectorAll(".size-btn").forEach(btn=>{
+
+document
+.querySelectorAll(".size-btn")
+.forEach(btn => {
+
 btn.classList.remove("active");
+
 });
+
 
 button.classList.add("active");
 
 }
 
 
-/* QUANTITY */
+/* =========================
+QUANTITY
+========================= */
 
 function changeQty(change){
 
-qty+=change;
+qty += change;
 
-if(qty<1)qty=1;
+if(qty < 1){
 
-document.getElementById("quantity").textContent=qty;
+qty = 1;
 
 }
 
 
-/* ADD TO BAG */
+document
+.getElementById("quantity")
+.textContent =
+qty;
+
+}
+
+
+/* =========================
+ADD TO BAG
+========================= */
 
 function addSelectedProduct(){
+
+if(!currentProduct){
+
+return;
+
+}
+
+
+if(!selectedSize){
+
+alert("Please select a size.");
+
+return;
+
+}
+
 
 for(let i=0;i<qty;i++){
 
@@ -949,13 +1550,14 @@ cart.push({
 
 name:currentProduct.name,
 
-price:currentProduct.price,
+price:Number(currentProduct.price),
 
 size:selectedSize
 
 });
 
 }
+
 
 saveCart();
 
@@ -966,49 +1568,77 @@ openCart();
 }
 
 
-/* SAVE CART */
+/* =========================
+SAVE CART
+========================= */
 
 function saveCart(){
 
-localStorage.setItem("trendyCart",JSON.stringify(cart));
+localStorage.setItem(
+"trendyCart",
+JSON.stringify(cart)
+);
 
 updateCart();
 
 }
 
 
-/* UPDATE CART */
+/* =========================
+UPDATE CART
+========================= */
 
 function updateCart(){
 
-document.getElementById("cartCount").textContent=cart.length;
+document
+.getElementById("cartCount")
+.textContent =
+cart.length;
 
-const items=document.getElementById("cartItems");
 
-items.innerHTML="";
+const items =
+document.getElementById("cartItems");
 
-let total=0;
 
-cart.forEach((item,index)=>{
+items.innerHTML = "";
 
-total+=item.price;
 
-items.innerHTML+=`
+let total = 0;
+
+
+cart.forEach((item,index) => {
+
+total += Number(item.price) || 0;
+
+
+items.innerHTML += `
 
 <div class="cart-item">
 
 <div>
 
-<strong>${item.name}</strong><br>
+<strong>
+${item.name}
+</strong>
 
-Size: ${item.size}<br>
+<br>
+
+Size: ${item.size}
+
+<br>
 
 ₹${item.price}
 
 </div>
 
-<button class="remove" onclick="removeItem(${index})">
+
+<button
+class="remove"
+onclick="removeItem(${index})"
+>
+
 REMOVE
+
 </button>
 
 </div>
@@ -1017,215 +1647,22 @@ REMOVE
 
 });
 
-document.getElementById("cartTotal").textContent=total;
 
-}
+if(cart.length === 0){
 
-
-/* REMOVE */
-
-function removeItem(index){
-
-cart.splice(index,1);
-
-saveCart();
-
-}
-
-
-/* CART */
-
-function openCart(){
-
-document.getElementById("cartPanel").classList.add("active");
-
-}
-
-
-function closeCart(){
-
-document.getElementById("cartPanel").classList.remove("active");
-
-}
-
-
-/* CHECKOUT */
-
-function openCheckout(){
-
-if(cart.length===0){
-
-alert("Your bag is empty!");
-
-return;
-
-}
-
-closeCart();
-
-discount=0;
-appliedCoupon="";
-
-document.getElementById("couponCode").value="";
-document.getElementById("couponMessage").textContent="";
-document.getElementById("discountRow").style.display="none";
-
-document.getElementById("mainWebsite").style.display="none";
-
-document.getElementById("checkoutPage").classList.add("active");
-
-document.getElementById("successMessage").style.display="none";
-
-document.getElementById("checkoutContent").style.display="grid";
-
-renderCheckout();
-
-window.scrollTo(0,0);
-
-}
-
-
-/* RENDER CHECKOUT */
-
-function renderCheckout(){
-
-const checkoutItems=document.getElementById("checkoutItems");
-
-checkoutItems.innerHTML="";
-
-let subtotal=0;
-
-cart.forEach(item=>{
-
-subtotal+=item.price;
-
-checkoutItems.innerHTML+=`
-
-<div class="order-item">
-
-<div>
-
-${item.name}<br>
-
-<small>Size: ${item.size}</small>
-
-</div>
-
-<strong>₹${item.price}</strong>
-
-</div>
-
+items.innerHTML = `
+<p style="
+padding:30px 0;
+text-align:center;
+color:#766d63
+">
+Your bag is empty.
+</p>
 `;
 
-});
-
-let total=subtotal-discount;
-
-if(total<0)total=0;
-
-document.getElementById("checkoutSubtotal").textContent=subtotal;
-
-document.getElementById("checkoutDiscount").textContent=discount;
-
-document.getElementById("checkoutTotal").textContent=total;
-
 }
 
 
-/* APPLY COUPON */
-
-function applyCoupon(){
-
-const code=document
-.getElementById("couponCode")
-.value
-.trim()
-.toUpperCase();
-
-const subtotal=cart.reduce((sum,item)=>sum+item.price,0);
-
-const message=document.getElementById("couponMessage");
-
-discount=0;
-appliedCoupon="";
-
-if(code==="WELCOME10"){
-
-discount=Math.round(subtotal*0.10);
-
-appliedCoupon=code;
-
-message.style.color="green";
-
-message.textContent="Coupon applied! You saved ₹"+discount;
-
-}
-
-else if(code==="TRENDY20"){
-
-discount=Math.round(subtotal*0.20);
-
-appliedCoupon=code;
-
-message.style.color="green";
-
-message.textContent="Coupon applied! You saved ₹"+discount;
-
-}
-
-else if(code==="SAVE100"){
-
-if(subtotal>=500){
-
-discount=100;
-
-appliedCoupon=code;
-
-message.style.color="green";
-
-message.textContent="Coupon applied! You saved ₹100";
-
-}
-
-else{
-
-message.style.color="red";
-
-message.textContent="Minimum order ₹500 required.";
-
-}
-
-}
-
-else{
-
-message.style.color="red";
-
-message.textContent="Invalid coupon code.";
-
-}
-
-if(discount>0){
-
-document.getElementById("discountRow").style.display="flex";
-
-}
-
-else{
-
-document.getElementById("discountRow").style.display="none";
-
-}
-
-renderCheckout();
-
-}
-
-
-/* PLACE ORDER */
-
-function placeOrder(){
-
-const name=document.getElementById("customerName").value.trim();
-
-const phone=document.getElementById("customerP
+document
+.getElementById("cartTotal")
+.textContent
