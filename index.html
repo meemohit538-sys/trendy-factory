@@ -1,9 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>TRENDY FACTORY — Men's Fashion</title>
 
@@ -25,11 +29,14 @@ background:#f5f0e8;
 color:#211e1a;
 }
 
-button,input,textarea,select{
+button,
+input,
+textarea,
+select{
 font:inherit;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header{
 height:70px;
@@ -67,7 +74,7 @@ letter-spacing:1px;
 cursor:pointer;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 
 .hero{
 min-height:72vh;
@@ -103,7 +110,7 @@ font-size:11px;
 letter-spacing:1px;
 }
 
-/* PRODUCTS */
+/* ================= PRODUCTS ================= */
 
 .section{
 padding:70px 6%;
@@ -118,6 +125,24 @@ font-family:Georgia,serif;
 font-size:40px;
 font-weight:400;
 }
+
+/* SEARCH */
+
+.search-box{
+margin-bottom:20px;
+max-width:500px;
+}
+
+.search-box input{
+width:100%;
+padding:14px 16px;
+border:1px solid #cfc3b5;
+background:#fffaf4;
+outline:none;
+font-size:13px;
+}
+
+/* FILTERS */
 
 .filters{
 display:flex;
@@ -141,6 +166,8 @@ background:#211e1a;
 color:white;
 }
 
+/* PRODUCT GRID */
+
 .products{
 display:grid;
 grid-template-columns:repeat(4,1fr);
@@ -151,6 +178,7 @@ gap:18px;
 background:#fffaf4;
 cursor:pointer;
 transition:.25s;
+position:relative;
 overflow:hidden;
 }
 
@@ -161,25 +189,20 @@ transform:translateY(-5px);
 .product-image{
 height:330px;
 background:#ddd0c0;
-overflow:hidden;
 display:flex;
 align-items:center;
 justify-content:center;
+font-size:11px;
+letter-spacing:2px;
+color:#66594d;
+text-align:center;
+overflow:hidden;
 }
 
 .product-image img{
 width:100%;
 height:100%;
 object-fit:cover;
-display:block;
-}
-
-.no-image{
-font-size:11px;
-letter-spacing:2px;
-color:#66594d;
-text-align:center;
-padding:20px;
 }
 
 .product-info{
@@ -197,6 +220,21 @@ font-size:13px;
 color:#625a52;
 }
 
+.stock-badge{
+position:absolute;
+top:10px;
+left:10px;
+padding:7px 10px;
+font-size:9px;
+letter-spacing:1px;
+background:#211e1a;
+color:white;
+}
+
+.stock-badge.out{
+background:#a52a2a;
+}
+
 .loading{
 grid-column:1/-1;
 text-align:center;
@@ -204,7 +242,7 @@ padding:40px;
 color:#766d63;
 }
 
-/* BANNER */
+/* ================= BANNER ================= */
 
 .banner{
 background:#29241f;
@@ -225,7 +263,7 @@ font-size:clamp(38px,7vw,80px);
 font-weight:400;
 }
 
-/* PRODUCT MODAL */
+/* ================= PRODUCT MODAL ================= */
 
 .modal{
 display:none;
@@ -256,18 +294,19 @@ position:relative;
 .modal-image{
 min-height:520px;
 background:#d8c9b8;
-overflow:hidden;
 display:flex;
 align-items:center;
 justify-content:center;
+font-size:12px;
+letter-spacing:2px;
+text-align:center;
+overflow:hidden;
 }
 
 .modal-image img{
 width:100%;
 height:100%;
-min-height:520px;
 object-fit:cover;
-display:block;
 }
 
 .modal-info{
@@ -283,7 +322,21 @@ margin-bottom:15px;
 
 .modal-price{
 font-size:18px;
-margin-bottom:25px;
+margin-bottom:15px;
+}
+
+.stock-text{
+font-size:12px;
+margin-bottom:20px;
+font-weight:bold;
+}
+
+.stock-text.in-stock{
+color:#147a3d;
+}
+
+.stock-text.out-stock{
+color:#a52a2a;
 }
 
 .description{
@@ -347,7 +400,12 @@ cursor:pointer;
 z-index:2;
 }
 
-/* CART */
+.disabled-btn{
+background:#999 !important;
+cursor:not-allowed !important;
+}
+
+/* ================= CART ================= */
 
 .cart-panel{
 position:fixed;
@@ -415,7 +473,7 @@ cursor:pointer;
 letter-spacing:1px;
 }
 
-/* CHECKOUT */
+/* ================= CHECKOUT ================= */
 
 .checkout-page{
 display:none;
@@ -509,7 +567,7 @@ font-size:13px;
 gap:10px;
 }
 
-/* COUPON */
+/* ================= COUPON ================= */
 
 .coupon-box{
 margin:25px 0;
@@ -584,7 +642,7 @@ cursor:pointer;
 letter-spacing:1px;
 }
 
-/* SUCCESS */
+/* ================= SUCCESS ================= */
 
 .success{
 display:none;
@@ -602,7 +660,7 @@ font-weight:400;
 margin-bottom:15px;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 footer{
 background:#e6ddd2;
@@ -611,12 +669,17 @@ text-align:center;
 font-size:11px;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:800px){
 
 header{
 padding:0 5%;
+}
+
+.logo{
+font-size:14px;
+letter-spacing:2px;
 }
 
 nav{
@@ -653,10 +716,6 @@ grid-template-columns:1fr;
 min-height:280px;
 }
 
-.modal-image img{
-min-height:280px;
-}
-
 .modal-info{
 padding:30px 20px;
 }
@@ -690,13 +749,19 @@ grid-template-columns:1fr;
 
 <header>
 
-<div class="logo">TRENDY FACTORY</div>
+<div class="logo">
+TRENDY FACTORY
+</div>
 
 <nav>
 
-<a href="#shop">SHOP</a>
+<a href="#shop">
+SHOP
+</a>
 
-<a href="#shop">NEW</a>
+<a href="#shop">
+NEW
+</a>
 
 <button onclick="openCart()">
 BAG (<span id="cartCount">0</span>)
@@ -711,15 +776,21 @@ BAG (<span id="cartCount">0</span>)
 
 <div>
 
-<p>MEN'S COLLECTION · 2026</p>
+<p>
+MEN'S COLLECTION · 2026
+</p>
 
 <h1>
 Modern.<br>
 Everyday.
 </h1>
 
-<a href="#shop" class="btn">
+<a
+href="#shop"
+class="btn">
+
 SHOP MEN'S COLLECTION
+
 </a>
 
 </div>
@@ -727,44 +798,84 @@ SHOP MEN'S COLLECTION
 </section>
 
 
-<section class="section" id="shop">
+<section
+class="section"
+id="shop">
 
 <div class="section-title">
-<h2>Men's Collection</h2>
+
+<h2>
+Men's Collection
+</h2>
+
 </div>
 
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search products..."
+oninput="searchProducts()">
+
+</div>
+
+
+<!-- FILTERS -->
 
 <div class="filters">
 
-<button class="filter-btn active"
+<button
+class="filter-btn active"
 onclick="filterProducts('all',this)">
+
 ALL
+
 </button>
 
-<button class="filter-btn"
+<button
+class="filter-btn"
 onclick="filterProducts('shirts',this)">
+
 SHIRTS
+
 </button>
 
-<button class="filter-btn"
+<button
+class="filter-btn"
 onclick="filterProducts('tshirts',this)">
+
 T-SHIRTS
+
 </button>
 
-<button class="filter-btn"
+<button
+class="filter-btn"
 onclick="filterProducts('pants',this)">
+
 PANTS
+
 </button>
 
-<button class="filter-btn"
+<button
+class="filter-btn"
 onclick="filterProducts('jackets',this)">
+
 JACKETS
+
 </button>
 
 </div>
 
 
-<div class="products" id="productsContainer">
+<!-- PRODUCTS -->
+
+<div
+class="products"
+id="productsContainer">
 
 <div class="loading">
 Loading products...
@@ -777,7 +888,9 @@ Loading products...
 
 <section class="banner">
 
-<p>TRENDY FACTORY MEN</p>
+<p>
+TRENDY FACTORY MEN
+</p>
 
 <h2>
 Built for the<br>
@@ -788,60 +901,108 @@ modern wardrobe.
 
 
 <footer>
+
 © 2026 TRENDY FACTORY · ALL RIGHTS RESERVED
+
 </footer>
 
 </div>
 
 
-<!-- PRODUCT MODAL -->
+<!-- ================= PRODUCT MODAL ================= -->
 
-<div class="modal" id="productModal">
+<div
+class="modal"
+id="productModal">
 
 <div class="modal-content">
 
-<button class="modal-close"
-onclick="closeProduct()">×</button>
+<button
+class="modal-close"
+onclick="closeProduct()">
 
-<div class="modal-image" id="modalImage">
+×
+</button>
+
+
+<div
+class="modal-image"
+id="modalImage">
+
 PRODUCT
+
 </div>
+
 
 <div class="modal-info">
 
-<h2 id="modalTitle"></h2>
+<h2 id="modalTitle">
+</h2>
+
 
 <div class="modal-price">
-₹<span id="modalPrice"></span>
+
+₹<span id="modalPrice">
+</span>
+
 </div>
 
-<p class="description"
-id="modalDescription"></p>
+
+<div
+class="stock-text"
+id="modalStock">
+
+</div>
+
+
+<p
+class="description"
+id="modalDescription">
+
+</p>
+
 
 <span class="label">
 SELECT SIZE
 </span>
 
-<div class="sizes"
-id="sizeContainer"></div>
+
+<div
+class="sizes"
+id="sizeContainer">
+
+</div>
+
 
 <span class="label">
 QUANTITY
 </span>
 
+
 <div class="quantity">
 
-<button onclick="changeQty(-1)">−</button>
+<button onclick="changeQty(-1)">
+−
+</button>
 
-<span id="quantity">1</span>
+<span id="quantity">
+1
+</span>
 
-<button onclick="changeQty(1)">+</button>
+<button onclick="changeQty(1)">
++
+</button>
 
 </div>
 
-<button class="btn"
+
+<button
+class="btn"
+id="addToBagBtn"
 onclick="addSelectedProduct()">
+
 ADD TO BAG
+
 </button>
 
 </div>
@@ -851,65 +1012,98 @@ ADD TO BAG
 </div>
 
 
-<!-- CART -->
+<!-- ================= CART ================= -->
 
-<div class="cart-panel"
+<div
+class="cart-panel"
 id="cartPanel">
 
 <div class="cart-header">
 
-<h2>Your Bag</h2>
+<h2>
+Your Bag
+</h2>
 
-<button class="close"
-onclick="closeCart()">×</button>
+<button
+class="close"
+onclick="closeCart()">
+
+×
+</button>
 
 </div>
 
-<div id="cartItems"></div>
+
+<div id="cartItems">
+</div>
+
 
 <div class="cart-total">
 
 <strong>
-Total: ₹<span id="cartTotal">0</span>
+
+Total: ₹<span id="cartTotal">
+0
+</span>
+
 </strong>
 
 </div>
 
-<button class="checkout-btn"
+
+<button
+class="checkout-btn"
 onclick="openCheckout()">
+
 PROCEED TO CHECKOUT
+
 </button>
 
 </div>
 
 
-<!-- CHECKOUT -->
+<!-- ================= CHECKOUT ================= -->
 
-<div class="checkout-page"
+<div
+class="checkout-page"
 id="checkoutPage">
 
 <div class="checkout-container">
 
-<button class="back-btn"
+
+<button
+class="back-btn"
 onclick="backToShop()">
+
 ← BACK TO SHOP
+
 </button>
+
 
 <h1 class="checkout-title">
 Checkout
 </h1>
 
-<div class="checkout-grid"
+
+<div
+class="checkout-grid"
 id="checkoutContent">
 
 
+<!-- DELIVERY FORM -->
+
 <div class="form-card">
 
-<h3>Delivery Details</h3>
+<h3>
+Delivery Details
+</h3>
+
 
 <div class="form-group">
 
-<label>FULL NAME</label>
+<label>
+FULL NAME
+</label>
 
 <input
 id="customerName"
@@ -921,9 +1115,12 @@ placeholder="Enter your full name">
 
 <div class="form-row">
 
+
 <div class="form-group">
 
-<label>MOBILE NUMBER</label>
+<label>
+MOBILE NUMBER
+</label>
 
 <input
 id="customerPhone"
@@ -932,9 +1129,12 @@ placeholder="10 digit number">
 
 </div>
 
+
 <div class="form-group">
 
-<label>EMAIL</label>
+<label>
+EMAIL
+</label>
 
 <input
 id="customerEmail"
@@ -943,25 +1143,32 @@ placeholder="you@email.com">
 
 </div>
 
+
 </div>
 
 
 <div class="form-group">
 
-<label>FULL ADDRESS</label>
+<label>
+FULL ADDRESS
+</label>
 
 <textarea
 id="customerAddress"
-placeholder="House no, street, area"></textarea>
+placeholder="House no, street, area">
+</textarea>
 
 </div>
 
 
 <div class="form-row">
 
+
 <div class="form-group">
 
-<label>CITY</label>
+<label>
+CITY
+</label>
 
 <input
 id="customerCity"
@@ -970,9 +1177,12 @@ placeholder="City">
 
 </div>
 
+
 <div class="form-group">
 
-<label>STATE</label>
+<label>
+STATE
+</label>
 
 <input
 id="customerState"
@@ -981,12 +1191,15 @@ placeholder="State">
 
 </div>
 
+
 </div>
 
 
 <div class="form-group">
 
-<label>PIN CODE</label>
+<label>
+PIN CODE
+</label>
 
 <input
 id="customerPin"
@@ -1002,14 +1215,21 @@ placeholder="PIN Code">
 
 <div class="summary-card">
 
-<h3>Order Summary</h3>
+<h3>
+Order Summary
+</h3>
 
-<div id="checkoutItems"></div>
+
+<div id="checkoutItems">
+</div>
 
 
 <div class="coupon-box">
 
-<label>DISCOUNT COUPON</label>
+<label>
+DISCOUNT COUPON
+</label>
+
 
 <div class="coupon-row">
 
@@ -1018,37 +1238,57 @@ id="couponCode"
 type="text"
 placeholder="ENTER COUPON CODE">
 
-<button onclick="applyCoupon()">
+<button
+onclick="applyCoupon()">
+
 APPLY
+
 </button>
 
 </div>
 
-<div class="coupon-message"
-id="couponMessage"></div>
+
+<div
+class="coupon-message"
+id="couponMessage">
+
+</div>
 
 </div>
 
 
 <div class="order-line">
 
-<span>Subtotal</span>
+<span>
+Subtotal
+</span>
 
 <strong>
-₹<span id="checkoutSubtotal">0</span>
+
+₹<span id="checkoutSubtotal">
+0
+</span>
+
 </strong>
 
 </div>
 
 
-<div class="order-line discount-line"
+<div
+class="order-line discount-line"
 id="discountRow"
 style="display:none">
 
-<span>Discount</span>
+<span>
+Discount
+</span>
 
 <strong>
--₹<span id="checkoutDiscount">0</span>
+
+-₹<span id="checkoutDiscount">
+0
+</span>
+
 </strong>
 
 </div>
@@ -1056,10 +1296,16 @@ style="display:none">
 
 <div class="order-total">
 
-<strong>Total</strong>
+<strong>
+Total
+</strong>
 
 <strong>
-₹<span id="checkoutTotal">0</span>
+
+₹<span id="checkoutTotal">
+0
+</span>
+
 </strong>
 
 </div>
@@ -1070,7 +1316,7 @@ class="place-order"
 onclick="placeOrder()"
 id="placeOrderBtn">
 
-PLACE ORDER
+PLACE ORDER (COD)
 
 </button>
 
@@ -1079,10 +1325,15 @@ PLACE ORDER
 </div>
 
 
-<div class="success"
+<!-- SUCCESS -->
+
+<div
+class="success"
 id="successMessage">
 
-<h2>Order Received!</h2>
+<h2>
+Order Received!
+</h2>
 
 <p>
 Thank you for shopping with Trendy Factory.
@@ -1109,7 +1360,10 @@ CONTINUE SHOPPING
 </div>
 
 
+```html
 <script type="module">
+
+/* ================= FIREBASE IMPORTS ================= */
 
 import {
 initializeApp
@@ -1120,12 +1374,15 @@ import {
 getFirestore,
 collection,
 getDocs,
-addDoc
+addDoc,
+doc,
+updateDoc,
+increment
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-/* FIREBASE CONFIG */
+/* ================= FIREBASE CONFIG ================= */
 
 const firebaseConfig = {
 
@@ -1146,28 +1403,64 @@ measurementId: "G-8YDMBE9T7C"
 };
 
 
-/* INITIALIZE FIREBASE */
+/* ================= INITIALIZE ================= */
 
-const app = initializeApp(firebaseConfig);
+const app =
+initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+const db =
+getFirestore(app);
 
 
-/* VARIABLES */
+/* ================= VARIABLES ================= */
 
 let products = [];
+
 let currentCategory = "all";
+
 let currentProduct = null;
+
 let selectedSize = "";
+
 let qty = 1;
 
+let cart = [];
 
-/* LOAD PRODUCTS */
+let appliedCoupon = null;
+
+let discountAmount = 0;
+
+
+/* ================= LOAD CART ================= */
+
+try{
+
+cart =
+JSON.parse(
+localStorage.getItem(
+"trendyCart"
+) || "[]"
+);
+
+if(!Array.isArray(cart)){
+cart = [];
+}
+
+}catch(error){
+
+cart = [];
+
+}
+
+
+/* ================= LOAD PRODUCTS ================= */
 
 async function loadProducts(){
 
 const container =
-document.getElementById("productsContainer");
+document.getElementById(
+"productsContainer"
+);
 
 container.innerHTML =
 '<div class="loading">Loading products...</div>';
@@ -1181,11 +1474,13 @@ collection(db,"products")
 
 products = [];
 
-querySnapshot.forEach((documentItem) => {
+querySnapshot.forEach(
+(documentItem) => {
 
 products.push({
 
-firebaseId: documentItem.id,
+firebaseId:
+documentItem.id,
 
 ...documentItem.data()
 
@@ -1193,11 +1488,17 @@ firebaseId: documentItem.id,
 
 });
 
-displayProducts(currentCategory);
+
+displayProducts(
+currentCategory
+);
 
 }catch(error){
 
-console.error("Product loading error:", error);
+console.error(
+"Product loading error:",
+error
+);
 
 container.innerHTML =
 '<div class="loading">Unable to load products. Please refresh.</div>';
@@ -1207,26 +1508,74 @@ container.innerHTML =
 }
 
 
-/* DISPLAY PRODUCTS */
+/* ================= DISPLAY PRODUCTS ================= */
 
 function displayProducts(category="all"){
 
 currentCategory = category;
 
 const container =
-document.getElementById("productsContainer");
+document.getElementById(
+"productsContainer"
+);
+
+const searchValue =
+document
+.getElementById(
+"searchInput"
+)
+.value
+.toLowerCase()
+.trim();
+
 
 container.innerHTML = "";
 
-const filtered =
+
+let filtered =
+
 category === "all"
-? products
+
+? [...products]
+
 : products.filter(
 product =>
-String(product.category || "")
-.toLowerCase() === category.toLowerCase()
+String(
+product.category || ""
+)
+.toLowerCase() ===
+category.toLowerCase()
 );
 
+
+/* SEARCH FILTER */
+
+if(searchValue){
+
+filtered =
+filtered.filter(
+product =>
+
+String(
+product.name || ""
+)
+.toLowerCase()
+.includes(searchValue)
+
+||
+
+String(
+product.description || ""
+)
+.toLowerCase()
+.includes(searchValue)
+
+);
+
+}
+
+
+/* NO PRODUCTS */
 
 if(filtered.length === 0){
 
@@ -1238,78 +1587,185 @@ return;
 }
 
 
-filtered.forEach((product) => {
+/* CREATE PRODUCT CARDS */
+
+filtered.forEach(
+product => {
+
 
 const productCard =
-document.createElement("div");
+document.createElement(
+"div"
+);
 
-productCard.className = "product";
 
-productCard.onclick = function(){
+productCard.className =
+"product";
 
-openProduct(product.firebaseId);
+
+productCard.onclick =
+function(){
+
+openProduct(
+product.firebaseId
+);
 
 };
 
 
-const image =
-product.image || "";
+/* STOCK */
 
+const stock =
+Number(
+product.stock
+);
+
+
+const isOutOfStock =
+!isNaN(stock) &&
+stock <= 0;
+
+
+/* IMAGE */
+
+const imageUrl =
+product.image ||
+"";
+
+
+let imageHTML = "";
+
+if(imageUrl){
+
+imageHTML = `
+
+<img
+src="${imageUrl}"
+alt="${product.name || "Product"}"
+onerror="this.style.display='none'">
+
+`;
+
+}else{
+
+imageHTML =
+product.name ||
+"PRODUCT";
+
+}
+
+
+/* STOCK BADGE */
+
+let stockBadge = "";
+
+if(isOutOfStock){
+
+stockBadge = `
+
+<div class="stock-badge out">
+OUT OF STOCK
+</div>
+
+`;
+
+}else if(!isNaN(stock)){
+
+stockBadge = `
+
+<div class="stock-badge">
+${stock} LEFT
+</div>
+
+`;
+
+}
+
+
+/* PRODUCT CARD */
 
 productCard.innerHTML = `
 
+${stockBadge}
+
 <div class="product-image">
 
-${
-image
-? `<img src="${image}" alt="${product.name || "Product"}"
-onerror="this.style.display='none';this.parentElement.innerHTML='<div class=no-image>IMAGE NOT AVAILABLE</div>'">`
-: `<div class="no-image">PRODUCT IMAGE</div>`
-}
+${imageHTML}
 
 </div>
 
 <div class="product-info">
 
-<h3>${product.name || ""}</h3>
+<h3>
+${product.name || ""}
+</h3>
 
-<p>₹${product.price || 0}</p>
+<p>
+₹${Number(product.price) || 0}
+</p>
 
 </div>
 
 `;
 
 
-container.appendChild(productCard);
+container.appendChild(
+productCard
+);
 
 });
 
 }
 
 
-/* FILTER PRODUCTS */
+/* ================= SEARCH ================= */
+
+window.searchProducts =
+function(){
+
+displayProducts(
+currentCategory
+);
+
+};
+
+
+/* ================= FILTER PRODUCTS ================= */
 
 window.filterProducts =
 function(category,button){
 
 document
-.querySelectorAll(".filter-btn")
-.forEach((btn) => {
+.querySelectorAll(
+".filter-btn"
+)
+.forEach(
+btn => {
 
-btn.classList.remove("active");
+btn.classList.remove(
+"active"
+);
 
-});
+}
+);
 
-button.classList.add("active");
 
-displayProducts(category);
+button.classList.add(
+"active"
+);
+
+
+displayProducts(
+category
+);
 
 };
 
 
-/* PRODUCT MODAL */
+/* ================= OPEN PRODUCT ================= */
 
-function openProduct(firebaseId){
+window.openProduct =
+function(firebaseId){
 
 currentProduct =
 products.find(
@@ -1320,51 +1776,149 @@ product.firebaseId === firebaseId
 
 if(!currentProduct){
 
-alert("Product not found.");
+alert(
+"Product not found."
+);
 
 return;
 
 }
 
 
+/* TITLE */
+
 document
-.getElementById("modalTitle")
-.textContent =
+.getElementById(
+"modalTitle"
+).textContent =
 currentProduct.name || "";
 
 
-document
-.getElementById("modalPrice")
-.textContent =
-currentProduct.price || 0;
-
+/* PRICE */
 
 document
-.getElementById("modalDescription")
-.textContent =
+.getElementById(
+"modalPrice"
+).textContent =
+Number(
+currentProduct.price
+) || 0;
+
+
+/* DESCRIPTION */
+
+document
+.getElementById(
+"modalDescription"
+).textContent =
 currentProduct.description ||
-"No description available.";
+"";
 
+
+/* IMAGE */
 
 const modalImage =
-document.getElementById("modalImage");
+document.getElementById(
+"modalImage"
+);
 
 
-if(currentProduct.image){
+const imageUrl =
+currentProduct.image ||
+"";
+
+
+if(imageUrl){
 
 modalImage.innerHTML = `
 
 <img
-src="${currentProduct.image}"
+src="${imageUrl}"
 alt="${currentProduct.name || "Product"}"
-onerror="this.style.display='none';this.parentElement.innerHTML='PRODUCT IMAGE'">
+onerror="this.parentElement.textContent='Image unavailable'">
 
 `;
 
 }else{
 
 modalImage.textContent =
-"PRODUCT IMAGE";
+currentProduct.name ||
+"PRODUCT";
+
+}
+
+
+/* STOCK */
+
+const stock =
+Number(
+currentProduct.stock
+);
+
+
+const stockElement =
+document.getElementById(
+"modalStock"
+);
+
+
+const addButton =
+document.getElementById(
+"addToBagBtn"
+);
+
+
+if(
+!isNaN(stock) &&
+stock <= 0
+){
+
+stockElement.textContent =
+"OUT OF STOCK";
+
+stockElement.className =
+"stock-text out-stock";
+
+
+addButton.disabled =
+true;
+
+addButton.textContent =
+"OUT OF STOCK";
+
+addButton.classList.add(
+"disabled-btn"
+);
+
+}else{
+
+if(!isNaN(stock)){
+
+stockElement.textContent =
+"In Stock — " +
+stock +
+" available";
+
+}else{
+
+stockElement.textContent =
+"In Stock";
+
+}
+
+stockElement.className =
+"stock-text in-stock";
+
+
+addButton.disabled =
+false;
+
+addButton.textContent =
+"ADD TO BAG";
+
+addButton.classList.remove(
+"disabled-btn"
+);
 
 }
 
@@ -1372,40 +1926,60 @@ modalImage.textContent =
 /* SIZES */
 
 const sizeContainer =
-document.getElementById("sizeContainer");
-
-sizeContainer.innerHTML = "";
-
-const sizes =
-Array.isArray(currentProduct.sizes)
-? currentProduct.sizes
-: [];
+document.getElementById(
+"sizeContainer"
+);
 
 
-selectedSize = "";
+sizeContainer.innerHTML =
+"";
 
 
-if(sizes.length === 0){
+let sizes =
+currentProduct.sizes;
 
-selectedSize = "Standard";
+
+/* HANDLE STRING OR ARRAY */
+
+if(typeof sizes === "string"){
+
+sizes =
+sizes
+.split(",")
+.map(
+size => size.trim()
+)
+.filter(
+size => size
+);
+
+}
+
+
+if(!Array.isArray(sizes)){
+
+sizes = [];
+
+}
+
+
+/* DEFAULT SIZE */
+
+selectedSize =
+sizes.length > 0
+
+? sizes[0]
+
+: "FREE";
+
+
+sizes.forEach(
+(size,index) => {
 
 const button =
-document.createElement("button");
-
-button.className =
-"size-btn active";
-
-button.textContent =
-"Standard";
-
-sizeContainer.appendChild(button);
-
-}else{
-
-sizes.forEach((size,index) => {
-
-const button =
-document.createElement("button");
+document.createElement(
+"button"
+);
 
 button.className =
 "size-btn";
@@ -1417,23 +1991,48 @@ size;
 button.onclick =
 function(){
 
-selectSize(button,size);
+selectSize(
+button,
+size
+);
 
 };
 
 
 if(index === 0){
 
-button.classList.add("active");
-
-selectedSize = size;
+button.classList.add(
+"active"
+);
 
 }
 
 
-sizeContainer.appendChild(button);
+sizeContainer.appendChild(
+button
+);
 
 });
+
+
+/* IF NO SIZES */
+
+if(sizes.length === 0){
+
+const noSize =
+document.createElement(
+"span"
+);
+
+noSize.style.fontSize =
+"12px";
+
+noSize.textContent =
+"Free Size";
+
+sizeContainer.appendChild(
+noSize
+);
 
 }
 
@@ -1442,58 +2041,91 @@ sizeContainer.appendChild(button);
 
 qty = 1;
 
+
 document
-.getElementById("quantity")
-.textContent =
+.getElementById(
+"quantity"
+).textContent =
 qty;
 
 
 /* OPEN MODAL */
 
 document
-.getElementById("productModal")
-.classList.add("active");
+.getElementById(
+"productModal"
+)
+.classList.add(
+"active"
+);
 
-}
+};
 
 
-/* CLOSE PRODUCT */
+/* ================= CLOSE PRODUCT ================= */
 
 window.closeProduct =
 function(){
 
 document
-.getElementById("productModal")
-.classList.remove("active");
+.getElementById(
+"productModal"
+)
+.classList.remove(
+"active"
+);
 
 };
 
 
-/* SELECT SIZE */
+/* ================= SELECT SIZE ================= */
 
-function selectSize(button,size){
+window.selectSize =
+function(button,size){
 
 selectedSize = size;
 
+
 document
-.querySelectorAll(".size-btn")
-.forEach((btn) => {
+.querySelectorAll(
+".size-btn"
+)
+.forEach(
+btn => {
 
-btn.classList.remove("active");
-
-});
-
-button.classList.add("active");
+btn.classList.remove(
+"active"
+);
 
 }
+);
 
 
-/* QUANTITY */
+button.classList.add(
+"active"
+);
+
+};
+
+
+/* ================= CHANGE QUANTITY ================= */
 
 window.changeQty =
 function(change){
 
+if(!currentProduct){
+return;
+}
+
+
+const stock =
+Number(
+currentProduct.stock
+);
+
+
 qty += change;
+
 
 if(qty < 1){
 
@@ -1501,60 +2133,120 @@ qty = 1;
 
 }
 
+
+/* LIMIT QUANTITY BY STOCK */
+
+if(
+!isNaN(stock) &&
+stock > 0 &&
+qty > stock
+){
+
+qty = stock;
+
+alert(
+"Only " +
+stock +
+" item(s) available."
+);
+
+}
+
+
 document
-.getElementById("quantity")
-.textContent =
+.getElementById(
+"quantity"
+).textContent =
 qty;
 
 };
 
 
-/* CART */
-
-let cart = [];
-
-try{
-
-cart =
-JSON.parse(
-localStorage.getItem("trendyCart") || "[]"
-);
-
-if(!Array.isArray(cart)){
-
-cart = [];
-
-}
-
-}catch(error){
-
-cart = [];
-
-}
-
-
-/* ADD TO BAG */
+/* ================= ADD TO CART ================= */
 
 window.addSelectedProduct =
 function(){
 
 if(!currentProduct){
+return;
+}
+
+
+/* STOCK CHECK */
+
+const stock =
+Number(
+currentProduct.stock
+);
+
+
+if(
+!isNaN(stock) &&
+stock <= 0
+){
+
+alert(
+"This product is out of stock."
+);
 
 return;
 
 }
 
+
+/* SIZE */
 
 if(!selectedSize){
 
-alert("Please select a size.");
+selectedSize =
+"FREE";
+
+}
+
+
+/* CHECK EXISTING CART QUANTITY */
+
+const existingQuantity =
+cart
+.filter(
+item =>
+item.firebaseId ===
+currentProduct.firebaseId
+)
+.reduce(
+total =>
+total + 1,
+0
+);
+
+
+/* STOCK LIMIT */
+
+if(
+!isNaN(stock) &&
+existingQuantity + qty > stock
+){
+
+alert(
+"Only " +
+stock +
+" item(s) available. You already have " +
+existingQuantity +
+" in your bag."
+);
 
 return;
 
 }
 
 
-for(let i = 0; i < qty; i++){
+/* ADD ITEMS */
+
+for(
+let i = 0;
+i < qty;
+i++
+){
 
 cart.push({
 
@@ -1565,13 +2257,12 @@ name:
 currentProduct.name,
 
 price:
-Number(currentProduct.price) || 0,
+Number(
+currentProduct.price
+) || 0,
 
 size:
-selectedSize,
-
-image:
-currentProduct.image || ""
+selectedSize
 
 });
 
@@ -1580,14 +2271,16 @@ currentProduct.image || ""
 
 saveCart();
 
+
 closeProduct();
+
 
 openCart();
 
 };
 
 
-/* SAVE CART */
+/* ================= SAVE CART ================= */
 
 function saveCart(){
 
@@ -1596,39 +2289,53 @@ localStorage.setItem(
 JSON.stringify(cart)
 );
 
+
 updateCart();
 
 }
 
 
-/* UPDATE CART */
+/* ================= UPDATE CART ================= */
 
 function updateCart(){
 
 document
-.getElementById("cartCount")
-.textContent =
+.getElementById(
+"cartCount"
+).textContent =
 cart.length;
 
 
 const items =
-document.getElementById("cartItems");
+document.getElementById(
+"cartItems"
+);
 
-items.innerHTML = "";
+
+items.innerHTML =
+"";
+
 
 let total = 0;
 
 
-cart.forEach((item,index) => {
+cart.forEach(
+(item,index) => {
 
 const price =
-Number(item.price) || 0;
+Number(
+item.price
+) || 0;
+
 
 total += price;
 
 
 const itemElement =
-document.createElement("div");
+document.createElement(
+"div"
+);
+
 
 itemElement.className =
 "cart-item";
@@ -1638,11 +2345,13 @@ itemElement.innerHTML = `
 
 <div>
 
-<strong>${item.name || "Product"}</strong>
+<strong>
+${item.name}
+</strong>
 
 <br>
 
-Size: ${item.size || ""}
+Size: ${item.size}
 
 <br>
 
@@ -1658,16 +2367,22 @@ REMOVE
 
 
 itemElement
-.querySelector(".remove")
+.querySelector(
+".remove"
+)
 .onclick =
 function(){
 
-removeItem(index);
+removeItem(
+index
+);
 
 };
 
 
-items.appendChild(itemElement);
+items.appendChild(
+itemElement
+);
 
 });
 
@@ -1681,58 +2396,74 @@ items.innerHTML =
 
 
 document
-.getElementById("cartTotal")
-.textContent =
+.getElementById(
+"cartTotal"
+).textContent =
 total;
 
 }
 
 
-/* REMOVE ITEM */
+/* ================= REMOVE CART ITEM ================= */
 
 function removeItem(index){
 
-cart.splice(index,1);
+cart.splice(
+index,
+1
+);
+
 
 saveCart();
 
 }
 
 
-/* OPEN CART */
+/* ================= OPEN CART ================= */
 
 window.openCart =
 function(){
 
 document
-.getElementById("cartPanel")
-.classList.add("active");
+.getElementById(
+"cartPanel"
+)
+.classList.add(
+"active"
+);
+
 
 updateCart();
 
 };
 
 
-/* CLOSE CART */
+/* ================= CLOSE CART ================= */
 
 window.closeCart =
 function(){
 
 document
-.getElementById("cartPanel")
-.classList.remove("active");
+.getElementById(
+"cartPanel"
+)
+.classList.remove(
+"active"
+);
 
 };
 
 
-/* CHECKOUT */
+/* ================= OPEN CHECKOUT ================= */
 
 window.openCheckout =
 function(){
 
 if(cart.length === 0){
 
-alert("Your bag is empty.");
+alert(
+"Your bag is empty."
+);
 
 return;
 
@@ -1743,24 +2474,34 @@ closeCart();
 
 
 document
-.getElementById("mainWebsite")
+.getElementById(
+"mainWebsite"
+)
 .style.display =
 "none";
 
 
 document
-.getElementById("checkoutPage")
-.classList.add("active");
+.getElementById(
+"checkoutPage"
+)
+.classList.add(
+"active"
+);
 
 
 document
-.getElementById("successMessage")
+.getElementById(
+"successMessage"
+)
 .style.display =
 "none";
 
 
 document
-.getElementById("checkoutContent")
+.getElementById(
+"checkoutContent"
+)
 .style.display =
 "grid";
 
@@ -1770,46 +2511,54 @@ renderCheckout();
 };
 
 
-/* BACK TO SHOP */
+/* ================= BACK TO SHOP ================= */
 
 window.backToShop =
 function(){
 
 document
-.getElementById("checkoutPage")
-.classList.remove("active");
+.getElementById(
+"checkoutPage"
+)
+.classList.remove(
+"active"
+);
 
 
 document
-.getElementById("mainWebsite")
+.getElementById(
+"mainWebsite"
+)
 .style.display =
 "block";
 
 
-window.scrollTo({
+window.scrollTo(
+{
 top:0,
 behavior:"smooth"
-});
+}
+);
 
 };
 
 
-/* COUPON */
-
-let appliedCoupon = null;
-let discountAmount = 0;
-
-
-/* APPLY COUPON */
+/* ================= APPLY COUPON ================= */
 
 window.applyCoupon =
 async function(){
 
 const couponInput =
-document.getElementById("couponCode");
+document.getElementById(
+"couponCode"
+);
+
 
 const message =
-document.getElementById("couponMessage");
+document.getElementById(
+"couponMessage"
+);
+
 
 const code =
 couponInput.value
@@ -1819,7 +2568,8 @@ couponInput.value
 
 if(!code){
 
-message.style.color = "#b42318";
+message.style.color =
+"#b42318";
 
 message.textContent =
 "Please enter a coupon code.";
@@ -1840,14 +2590,19 @@ try{
 
 const couponSnapshot =
 await getDocs(
-collection(db,"coupons")
+collection(
+db,
+"coupons"
+)
 );
 
 
-let foundCoupon = null;
+let foundCoupon =
+null;
 
 
-couponSnapshot.forEach((documentItem) => {
+couponSnapshot.forEach(
+(documentItem) => {
 
 const data =
 documentItem.data();
@@ -1855,8 +2610,11 @@ documentItem.data();
 
 if(
 data.code &&
-String(data.code)
-.toUpperCase() === code
+String(
+data.code
+)
+.toUpperCase() ===
+code
 ){
 
 foundCoupon = {
@@ -1870,20 +2628,25 @@ documentItem.id,
 
 }
 
-});
+}
+);
 
 
 if(!foundCoupon){
 
-appliedCoupon = null;
+appliedCoupon =
+null;
 
-discountAmount = 0;
+discountAmount =
+0;
+
 
 message.style.color =
 "#b42318";
 
 message.textContent =
 "Invalid coupon code.";
+
 
 renderCheckout();
 
@@ -1894,17 +2657,23 @@ return;
 
 /* CHECK ACTIVE */
 
-if(foundCoupon.active === false){
+if(
+foundCoupon.active === false
+){
 
-appliedCoupon = null;
+appliedCoupon =
+null;
 
-discountAmount = 0;
+discountAmount =
+0;
+
 
 message.style.color =
 "#b42318";
 
 message.textContent =
 "This coupon is not active.";
+
 
 renderCheckout();
 
@@ -1918,7 +2687,12 @@ return;
 const subtotal =
 cart.reduce(
 (total,item) =>
-total + (Number(item.price) || 0),
+total +
+(
+Number(
+item.price
+) || 0
+),
 0
 );
 
@@ -1926,14 +2700,20 @@ total + (Number(item.price) || 0),
 /* DISCOUNT */
 
 if(
-String(foundCoupon.type || "")
-.toLowerCase() === "percentage"
+String(
+foundCoupon.type
+).toLowerCase() ===
+"percentage"
 ){
 
 discountAmount =
 Math.round(
 subtotal *
-(Number(foundCoupon.discount) || 0)
+(
+Number(
+foundCoupon.discount
+) || 0
+)
 /
 100
 );
@@ -1941,14 +2721,22 @@ subtotal *
 }else{
 
 discountAmount =
-Number(foundCoupon.discount) || 0;
+Number(
+foundCoupon.discount
+) || 0;
 
 }
 
 
-if(discountAmount > subtotal){
+/* LIMIT */
 
-discountAmount = subtotal;
+if(
+discountAmount >
+subtotal
+){
+
+discountAmount =
+subtotal;
 
 }
 
@@ -1959,6 +2747,7 @@ foundCoupon;
 
 message.style.color =
 "#147a3d";
+
 
 message.textContent =
 "Coupon applied successfully!";
@@ -1974,8 +2763,10 @@ console.error(
 error
 );
 
+
 message.style.color =
 "#b42318";
+
 
 message.textContent =
 "Unable to apply coupon.";
@@ -1985,28 +2776,40 @@ message.textContent =
 };
 
 
-/* RENDER CHECKOUT */
+/* ================= RENDER CHECKOUT ================= */
 
 function renderCheckout(){
 
 const checkoutItems =
-document.getElementById("checkoutItems");
+document.getElementById(
+"checkoutItems"
+);
 
-checkoutItems.innerHTML = "";
+
+checkoutItems.innerHTML =
+"";
+
 
 let subtotal = 0;
 
 
-cart.forEach((item) => {
+cart.forEach(
+item => {
 
 const price =
-Number(item.price) || 0;
+Number(
+item.price
+) || 0;
+
 
 subtotal += price;
 
 
 const itemElement =
-document.createElement("div");
+document.createElement(
+"div"
+);
+
 
 itemElement.className =
 "order-item";
@@ -2017,13 +2820,13 @@ itemElement.innerHTML = `
 <div>
 
 <strong>
-${item.name || "Product"}
+${item.name}
 </strong>
 
 <br>
 
 <small>
-Size: ${item.size || ""}
+Size: ${item.size}
 </small>
 
 </div>
@@ -2035,30 +2838,40 @@ Size: ${item.size || ""}
 `;
 
 
-checkoutItems.appendChild(itemElement);
+checkoutItems.appendChild(
+itemElement
+);
 
 });
 
 
 document
-.getElementById("checkoutSubtotal")
-.textContent =
+.getElementById(
+"checkoutSubtotal"
+).textContent =
 subtotal;
 
 
+/* DISCOUNT */
+
 const discountRow =
-document.getElementById("discountRow");
+document.getElementById(
+"discountRow"
+);
 
 
-if(discountAmount > 0){
+if(
+discountAmount > 0
+){
 
 discountRow.style.display =
 "flex";
 
 
 document
-.getElementById("checkoutDiscount")
-.textContent =
+.getElementById(
+"checkoutDiscount"
+).textContent =
 discountAmount;
 
 }else{
@@ -2069,11 +2882,16 @@ discountRow.style.display =
 }
 
 
+/* TOTAL */
+
 let finalTotal =
-subtotal - discountAmount;
+subtotal -
+discountAmount;
 
 
-if(finalTotal < 0){
+if(
+finalTotal < 0
+){
 
 finalTotal = 0;
 
@@ -2081,66 +2899,83 @@ finalTotal = 0;
 
 
 document
-.getElementById("checkoutTotal")
-.textContent =
+.getElementById(
+"checkoutTotal"
+).textContent =
 finalTotal;
 
 }
 
 
-/* PLACE ORDER */
+/* ================= PLACE ORDER ================= */
 
 window.placeOrder =
 async function(){
 
 const name =
 document
-.getElementById("customerName")
+.getElementById(
+"customerName"
+)
 .value
 .trim();
 
 
 const phone =
 document
-.getElementById("customerPhone")
+.getElementById(
+"customerPhone"
+)
 .value
 .trim();
 
 
 const email =
 document
-.getElementById("customerEmail")
+.getElementById(
+"customerEmail"
+)
 .value
 .trim();
 
 
 const address =
 document
-.getElementById("customerAddress")
+.getElementById(
+"customerAddress"
+)
 .value
 .trim();
 
 
 const city =
 document
-.getElementById("customerCity")
+.getElementById(
+"customerCity"
+)
 .value
 .trim();
 
 
 const state =
 document
-.getElementById("customerState")
+.getElementById(
+"customerState"
+)
 .value
 .trim();
 
 
 const pin =
 document
-.getElementById("customerPin")
+.getElementById(
+"customerPin"
+)
 .value
 .trim();
 
+
+/* VALIDATION */
 
 if(
 !name ||
@@ -2160,7 +2995,9 @@ return;
 }
 
 
-if(phone.length < 10){
+if(
+phone.length < 10
+){
 
 alert(
 "Please enter a valid mobile number."
@@ -2171,10 +3008,30 @@ return;
 }
 
 
+/* CHECK CART */
+
+if(cart.length === 0){
+
+alert(
+"Your bag is empty."
+);
+
+return;
+
+}
+
+
+/* CALCULATE */
+
 const subtotal =
 cart.reduce(
 (total,item) =>
-total + (Number(item.price) || 0),
+total +
+(
+Number(
+item.price
+) || 0
+),
 0
 );
 
@@ -2182,21 +3039,135 @@ total + (Number(item.price) || 0),
 const total =
 Math.max(
 0,
-subtotal - discountAmount
+subtotal -
+discountAmount
 );
 
 
+/* BUTTON */
+
 const button =
-document.getElementById("placeOrderBtn");
+document.getElementById(
+"placeOrderBtn"
+);
 
 
-button.disabled = true;
+button.disabled =
+true;
+
 
 button.textContent =
 "PROCESSING...";
 
 
 try{
+
+
+/* FINAL STOCK CHECK */
+
+const productSnapshot =
+await getDocs(
+collection(
+db,
+"products"
+)
+);
+
+
+const latestProducts =
+{};
+
+
+productSnapshot.forEach(
+documentItem => {
+
+latestProducts[
+documentItem.id
+] =
+documentItem.data();
+
+}
+);
+
+
+/* COUNT REQUIRED STOCK */
+
+const requiredStock =
+{};
+
+
+cart.forEach(
+item => {
+
+if(
+!requiredStock[
+item.firebaseId
+]
+){
+
+requiredStock[
+item.firebaseId
+] =
+0;
+
+}
+
+
+requiredStock[
+item.firebaseId
+]++;
+
+}
+);
+
+
+/* VALIDATE STOCK */
+
+for(
+const productId
+in requiredStock
+){
+
+const product =
+latestProducts[
+productId
+];
+
+
+if(!product){
+
+throw new Error(
+"Product no longer exists."
+);
+
+}
+
+
+const stock =
+Number(
+product.stock
+);
+
+
+if(
+!isNaN(stock) &&
+stock <
+requiredStock[
+productId
+]
+){
+
+throw new Error(
+product.name +
+" does not have enough stock."
+);
+
+}
+
+}
+
+
+/* CREATE ORDER */
 
 const orderData = {
 
@@ -2218,83 +3189,229 @@ pin:pin
 
 },
 
-items:cart,
 
-subtotal:subtotal,
+items:
+cart,
 
-discount:discountAmount,
+
+subtotal:
+subtotal,
+
+
+discount:
+discountAmount,
+
 
 coupon:
+
 appliedCoupon
+
 ? appliedCoupon.code
+
 : null,
 
-total:total,
 
-status:"pending",
+total:
+total,
 
-paymentStatus:"pending",
 
-paymentMethod:"cash_on_delivery",
+status:
+"pending",
+
+
+paymentStatus:
+"pending",
+
+
+paymentMethod:
+"cash_on_delivery",
+
 
 createdAt:
-new Date().toISOString()
+new Date()
 
 };
 
 
+/* SAVE ORDER */
+
 const orderRef =
 await addDoc(
-collection(db,"orders"),
+
+collection(
+db,
+"orders"
+),
+
 orderData
+
 );
+
+
+/* REDUCE STOCK */
+
+for(
+const productId
+in requiredStock
+){
+
+const product =
+latestProducts[
+productId
+];
+
+
+const stock =
+Number(
+product.stock
+);
+
+
+/* ONLY UPDATE IF STOCK FIELD EXISTS */
+
+if(
+!isNaN(stock)
+){
+
+await updateDoc(
+
+doc(
+db,
+"products",
+productId
+),
+
+{
+
+stock:
+increment(
+-requiredStock[
+productId
+]
+)
+
+}
+
+);
+
+}
+
+}
 
 
 /* SUCCESS */
 
-cart = [];
+cart =
+[];
+
 
 localStorage.removeItem(
 "trendyCart"
 );
 
+
 updateCart();
 
-appliedCoupon = null;
 
-discountAmount = 0;
+appliedCoupon =
+null;
 
+
+discountAmount =
+0;
+
+
+/* RELOAD PRODUCTS */
+
+await loadProducts();
+
+
+/* HIDE CHECKOUT */
 
 document
-.getElementById("checkoutContent")
+.getElementById(
+"checkoutContent"
+)
 .style.display =
 "none";
 
 
+/* SHOW SUCCESS */
+
 const success =
-document.getElementById("successMessage");
+document.getElementById(
+"successMessage"
+);
+
 
 success.style.display =
 "block";
 
 
 document
-.getElementById("orderNumber")
-.textContent =
-"Order ID: " + orderRef.id;
+.getElementById(
+"orderNumber"
+).textContent =
+
+"Order ID: " +
+orderRef.id;
 
 
 /* CLEAR FORM */
 
-document.getElementById("customerName").value = "";
-document.getElementById("customerPhone").value = "";
-document.getElementById("customerEmail").value = "";
-document.getElementById("customerAddress").value = "";
-document.getElementById("customerCity").value = "";
-document.getElementById("customerState").value = "";
-document.getElementById("customerPin").value = "";
-document.getElementById("couponCode").value = "";
-document.getElementById("couponMessage").textContent = "";
+document
+.getElementById(
+"customerName"
+).value =
+"";
+
+document
+.getElementById(
+"customerPhone"
+).value =
+"";
+
+document
+.getElementById(
+"customerEmail"
+).value =
+"";
+
+document
+.getElementById(
+"customerAddress"
+).value =
+"";
+
+document
+.getElementById(
+"customerCity"
+).value =
+"";
+
+document
+.getElementById(
+"customerState"
+).value =
+"";
+
+document
+.getElementById(
+"customerPin"
+).value =
+"";
+
+document
+.getElementById(
+"couponCode"
+).value =
+"";
+
+document
+.getElementById(
+"couponMessage"
+).textContent =
+"";
 
 
 }catch(error){
@@ -2304,21 +3421,26 @@ console.error(
 error
 );
 
+
 alert(
+error.message ||
 "Unable to place order. Please try again."
 );
 
-button.disabled = false;
+
+button.disabled =
+false;
+
 
 button.textContent =
-"PLACE ORDER";
+"PLACE ORDER (COD)";
 
 }
 
 };
 
 
-/* INITIALIZE */
+/* ================= INITIALIZE ================= */
 
 loadProducts();
 
@@ -2327,4 +3449,7 @@ updateCart();
 </script>
 
 </body>
-  </html>
+
+</html>
+```
+  
