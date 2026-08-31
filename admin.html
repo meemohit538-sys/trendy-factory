@@ -1,1 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>TRENDY FACTORY — Admin Panel</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f0e8;
+  color:#211e1a;
+}
+
+/* LOGIN */
+
+.login-page{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.login-box{
+  width:100%;
+  max-width:400px;
+  background:#fffaf4;
+  padding:40px;
+  border:1px solid #ddd5ca;
+}
+
+.login-box h1{
+  font-family:Georgia,serif;
+  font-weight:400;
+  margin-bottom:10px;
+}
+
+.login-box p{
+  color:#766d63;
+  font-size:13px;
+  margin-bottom:30px;
+}
+
+.login-box input{
+  width:100%;
+  padding:14px;
+  margin-bottom:15px;
+  border:1px solid #cfc3b5;
+  outline:none;
+}
+
+.login-box button{
+  width:100%;
+  padding:15px;
+  border:none;
+  background:#211e1a;
+  color:white;
+  cursor:pointer;
+  letter-spacing:1px;
+}
+
+/* ADMIN */
+
+.admin-panel{
+  display:none;
+}
+
+.admin-header{
+  background:#211e1a;
+  color:white;
+  padding:20px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.admin-logo{
+  letter-spacing:2px;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.logout-btn{
+  background:transparent;
+  border:1px solid #aaa;
+  color:white;
+  padding:8px 15px;
+  cursor:pointer;
+  font-size:11px;
+}
+
+.admin-container{
+  padding:40px 5%;
+  max-width:1400px;
+  margin:auto;
+}
+
+.admin-title{
+  font-family:Georgia,serif;
+  font-weight:400;
+  font-size:40px;
+  margin-bottom:30px;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:40px;
+}
+
+.stat-card{
+  background:#fffaf4;
+  padding:25px;
+  border:1px solid #ddd5ca;
+}
+
+.stat-card span{
+  font-size:10px;
+  letter-spacing:1px;
+  color:#766d63;
+}
+
+.stat-card h2{
+  font-size:30px;
+  margin-top:10px;
+}
+
+/* ORDERS */
+
+.orders-section{
+  background:#fffaf4;
+  padding:25px;
+  border:1px solid #ddd5ca;
+}
+
+.orders-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.orders-header h2{
+  font-family:Georgia,serif;
+  font-weight:400;
+}
+
+.refresh-btn{
+  background:#211e1a;
+  color:white;
+  border:none;
+  padding:10px 15px;
+  cursor:pointer;
+  font-size:10px;
+  letter-spacing:1px;
+}
+
+.order-card{
+  border:1px solid #ddd5ca;
+  padding:20px;
+  margin-bottom:15px;
+  background:white;
+}
+
+.order-top{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:15px;
+  flex-wrap:wrap;
+}
+
+.order-id{
+  font-weight:bold;
+  font-size:13px;
+}
+
+.order-date{
+  font-size:11px;
+  color:#766d63;
+  margin-top:5px;
+}
+
+.order-status{
+  padding:7px 10px;
+  border:1px solid #211e1a;
+  background:#fff;
+  font-size:11px;
+  cursor:pointer;
+}
+
+.order-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  border-top:1px solid #eee;
+  padding-top:15px;
+}
+
+.order-info h4{
+  font-size:10px;
+  letter-spacing:1px;
+  margin-bottom:8px;
+}
+
+.order-info p{
+  font-size:13px;
+  line-height:1.6;
+  color:#4d4740;
+}
+
+.order-items{
+  margin-top:15px;
+  padding-top:15px;
+  border-top:1px solid #eee;
+}
+
+.order-items h4{
+  font-size:10px;
+  letter-spacing:1px;
+  margin-bottom:10px;
+}
+
+.product-line{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  padding:7px 0;
+}
+
+.order-total{
+  margin-top:15px;
+  padding-top:15px;
+  border-top:1px solid #ddd;
+  font-size:15px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.delete-order{
+  margin-top:15px;
+  background:#a52a2a;
+  color:white;
+  border:none;
+  padding:9px 14px;
+  cursor:pointer;
+  font-size:10px;
+}
+
+.empty{
+  text-align:center;
+  padding:50px;
+  color:#766d63;
+}
+
+@media(max-width:800px){
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .order-grid{
+    grid-template-columns:1fr;
+  }
+
+  .admin-title{
+    font-size:32px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- LOGIN -->
+
+<div class="login-page" id="loginPage">
+
+<div class="login-box">
+
+<h1>Admin Login</h1>
+
+<p>TRENDY FACTORY MANAGEMENT</p>
+
+<input
+type="text"
+id="adminUsername"
+placeholder="Username"
+>
+
+<input
+type="password"
+id="adminPassword"
+placeholder="Password"
+>
+
+<button onclick="login()">
+LOGIN
+</button>
+
+<p id="loginMessage" style="color:red;margin-top:15px;font-size:12px"></p>
+
+</div>
+
+</div>
+
+
+<!-- ADMIN PANEL -->
+
+<div class="admin-panel" id="adminPanel">
+
+<div class="admin-header">
+
+<div class="admin-logo">
+TRENDY FACTORY — ADMIN
+</div>
+
+<button class="logout-btn" onclick="logout()">
+LOGOUT
+</button>
+
+</div>
+
+
+<div class="admin-container">
+
+<h1 class="admin-title">
+Dashboard
+</h1>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat-card">
+
+<span>TOTAL PRODUCTS</span>
+
+<h2 id="totalProducts">
+8
+</h2>
+
+</div>
+
+
+<div class="stat-card">
+
+<span>TOTAL ORDERS</span>
+
+<h2 id="totalOrders">
+0
+</h2>
+
+</div>
+
+
+<div class="stat-card">
+
+<span>PENDING ORDERS</span>
+
+<h2 id="pendingOrders">
+0
+</h2>
+
+</div>
+
+
+<div class="stat-card">
+
+<span>TOTAL SALES</span>
+
+<h2>
+₹<span id="totalSales">
+0
+</span>
+</h2>
+
+</div>
+
+</div>
+
+
+<!-- ORDERS -->
+
+<div class="orders-section">
+
+<div class="orders-header">
+
+<h2>Customer Orders</h2>
+
+<button class="refresh-btn" onclick="loadOrders()">
+REFRESH
+</button>
+
+</div>
+
+<div id="ordersContainer"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ADMIN LOGIN */
+
+const ADMIN_USERNAME="admin";
+const ADMIN_PASSWORD="trendy123";
+
+
+/* CHECK LOGIN */
+
+if(localStorage.getItem("adminLoggedIn")==="true"){
+
+showAdmin();
+
+}
+
+
+/* LOGIN */
+
+function login(){
+
+const username=document
+.getElementById("adminUsername")
+.value;
+
+const password=document
+.getElementById("adminPassword")
+.value;
+
+
+if(username===ADMIN_USERNAME && password===ADMIN_PASSWORD){
+
+localStorage.setItem("adminLoggedIn","true");
+
+showAdmin();
+
+}
+
+else{
+
+document.getElementById("loginMessage")
+.textContent="Invalid username or password.";
+
+}
+
+}
+
+
+/* SHOW ADMIN */
+
+function showAdmin(){
+
+document.getElementById("loginPage")
+.style.display="none";
+
+document.getElementById("adminPanel")
+.style.display="block";
+
+loadOrders();
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+localStorage.removeItem("adminLoggedIn");
+
+document.getElementById("adminPanel")
+.style.display="none";
+
+document.getElementById("loginPage")
+.style.display="flex";
+
+}
+
+
+/* LOAD ORDERS */
+
+function loadOrders(){
+
+const container=document
+.getElementById("ordersContainer");
+
+
+let orders=[];
+
+
+/* GET LATEST ORDER */
+
+const latestOrder=JSON.parse(
+localStorage.getItem("latestOrder")
+);
+
+
+if(latestOrder){
+
+orders.push(latestOrder);
+
+}
+
+
+/* UPDATE STATS */
+
+document.getElementById("totalOrders")
+.textContent=orders.length;
+
+
+const pending=orders.filter(order=>
+!order.status || order.status==="Pending"
+).length;
+
+
+document.getElementById("pendingOrders")
+.textContent=pending;
+
+
+const sales=orders.reduce((sum,order)=>
+sum+(order.total||0)
+,0);
+
+
+document.getElementById("totalSales")
+.textContent=sales;
+
+
+/* DISPLAY */
+
+container.innerHTML="";
+
+
+if(orders.length===0){
+
+container.innerHTML=`
+
+<div class="empty">
+
+No orders yet.
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+orders.forEach((order,index)=>{
+
+
+const status=order.status||"Pending";
+
+
+const itemsHTML=order.items.map(item=>`
+
+<div class="product-line">
+
+<span>
+${item.name}
+<br>
+<small>Size: ${item.size}</small>
+</span>
+
+<strong>
+₹${item.price}
+</strong>
+
+</div>
+
+`).join("");
+
+
+container.innerHTML+=`
+
+<div class="order-card">
+
+
+<div class="order-top">
+
+<div>
+
+<div class="order-id">
+
+Order: ${order.id}
+
+</div>
+
+<div class="order-date">
+
+${new Date(order.date).toLocaleString()}
+
+</div>
+
+</div>
+
+
+<select
+class="order-status"
+onchange="updateStatus(${index},this.value)"
+>
+
+<option ${status==="Pending"?"selected":""}>
+Pending
+</option>
+
+<option ${status==="Confirmed"?"selected":""}>
+Confirmed
+</option>
+
+<option ${status==="Shipped"?"selected":""}>
+Shipped
+</option>
+
+<option ${status==="Delivered"?"selected":""}>
+Delivered
+</option>
+
+<option ${status==="Cancelled"?"selected":""}>
+Cancelled
+</option>
+
+</select>
+
+</div>
+
+
+<div class="order-grid">
+
+
+<div class="order-info">
+
+<h4>CUSTOMER DETAILS</h4>
+
+<p>
+
+<strong>${order.customer.name}</strong>
+
+<br>
+
+${order.customer.phone}
+
+<br>
+
+${order.customer.email}
+
+</p>
+
+</div>
+
+
+<div class="order-info">
+
+<h4>DELIVERY ADDRESS</h4>
+
+<p>
+
+${order.customer.address}
+
+<br>
+
+${order.customer.city},
+
+${order.customer.state}
+
+<br>
+
+PIN: ${order.customer.pin}
+
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="order-items">
+
+<h4>ORDER ITEMS</h4>
+
+${itemsHTML}
+
+</div>
+
+
+<div class="order-total">
+
+<span>Subtotal</span>
+
+<strong>
+₹${order.subtotal||order.total}
+</strong>
+
+</div>
+
+
+<div class="order-total">
+
+<span>Discount</span>
+
+<strong>
+₹${order.discount||0}
+</strong>
+
+</div>
+
+
+<div class="order-total">
+
+<span>Final Total</span>
+
+<strong>
+₹${order.total}
+</strong>
+
+</div>
+
+
+<button
+class="delete-order"
+onclick="deleteOrder()"
+>
+
+DELETE ORDER
+
+</button>
+
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* UPDATE STATUS */
+
+function updateStatus(index,status){
+
+const latestOrder=JSON.parse(
+localStorage.getItem("latestOrder")
+);
+
+if(latestOrder){
+
+latestOrder.status=status;
+
+localStorage.setItem(
+"latestOrder",
+JSON.stringify(latestOrder)
+);
+
+loadOrders();
+
+}
+
+}
+
+
+/* DELETE ORDER */
+
+function deleteOrder(){
+
+const confirmDelete=confirm(
+"Are you sure you want to delete this order?"
+);
+
+
+if(confirmDelete){
+
+localStorage.removeItem("latestOrder");
+
+loadOrders();
+
+}
+
+}
+
+</script>
+
+</body>
+  </html>
