@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>TRENDY FACTORY — Admin Panel</title>
 
 <style>
@@ -16,6 +18,10 @@ body{
 font-family:Arial,Helvetica,sans-serif;
 background:#f5f0e8;
 color:#211e1a;
+}
+
+button,input,textarea,select{
+font:inherit;
 }
 
 /* LOGIN */
@@ -332,6 +338,12 @@ cursor:pointer;
 font-size:10px;
 }
 
+.loading{
+text-align:center;
+padding:25px;
+color:#766d63;
+}
+
 @media(max-width:800px){
 
 .stats{
@@ -356,6 +368,7 @@ font-size:32px;
 
 }
 </style>
+
 </head>
 
 <body>
@@ -374,12 +387,14 @@ font-size:32px;
 type="text"
 id="adminUsername"
 placeholder="Username"
+
 >
 
 <input
 type="password"
 id="adminPassword"
 placeholder="Password"
+
 >
 
 <button onclick="login()">
@@ -395,7 +410,6 @@ style="color:red;margin-top:15px;font-size:12px"
 
 </div>
 
-
 <!-- ADMIN PANEL -->
 
 <div class="admin-panel" id="adminPanel">
@@ -406,15 +420,11 @@ style="color:red;margin-top:15px;font-size:12px"
 TRENDY FACTORY — ADMIN
 </div>
 
-<button
-class="logout-btn"
-onclick="logout()"
->
+<button class="logout-btn" onclick="logout()">
 LOGOUT
 </button>
 
 </div>
-
 
 <div class="admin-container">
 
@@ -422,56 +432,31 @@ LOGOUT
 Dashboard
 </h1>
 
-
 <!-- STATS -->
 
 <div class="stats">
 
 <div class="stat-card">
-
 <span>TOTAL PRODUCTS</span>
-
-<h2 id="totalProducts">
-0
-</h2>
-
+<h2 id="totalProducts">0</h2>
 </div>
 
-
 <div class="stat-card">
-
 <span>TOTAL ORDERS</span>
-
-<h2 id="totalOrders">
-0
-</h2>
-
+<h2 id="totalOrders">0</h2>
 </div>
 
-
 <div class="stat-card">
-
 <span>PENDING ORDERS</span>
-
-<h2 id="pendingOrders">
-0
-</h2>
-
+<h2 id="pendingOrders">0</h2>
 </div>
-
 
 <div class="stat-card">
-
 <span>TOTAL SALES</span>
-
-<h2>
-₹<span id="totalSales">0</span>
-</h2>
-
+<h2>₹<span id="totalSales">0</span></h2>
 </div>
 
 </div>
-
 
 <!-- ADD PRODUCT -->
 
@@ -481,60 +466,40 @@ Dashboard
 Add New Product
 </h2>
 
-
 <div class="product-form">
 
-<input
-type="hidden"
-id="editProductId"
->
-
+<input type="hidden" id="editProductId">
 
 <input
 id="productName"
 type="text"
 placeholder="Product Name"
->
 
+>
 
 <input
 id="productPrice"
 type="number"
 placeholder="Price"
->
 
+>
 
 <select id="productCategory">
 
-<option value="">
-Select Category
-</option>
-
-<option value="shirts">
-Shirts
-</option>
-
-<option value="tshirts">
-T-Shirts
-</option>
-
-<option value="pants">
-Pants
-</option>
-
-<option value="jackets">
-Jackets
-</option>
+<option value="">Select Category</option>
+<option value="shirts">Shirts</option>
+<option value="tshirts">T-Shirts</option>
+<option value="pants">Pants</option>
+<option value="jackets">Jackets</option>
 
 </select>
-
 
 <input
 id="productSizes"
 type="text"
-placeholder="Sizes e.g. S,M,L,XL or 28,30,32,34"
->
+placeholder="Sizes e.g. S,M,L,XL"
 
+>
 
 <textarea
 id="productDescription"
@@ -542,46 +507,43 @@ class="full-width"
 placeholder="Product Description"
 ></textarea>
 
-
 <button
 class="form-btn full-width"
 onclick="saveProduct()"
 id="saveProductBtn"
->
-ADD PRODUCT
-</button>
 
+>
+
+ADD PRODUCT </button>
 
 <button
-class="form-btn"
+class="form-btn full-width"
 id="cancelEditBtn"
 onclick="cancelEdit()"
-style="display:none"
+style="display:none;background:#777"
+
 >
-CANCEL EDIT
-</button>
 
-
-</div>
+CANCEL EDIT </button>
 
 </div>
 
+</div>
 
 <!-- PRODUCT LIST -->
 
 <div class="section-card">
 
-<h2>
-Manage Products
-</h2>
+<h2>Manage Products</h2>
 
 <div
 class="products-grid"
 id="productsContainer"
-></div>
-
+>
+<div class="loading">Loading products...</div>
 </div>
 
+</div>
 
 <!-- ORDERS -->
 
@@ -596,34 +558,87 @@ Customer Orders
 <button
 class="form-btn"
 onclick="loadOrders()"
+style="width:auto"
+
 >
-REFRESH
-</button>
+
+REFRESH </button>
 
 </div>
 
-
-<div id="ordersContainer"></div>
-
-</div>
-
-
+<div id="ordersContainer">
+<div class="loading">Loading orders...</div>
 </div>
 
 </div>
 
+</div>
 
-<script>
+</div>
 
-/* =========================
-LOGIN
-========================= */
+<script type="module">
+
+/* ========================================
+FIREBASE IMPORTS
+======================================== */
+
+import {
+initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+getDocs,
+addDoc,
+doc,
+updateDoc,
+deleteDoc,
+getDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+/* ========================================
+FIREBASE CONFIG
+======================================== */
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCZjafz8Ze5p6xSoir4j5IdKc_MJE_Eyns",
+
+authDomain: "trendy-factory.firebaseapp.com",
+
+projectId: "trendy-factory",
+
+storageBucket: "trendy-factory.firebasestorage.app",
+
+messagingSenderId: "811817163762",
+
+appId: "1:811817163762:web:c9aecc5db2cb332a13696b",
+
+measurementId: "G-8YDMBE9T7C"
+
+};
+
+
+/* ========================================
+INITIALIZE FIREBASE
+======================================== */
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+/* ========================================
+ADMIN LOGIN
+======================================== */
 
 const ADMIN_USERNAME = "admin";
 const ADMIN_PASSWORD = "trendy123";
 
 
-function login(){
+window.login = function(){
 
 const username =
 document.getElementById("adminUsername").value.trim();
@@ -637,7 +652,7 @@ username === ADMIN_USERNAME &&
 password === ADMIN_PASSWORD
 ){
 
-localStorage.setItem(
+sessionStorage.setItem(
 "adminLoggedIn",
 "true"
 );
@@ -653,7 +668,7 @@ document.getElementById(
 
 }
 
-}
+};
 
 
 function showAdmin(){
@@ -673,9 +688,9 @@ loadOrders();
 }
 
 
-function logout(){
+window.logout = function(){
 
-localStorage.removeItem(
+sessionStorage.removeItem(
 "adminLoggedIn"
 );
 
@@ -687,159 +702,19 @@ document.getElementById(
 "loginPage"
 ).style.display = "flex";
 
-}
+};
 
 
-/* =========================
-DEFAULT PRODUCTS
-========================= */
-
-const defaultProducts = [
-
-{
-id:1,
-name:"Premium Linen Shirt",
-price:1999,
-category:"shirts",
-image:"LINEN SHIRT",
-description:"Premium breathable linen shirt.",
-sizes:["S","M","L","XL","XXL"]
-},
-
-{
-id:2,
-name:"Oxford Classic Shirt",
-price:2299,
-category:"shirts",
-image:"OXFORD SHIRT",
-description:"Classic Oxford shirt.",
-sizes:["S","M","L","XL","XXL"]
-},
-
-{
-id:3,
-name:"Oversized Essential T-Shirt",
-price:1199,
-category:"tshirts",
-image:"OVERSIZED T-SHIRT",
-description:"Heavyweight cotton t-shirt.",
-sizes:["S","M","L","XL","XXL"]
-},
-
-{
-id:4,
-name:"Minimal Cotton T-Shirt",
-price:999,
-category:"tshirts",
-image:"COTTON T-SHIRT",
-description:"Soft cotton t-shirt.",
-sizes:["S","M","L","XL","XXL"]
-},
-
-{
-id:5,
-name:"Relaxed Fit Trouser",
-price:2499,
-category:"pants",
-image:"RELAXED TROUSER",
-description:"Modern relaxed trousers.",
-sizes:["28","30","32","34","36","38","40"]
-},
-
-{
-id:6,
-name:"Classic Straight Jeans",
-price:2799,
-category:"pants",
-image:"STRAIGHT JEANS",
-description:"Classic straight fit jeans.",
-sizes:["28","30","32","34","36","38","40"]
-},
-
-{
-id:7,
-name:"Minimal Bomber Jacket",
-price:3999,
-category:"jackets",
-image:"BOMBER JACKET",
-description:"Modern bomber jacket.",
-sizes:["S","M","L","XL","XXL"]
-},
-
-{
-id:8,
-name:"Classic Oversized Jacket",
-price:4499,
-category:"jackets",
-image:"OVERSIZED JACKET",
-description:"Premium oversized jacket.",
-sizes:["S","M","L","XL","XXL"]
-}
-
-];
-
-
-/* =========================
-PRODUCT STORAGE
-========================= */
+/* ========================================
+PRODUCTS
+======================================== */
 
 let adminProducts = [];
 
 
-function initializeProducts(){
+/* LOAD PRODUCTS */
 
-try{
-
-const savedProducts =
-localStorage.getItem("trendyProducts");
-
-
-if(savedProducts){
-
-const parsedProducts =
-JSON.parse(savedProducts);
-
-
-if(
-Array.isArray(parsedProducts) &&
-parsedProducts.length > 0
-){
-
-adminProducts =
-parsedProducts;
-
-return;
-
-}
-
-}
-
-}catch(error){
-
-console.log(
-"Product storage reset"
-);
-
-}
-
-
-adminProducts =
-[...defaultProducts];
-
-
-localStorage.setItem(
-"trendyProducts",
-JSON.stringify(adminProducts)
-);
-
-}
-
-
-/* =========================
-LOAD PRODUCTS
-========================= */
-
-function loadProducts(){
+async function loadProducts(){
 
 const container =
 document.getElementById(
@@ -847,21 +722,41 @@ document.getElementById(
 );
 
 
-if(!container){
-return;
-}
+container.innerHTML =
+'<div class="loading">Loading products...</div>';
+
+
+try{
+
+const querySnapshot =
+await getDocs(
+collection(db,"products")
+);
+
+
+adminProducts = [];
+
+
+querySnapshot.forEach((documentItem) => {
+
+adminProducts.push({
+
+firebaseId:documentItem.id,
+
+...documentItem.data()
+
+});
+
+});
 
 
 container.innerHTML = "";
 
 
-if(
-!Array.isArray(adminProducts) ||
-adminProducts.length === 0
-){
+if(adminProducts.length === 0){
 
 container.innerHTML =
-'<div class="empty">No products found.</div>';
+'<div class="empty">No products found. Add your first product above.</div>';
 
 document.getElementById(
 "totalProducts"
@@ -880,28 +775,27 @@ Array.isArray(product.sizes)
 : "";
 
 
-container.innerHTML += `
+const productCard =
+document.createElement("div");
 
-<div class="admin-product">
+productCard.className =
+"admin-product";
 
-<h3>
-${product.name || "Unnamed Product"}
-</h3>
+
+productCard.innerHTML = `
+
+<h3>${product.name || "Unnamed Product"}</h3>
 
 <p>
-<strong>
-₹${product.price || 0}
-</strong>
+<strong>₹${product.price || 0}</strong>
 </p>
 
 <p>
-Category:
-${product.category || ""}
+Category: ${product.category || ""}
 </p>
 
 <p>
-Sizes:
-${sizes}
+Sizes: ${sizes}
 </p>
 
 <p>
@@ -910,25 +804,44 @@ ${product.description || ""}
 
 <div class="product-actions">
 
-<button
-class="edit-btn"
-onclick="editProduct(${product.id})"
->
+<button class="edit-btn">
 EDIT
 </button>
 
-<button
-class="delete-btn"
-onclick="deleteProduct(${product.id})"
->
+<button class="delete-btn">
 DELETE
 </button>
 
 </div>
 
-</div>
-
 `;
+
+
+const buttons =
+productCard.querySelectorAll("button");
+
+
+buttons[0].onclick = function(){
+
+editProduct(
+product.firebaseId
+);
+
+};
+
+
+buttons[1].onclick = function(){
+
+deleteProduct(
+product.firebaseId
+);
+
+};
+
+
+container.appendChild(
+productCard
+);
 
 });
 
@@ -938,16 +851,26 @@ document.getElementById(
 ).textContent =
 adminProducts.length;
 
+
+}catch(error){
+
+console.error(error);
+
+container.innerHTML =
+'<div class="empty">Error loading products. Check Firebase rules.</div>';
+
+}
+
 }
 
 
-/* =========================
+/* ========================================
 SAVE PRODUCT
-========================= */
+======================================== */
 
-function saveProduct(){
+window.saveProduct = async function(){
 
-const id =
+const firebaseId =
 document.getElementById(
 "editProductId"
 ).value;
@@ -959,14 +882,12 @@ document.getElementById(
 ).value.trim();
 
 
-const priceValue =
+const price =
+Number(
 document.getElementById(
 "productPrice"
-).value;
-
-
-const price =
-Number(priceValue);
+).value
+);
 
 
 const category =
@@ -989,9 +910,7 @@ document.getElementById(
 
 if(!name){
 
-alert(
-"Please enter product name."
-);
+alert("Please enter product name.");
 
 return;
 
@@ -1000,9 +919,7 @@ return;
 
 if(!price || price <= 0){
 
-alert(
-"Please enter valid price."
-);
+alert("Please enter valid price.");
 
 return;
 
@@ -1011,9 +928,7 @@ return;
 
 if(!category){
 
-alert(
-"Please select category."
-);
+alert("Please select category.");
 
 return;
 
@@ -1022,9 +937,7 @@ return;
 
 if(!sizesText){
 
-alert(
-"Please enter product sizes."
-);
+alert("Please enter product sizes.");
 
 return;
 
@@ -1033,9 +946,7 @@ return;
 
 if(!description){
 
-alert(
-"Please enter product description."
-);
+alert("Please enter product description.");
 
 return;
 
@@ -1049,87 +960,67 @@ sizesText
 .filter(size => size);
 
 
-if(sizes.length === 0){
-
-alert(
-"Please enter valid sizes."
-);
-
-return;
-
-}
-
-
-/* EDIT */
-
-if(id){
-
-const index =
-adminProducts.findIndex(
-product =>
-String(product.id) === String(id)
-);
-
-
-if(index !== -1){
-
-adminProducts[index] = {
-
-...adminProducts[index],
+const productData = {
 
 name:name,
+
 price:price,
+
 category:category,
+
 sizes:sizes,
+
 description:description,
 
-image:
-adminProducts[index].image ||
-name
+image:name,
+
+updatedAt:new Date().toISOString()
 
 };
 
+
+try{
+
+
+/* UPDATE */
+
+if(firebaseId){
+
+await updateDoc(
+
+doc(
+db,
+"products",
+firebaseId
+),
+
+productData
+
+);
 
 alert(
 "Product updated successfully!"
 );
 
-}
-
-
-cancelEdit();
-
-
-}else{
-
 
 /* ADD */
 
-const newProduct = {
+}else{
 
-id:Date.now(),
-
-name:name,
-
-price:price,
-
-category:category,
-
-image:name,
-
-sizes:sizes,
-
-description:description
-
-};
+productData.createdAt =
+new Date().toISOString();
 
 
-adminProducts.push(
-newProduct
+await addDoc(
+
+collection(
+db,
+"products"
+),
+
+productData
+
 );
-
-
-clearForm();
 
 
 alert(
@@ -1139,41 +1030,49 @@ alert(
 }
 
 
-/* SAVE */
+cancelEdit();
 
-localStorage.setItem(
-"trendyProducts",
-JSON.stringify(adminProducts)
+await loadProducts();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Error saving product: " +
+error.message
 );
-
-
-loadProducts();
 
 }
 
+};
 
-/* =========================
+
+/* ========================================
 EDIT PRODUCT
-========================= */
+======================================== */
 
-function editProduct(id){
+function editProduct(firebaseId){
 
 const product =
 adminProducts.find(
-product =>
-String(product.id) === String(id)
+item =>
+item.firebaseId === firebaseId
 );
 
 
 if(!product){
+
 return;
+
 }
 
 
 document.getElementById(
 "editProductId"
 ).value =
-product.id;
+firebaseId;
 
 
 document.getElementById(
@@ -1227,20 +1126,45 @@ document.getElementById(
 
 
 window.scrollTo({
+
 top:0,
+
 behavior:"smooth"
+
 });
 
 }
 
 
-/* =========================
+/* ========================================
 CANCEL EDIT
-========================= */
+======================================== */
 
-function cancelEdit(){
+window.cancelEdit = function(){
 
-clearForm();
+document.getElementById(
+"editProductId"
+).value = "";
+
+document.getElementById(
+"productName"
+).value = "";
+
+document.getElementById(
+"productPrice"
+).value = "";
+
+document.getElementById(
+"productCategory"
+).value = "";
+
+document.getElementById(
+"productSizes"
+).value = "";
+
+document.getElementById(
+"productDescription"
+).value = "";
 
 
 document.getElementById(
@@ -1260,87 +1184,71 @@ document.getElementById(
 ).style.display =
 "none";
 
-}
+};
 
 
-/* =========================
-CLEAR FORM
-========================= */
-
-function clearForm(){
-
-document.getElementById(
-"editProductId"
-).value = "";
-
-
-document.getElementById(
-"productName"
-).value = "";
-
-
-document.getElementById(
-"productPrice"
-).value = "";
-
-
-document.getElementById(
-"productCategory"
-).value = "";
-
-
-document.getElementById(
-"productSizes"
-).value = "";
-
-
-document.getElementById(
-"productDescription"
-).value = "";
-
-}
-
-
-/* =========================
+/* ========================================
 DELETE PRODUCT
-========================= */
+======================================== */
 
-function deleteProduct(id){
+async function deleteProduct(firebaseId){
 
-const confirmDelete =
+const confirmed =
 confirm(
 "Delete this product?"
 );
 
 
-if(!confirmDelete){
+if(!confirmed){
+
 return;
-}
-
-
-adminProducts =
-adminProducts.filter(
-product =>
-String(product.id) !== String(id)
-);
-
-
-localStorage.setItem(
-"trendyProducts",
-JSON.stringify(adminProducts)
-);
-
-
-loadProducts();
 
 }
 
 
-/* =========================
+try{
+
+await deleteDoc(
+
+doc(
+db,
+"products",
+firebaseId
+)
+
+);
+
+
+alert(
+"Product deleted successfully!"
+);
+
+
+await loadProducts();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Error deleting product: " +
+error.message
+);
+
+}
+
+}
+
+
+/* ========================================
 ORDERS
-========================= */
+======================================== */
 
-function loadOrders(){
+let allOrders = [];
+
+
+window.loadOrders = async function(){
 
 const container =
 document.getElementById(
@@ -1348,47 +1256,42 @@ document.getElementById(
 );
 
 
-if(!container){
-return;
-}
-
-
-let orders = [];
+container.innerHTML =
+'<div class="loading">Loading orders...</div>';
 
 
 try{
 
-const latestOrder =
-JSON.parse(
-localStorage.getItem(
-"latestOrder"
-) || "null"
+const querySnapshot =
+await getDocs(
+collection(db,"orders")
 );
 
 
-if(latestOrder){
+allOrders = [];
 
-orders.push(
-latestOrder
-);
 
-}
+querySnapshot.forEach((documentItem) => {
 
-}catch(error){
+allOrders.push({
 
-orders = [];
+firebaseId:documentItem.id,
 
-}
+...documentItem.data()
+
+});
+
+});
 
 
 document.getElementById(
 "totalOrders"
 ).textContent =
-orders.length;
+allOrders.length;
 
 
-const pending =
-orders.filter(
+const pendingOrders =
+allOrders.filter(
 order =>
 !order.status ||
 order.status === "Pending"
@@ -1398,11 +1301,11 @@ order.status === "Pending"
 document.getElementById(
 "pendingOrders"
 ).textContent =
-pending;
+pendingOrders;
 
 
-const sales =
-orders.reduce(
+const totalSales =
+allOrders.reduce(
 (sum,order) =>
 sum + Number(order.total || 0),
 0
@@ -1412,13 +1315,13 @@ sum + Number(order.total || 0),
 document.getElementById(
 "totalSales"
 ).textContent =
-sales;
+totalSales;
 
 
 container.innerHTML = "";
 
 
-if(orders.length === 0){
+if(allOrders.length === 0){
 
 container.innerHTML =
 '<div class="empty">No orders yet.</div>';
@@ -1428,10 +1331,15 @@ return;
 }
 
 
-orders.forEach(order => {
+allOrders.forEach(order => {
+
 
 const status =
 order.status || "Pending";
+
+
+const customer =
+order.customer || {};
 
 
 const items =
@@ -1452,8 +1360,7 @@ ${item.name || ""}
 <br>
 
 <small>
-Size:
-${item.size || ""}
+Size: ${item.size || ""}
 </small>
 
 </span>
@@ -1467,13 +1374,14 @@ ${item.size || ""}
 `).join("");
 
 
-const customer =
-order.customer || {};
+const orderCard =
+document.createElement("div");
+
+orderCard.className =
+"order-card";
 
 
-container.innerHTML += `
-
-<div class="order-card">
+orderCard.innerHTML = `
 
 <div class="order-top">
 
@@ -1482,14 +1390,14 @@ container.innerHTML += `
 <div class="order-id">
 
 Order:
-${order.id || "N/A"}
+${order.orderId || order.firebaseId}
 
 </div>
 
 <div class="order-date">
 
-${order.date
-? new Date(order.date).toLocaleString()
+${order.createdAt
+? new Date(order.createdAt).toLocaleString()
 : ""}
 
 </div>
@@ -1497,38 +1405,25 @@ ${order.date
 </div>
 
 
-<select
-class="order-status"
-onchange="updateStatus(this.value)"
->
+<select class="order-status">
 
-<option
-${status === "Pending" ? "selected" : ""}
->
+<option value="Pending">
 Pending
 </option>
 
-<option
-${status === "Confirmed" ? "selected" : ""}
->
+<option value="Confirmed">
 Confirmed
 </option>
 
-<option
-${status === "Shipped" ? "selected" : ""}
->
+<option value="Shipped">
 Shipped
 </option>
 
-<option
-${status === "Delivered" ? "selected" : ""}
->
+<option value="Delivered">
 Delivered
 </option>
 
-<option
-${status === "Cancelled" ? "selected" : ""}
->
+<option value="Cancelled">
 Cancelled
 </option>
 
@@ -1615,70 +1510,118 @@ Final Total
 </div>
 
 
-<button
-class="delete-order"
-onclick="deleteOrder()"
->
+<button class="delete-order">
 DELETE ORDER
 </button>
 
-</div>
-
 `;
 
-});
 
-}
-
-
-/* =========================
-ORDER STATUS
-========================= */
-
-function updateStatus(status){
-
-try{
-
-const latestOrder =
-JSON.parse(
-localStorage.getItem(
-"latestOrder"
-) || "null"
+const statusSelect =
+orderCard.querySelector(
+".order-status"
 );
 
 
-if(latestOrder){
-
-latestOrder.status =
+statusSelect.value =
 status;
 
 
-localStorage.setItem(
-"latestOrder",
-JSON.stringify(latestOrder)
+statusSelect.onchange =
+function(){
+
+updateStatus(
+order.firebaseId,
+this.value
 );
 
-}
+};
+
+
+const deleteButton =
+orderCard.querySelector(
+".delete-order"
+);
+
+
+deleteButton.onclick =
+function(){
+
+deleteOrder(
+order.firebaseId
+);
+
+};
+
+
+container.appendChild(
+orderCard
+);
+
+});
+
 
 }catch(error){
 
-console.log(
-"Order update failed"
+console.error(error);
+
+container.innerHTML =
+'<div class="empty">Error loading orders. Check Firebase rules.</div>';
+
+}
+
+};
+
+
+/* ========================================
+UPDATE ORDER STATUS
+======================================== */
+
+async function updateStatus(firebaseId,status){
+
+try{
+
+await updateDoc(
+
+doc(
+db,
+"orders",
+firebaseId
+),
+
+{
+
+status:status,
+
+updatedAt:
+new Date().toISOString()
+
+}
+
+);
+
+
+await loadOrders();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Error updating order."
 );
 
 }
 
-
-loadOrders();
-
 }
 
 
-/* =========================
+/* ========================================
 DELETE ORDER
-========================= */
+======================================== */
 
-function deleteOrder(){
+async function deleteOrder(firebaseId){
 
 const confirmed =
 confirm(
@@ -1687,29 +1630,52 @@ confirm(
 
 
 if(!confirmed){
+
 return;
+
 }
 
 
-localStorage.removeItem(
-"latestOrder"
+try{
+
+await deleteDoc(
+
+doc(
+db,
+"orders",
+firebaseId
+)
+
 );
 
 
-loadOrders();
+alert(
+"Order deleted."
+);
+
+
+await loadOrders();
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Error deleting order."
+);
+
+}
 
 }
 
 
-/* =========================
+/* ========================================
 START APP
-========================= */
-
-initializeProducts();
-
+======================================== */
 
 if(
-localStorage.getItem(
+sessionStorage.getItem(
 "adminLoggedIn"
 ) === "true"
 ){
@@ -1722,3 +1688,4 @@ showAdmin();
 
 </body>
  </html>
+ 
