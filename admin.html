@@ -1,364 +1,459 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>TRENDY FACTORY — Admin Panel</title>
 
 <style>
+
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f5f0e8;
-  color:#211e1a;
+font-family:Arial,Helvetica,sans-serif;
+background:#f5f0e8;
+color:#211e1a;
 }
 
-button,input,textarea,select{
-  font:inherit;
+button,
+input,
+textarea,
+select{
+font:inherit;
 }
 
 /* LOGIN */
 
 .login-page{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
 }
 
 .login-box{
-  width:100%;
-  max-width:400px;
-  background:#fffaf4;
-  padding:40px;
-  border:1px solid #ddd5ca;
+width:100%;
+max-width:400px;
+background:#fffaf4;
+padding:40px;
+border:1px solid #ddd5ca;
 }
 
 .login-box h1{
-  font-family:Georgia,serif;
-  font-weight:400;
-  margin-bottom:10px;
+font-family:Georgia,serif;
+font-weight:400;
+margin-bottom:10px;
 }
 
 .login-box p{
-  color:#766d63;
-  font-size:13px;
-  margin-bottom:25px;
+color:#766d63;
+font-size:13px;
+margin-bottom:25px;
 }
 
 .login-box input{
-  width:100%;
-  padding:14px;
-  margin-bottom:15px;
-  border:1px solid #cfc3b5;
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:1px solid #cfc3b5;
 }
 
-.login-box button,
-.main-btn{
-  width:100%;
-  padding:15px;
-  border:none;
-  background:#211e1a;
-  color:white;
-  cursor:pointer;
-  letter-spacing:1px;
+.login-box button{
+width:100%;
+padding:15px;
+border:none;
+background:#211e1a;
+color:white;
+cursor:pointer;
+letter-spacing:1px;
 }
 
 /* ADMIN */
 
 .admin-panel{
-  display:none;
+display:none;
 }
 
 .admin-header{
-  background:#211e1a;
-  color:white;
-  padding:20px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+background:#211e1a;
+color:white;
+padding:20px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
 }
 
 .admin-logo{
-  letter-spacing:2px;
-  font-size:16px;
-  font-weight:bold;
+letter-spacing:2px;
+font-size:16px;
+font-weight:bold;
 }
 
 .logout-btn{
-  background:transparent;
-  border:1px solid #aaa;
-  color:white;
-  padding:8px 15px;
-  cursor:pointer;
+background:transparent;
+border:1px solid #aaa;
+color:white;
+padding:8px 15px;
+cursor:pointer;
 }
 
 .admin-container{
-  padding:40px 5%;
-  max-width:1400px;
-  margin:auto;
+padding:40px 5%;
+max-width:1400px;
+margin:auto;
 }
 
 .admin-title{
-  font-family:Georgia,serif;
-  font-weight:400;
-  font-size:40px;
-  margin-bottom:30px;
+font-family:Georgia,serif;
+font-weight:400;
+font-size:40px;
+margin-bottom:30px;
 }
 
 /* STATS */
 
 .stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-  margin-bottom:40px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-bottom:40px;
 }
 
 .stat-card{
-  background:#fffaf4;
-  padding:25px;
-  border:1px solid #ddd5ca;
+background:#fffaf4;
+padding:25px;
+border:1px solid #ddd5ca;
 }
 
 .stat-card span{
-  font-size:10px;
-  letter-spacing:1px;
-  color:#766d63;
+font-size:10px;
+letter-spacing:1px;
+color:#766d63;
 }
 
 .stat-card h2{
-  font-size:30px;
-  margin-top:10px;
+font-size:30px;
+margin-top:10px;
 }
 
 /* SECTION */
 
 .section-card{
-  background:#fffaf4;
-  padding:25px;
-  border:1px solid #ddd5ca;
-  margin-bottom:30px;
+background:#fffaf4;
+padding:25px;
+border:1px solid #ddd5ca;
+margin-bottom:30px;
 }
 
 .section-card h2{
-  font-family:Georgia,serif;
-  font-weight:400;
-  margin-bottom:25px;
+font-family:Georgia,serif;
+font-weight:400;
+margin-bottom:25px;
 }
 
-/* PRODUCT FORM */
+/* FORM */
 
-.product-form{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
+.product-form,
+.coupon-form{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
 }
 
 .product-form input,
 .product-form select,
-.product-form textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #cfc3b5;
-  background:white;
+.product-form textarea,
+.coupon-form input,
+.coupon-form select{
+width:100%;
+padding:13px;
+border:1px solid #cfc3b5;
+background:white;
 }
 
 .product-form textarea{
-  min-height:90px;
-  resize:vertical;
+min-height:100px;
+resize:vertical;
 }
 
 .full-width{
-  grid-column:1/-1;
+grid-column:1/-1;
 }
 
 .form-btn{
-  background:#211e1a;
-  color:white;
-  border:none;
-  padding:14px 20px;
-  cursor:pointer;
-  letter-spacing:1px;
+background:#211e1a;
+color:white;
+border:none;
+padding:14px 20px;
+cursor:pointer;
+letter-spacing:1px;
 }
 
-#cancelEditBtn{
-  background:#777;
+.cancel-btn{
+background:#777;
+}
+
+/* IMAGE PREVIEW */
+
+.image-preview{
+width:100%;
+height:180px;
+border:1px dashed #cfc3b5;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+color:#766d63;
+font-size:12px;
+}
+
+.image-preview img{
+width:100%;
+height:100%;
+object-fit:contain;
 }
 
 /* PRODUCTS */
 
 .products-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
 }
 
 .admin-product{
-  background:white;
-  border:1px solid #ddd5ca;
-  padding:18px;
+background:white;
+border:1px solid #ddd5ca;
+overflow:hidden;
+}
+
+.admin-product-image{
+height:220px;
+background:#e5dbcf;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+color:#766d63;
+font-size:11px;
+}
+
+.admin-product-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.admin-product-content{
+padding:18px;
 }
 
 .admin-product h3{
-  font-size:16px;
-  margin-bottom:8px;
+font-size:16px;
+margin-bottom:8px;
 }
 
 .admin-product p{
-  font-size:13px;
-  color:#655d55;
-  margin-bottom:6px;
+font-size:13px;
+color:#655d55;
+margin-bottom:6px;
 }
 
 .product-actions{
-  display:flex;
-  gap:8px;
-  margin-top:15px;
+display:flex;
+gap:8px;
+margin-top:15px;
 }
 
 .edit-btn,
 .delete-btn{
-  border:none;
-  padding:9px 13px;
-  cursor:pointer;
-  font-size:10px;
-  letter-spacing:1px;
+border:none;
+padding:9px 13px;
+cursor:pointer;
+font-size:10px;
+letter-spacing:1px;
 }
 
 .edit-btn{
-  background:#211e1a;
-  color:white;
+background:#211e1a;
+color:white;
 }
 
 .delete-btn{
-  background:#a52a2a;
-  color:white;
+background:#a52a2a;
+color:white;
 }
 
-.empty{
-  text-align:center;
-  padding:40px;
-  color:#766d63;
+/* COUPONS */
+
+.coupon-list{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.coupon-card{
+background:white;
+border:1px solid #ddd5ca;
+padding:20px;
+}
+
+.coupon-code{
+font-size:20px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:12px;
+}
+
+.coupon-card p{
+font-size:13px;
+margin-bottom:7px;
+color:#655d55;
+}
+
+.status-active{
+color:#147a3d !important;
+font-weight:bold;
+}
+
+.status-inactive{
+color:#a52a2a !important;
+font-weight:bold;
 }
 
 /* ORDERS */
 
 .order-card{
-  border:1px solid #ddd5ca;
-  padding:20px;
-  margin-bottom:15px;
-  background:white;
+border:1px solid #ddd5ca;
+padding:20px;
+margin-bottom:15px;
+background:white;
 }
 
 .order-top{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  margin-bottom:15px;
-  flex-wrap:wrap;
+display:flex;
+justify-content:space-between;
+gap:20px;
+margin-bottom:15px;
+flex-wrap:wrap;
 }
 
 .order-id{
-  font-weight:bold;
-  font-size:13px;
+font-weight:bold;
+font-size:13px;
 }
 
 .order-date{
-  font-size:11px;
-  color:#766d63;
-  margin-top:5px;
+font-size:11px;
+color:#766d63;
+margin-top:5px;
 }
 
 .order-status{
-  padding:7px 10px;
-  border:1px solid #211e1a;
-  background:white;
-  font-size:11px;
+padding:8px;
+border:1px solid #211e1a;
+background:white;
+font-size:11px;
 }
 
 .order-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-  border-top:1px solid #eee;
-  padding-top:15px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+border-top:1px solid #eee;
+padding-top:15px;
 }
 
 .order-info h4,
 .order-items h4{
-  font-size:10px;
-  letter-spacing:1px;
-  margin-bottom:8px;
+font-size:10px;
+letter-spacing:1px;
+margin-bottom:8px;
 }
 
 .order-info p{
-  font-size:13px;
-  line-height:1.6;
-  color:#4d4740;
-}
-
-.order-items{
-  margin-top:15px;
-  padding-top:15px;
-  border-top:1px solid #eee;
+font-size:13px;
+line-height:1.6;
+color:#4d4740;
 }
 
 .product-line{
-  display:flex;
-  justify-content:space-between;
-  font-size:13px;
-  padding:7px 0;
+display:flex;
+justify-content:space-between;
+font-size:13px;
+padding:7px 0;
 }
 
 .order-total{
-  margin-top:15px;
-  padding-top:15px;
-  border-top:1px solid #ddd;
-  font-size:15px;
-  display:flex;
-  justify-content:space-between;
+margin-top:15px;
+padding-top:15px;
+border-top:1px solid #ddd;
+font-size:15px;
+display:flex;
+justify-content:space-between;
 }
 
 .delete-order{
-  margin-top:15px;
-  background:#a52a2a;
-  color:white;
-  border:none;
-  padding:9px 14px;
-  cursor:pointer;
-  font-size:10px;
+margin-top:15px;
+background:#a52a2a;
+color:white;
+border:none;
+padding:9px 14px;
+cursor:pointer;
+font-size:10px;
 }
 
-@media(max-width:800px){
+.empty{
+text-align:center;
+padding:40px;
+color:#766d63;
+}
 
-  .stats{
-    grid-template-columns:repeat(2,1fr);
-  }
+@media(max-width:900px){
 
-  .product-form{
-    grid-template-columns:1fr;
-  }
+.stats{
+grid-template-columns:repeat(2,1fr);
+}
 
-  .products-grid{
-    grid-template-columns:1fr;
-  }
+.products-grid,
+.coupon-list{
+grid-template-columns:repeat(2,1fr);
+}
 
-  .order-grid{
-    grid-template-columns:1fr;
-  }
+}
 
-  .admin-title{
-    font-size:32px;
-  }
+@media(max-width:600px){
+
+.admin-container{
+padding:25px 4%;
+}
+
+.admin-title{
+font-size:32px;
+}
+
+.stats,
+.products-grid,
+.coupon-list,
+.product-form,
+.coupon-form,
+.order-grid{
+grid-template-columns:1fr;
+}
+
+.admin-header{
+padding:18px 5%;
+}
 
 }
 
@@ -372,1423 +467,1908 @@ button,input,textarea,select{
 
 <div class="login-page" id="loginPage">
 
-  <div class="login-box">
+<div class="login-box">
 
-```
 <h1>Admin Login</h1>
 
 <p>TRENDY FACTORY MANAGEMENT</p>
 
-<input type="text" id="adminUsername" placeholder="Username">
+<input
+type="text"
+id="adminUsername"
+placeholder="Username">
 
-<input type="password" id="adminPassword" placeholder="Password">
+<input
+type="password"
+id="adminPassword"
+placeholder="Password">
 
-<button onclick="login()">LOGIN</button>
+<button onclick="login()">
+LOGIN
+</button>
 
-<p id="loginMessage"
-   style="color:red;margin-top:15px;font-size:12px">
+<p
+id="loginMessage"
+style="color:red;margin-top:15px;font-size:12px">
 </p>
-```
 
-  </div>
+</div>
 
 </div>
 
 <!-- ADMIN PANEL -->
 
-<div class="admin-panel" id="adminPanel">
+<div
+class="admin-panel"
+id="adminPanel">
 
-  <div class="admin-header">
+<header class="admin-header">
 
-```
 <div class="admin-logo">
-  TRENDY FACTORY — ADMIN
+TRENDY FACTORY — ADMIN
 </div>
 
-<button class="logout-btn" onclick="logout()">
-  LOGOUT
+<button
+class="logout-btn"
+onclick="logout()">
+LOGOUT
 </button>
-```
 
-  </div>
+</header>
 
-  <div class="admin-container">
+<div class="admin-container">
 
-```
-<h1 class="admin-title">Dashboard</h1>
-
+<h1 class="admin-title">
+Dashboard
+</h1>
 
 <!-- STATS -->
 
 <div class="stats">
 
-  <div class="stat-card">
-    <span>TOTAL PRODUCTS</span>
-    <h2 id="totalProducts">0</h2>
-  </div>
-
-  <div class="stat-card">
-    <span>TOTAL ORDERS</span>
-    <h2 id="totalOrders">0</h2>
-  </div>
-
-  <div class="stat-card">
-    <span>PENDING ORDERS</span>
-    <h2 id="pendingOrders">0</h2>
-  </div>
-
-  <div class="stat-card">
-    <span>TOTAL SALES</span>
-    <h2>₹<span id="totalSales">0</span></h2>
-  </div>
-
+<div class="stat-card">
+<span>TOTAL PRODUCTS</span>
+<h2 id="totalProducts">0</h2>
 </div>
 
+<div class="stat-card">
+<span>TOTAL COUPONS</span>
+<h2 id="totalCoupons">0</h2>
+</div>
+
+<div class="stat-card">
+<span>TOTAL ORDERS</span>
+<h2 id="totalOrders">0</h2>
+</div>
+
+<div class="stat-card">
+<span>TOTAL SALES</span>
+<h2>₹<span id="totalSales">0</span></h2>
+</div>
+
+</div>
 
 <!-- PRODUCT FORM -->
 
 <div class="section-card">
 
-  <h2 id="formTitle">Add New Product</h2>
+<h2 id="productFormTitle">
+Add New Product
+</h2>
 
-  <div class="product-form">
+<div class="product-form">
 
-    <input type="hidden" id="editProductId">
+<input
+type="hidden"
+id="editProductId">
 
-    <input id="productName"
-           type="text"
-           placeholder="Product Name">
+<input
+id="productName"
+type="text"
+placeholder="Product Name">
 
-    <input id="productPrice"
-           type="number"
-           placeholder="Price">
+<input
+id="productPrice"
+type="number"
+placeholder="Price">
 
-    <select id="productCategory">
+<select id="productCategory">
 
-      <option value="">Select Category</option>
-      <option value="shirts">Shirts</option>
-      <option value="tshirts">T-Shirts</option>
-      <option value="pants">Pants</option>
-      <option value="jackets">Jackets</option>
+<option value="">
+Select Category
+</option>
 
-    </select>
+<option value="shirts">
+Shirts
+</option>
 
-    <input id="productSizes"
-           type="text"
-           placeholder="Sizes e.g. S,M,L,XL">
+<option value="tshirts">
+T-Shirts
+</option>
 
-    <textarea id="productDescription"
-              class="full-width"
-              placeholder="Product Description"></textarea>
+<option value="pants">
+Pants
+</option>
 
-    <button class="form-btn full-width"
-            onclick="saveProduct()"
-            id="saveProductBtn">
-      ADD PRODUCT
-    </button>
+<option value="jackets">
+Jackets
+</option>
 
-    <button class="form-btn full-width"
-            id="cancelEditBtn"
-            onclick="cancelEdit()"
-            style="display:none">
-      CANCEL EDIT
-    </button>
+</select>
 
-  </div>
+<input
+id="productSizes"
+type="text"
+placeholder="Sizes e.g. S,M,L,XL">
+
+<input
+id="productImage"
+type="url"
+class="full-width"
+placeholder="Product Image URL">
+
+<div
+class="image-preview full-width"
+id="imagePreview">
+IMAGE PREVIEW
+</div>
+
+<textarea
+id="productDescription"
+class="full-width"
+placeholder="Product Description">
+</textarea>
+
+<button
+class="form-btn full-width"
+onclick="saveProduct()"
+id="saveProductBtn">
+ADD PRODUCT
+</button>
+
+<button
+class="form-btn cancel-btn full-width"
+onclick="cancelProductEdit()"
+id="cancelProductEditBtn"
+style="display:none">
+CANCEL EDIT
+</button>
 
 </div>
 
+</div>
 
 <!-- PRODUCTS -->
 
 <div class="section-card">
 
-  <h2>Manage Products</h2>
+<h2>Manage Products</h2>
 
-  <div class="products-grid"
-       id="productsContainer">
-  </div>
+<div
+class="products-grid"
+id="productsContainer">
+
+<div class="empty">
+Loading products...
+</div>
 
 </div>
 
+</div>
+
+<!-- COUPON FORM -->
+
+<div class="section-card">
+
+<h2 id="couponFormTitle">
+Add Discount Coupon
+</h2>
+
+<div class="coupon-form">
+
+<input
+type="hidden"
+id="editCouponId">
+
+<input
+id="couponCode"
+type="text"
+placeholder="Coupon Code e.g. SAVE10">
+
+<select id="couponType">
+
+<option value="percentage">
+Percentage (%)
+</option>
+
+<option value="fixed">
+Fixed Amount (₹)
+</option>
+
+</select>
+
+<input
+id="couponDiscount"
+type="number"
+placeholder="Discount Value">
+
+<select id="couponActive">
+
+<option value="true">
+Active
+</option>
+
+<option value="false">
+Inactive
+</option>
+
+</select>
+
+<button
+class="form-btn full-width"
+onclick="saveCoupon()"
+id="saveCouponBtn">
+ADD COUPON
+</button>
+
+<button
+class="form-btn cancel-btn full-width"
+onclick="cancelCouponEdit()"
+id="cancelCouponEditBtn"
+style="display:none">
+CANCEL EDIT
+</button>
+
+</div>
+
+</div>
+
+<!-- COUPONS -->
+
+<div class="section-card">
+
+<h2>Manage Coupons</h2>
+
+<div
+class="coupon-list"
+id="couponsContainer">
+
+<div class="empty">
+Loading coupons...
+</div>
+
+</div>
+
+</div>
 
 <!-- ORDERS -->
 
 <div class="section-card">
 
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:25px">
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+gap:15px;
+flex-wrap:wrap">
 
-    <h2 style="margin:0">
-      Customer Orders
-    </h2>
+<h2 style="margin:0">
+Customer Orders
+</h2>
 
-    <button class="form-btn"
-            onclick="loadOrders()">
-      REFRESH
-    </button>
-
-  </div>
-
-  <div id="ordersContainer"></div>
+<button
+class="form-btn"
+onclick="loadOrders()">
+REFRESH ORDERS
+</button>
 
 </div>
-```
 
-  </div>
+<div id="ordersContainer">
+
+<div class="empty">
+Loading orders...
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
 <script type="module">
 
-/* =========================
-FIREBASE IMPORTS
-========================= */
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+initializeApp
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-  getFirestore,
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  onSnapshot
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+getFirestore,
+collection,
+getDocs,
+addDoc,
+doc,
+updateDoc,
+deleteDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-
-/* =========================
-FIREBASE CONFIG
-========================= */
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCZjafz8Ze5p6xSoir4j5IdKc_MJE_Eyns",
-  authDomain: "trendy-factory.firebaseapp.com",
-  projectId: "trendy-factory",
-  storageBucket: "trendy-factory.firebasestorage.app",
-  messagingSenderId: "811817163762",
-  appId: "1:811817163762:web:c9aecc5db2cb332a13696b",
-  measurementId: "G-8YDMBE9T7C"
+
+apiKey: "AIzaSyCZjafz8Ze5p6xSoir4j5IdKc_MJE_Eyns",
+
+authDomain: "trendy-factory.firebaseapp.com",
+
+projectId: "trendy-factory",
+
+storageBucket: "trendy-factory.firebasestorage.app",
+
+messagingSenderId: "811817163762",
+
+appId: "1:811817163762:web:c9aecc5db2cb332a13696b",
+
+measurementId: "G-8YDMBE9T7C"
+
 };
 
 
-/* =========================
-INITIALIZE FIREBASE
-========================= */
+const app =
+initializeApp(firebaseConfig);
 
-const app = initializeApp(firebaseConfig);
-
-const db = getFirestore(app);
+const db =
+getFirestore(app);
 
 
-/* =========================
-ADMIN LOGIN
-========================= */
+/* LOGIN */
 
 const ADMIN_USERNAME = "admin";
-
-const ADMIN_PASSWORD = "trendy123";
-
-
-window.login = function(){
-
-  const username =
-  document.getElementById("adminUsername").value.trim();
-
-  const password =
-  document.getElementById("adminPassword").value.trim();
+const ADMIN_PASSWORD = "admin123";
 
 
-  if(
-    username === ADMIN_USERNAME &&
-    password === ADMIN_PASSWORD
-  ){
+window.login =
+function(){
 
-    localStorage.setItem(
-      "adminLoggedIn",
-      "true"
-    );
+const username =
+document.getElementById("adminUsername").value.trim();
 
-    showAdmin();
+const password =
+document.getElementById("adminPassword").value;
 
-  }else{
+const message =
+document.getElementById("loginMessage");
 
-    document.getElementById(
-      "loginMessage"
-    ).textContent =
-    "Invalid username or password.";
+if(
+username === ADMIN_USERNAME &&
+password === ADMIN_PASSWORD
+){
 
-  }
+sessionStorage.setItem(
+"trendyFactoryAdmin",
+"true"
+);
 
-};
+showAdmin();
 
+}else{
 
-window.showAdmin = function(){
+message.textContent =
+"Invalid username or password.";
 
-  document.getElementById(
-    "loginPage"
-  ).style.display = "none";
-
-
-  document.getElementById(
-    "adminPanel"
-  ).style.display = "block";
-
-
-  loadProducts();
-
-  loadOrders();
+}
 
 };
 
 
-window.logout = function(){
+window.logout =
+function(){
 
-  localStorage.removeItem(
-    "adminLoggedIn"
-  );
+sessionStorage.removeItem(
+"trendyFactoryAdmin"
+);
 
+document.getElementById("adminPanel").style.display =
+"none";
 
-  document.getElementById(
-    "adminPanel"
-  ).style.display = "none";
-
-
-  document.getElementById(
-    "loginPage"
-  ).style.display = "flex";
+document.getElementById("loginPage").style.display =
+"flex";
 
 };
 
 
-/* =========================
-PRODUCTS
-========================= */
+function showAdmin(){
 
-let adminProducts = [];
+document.getElementById("loginPage").style.display =
+"none";
 
+document.getElementById("adminPanel").style.display =
+"block";
 
-/* =========================
-LOAD PRODUCTS
-========================= */
-
-async function loadProducts(){
-
-  const container =
-  document.getElementById(
-    "productsContainer"
-  );
-
-
-  container.innerHTML =
-  '<div class="empty">Loading products...</div>';
-
-
-  try{
-
-    const snapshot =
-    await getDocs(
-      collection(db,"products")
-    );
-
-
-    adminProducts = [];
-
-
-    snapshot.forEach(documentData => {
-
-      adminProducts.push({
-
-        id:documentData.id,
-
-        ...documentData.data()
-
-      });
-
-    });
-
-
-    renderProducts();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    container.innerHTML =
-    '<div class="empty">Error loading products.</div>';
-
-  }
+loadProducts();
+loadCoupons();
+loadOrders();
 
 }
 
 
-/* =========================
-REALTIME PRODUCTS
-========================= */
+/* IMAGE PREVIEW */
 
-onSnapshot(
-  collection(db,"products"),
+const imageInput =
+document.getElementById("productImage");
 
-  snapshot => {
-
-    adminProducts = [];
-
-
-    snapshot.forEach(documentData => {
-
-      adminProducts.push({
-
-        id:documentData.id,
-
-        ...documentData.data()
-
-      });
-
-    });
-
-
-    if(
-      document.getElementById("adminPanel")
-      .style.display === "block"
-    ){
-
-      renderProducts();
-
-    }
-
-  },
-
-  error => {
-
-    console.error(
-      "Realtime error:",
-      error
-    );
-
-  }
-
+imageInput.addEventListener(
+"input",
+function(){
+previewImage();
+}
 );
 
 
-/* =========================
-RENDER PRODUCTS
-========================= */
+function previewImage(){
 
-function renderProducts(){
+const url =
+imageInput.value.trim();
 
-  const container =
-  document.getElementById(
-    "productsContainer"
-  );
+const preview =
+document.getElementById("imagePreview");
 
+if(!url){
 
-  container.innerHTML = "";
+preview.innerHTML =
+"IMAGE PREVIEW";
 
+return;
 
-  if(
-    adminProducts.length === 0
-  ){
+}
 
-    container.innerHTML =
-    '<div class="empty">No products found. Add your first product.</div>';
-
-
-    document.getElementById(
-      "totalProducts"
-    ).textContent = "0";
-
-
-    return;
-
-  }
-
-
-  adminProducts.forEach(product => {
-
-
-    const sizes =
-    Array.isArray(product.sizes)
-    ? product.sizes.join(", ")
-    : "";
-
-
-    container.innerHTML += `
-
-    <div class="admin-product">
-
-      <h3>
-        ${product.name || "Unnamed Product"}
-      </h3>
-
-      <p>
-        <strong>
-          ₹${product.price || 0}
-        </strong>
-      </p>
-
-      <p>
-        Category:
-        ${product.category || ""}
-      </p>
-
-      <p>
-        Sizes:
-        ${sizes}
-      </p>
-
-      <p>
-        ${product.description || ""}
-      </p>
-
-
-      <div class="product-actions">
-
-        <button
-          class="edit-btn"
-          onclick="editProduct('${product.id}')"
-        >
-          EDIT
-        </button>
-
-
-        <button
-          class="delete-btn"
-          onclick="deleteProduct('${product.id}')"
-        >
-          DELETE
-        </button>
-
-      </div>
-
-    </div>
-
-    `;
-
-  });
-
-
-  document.getElementById(
-    "totalProducts"
-  ).textContent =
-  adminProducts.length;
+preview.innerHTML =
+`<img src="${url}" alt="Product Preview">`;
 
 }
 
 
-/* =========================
-SAVE PRODUCT
-========================= */
+/* PRODUCTS */
+
+let allProducts = [];
+
+
+async function loadProducts(){
+
+const container =
+document.getElementById("productsContainer");
+
+container.innerHTML =
+'<div class="empty">Loading products...</div>';
+
+try{
+
+const snapshot =
+await getDocs(
+collection(db,"products")
+);
+
+allProducts = [];
+
+snapshot.forEach((item) => {
+
+allProducts.push({
+
+firebaseId:item.id,
+
+...item.data()
+
+});
+
+});
+
+document.getElementById("totalProducts").textContent =
+allProducts.length;
+
+renderProducts();
+
+}catch(error){
+
+console.error(error);
+
+container.innerHTML =
+'<div class="empty">Unable to load products.</div>';
+
+}
+
+}
+
+
+function renderProducts(){
+
+const container =
+document.getElementById("productsContainer");
+
+container.innerHTML = "";
+
+if(allProducts.length === 0){
+
+container.innerHTML =
+'<div class="empty">No products found.</div>';
+
+return;
+
+}
+
+allProducts.forEach((product) => {
+
+const card =
+document.createElement("div");
+
+card.className =
+"admin-product";
+
+const image =
+product.image || "";
+
+card.innerHTML = `
+
+<div class="admin-product-image">
+
+${
+image
+? `<img src="${image}" alt="${escapeHTML(product.name || "Product")}">`
+: `NO IMAGE`
+}
+
+</div>
+
+<div class="admin-product-content">
+
+<h3>
+${escapeHTML(product.name || "")}
+</h3>
+
+<p>
+₹${Number(product.price) || 0}
+</p>
+
+<p>
+Category: ${escapeHTML(product.category || "")}
+</p>
+
+<p>
+Sizes: ${
+Array.isArray(product.sizes)
+? product.sizes.join(", ")
+: ""
+}
+</p>
+
+<div class="product-actions">
+
+<button class="edit-btn">
+EDIT
+</button>
+
+<button class="delete-btn">
+DELETE
+</button>
+
+</div>
+
+</div>
+
+`;
+
+card
+.querySelector(".edit-btn")
+.onclick =
+function(){
+editProduct(product.firebaseId);
+};
+
+card
+.querySelector(".delete-btn")
+.onclick =
+function(){
+deleteProduct(product.firebaseId);
+};
+
+container.appendChild(card);
+
+});
+
+}
+
 
 window.saveProduct =
 async function(){
 
-  const id =
-  document.getElementById(
-    "editProductId"
-  ).value;
-
-
-  const name =
-  document.getElementById(
-    "productName"
-  ).value.trim();
-
-
-  const price =
-  Number(
-    document.getElementById(
-      "productPrice"
-    ).value
-  );
-
-
-  const category =
-  document.getElementById(
-    "productCategory"
-  ).value;
-
-
-  const sizesText =
-  document.getElementById(
-    "productSizes"
-  ).value.trim();
-
-
-  const description =
-  document.getElementById(
-    "productDescription"
-  ).value.trim();
-
-
-  /* VALIDATION */
-
-  if(!name){
-
-    alert(
-      "Please enter product name."
-    );
-
-    return;
-
-  }
-
-
-  if(!price || price <= 0){
-
-    alert(
-      "Please enter valid price."
-    );
-
-    return;
-
-  }
-
-
-  if(!category){
-
-    alert(
-      "Please select category."
-    );
-
-    return;
-
-  }
-
-
-  if(!sizesText){
-
-    alert(
-      "Please enter product sizes."
-    );
-
-    return;
-
-  }
-
-
-  if(!description){
-
-    alert(
-      "Please enter product description."
-    );
-
-    return;
-
-  }
-
-
-  const sizes =
-  sizesText
-  .split(",")
-  .map(size => size.trim())
-  .filter(size => size);
-
-
-  const productData = {
-
-    name:name,
-
-    price:price,
-
-    category:category,
-
-    sizes:sizes,
-
-    description:description,
-
-    image:name,
-
-    updatedAt:
-    new Date().toISOString()
-
-  };
-
-
-  try{
-
-
-    /* EDIT PRODUCT */
-
-    if(id){
-
-      await updateDoc(
-
-        doc(
-          db,
-          "products",
-          id
-        ),
-
-        productData
-
-      );
-
-
-      alert(
-        "Product updated successfully!"
-      );
-
-
-      cancelEdit();
-
-
-    }else{
-
-
-      /* ADD PRODUCT */
-
-      productData.createdAt =
-      new Date().toISOString();
-
-
-      await addDoc(
-
-        collection(
-          db,
-          "products"
-        ),
-
-        productData
-
-      );
-
-
-      alert(
-        "Product added successfully!"
-      );
-
-
-      clearForm();
-
-    }
-
-
-  }catch(error){
-
-    console.error(error);
-
-    alert(
-      "Error saving product: " +
-      error.message
-    );
-
-  }
+const id =
+document.getElementById("editProductId").value;
+
+const name =
+document.getElementById("productName").value.trim();
+
+const price =
+Number(
+document.getElementById("productPrice").value
+);
+
+const category =
+document.getElementById("productCategory").value;
+
+const sizesText =
+document.getElementById("productSizes").value.trim();
+
+const image =
+document.getElementById("productImage").value.trim();
+
+const description =
+document.getElementById("productDescription").value.trim();
+
+if(
+!name ||
+!price ||
+!category
+){
+
+alert(
+"Please fill Product Name, Price and Category."
+);
+
+return;
+
+}
+
+const sizes =
+sizesText
+? sizesText
+.split(",")
+.map(size => size.trim())
+.filter(size => size)
+: [];
+
+const productData = {
+
+name:name,
+price:price,
+category:category,
+sizes:sizes,
+image:image,
+description:description,
+updatedAt:new Date().toISOString()
 
 };
 
+const button =
+document.getElementById("saveProductBtn");
 
-/* =========================
-EDIT PRODUCT
-========================= */
+button.disabled = true;
+
+try{
+
+if(id){
+
+await updateDoc(
+doc(db,"products",id),
+productData
+);
+
+alert("Product updated successfully!");
+
+}else{
+
+productData.createdAt =
+new Date().toISOString();
+
+await addDoc(
+collection(db,"products"),
+productData
+);
+
+alert("Product added successfully!");
+
+}
+
+clearProductForm();
+
+await loadProducts();
+
+}catch(error){
+
+console.error(error);
+
+alert("Unable to save product.");
+
+}
+
+button.disabled = false;
+
+};
+
 
 window.editProduct =
 function(id){
 
-  const product =
-  adminProducts.find(
-    product => product.id === id
-  );
+const product =
+allProducts.find(
+item => item.firebaseId === id
+);
 
+if(!product){
+return;
+}
 
-  if(!product){
+document.getElementById("editProductId").value =
+id;
 
-    alert(
-      "Product not found."
-    );
+document.getElementById("productName").value =
+product.name || "";
 
-    return;
+document.getElementById("productPrice").value =
+product.price || "";
 
-  }
+document.getElementById("productCategory").value =
+product.category || "";
 
+document.getElementById("productSizes").value =
+Array.isArray(product.sizes)
+? product.sizes.join(", ")
+: "";
 
-  document.getElementById(
-    "editProductId"
-  ).value =
-  product.id;
+document.getElementById("productImage").value =
+product.image || "";
 
+document.getElementById("productDescription").value =
+product.description || "";
 
-  document.getElementById(
-    "productName"
-  ).value =
-  product.name || "";
+document.getElementById("productFormTitle").textContent =
+"Edit Product";
 
+document.getElementById("saveProductBtn").textContent =
+"UPDATE PRODUCT";
 
-  document.getElementById(
-    "productPrice"
-  ).value =
-  product.price || "";
+document.getElementById("cancelProductEditBtn").style.display =
+"block";
 
+previewImage();
 
-  document.getElementById(
-    "productCategory"
-  ).value =
-  product.category || "";
-
-
-  document.getElementById(
-    "productSizes"
-  ).value =
-  Array.isArray(product.sizes)
-  ? product.sizes.join(",")
-  : "";
-
-
-  document.getElementById(
-    "productDescription"
-  ).value =
-  product.description || "";
-
-
-  document.getElementById(
-    "formTitle"
-  ).textContent =
-  "Edit Product";
-
-
-  document.getElementById(
-    "saveProductBtn"
-  ).textContent =
-  "UPDATE PRODUCT";
-
-
-  document.getElementById(
-    "cancelEditBtn"
-  ).style.display =
-  "block";
-
-
-  window.scrollTo({
-
-    top:0,
-
-    behavior:"smooth"
-
-  });
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
 
 };
 
 
-/* =========================
-CANCEL EDIT
-========================= */
-
-window.cancelEdit =
+window.cancelProductEdit =
 function(){
-
-  clearForm();
-
-
-  document.getElementById(
-    "formTitle"
-  ).textContent =
-  "Add New Product";
-
-
-  document.getElementById(
-    "saveProductBtn"
-  ).textContent =
-  "ADD PRODUCT";
-
-
-  document.getElementById(
-    "cancelEditBtn"
-  ).style.display =
-  "none";
-
+clearProductForm();
 };
 
 
-/* =========================
-CLEAR FORM
-========================= */
+function clearProductForm(){
 
-function clearForm(){
+document.getElementById("editProductId").value = "";
+document.getElementById("productName").value = "";
+document.getElementById("productPrice").value = "";
+document.getElementById("productCategory").value = "";
+document.getElementById("productSizes").value = "";
+document.getElementById("productImage").value = "";
+document.getElementById("productDescription").value = "";
 
-  document.getElementById(
-    "editProductId"
-  ).value = "";
+document.getElementById("productFormTitle").textContent =
+"Add New Product";
 
+document.getElementById("saveProductBtn").textContent =
+"ADD PRODUCT";
 
-  document.getElementById(
-    "productName"
-  ).value = "";
+document.getElementById("cancelProductEditBtn").style.display =
+"none";
 
-
-  document.getElementById(
-    "productPrice"
-  ).value = "";
-
-
-  document.getElementById(
-    "productCategory"
-  ).value = "";
-
-
-  document.getElementById(
-    "productSizes"
-  ).value = "";
-
-
-  document.getElementById(
-    "productDescription"
-  ).value = "";
+document.getElementById("imagePreview").innerHTML =
+"IMAGE PREVIEW";
 
 }
 
-
-/* =========================
-DELETE PRODUCT
-========================= */
 
 window.deleteProduct =
 async function(id){
 
-  const confirmed =
-  confirm(
-    "Delete this product?"
-  );
+const confirmDelete =
+confirm(
+"Are you sure you want to delete this product?"
+);
 
+if(!confirmDelete){
+return;
+}
 
-  if(!confirmed){
+try{
 
-    return;
+await deleteDoc(
+doc(db,"products",id)
+);
 
-  }
+alert("Product deleted successfully.");
 
+await loadProducts();
 
-  try{
+}catch(error){
 
-    await deleteDoc(
+console.error(error);
 
-      doc(
-        db,
-        "products",
-        id
-      )
+alert("Unable to delete product.");
 
-    );
-
-
-    alert(
-      "Product deleted successfully!"
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-
-    alert(
-      "Error deleting product."
-    );
-
-  }
+}
 
 };
 
 
-/* =========================
-ORDERS
-========================= */
+/* ========================================
+COUPONS
+======================================== */
 
-let adminOrders = [];
+let allCoupons = [];
 
 
-window.loadOrders =
+async function loadCoupons(){
+
+const container =
+document.getElementById("couponsContainer");
+
+container.innerHTML =
+'<div class="empty">Loading coupons...</div>';
+
+try{
+
+const snapshot =
+await getDocs(
+collection(db,"coupons")
+);
+
+allCoupons = [];
+
+snapshot.forEach((item) => {
+
+allCoupons.push({
+
+firebaseId:item.id,
+
+...item.data()
+
+});
+
+});
+
+
+document
+.getElementById("totalCoupons")
+.textContent =
+allCoupons.length;
+
+
+renderCoupons();
+
+}catch(error){
+
+console.error(error);
+
+container.innerHTML =
+'<div class="empty">Unable to load coupons.</div>';
+
+}
+
+}
+
+
+function renderCoupons(){
+
+const container =
+document.getElementById("couponsContainer");
+
+container.innerHTML = "";
+
+
+if(allCoupons.length === 0){
+
+container.innerHTML =
+'<div class="empty">No coupons found.</div>';
+
+return;
+
+}
+
+
+allCoupons.forEach((coupon) => {
+
+const card =
+document.createElement("div");
+
+card.className =
+"coupon-card";
+
+
+const active =
+coupon.active !== false;
+
+
+const discountText =
+
+coupon.type === "percentage"
+
+? `${Number(coupon.discount) || 0}% OFF`
+
+: `₹${Number(coupon.discount) || 0} OFF`;
+
+
+card.innerHTML = `
+
+<div class="coupon-code">
+${escapeHTML(coupon.code || "")}
+</div>
+
+<p>
+Discount: ${discountText}
+</p>
+
+<p class="${
+active
+? "status-active"
+: "status-inactive"
+}">
+
+${
+active
+? "ACTIVE"
+: "INACTIVE"
+}
+
+</p>
+
+<div class="product-actions">
+
+<button class="edit-btn">
+EDIT
+</button>
+
+<button class="delete-btn">
+DELETE
+</button>
+
+</div>
+
+`;
+
+
+card
+.querySelector(".edit-btn")
+.onclick =
+function(){
+
+editCoupon(
+coupon.firebaseId
+);
+
+};
+
+
+card
+.querySelector(".delete-btn")
+.onclick =
+function(){
+
+deleteCoupon(
+coupon.firebaseId
+);
+
+};
+
+
+container.appendChild(
+card
+);
+
+});
+
+}
+
+
+window.saveCoupon =
 async function(){
 
-  const container =
-  document.getElementById(
-    "ordersContainer"
-  );
+const id =
+document
+.getElementById("editCouponId")
+.value;
 
 
-  container.innerHTML =
-  '<div class="empty">Loading orders...</div>';
+const code =
+document
+.getElementById("couponCode")
+.value
+.trim()
+.toUpperCase();
 
 
-  try{
-
-    const snapshot =
-    await getDocs(
-      collection(db,"orders")
-    );
+const type =
+document
+.getElementById("couponType")
+.value;
 
 
-    adminOrders = [];
+const discount =
+Number(
+document
+.getElementById("couponDiscount")
+.value
+);
 
 
-    snapshot.forEach(documentData => {
-
-      adminOrders.push({
-
-        id:documentData.id,
-
-        ...documentData.data()
-
-      });
-
-    });
+const active =
+document
+.getElementById("couponActive")
+.value === "true";
 
 
-    renderOrders();
+if(
+!code ||
+discount <= 0
+){
+
+alert(
+"Please enter coupon code and valid discount."
+);
+
+return;
+
+}
 
 
-  }catch(error){
+const couponData = {
 
-    console.error(error);
+code:code,
 
+type:type,
 
-    container.innerHTML =
-    '<div class="empty">No orders found.</div>';
+discount:discount,
 
-  }
+active:active,
+
+updatedAt:
+new Date().toISOString()
 
 };
 
 
-/* =========================
-REALTIME ORDERS
-========================= */
-
-onSnapshot(
-  collection(db,"orders"),
-
-  snapshot => {
-
-    adminOrders = [];
+const button =
+document
+.getElementById("saveCouponBtn");
 
 
-    snapshot.forEach(documentData => {
-
-      adminOrders.push({
-
-        id:documentData.id,
-
-        ...documentData.data()
-
-      });
-
-    });
+button.disabled =
+true;
 
 
-    if(
-      document.getElementById("adminPanel")
-      .style.display === "block"
-    ){
+try{
 
-      renderOrders();
+if(id){
 
-    }
+await updateDoc(
 
-  },
+doc(
+db,
+"coupons",
+id
+),
 
-  error => {
-
-    console.error(
-      "Orders realtime error:",
-      error
-    );
-
-  }
+couponData
 
 );
 
 
-/* =========================
-RENDER ORDERS
-========================= */
+alert(
+"Coupon updated successfully!"
+);
 
-function renderOrders(){
 
-  const container =
-  document.getElementById(
-    "ordersContainer"
-  );
+}else{
 
 
-  container.innerHTML = "";
+couponData.createdAt =
+new Date().toISOString();
 
 
-  document.getElementById(
-    "totalOrders"
-  ).textContent =
-  adminOrders.length;
+await addDoc(
 
+collection(
+db,
+"coupons"
+),
 
-  const pending =
-  adminOrders.filter(
-    order =>
-    !order.status ||
-    order.status === "Pending"
-  ).length;
+couponData
 
+);
 
-  document.getElementById(
-    "pendingOrders"
-  ).textContent =
-  pending;
 
-
-  const sales =
-  adminOrders.reduce(
-
-    (sum,order) =>
-
-    sum +
-    Number(order.total || 0),
-
-    0
-
-  );
-
-
-  document.getElementById(
-    "totalSales"
-  ).textContent =
-  sales;
-
-
-  if(
-    adminOrders.length === 0
-  ){
-
-    container.innerHTML =
-    '<div class="empty">No orders yet.</div>';
-
-
-    return;
-
-  }
-
-
-  adminOrders.forEach(order => {
-
-
-    const customer =
-    order.customer || {};
-
-
-    const items =
-    Array.isArray(order.items)
-    ? order.items
-    : [];
-
-
-    const itemsHTML =
-    items.map(item => `
-
-      <div class="product-line">
-
-        <span>
-
-          ${item.name || ""}
-
-          <br>
-
-          <small>
-            Size:
-            ${item.size || ""}
-          </small>
-
-        </span>
-
-        <strong>
-          ₹${item.price || 0}
-        </strong>
-
-      </div>
-
-    `).join("");
-
-
-    const status =
-    order.status ||
-    "Pending";
-
-
-    const date =
-    order.createdAt
-    ? new Date(
-        order.createdAt
-      ).toLocaleString()
-    : "";
-
-
-    container.innerHTML += `
-
-    <div class="order-card">
-
-      <div class="order-top">
-
-        <div>
-
-          <div class="order-id">
-
-            Order:
-            ${order.id}
-
-          </div>
-
-
-          <div class="order-date">
-
-            ${date}
-
-          </div>
-
-        </div>
-
-
-        <select
-          class="order-status"
-          onchange="updateOrderStatus('${order.id}',this.value)"
-        >
-
-          <option
-            value="Pending"
-            ${status === "Pending" ? "selected" : ""}
-          >
-            Pending
-          </option>
-
-          <option
-            value="Confirmed"
-            ${status === "Confirmed" ? "selected" : ""}
-          >
-            Confirmed
-          </option>
-
-          <option
-            value="Shipped"
-            ${status === "Shipped" ? "selected" : ""}
-          >
-            Shipped
-          </option>
-
-          <option
-            value="Delivered"
-            ${status === "Delivered" ? "selected" : ""}
-          >
-            Delivered
-          </option>
-
-          <option
-            value="Cancelled"
-            ${status === "Cancelled" ? "selected" : ""}
-          >
-            Cancelled
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div class="order-grid">
-
-        <div class="order-info">
-
-          <h4>
-            CUSTOMER DETAILS
-          </h4>
-
-          <p>
-
-            <strong>
-              ${customer.name || ""}
-            </strong>
-
-            <br>
-
-            ${customer.phone || ""}
-
-            <br>
-
-            ${customer.email || ""}
-
-          </p>
-
-        </div>
-
-
-        <div class="order-info">
-
-          <h4>
-            DELIVERY ADDRESS
-          </h4>
-
-          <p>
-
-            ${customer.address || ""}
-
-            <br>
-
-            ${customer.city || ""},
-            ${customer.state || ""}
-
-            <br>
-
-            PIN:
-            ${customer.pin || ""}
-
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="order-items">
-
-        <h4>
-          ORDER ITEMS
-        </h4>
-
-        ${itemsHTML}
-
-      </div>
-
-
-      <div class="order-total">
-
-        <span>
-          Final Total
-        </span>
-
-        <strong>
-          ₹${order.total || 0}
-        </strong>
-
-      </div>
-
-
-      <button
-        class="delete-order"
-        onclick="deleteOrder('${order.id}')"
-      >
-        DELETE ORDER
-      </button>
-
-    </div>
-
-    `;
-
-  });
+alert(
+"Coupon added successfully!"
+);
 
 }
 
 
-/* =========================
-UPDATE ORDER STATUS
-========================= */
+clearCouponForm();
+
+
+await loadCoupons();
+
+
+}catch(error){
+
+console.error(error);
+
+
+alert(
+"Unable to save coupon."
+);
+
+}
+
+
+button.disabled =
+false;
+
+};
+
+
+window.editCoupon =
+function(id){
+
+const coupon =
+allCoupons.find(
+item =>
+item.firebaseId === id
+);
+
+
+if(!coupon){
+return;
+}
+
+
+document
+.getElementById("editCouponId")
+.value =
+id;
+
+
+document
+.getElementById("couponCode")
+.value =
+coupon.code || "";
+
+
+document
+.getElementById("couponType")
+.value =
+coupon.type || "percentage";
+
+
+document
+.getElementById("couponDiscount")
+.value =
+coupon.discount || "";
+
+
+document
+.getElementById("couponActive")
+.value =
+
+coupon.active === false
+
+? "false"
+
+: "true";
+
+
+document
+.getElementById("couponFormTitle")
+.textContent =
+"Edit Discount Coupon";
+
+
+document
+.getElementById("saveCouponBtn")
+.textContent =
+"UPDATE COUPON";
+
+
+document
+.getElementById("cancelCouponEditBtn")
+.style.display =
+"block";
+
+
+window.scrollTo({
+
+top:
+document
+.getElementById("couponFormTitle")
+.offsetTop - 100,
+
+behavior:
+"smooth"
+
+});
+
+};
+
+
+window.cancelCouponEdit =
+function(){
+
+clearCouponForm();
+
+};
+
+
+function clearCouponForm(){
+
+document
+.getElementById("editCouponId")
+.value =
+"";
+
+
+document
+.getElementById("couponCode")
+.value =
+"";
+
+
+document
+.getElementById("couponType")
+.value =
+"percentage";
+
+
+document
+.getElementById("couponDiscount")
+.value =
+"";
+
+
+document
+.getElementById("couponActive")
+.value =
+"true";
+
+
+document
+.getElementById("couponFormTitle")
+.textContent =
+"Add Discount Coupon";
+
+
+document
+.getElementById("saveCouponBtn")
+.textContent =
+"ADD COUPON";
+
+
+document
+.getElementById("cancelCouponEditBtn")
+.style.display =
+"none";
+
+}
+
+
+window.deleteCoupon =
+async function(id){
+
+const confirmDelete =
+confirm(
+"Are you sure you want to delete this coupon?"
+);
+
+
+if(!confirmDelete){
+return;
+}
+
+
+try{
+
+await deleteDoc(
+
+doc(
+db,
+"coupons",
+id
+)
+
+);
+
+
+alert(
+"Coupon deleted successfully."
+);
+
+
+await loadCoupons();
+
+
+}catch(error){
+
+console.error(error);
+
+
+alert(
+"Unable to delete coupon."
+);
+
+}
+
+};
+
+
+/* ========================================
+ORDERS
+======================================== */
+
+let allOrders = [];
+
+
+async function loadOrders(){
+
+const container =
+document
+.getElementById("ordersContainer");
+
+
+container.innerHTML =
+'<div class="empty">Loading orders...</div>';
+
+
+try{
+
+const snapshot =
+await getDocs(
+collection(db,"orders")
+);
+
+
+allOrders = [];
+
+
+snapshot.forEach((item) => {
+
+allOrders.push({
+
+firebaseId:
+item.id,
+
+...item.data()
+
+});
+
+});
+
+
+allOrders.sort(
+(a,b) => {
+
+const dateA =
+getOrderDate(a);
+
+const dateB =
+getOrderDate(b);
+
+return dateB - dateA;
+
+}
+);
+
+
+document
+.getElementById("totalOrders")
+.textContent =
+allOrders.length;
+
+
+/* TOTAL SALES */
+
+const sales =
+allOrders.reduce(
+(total,order) =>
+
+total +
+(
+Number(order.total) || 0
+),
+
+0
+);
+
+
+document
+.getElementById("totalSales")
+.textContent =
+sales;
+
+
+renderOrders();
+
+
+}catch(error){
+
+console.error(error);
+
+
+container.innerHTML =
+'<div class="empty">Unable to load orders.</div>';
+
+}
+
+}
+
+
+function getOrderDate(order){
+
+if(
+order.createdAt &&
+typeof order.createdAt.toDate === "function"
+){
+
+return order.createdAt.toDate();
+
+}
+
+
+if(order.createdAt){
+
+const date =
+new Date(order.createdAt);
+
+if(!isNaN(date)){
+return date;
+}
+
+}
+
+
+return new Date(0);
+
+}
+
+
+function formatOrderDate(order){
+
+const date =
+getOrderDate(order);
+
+
+if(
+date.getTime() === 0
+){
+
+return "Date unavailable";
+
+}
+
+
+return date.toLocaleString();
+
+}
+
+
+function renderOrders(){
+
+const container =
+document
+.getElementById("ordersContainer");
+
+
+container.innerHTML =
+"";
+
+
+if(
+allOrders.length === 0
+){
+
+container.innerHTML =
+'<div class="empty">No orders found yet.</div>';
+
+return;
+
+}
+
+
+allOrders.forEach(
+(order) => {
+
+
+const card =
+document.createElement(
+"div"
+);
+
+
+card.className =
+"order-card";
+
+
+const customer =
+order.customer || {};
+
+
+const items =
+Array.isArray(
+order.items
+)
+
+? order.items
+
+: [];
+
+
+let itemsHTML =
+"";
+
+
+items.forEach(
+(item) => {
+
+itemsHTML += `
+
+<div class="product-line">
+
+<span>
+${escapeHTML(item.name || "Product")}
+${item.size ? ` (${escapeHTML(item.size)})` : ""}
+</span>
+
+<strong>
+₹${Number(item.price) || 0}
+</strong>
+
+</div>
+
+`;
+
+}
+);
+
+
+const status =
+order.status ||
+"pending";
+
+
+card.innerHTML = `
+
+<div class="order-top">
+
+<div>
+
+<div class="order-id">
+
+Order ID:
+${escapeHTML(order.firebaseId)}
+
+</div>
+
+<div class="order-date">
+
+${formatOrderDate(order)}
+
+</div>
+
+</div>
+
+
+<select
+class="order-status">
+
+<option
+value="pending"
+${status === "pending" ? "selected" : ""}>
+PENDING
+</option>
+
+<option
+value="confirmed"
+${status === "confirmed" ? "selected" : ""}>
+CONFIRMED
+</option>
+
+<option
+value="processing"
+${status === "processing" ? "selected" : ""}>
+PROCESSING
+</option>
+
+<option
+value="shipped"
+${status === "shipped" ? "selected" : ""}>
+SHIPPED
+</option>
+
+<option
+value="delivered"
+${status === "delivered" ? "selected" : ""}>
+DELIVERED
+</option>
+
+<option
+value="cancelled"
+${status === "cancelled" ? "selected" : ""}>
+CANCELLED
+</option>
+
+</select>
+
+</div>
+
+
+<div class="order-grid">
+
+
+<div class="order-info">
+
+<h4>
+CUSTOMER DETAILS
+</h4>
+
+<p>
+
+<strong>
+${escapeHTML(customer.name || "")}
+</strong>
+
+<br>
+
+${escapeHTML(customer.phone || "")}
+
+<br>
+
+${escapeHTML(customer.email || "")}
+
+<br><br>
+
+${escapeHTML(customer.address || "")}
+
+<br>
+
+${escapeHTML(customer.city || "")}
+
+${customer.state ? ", " + escapeHTML(customer.state) : ""}
+
+${customer.pin ? " - " + escapeHTML(customer.pin) : ""}
+
+</p>
+
+</div>
+
+
+<div class="order-items">
+
+<h4>
+ORDER ITEMS
+</h4>
+
+${itemsHTML || "No items"}
+
+<div class="order-total">
+
+<span>
+TOTAL
+</span>
+
+<strong>
+₹${Number(order.total) || 0}
+</strong>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<button
+class="delete-order">
+
+DELETE ORDER
+
+</button>
+
+`;
+
+
+card
+.querySelector(".order-status")
+.onchange =
+function(){
+
+updateOrderStatus(
+order.firebaseId,
+this.value
+);
+
+};
+
+
+card
+.querySelector(".delete-order")
+.onclick =
+function(){
+
+deleteOrder(
+order.firebaseId
+);
+
+};
+
+
+container.appendChild(
+card
+);
+
+}
+);
+
+}
+
 
 window.updateOrderStatus =
 async function(id,status){
 
-  try{
+try{
 
-    await updateDoc(
+await updateDoc(
 
-      doc(
-        db,
-        "orders",
-        id
-      ),
+doc(
+db,
+"orders",
+id
+),
 
-      {
+{
 
-        status:status,
+status:status,
 
-        updatedAt:
-        new Date().toISOString()
+updatedAt:
+new Date().toISOString()
 
-      }
+}
 
-    );
+);
 
 
-  }catch(error){
+}catch(error){
 
-    console.error(error);
+console.error(error);
 
-    alert(
-      "Error updating order status."
-    );
 
-  }
+alert(
+"Unable to update order status."
+);
+
+}
 
 };
 
-
-/* =========================
-DELETE ORDER
-========================= */
 
 window.deleteOrder =
 async function(id){
 
-  const confirmed =
-  confirm(
-    "Are you sure you want to delete this order?"
-  );
+const confirmDelete =
+confirm(
+"Are you sure you want to delete this order?"
+);
 
 
-  if(!confirmed){
-
-    return;
-
-  }
+if(!confirmDelete){
+return;
+}
 
 
-  try{
+try{
 
-    await deleteDoc(
+await deleteDoc(
 
-      doc(
-        db,
-        "orders",
-        id
-      )
+doc(
+db,
+"orders",
+id
+)
 
-    );
-
-
-    alert(
-      "Order deleted successfully!"
-    );
+);
 
 
-  }catch(error){
+alert(
+"Order deleted successfully."
+);
 
-    console.error(error);
 
-    alert(
-      "Error deleting order."
-    );
+await loadOrders();
 
-  }
+
+}catch(error){
+
+console.error(error);
+
+
+alert(
+"Unable to delete order."
+);
+
+}
 
 };
 
 
-/* =========================
-START APP
-========================= */
+/* ========================================
+SECURITY / HTML ESCAPE
+======================================== */
+
+function escapeHTML(value){
+
+return String(
+value || ""
+)
+
+.replace(
+/&/g,
+"&amp;"
+)
+
+.replace(
+/</g,
+"&lt;"
+)
+
+.replace(
+/>/g,
+"&gt;"
+)
+
+.replace(
+/"/g,
+"&quot;"
+)
+
+.replace(
+/'/g,
+"&#039;"
+);
+
+}
+
+
+/* ========================================
+AUTO LOGIN CHECK
+======================================== */
 
 if(
-  localStorage.getItem(
-    "adminLoggedIn"
-  ) === "true"
+
+sessionStorage.getItem(
+"trendyFactoryAdmin"
+) === "true"
+
 ){
 
-  showAdmin();
+showAdmin();
 
 }
 
 </script>
+
 </body>
+
 </html>
