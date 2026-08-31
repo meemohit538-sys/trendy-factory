@@ -2,27 +2,25 @@
 
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Trendy Factory - Admin Panel</title>
 
 <style>
 
-/* ===== RESET ===== */
+/* ================= RESET ================= */
 
 *{
-box-sizing:border-box;
 margin:0;
 padding:0;
+box-sizing:border-box;
 }
 
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#f4f4f4;
-color:#222;
+background:#f4f6f8;
+color:#1f2937;
 }
 
 button,
@@ -37,7 +35,7 @@ border:none;
 cursor:pointer;
 }
 
-/* ===== LOGIN ===== */
+/* ================= LOGIN ================= */
 
 #loginPage{
 min-height:100vh;
@@ -45,28 +43,29 @@ display:flex;
 align-items:center;
 justify-content:center;
 padding:20px;
-background:linear-gradient(135deg,#171717,#4a4a4a);
+background:linear-gradient(135deg,#111827,#374151);
 }
 
 .login-card{
 width:100%;
 max-width:400px;
-background:#fff;
+background:#ffffff;
 padding:32px;
-border-radius:14px;
-box-shadow:0 15px 40px rgba(0,0,0,.3);
+border-radius:16px;
+box-shadow:0 20px 50px rgba(0,0,0,0.25);
 }
 
 .login-card h1{
 text-align:center;
-font-size:26px;
+font-size:25px;
 margin-bottom:8px;
+color:#111827;
 }
 
 .login-card p{
 text-align:center;
-color:#777;
 font-size:14px;
+color:#6b7280;
 margin-bottom:25px;
 }
 
@@ -79,6 +78,7 @@ display:block;
 font-size:13px;
 font-weight:700;
 margin-bottom:7px;
+color:#374151;
 }
 
 .form-group input,
@@ -86,16 +86,16 @@ margin-bottom:7px;
 .form-group select{
 width:100%;
 padding:12px;
-border:1px solid #ddd;
-border-radius:7px;
+border:1px solid #d1d5db;
+border-radius:8px;
 outline:none;
-background:#fff;
+background:#ffffff;
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus{
-border-color:#222;
+border-color:#111827;
 }
 
 .form-group textarea{
@@ -103,27 +103,33 @@ min-height:100px;
 resize:vertical;
 }
 
-.error-message{
-min-height:20px;
-color:#c62828;
-font-size:13px;
-margin-top:10px;
-}
-
 .primary-btn{
 width:100%;
 padding:13px;
-background:#222;
-color:#fff;
-border-radius:7px;
+border-radius:8px;
+background:#111827;
+color:#ffffff;
 font-weight:700;
+transition:0.2s;
 }
 
 .primary-btn:hover{
-background:#444;
+background:#374151;
 }
 
-/* ===== ADMIN APP ===== */
+.primary-btn:disabled{
+opacity:0.65;
+cursor:not-allowed;
+}
+
+.error-message{
+min-height:20px;
+margin-top:12px;
+font-size:13px;
+color:#dc2626;
+}
+
+/* ================= ADMIN LAYOUT ================= */
 
 #adminApp{
 display:none;
@@ -135,13 +141,13 @@ display:flex;
 }
 
 .sidebar{
-width:240px;
-background:#171717;
-color:#fff;
 position:fixed;
 top:0;
 left:0;
 bottom:0;
+width:240px;
+background:#111827;
+color:#ffffff;
 padding:22px 15px;
 display:flex;
 flex-direction:column;
@@ -149,9 +155,9 @@ z-index:100;
 }
 
 .logo{
-font-size:21px;
+font-size:20px;
 font-weight:800;
-letter-spacing:1px;
+letter-spacing:0.8px;
 padding:8px 10px 28px;
 }
 
@@ -165,24 +171,25 @@ gap:7px;
 width:100%;
 padding:13px;
 text-align:left;
+border-radius:8px;
 background:transparent;
-color:#ccc;
-border-radius:7px;
+color:#d1d5db;
 font-weight:600;
+transition:0.2s;
 }
 
 .nav-btn:hover,
 .nav-btn.active{
-background:#333;
-color:#fff;
+background:#374151;
+color:#ffffff;
 }
 
 .logout-btn{
 margin-top:auto;
 padding:12px;
-background:#c62828;
-color:#fff;
-border-radius:7px;
+background:#dc2626;
+color:#ffffff;
+border-radius:8px;
 font-weight:700;
 }
 
@@ -194,15 +201,21 @@ min-height:100vh;
 
 .topbar{
 height:70px;
-background:#fff;
+background:#ffffff;
+border-bottom:1px solid #e5e7eb;
 display:flex;
 align-items:center;
 justify-content:space-between;
 padding:0 28px;
-border-bottom:1px solid #e5e5e5;
 position:sticky;
 top:0;
 z-index:50;
+}
+
+.topbar-left{
+display:flex;
+align-items:center;
+gap:12px;
 }
 
 .topbar h2{
@@ -211,7 +224,16 @@ font-size:21px;
 
 .admin-user{
 font-size:13px;
-color:#666;
+color:#6b7280;
+}
+
+.mobile-menu-btn{
+display:none;
+padding:9px 12px;
+border-radius:7px;
+background:#111827;
+color:#ffffff;
+font-size:18px;
 }
 
 .content{
@@ -226,7 +248,7 @@ display:none;
 display:block;
 }
 
-/* ===== DASHBOARD ===== */
+/* ================= DASHBOARD ================= */
 
 .stats{
 display:grid;
@@ -236,31 +258,32 @@ margin-bottom:25px;
 }
 
 .stat-card{
-background:#fff;
-padding:20px;
+background:#ffffff;
 border-radius:12px;
-box-shadow:0 3px 10px rgba(0,0,0,.06);
+padding:20px;
+box-shadow:0 3px 12px rgba(0,0,0,0.06);
 }
 
 .stat-card span{
 display:block;
 font-size:12px;
 font-weight:700;
-color:#777;
+color:#6b7280;
 margin-bottom:10px;
 }
 
 .stat-card strong{
 font-size:28px;
+color:#111827;
 }
 
-/* ===== PANELS ===== */
+/* ================= PANELS ================= */
 
 .panel{
-background:#fff;
-border-radius:12px;
+background:#ffffff;
 padding:22px;
-box-shadow:0 3px 10px rgba(0,0,0,.06);
+border-radius:12px;
+box-shadow:0 3px 12px rgba(0,0,0,0.06);
 margin-bottom:25px;
 }
 
@@ -278,13 +301,13 @@ font-size:19px;
 
 .secondary-btn{
 padding:10px 15px;
-background:#eee;
-color:#222;
 border-radius:7px;
+background:#e5e7eb;
+color:#111827;
 font-weight:700;
 }
 
-/* ===== PRODUCT FORM ===== */
+/* ================= PRODUCT FORM ================= */
 
 .product-grid{
 display:grid;
@@ -309,26 +332,26 @@ gap:6px;
 font-size:14px;
 }
 
-/* ===== IMAGE UPLOAD ===== */
+/* ================= IMAGE UPLOAD ================= */
 
 .upload-box{
-border:2px dashed #bbb;
+border:2px dashed #cbd5e1;
 border-radius:10px;
 padding:25px;
 text-align:center;
-background:#fafafa;
+background:#f8fafc;
 }
 
-.upload-box input{
+.upload-box input[type="file"]{
 display:none;
 }
 
 .upload-label{
 display:inline-block;
 padding:11px 18px;
-background:#222;
-color:#fff;
 border-radius:7px;
+background:#111827;
+color:#ffffff;
 font-weight:700;
 cursor:pointer;
 }
@@ -336,7 +359,7 @@ cursor:pointer;
 .upload-help{
 margin-top:10px;
 font-size:12px;
-color:#777;
+color:#6b7280;
 }
 
 .preview-grid{
@@ -351,7 +374,8 @@ position:relative;
 aspect-ratio:1;
 border-radius:8px;
 overflow:hidden;
-border:1px solid #ddd;
+border:1px solid #e5e7eb;
+background:#f3f4f6;
 }
 
 .preview-item img{
@@ -364,15 +388,16 @@ object-fit:cover;
 position:absolute;
 top:4px;
 right:4px;
-width:25px;
-height:25px;
+width:26px;
+height:26px;
 border-radius:50%;
-background:#c62828;
-color:#fff;
-font-size:17px;
+background:#dc2626;
+color:#ffffff;
+font-size:18px;
+line-height:1;
 }
 
-/* ===== TABLE ===== */
+/* ================= TABLE ================= */
 
 .table-wrap{
 overflow-x:auto;
@@ -388,13 +413,14 @@ th,
 td{
 padding:12px;
 text-align:left;
-border-bottom:1px solid #eee;
+border-bottom:1px solid #e5e7eb;
 font-size:14px;
+vertical-align:middle;
 }
 
 th{
 font-size:12px;
-color:#777;
+color:#6b7280;
 text-transform:uppercase;
 }
 
@@ -403,7 +429,7 @@ width:55px;
 height:65px;
 object-fit:cover;
 border-radius:6px;
-background:#eee;
+background:#f3f4f6;
 }
 
 .action-row{
@@ -413,8 +439,8 @@ gap:8px;
 
 .edit-btn{
 padding:8px 12px;
-background:#f39c12;
-color:#fff;
+background:#f59e0b;
+color:#ffffff;
 border-radius:6px;
 font-size:12px;
 font-weight:700;
@@ -422,8 +448,8 @@ font-weight:700;
 
 .delete-btn{
 padding:8px 12px;
-background:#c62828;
-color:#fff;
+background:#dc2626;
+color:#ffffff;
 border-radius:6px;
 font-size:12px;
 font-weight:700;
@@ -431,27 +457,27 @@ font-weight:700;
 
 .status-select{
 padding:8px;
-border:1px solid #ddd;
+border:1px solid #d1d5db;
 border-radius:6px;
-background:#fff;
+background:#ffffff;
 }
 
 .loading,
 .empty{
 text-align:center;
 padding:30px;
-color:#777;
+color:#6b7280;
 }
 
- /* ===== MODAL ===== */
+/* ================= MODAL ================= */
 
 .modal{
 display:none;
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.55);
-z-index:1000;
 padding:20px;
+background:rgba(0,0,0,0.55);
+z-index:1000;
 align-items:center;
 justify-content:center;
 }
@@ -461,35 +487,26 @@ display:flex;
 }
 
 .modal-box{
+position:relative;
 width:100%;
 max-width:650px;
 max-height:90vh;
 overflow-y:auto;
-background:#fff;
-border-radius:12px;
+background:#ffffff;
+border-radius:14px;
 padding:25px;
-position:relative;
 }
 
 .modal-close{
 position:absolute;
 top:10px;
 right:15px;
-font-size:28px;
 background:transparent;
-color:#222;
+font-size:28px;
+color:#111827;
 }
 
-/* ===== MOBILE ===== */
-
-.mobile-menu-btn{
-display:none;
-padding:9px 12px;
-background:#222;
-color:#fff;
-border-radius:6px;
-font-size:18px;
-}
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:950px){
 
@@ -503,8 +520,7 @@ grid-template-columns:repeat(2,1fr);
 
 .sidebar{
 transform:translateX(-100%);
-transition:transform .3s ease;
-width:240px;
+transition:transform 0.3s ease;
 }
 
 .sidebar.open{
@@ -536,6 +552,18 @@ display:none;
 padding:16px;
 }
 
+.product-grid{
+grid-template-columns:1fr;
+}
+
+.full{
+grid-column:auto;
+}
+
+.preview-grid{
+grid-template-columns:repeat(3,1fr);
+}
+
 .stats{
 grid-template-columns:repeat(2,1fr);
 gap:12px;
@@ -549,28 +577,13 @@ padding:16px;
 font-size:23px;
 }
 
-.product-grid{
-grid-template-columns:1fr;
 }
-
-.full{
-grid-column:auto;
-}
-
-.preview-grid{
-grid-template-columns:repeat(3,1fr);
-}
-
-}
-
-/* ===== END STYLE ===== */
-
-</style>
+ </style>
 </head>
 
 <body>
 
-<!-- ===== LOGIN PAGE ===== -->
+<!-- ================= LOGIN PAGE ================= -->
 
 <div id="loginPage">
 
@@ -584,24 +597,30 @@ grid-template-columns:repeat(3,1fr);
 
 <div class="form-group">
 
-<label>EMAIL</label>
+<label for="loginEmail">
+EMAIL
+</label>
 
 <input
 type="email"
 id="loginEmail"
-placeholder="Enter email"
+placeholder="Enter admin email"
+autocomplete="email"
 required>
 
 </div>
 
 <div class="form-group">
 
-<label>PASSWORD</label>
+<label for="loginPassword">
+PASSWORD
+</label>
 
 <input
 type="password"
 id="loginPassword"
 placeholder="Enter password"
+autocomplete="current-password"
 required>
 
 </div>
@@ -626,11 +645,11 @@ class="error-message">
 
 </div>
 
-<!-- ===== ADMIN APP ===== -->
+<!-- ================= ADMIN APP ================= -->
 
 <div id="adminApp">
 
-<!-- SIDEBAR -->
+<!-- ================= SIDEBAR ================= -->
 
 <aside
 id="sidebar"
@@ -645,6 +664,7 @@ TRENDY FACTORY
 <div class="nav-menu">
 
 <button
+type="button"
 class="nav-btn active"
 data-page="dashboard">
 
@@ -653,6 +673,7 @@ data-page="dashboard">
 </button>
 
 <button
+type="button"
 class="nav-btn"
 data-page="products">
 
@@ -661,6 +682,7 @@ data-page="products">
 </button>
 
 <button
+type="button"
 class="nav-btn"
 data-page="addProduct">
 
@@ -669,6 +691,7 @@ data-page="addProduct">
 </button>
 
 <button
+type="button"
 class="nav-btn"
 data-page="orders">
 
@@ -679,6 +702,7 @@ data-page="orders">
 </div>
 
 <button
+type="button"
 id="logoutBtn"
 class="logout-btn">
 
@@ -688,23 +712,21 @@ LOGOUT
 
 </aside>
 
-<!-- MAIN -->
+<!-- ================= MAIN CONTENT ================= -->
 
 <div class="main-content">
 
-<div class="topbar">
+<!-- ================= TOPBAR ================= -->
 
-<div
-style="
-display:flex;
-align-items:center;
-gap:12px;
-">
+<header class="topbar">
+
+<div class="topbar-left">
 
 <button
+type="button"
 id="mobileMenuBtn"
 class="mobile-menu-btn"
-type="button">
+aria-label="Open menu">
 
 ☰
 
@@ -723,11 +745,11 @@ id="adminUser"
 class="admin-user">
 </div>
 
-</div>
+</header>
 
 <div class="content">
 
-<!-- ===== DASHBOARD PAGE ===== -->
+<!-- ================= DASHBOARD PAGE ================= -->
 
 <section
 id="dashboardPage"
@@ -739,8 +761,7 @@ class="page active">
 
 <span>TOTAL PRODUCTS</span>
 
-<strong
-id="totalProducts">
+<strong id="totalProducts">
 
 0
 
@@ -752,8 +773,7 @@ id="totalProducts">
 
 <span>TOTAL ORDERS</span>
 
-<strong
-id="totalOrders">
+<strong id="totalOrders">
 
 0
 
@@ -765,8 +785,7 @@ id="totalOrders">
 
 <span>PENDING ORDERS</span>
 
-<strong
-id="pendingOrders">
+<strong id="pendingOrders">
 
 0
 
@@ -778,8 +797,7 @@ id="pendingOrders">
 
 <span>TOTAL REVENUE</span>
 
-<strong
-id="totalRevenue">
+<strong id="totalRevenue">
 
 ₹0
 
@@ -850,7 +868,7 @@ Loading...
 
 </section>
 
-<!-- ===== PRODUCTS PAGE ===== -->
+<!-- ================= PRODUCTS PAGE ================= -->
 
 <section
 id="productsPage"
@@ -920,7 +938,7 @@ Loading products...
 </div>
 
 </section>
-<!-- ===== ADD PRODUCT PAGE ===== -->
+ <!-- ================= ADD PRODUCT PAGE ================= -->
 
 <section
 id="addProductPage"
@@ -949,7 +967,9 @@ CLEAR
 
 <div class="form-group">
 
-<label>PRODUCT NAME</label>
+<label for="productName">
+PRODUCT NAME
+</label>
 
 <input
 type="text"
@@ -961,7 +981,9 @@ required>
 
 <div class="form-group">
 
-<label>CATEGORY</label>
+<label for="productCategory">
+CATEGORY
+</label>
 
 <select
 id="productCategory"
@@ -1001,33 +1023,41 @@ Other
 
 <div class="form-group">
 
-<label>PRICE (₹)</label>
+<label for="productPrice">
+PRICE (₹)
+</label>
 
 <input
 type="number"
 id="productPrice"
 placeholder="Enter price"
 min="0"
+step="0.01"
 required>
 
 </div>
 
 <div class="form-group">
 
-<label>STOCK</label>
+<label for="productStock">
+STOCK
+</label>
 
 <input
 type="number"
 id="productStock"
 placeholder="Available quantity"
 min="0"
+step="1"
 required>
 
 </div>
 
 <div class="form-group full">
 
-<label>DESCRIPTION</label>
+<label for="productDescription">
+DESCRIPTION
+</label>
 
 <textarea
 id="productDescription"
@@ -1036,11 +1066,13 @@ placeholder="Enter product description">
 
 </div>
 
-<!-- ===== IMAGES ===== -->
+<!-- ================= PRODUCT IMAGES ================= -->
 
 <div class="form-group full">
 
-<label>PRODUCT IMAGES</label>
+<label>
+PRODUCT IMAGES
+</label>
 
 <div class="upload-box">
 
@@ -1060,7 +1092,7 @@ class="upload-label">
 
 <div class="upload-help">
 
-Choose images from gallery — Maximum 5 images
+Choose images from your gallery — Maximum 5 images
 
 </div>
 
@@ -1073,52 +1105,69 @@ class="preview-grid">
 
 </div>
 
-<!-- ===== SIZES ===== -->
+<!-- ================= PRODUCT SIZES ================= -->
 
 <div class="form-group full">
 
-<label>AVAILABLE SIZES</label>
+<label>
+AVAILABLE SIZES
+</label>
 
 <div class="size-options">
 
 <label>
+
 <input
 type="checkbox"
 name="productSize"
 value="S">
+
 S
+
 </label>
 
 <label>
+
 <input
 type="checkbox"
 name="productSize"
 value="M">
+
 M
+
 </label>
 
 <label>
+
 <input
 type="checkbox"
 name="productSize"
 value="L">
+
 L
+
 </label>
 
 <label>
+
 <input
 type="checkbox"
 name="productSize"
 value="XL">
+
 XL
+
 </label>
 
 <label>
+
 <input
 type="checkbox"
 name="productSize"
 value="XXL">
+
 XXL
+
 </label>
 
 </div>
@@ -1146,7 +1195,7 @@ SAVE PRODUCT
 
 </section>
 
-<!-- ===== ORDERS PAGE ===== -->
+<!-- ================= ORDERS PAGE ================= -->
 
 <section
 id="ordersPage"
@@ -1227,7 +1276,7 @@ Loading orders...
 
 </div>
 
-<!-- ===== EDIT PRODUCT MODAL ===== -->
+<!-- ================= EDIT PRODUCT MODAL ================= -->
 
 <div
 id="editModal"
@@ -1237,15 +1286,15 @@ class="modal">
 
 <button
 type="button"
+id="closeModalBtn"
 class="modal-close"
-id="closeModalBtn">
+aria-label="Close">
 
 ×
 
 </button>
 
-<h2
-style="margin-bottom:20px;">
+<h2 style="margin-bottom:20px;">
 
 Edit Product
 
@@ -1259,7 +1308,9 @@ id="editProductId">
 
 <div class="form-group">
 
-<label>PRODUCT NAME</label>
+<label for="editProductName">
+PRODUCT NAME
+</label>
 
 <input
 type="text"
@@ -1270,7 +1321,9 @@ required>
 
 <div class="form-group">
 
-<label>CATEGORY</label>
+<label for="editProductCategory">
+CATEGORY
+</label>
 
 <select
 id="editProductCategory"
@@ -1306,31 +1359,39 @@ Other
 
 <div class="form-group">
 
-<label>PRICE (₹)</label>
+<label for="editProductPrice">
+PRICE (₹)
+</label>
 
 <input
 type="number"
 id="editProductPrice"
 min="0"
+step="0.01"
 required>
 
 </div>
 
 <div class="form-group">
 
-<label>STOCK</label>
+<label for="editProductStock">
+STOCK
+</label>
 
 <input
 type="number"
 id="editProductStock"
 min="0"
+step="1"
 required>
 
 </div>
 
 <div class="form-group">
 
-<label>DESCRIPTION</label>
+<label for="editProductDescription">
+DESCRIPTION
+</label>
 
 <textarea
 id="editProductDescription">
@@ -1340,7 +1401,9 @@ id="editProductDescription">
 
 <div class="form-group">
 
-<label>PRODUCT IMAGES</label>
+<label>
+PRODUCT IMAGES
+</label>
 
 <div class="upload-box">
 
@@ -1354,7 +1417,7 @@ multiple>
 for="editProductImages"
 class="upload-label">
 
-📷 ADD / REPLACE IMAGES
+📷 ADD IMAGES
 
 </label>
 
@@ -1375,7 +1438,9 @@ class="preview-grid">
 
 <div class="form-group">
 
-<label>AVAILABLE SIZES</label>
+<label>
+AVAILABLE SIZES
+</label>
 
 <div class="size-options">
 
@@ -1440,10 +1505,9 @@ UPDATE PRODUCT
 
 <script type="module">
 
-/* ===== FIREBASE ===== */
+/* ================= FIREBASE IMPORTS ================= */
 
 import {
-app,
 db,
 auth,
 storage
@@ -1480,7 +1544,7 @@ getDownloadURL
 from
 "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-/* ===== GLOBAL VARIABLES ===== */
+/* ================= GLOBAL VARIABLES ================= */
 
 let allProducts = [];
 
@@ -1491,12 +1555,10 @@ let selectedImages = [];
 let editExistingImages = [];
 
 let editNewImages = [];
-  /* ===== LOGIN ===== */
+ /* ================= LOGIN ================= */
 
 const loginForm =
-document.getElementById(
-"loginForm"
-);
+document.getElementById("loginForm");
 
 loginForm.addEventListener(
 "submit",
@@ -1505,30 +1567,23 @@ async function(event){
 event.preventDefault();
 
 const email =
-document.getElementById(
-"loginEmail"
-).value.trim();
+document.getElementById("loginEmail")
+.value
+.trim();
 
 const password =
-document.getElementById(
-"loginPassword"
-).value;
+document.getElementById("loginPassword")
+.value;
 
 const loginError =
-document.getElementById(
-"loginError"
-);
+document.getElementById("loginError");
 
 const loginButton =
-document.getElementById(
-"loginBtn"
-);
+document.getElementById("loginBtn");
 
-loginError.textContent =
-"";
+loginError.textContent = "";
 
-loginButton.disabled =
-true;
+loginButton.disabled = true;
 
 loginButton.textContent =
 "LOGGING IN...";
@@ -1557,8 +1612,7 @@ error.code
 }
 finally{
 
-loginButton.disabled =
-false;
+loginButton.disabled = false;
 
 loginButton.textContent =
 "LOGIN";
@@ -1568,7 +1622,7 @@ loginButton.textContent =
 }
 );
 
-/* ===== AUTH STATE ===== */
+/* ================= AUTH STATE ================= */
 
 onAuthStateChanged(
 auth,
@@ -1577,24 +1631,18 @@ async function(user){
 if(user){
 
 document
-.getElementById(
-"loginPage"
-)
+.getElementById("loginPage")
 .style.display =
 "none";
 
 document
-.getElementById(
-"adminApp"
-)
+.getElementById("adminApp")
 .classList.add(
 "active"
 );
 
 document
-.getElementById(
-"adminUser"
-)
+.getElementById("adminUser")
 .textContent =
 user.email;
 
@@ -1610,7 +1658,7 @@ await loadDashboard();
 catch(error){
 
 console.error(
-"Admin load error:",
+"Admin loading error:",
 error
 );
 
@@ -1620,16 +1668,12 @@ error
 else{
 
 document
-.getElementById(
-"loginPage"
-)
+.getElementById("loginPage")
 .style.display =
 "flex";
 
 document
-.getElementById(
-"adminApp"
-)
+.getElementById("adminApp")
 .classList.remove(
 "active"
 );
@@ -1639,21 +1683,17 @@ document
 }
 );
 
-/* ===== LOGOUT ===== */
+/* ================= LOGOUT ================= */
 
 document
-.getElementById(
-"logoutBtn"
-)
+.getElementById("logoutBtn")
 .addEventListener(
 "click",
 async function(){
 
 try{
 
-await signOut(
-auth
-);
+await signOut(auth);
 
 }
 catch(error){
@@ -1664,7 +1704,7 @@ error
 );
 
 alert(
-"Logout failed."
+"Logout failed. Please try again."
 );
 
 }
@@ -1672,7 +1712,7 @@ alert(
 }
 );
 
-/* ===== FIREBASE ERROR MESSAGE ===== */
+/* ================= FIREBASE ERROR MESSAGE ================= */
 
 function getFirebaseError(code){
 
@@ -1691,19 +1731,19 @@ const errors = {
 "Incorrect email or password.",
 
 "auth/too-many-requests":
-"Too many attempts. Please try later.",
+"Too many login attempts. Please try again later.",
 
 "auth/network-request-failed":
-"Network error. Check your internet connection."
+"Network error. Please check your internet connection."
 
 };
 
 return errors[code] ||
-"Login failed. Please try again.";
+"Login failed: " + code;
 
 }
 
-/* ===== NAVIGATION ===== */
+/* ================= NAVIGATION ================= */
 
 const navButtons =
 document.querySelectorAll(
@@ -1745,9 +1785,7 @@ orders:
 function showPage(pageName){
 
 document
-.querySelectorAll(
-".page"
-)
+.querySelectorAll(".page")
 .forEach(
 function(page){
 
@@ -1764,9 +1802,7 @@ pages[pageName];
 if(pageId){
 
 document
-.getElementById(
-pageId
-)
+.getElementById(pageId)
 .classList.add(
 "active"
 );
@@ -1785,17 +1821,13 @@ button.dataset.page === pageName
 );
 
 document
-.getElementById(
-"pageTitle"
-)
+.getElementById("pageTitle")
 .textContent =
 pageTitles[pageName] ||
-"Admin";
+"Admin Panel";
 
 document
-.getElementById(
-"sidebar"
-)
+.getElementById("sidebar")
 .classList.remove(
 "open"
 );
@@ -1820,9 +1852,7 @@ button.dataset.page
 );
 
 document
-.getElementById(
-"goAddProductBtn"
-)
+.getElementById("goAddProductBtn")
 .addEventListener(
 "click",
 function(){
@@ -1835,9 +1865,7 @@ showPage(
 );
 
 document
-.getElementById(
-"viewOrdersBtn"
-)
+.getElementById("viewOrdersBtn")
 .addEventListener(
 "click",
 function(){
@@ -1849,20 +1877,16 @@ showPage(
 }
 );
 
-/* ===== MOBILE MENU ===== */
+/* ================= MOBILE MENU ================= */
 
 document
-.getElementById(
-"mobileMenuBtn"
-)
+.getElementById("mobileMenuBtn")
 .addEventListener(
 "click",
 function(){
 
 document
-.getElementById(
-"sidebar"
-)
+.getElementById("sidebar")
 .classList.toggle(
 "open"
 );
@@ -1870,37 +1894,20 @@ document
 }
 );
 
-/* ===== ESCAPE HTML ===== */
+/* ================= ESCAPE HTML ================= */
 
 function escapeHtml(value){
 
-return String(
-value ?? ""
-)
-.replace(
-/&/g,
-"&"
-)
-.replace(
-/</g,
-"<"
-)
-.replace(
-/>/g,
-">"
-)
-.replace(
-/"/g,
-"""
-)
-.replace(
-/'/g,
-"'"
-);
+return String(value ?? "")
+.replace(/&/g, "&")
+.replace(/</g, "<")
+.replace(/>/g, ">")
+.replace(/"/g, """)
+.replace(/'/g, "'");
 
 }
 
-/* ===== IMAGE PREVIEW ===== */
+/* ================= NEW PRODUCT IMAGE PREVIEW ================= */
 
 function renderNewImagePreview(){
 
@@ -1909,43 +1916,35 @@ document.getElementById(
 "imagePreview"
 );
 
-container.innerHTML =
-"";
+container.innerHTML = "";
 
 selectedImages.forEach(
 function(file,index){
 
 const item =
-document.createElement(
-"div"
-);
+document.createElement("div");
 
 item.className =
 "preview-item";
 
 const image =
-document.createElement(
-"img"
-);
+document.createElement("img");
 
 image.src =
-URL.createObjectURL(
-file
-);
+URL.createObjectURL(file);
+
+image.alt =
+"Product preview";
 
 const remove =
-document.createElement(
-"button"
-);
+document.createElement("button");
 
-remove.type =
-"button";
+remove.type = "button";
 
 remove.className =
 "remove-image";
 
-remove.textContent =
-"×";
+remove.textContent = "×";
 
 remove.addEventListener(
 "click",
@@ -1961,71 +1960,56 @@ renderNewImagePreview();
 }
 );
 
-item.appendChild(
-image
-);
+item.appendChild(image);
 
-item.appendChild(
-remove
-);
+item.appendChild(remove);
 
-container.appendChild(
-item
-);
+container.appendChild(item);
 
 }
 );
 
 }
 
-/* ===== SELECT PRODUCT IMAGES ===== */
+/* ================= SELECT PRODUCT IMAGES ================= */
 
 document
-.getElementById(
-"productImages"
-)
+.getElementById("productImages")
 .addEventListener(
 "change",
 function(event){
 
 const files =
-Array.from(
-event.target.files
-);
-
-const combined =
-[
-...selectedImages,
-...files
-];
+Array.from(event.target.files);
 
 if(
-combined.length > 5
+selectedImages.length +
+files.length >
+5
 ){
 
 alert(
-"Maximum 5 images allowed."
+"Maximum 5 images are allowed."
 );
 
-event.target.value =
-"";
+event.target.value = "";
 
 return;
 
 }
 
-selectedImages =
-combined;
+selectedImages.push(
+...files
+);
 
 renderNewImagePreview();
 
-event.target.value =
-"";
+event.target.value = "";
 
 }
 );
 
-/* ===== EDIT IMAGE PREVIEW ===== */
+/* ================= EDIT IMAGE PREVIEW ================= */
 
 function renderEditImagePreview(){
 
@@ -2034,8 +2018,7 @@ document.getElementById(
 "editImagePreview"
 );
 
-container.innerHTML =
-"";
+container.innerHTML = "";
 
 /* EXISTING IMAGES */
 
@@ -2043,34 +2026,28 @@ editExistingImages.forEach(
 function(url,index){
 
 const item =
-document.createElement(
-"div"
-);
+document.createElement("div");
 
 item.className =
 "preview-item";
 
 const image =
-document.createElement(
-"img"
-);
+document.createElement("img");
 
-image.src =
-url;
+image.src = url;
+
+image.alt =
+"Product image";
 
 const remove =
-document.createElement(
-"button"
-);
+document.createElement("button");
 
-remove.type =
-"button";
+remove.type = "button";
 
 remove.className =
 "remove-image";
 
-remove.textContent =
-"×";
+remove.textContent = "×";
 
 remove.addEventListener(
 "click",
@@ -2086,17 +2063,11 @@ renderEditImagePreview();
 }
 );
 
-item.appendChild(
-image
-);
+item.appendChild(image);
 
-item.appendChild(
-remove
-);
+item.appendChild(remove);
 
-container.appendChild(
-item
-);
+container.appendChild(item);
 
 }
 );
@@ -2107,36 +2078,29 @@ editNewImages.forEach(
 function(file,index){
 
 const item =
-document.createElement(
-"div"
-);
+document.createElement("div");
 
 item.className =
 "preview-item";
 
 const image =
-document.createElement(
-"img"
-);
+document.createElement("img");
 
 image.src =
-URL.createObjectURL(
-file
-);
+URL.createObjectURL(file);
+
+image.alt =
+"New product image";
 
 const remove =
-document.createElement(
-"button"
-);
+document.createElement("button");
 
-remove.type =
-"button";
+remove.type = "button";
 
 remove.className =
 "remove-image";
 
-remove.textContent =
-"×";
+remove.textContent = "×";
 
 remove.addEventListener(
 "click",
@@ -2152,53 +2116,40 @@ renderEditImagePreview();
 }
 );
 
-item.appendChild(
-image
-);
+item.appendChild(image);
 
-item.appendChild(
-remove
-);
+item.appendChild(remove);
 
-container.appendChild(
-item
-);
+container.appendChild(item);
 
 }
 );
 
 }
 
-/* ===== SELECT EDIT IMAGES ===== */
+/* ================= SELECT EDIT IMAGES ================= */
 
 document
-.getElementById(
-"editProductImages"
-)
+.getElementById("editProductImages")
 .addEventListener(
 "change",
 function(event){
 
 const files =
-Array.from(
-event.target.files
-);
+Array.from(event.target.files);
 
-const total =
+const totalImages =
 editExistingImages.length +
 editNewImages.length +
 files.length;
 
-if(
-total > 5
-){
+if(totalImages > 5){
 
 alert(
-"Maximum 5 images allowed in total."
+"Maximum 5 images are allowed in total."
 );
 
-event.target.value =
-"";
+event.target.value = "";
 
 return;
 
@@ -2210,60 +2161,52 @@ editNewImages.push(
 
 renderEditImagePreview();
 
-event.target.value =
-"";
+event.target.value = "";
 
 }
 );
-  /* ===== IMAGE UPLOAD ===== */
+ /* ================= UPLOAD PRODUCT IMAGES ================= */
 
-async function uploadProductImages(
-files
-){
+async function uploadProductImages(files){
 
 const urls = [];
 
-for(
-let i = 0;
-i < files.length;
-i++
-){
+for(let i = 0; i < files.length; i++){
 
-const file =
-files[i];
+const file = files[i];
 
-const safeName =
+const safeFileName =
 file.name.replace(
 /[^a-zA-Z0-9.*-]/g,
 "*"
 );
 
-const filePath =
+const fileName =
 "products/" +
 Date.now() +
 "*" +
 i +
 "*" +
-safeName;
+safeFileName;
 
-const storageRef =
+const storageReference =
 ref(
 storage,
-filePath
+fileName
 );
 
 await uploadBytes(
-storageRef,
+storageReference,
 file
 );
 
-const url =
+const downloadUrl =
 await getDownloadURL(
-storageRef
+storageReference
 );
 
 urls.push(
-url
+downloadUrl
 );
 
 }
@@ -2272,11 +2215,9 @@ return urls;
 
 }
 
-/* ===== GET SELECTED SIZES ===== */
+/* ================= GET SELECTED SIZES ================= */
 
-function getSelectedSizes(
-name
-){
+function getSelectedSizes(name){
 
 return Array
 .from(
@@ -2294,34 +2235,26 @@ return input.value;
 
 }
 
-/* ===== CLEAR PRODUCT FORM ===== */
+/* ================= CLEAR PRODUCT FORM ================= */
 
 function clearProductForm(){
 
 document
-.getElementById(
-"productForm"
-)
+.getElementById("productForm")
 .reset();
 
-selectedImages =
-[];
+selectedImages = [];
 
 document
-.getElementById(
-"imagePreview"
-)
-.innerHTML =
-"";
+.getElementById("imagePreview")
+.innerHTML = "";
 
 }
 
-/* ===== CLEAR BUTTON ===== */
+/* ================= CLEAR BUTTON ================= */
 
 document
-.getElementById(
-"clearProductBtn"
-)
+.getElementById("clearProductBtn")
 .addEventListener(
 "click",
 function(){
@@ -2331,21 +2264,17 @@ clearProductForm();
 }
 );
 
-/* ===== ADD PRODUCT ===== */
+/* ================= ADD PRODUCT ================= */
 
 document
-.getElementById(
-"productForm"
-)
+.getElementById("productForm")
 .addEventListener(
 "submit",
 async function(event){
 
 event.preventDefault();
 
-if(
-selectedImages.length === 0
-){
+if(selectedImages.length === 0){
 
 alert(
 "Please select at least one product image."
@@ -2360,8 +2289,7 @@ document.getElementById(
 "saveProductBtn"
 );
 
-saveButton.disabled =
-true;
+saveButton.disabled = true;
 
 saveButton.textContent =
 "UPLOADING...";
@@ -2377,42 +2305,32 @@ const productData = {
 
 name:
 document
-.getElementById(
-"productName"
-)
+.getElementById("productName")
 .value
 .trim(),
 
 category:
 document
-.getElementById(
-"productCategory"
-)
+.getElementById("productCategory")
 .value,
 
 price:
 Number(
 document
-.getElementById(
-"productPrice"
-)
+.getElementById("productPrice")
 .value
 ),
 
 stock:
 Number(
 document
-.getElementById(
-"productStock"
-)
+.getElementById("productStock")
 .value
 ),
 
 description:
 document
-.getElementById(
-"productDescription"
-)
+.getElementById("productDescription")
 .value
 .trim(),
 
@@ -2466,15 +2384,14 @@ error
 );
 
 alert(
-"Error: " +
+"Product upload failed: " +
 error.message
 );
 
 }
 finally{
 
-saveButton.disabled =
-false;
+saveButton.disabled = false;
 
 saveButton.textContent =
 "SAVE PRODUCT";
@@ -2484,7 +2401,7 @@ saveButton.textContent =
 }
 );
 
-/* ===== LOAD PRODUCTS ===== */
+/* ================= LOAD PRODUCTS ================= */
 
 async function loadProducts(){
 
@@ -2539,7 +2456,7 @@ body.innerHTML =
 
 }
 
-/* ===== RENDER PRODUCTS ===== */
+/* ================= RENDER PRODUCTS ================= */
 
 function renderProducts(){
 
@@ -2548,9 +2465,7 @@ document.getElementById(
 "productsBody"
 );
 
-if(
-allProducts.length === 0
-){
+if(allProducts.length === 0){
 
 body.innerHTML =
 '<tr><td colspan="6" class="empty">No products found.</td></tr>';
@@ -2564,25 +2479,20 @@ allProducts.map(
 function(product){
 
 const images =
-Array.isArray(
-product.images
-)
+Array.isArray(product.images)
 ?
 product.images
 :
 (
 product.image
 ?
-[
-product.image
-]
+[product.image]
 :
 []
 );
 
-const image =
-images[0] ||
-"";
+const imageUrl =
+images[0] || "";
 
 return `
 
@@ -2591,46 +2501,32 @@ return `
 <td>
 
 ${
-image
+imageUrl
 ?
 `<img
-src="${escapeHtml(image)}"
+src="${escapeHtml(imageUrl)}"
 class="product-image"
 alt="${escapeHtml(product.name || "Product")}">`
 :
-""
+"—"
 }
 
 </td>
 
 <td>
-${escapeHtml(
-product.name ||
-"Unnamed"
-)}
+${escapeHtml(product.name || "Unnamed")}
 </td>
 
 <td>
-${escapeHtml(
-product.category ||
-"-"
-)}
+${escapeHtml(product.category || "-")}
 </td>
 
 <td>
-₹${Number(
-product.price ||
-0
-).toFixed(
-2
-)}
+₹${Number(product.price || 0).toFixed(2)}
 </td>
 
 <td>
-${Number(
-product.stock ||
-0
-)}
+${Number(product.stock || 0)}
 </td>
 
 <td>
@@ -2638,16 +2534,18 @@ product.stock ||
 <div class="action-row">
 
 <button
+type="button"
 class="edit-btn"
-onclick="window.openEditProduct('${product.id}')">
+onclick="openEditProduct('${product.id}')">
 
 EDIT
 
 </button>
 
 <button
+type="button"
 class="delete-btn"
-onclick="window.deleteProduct('${product.id}')">
+onclick="deleteProduct('${product.id}')">
 
 DELETE
 
@@ -2662,13 +2560,12 @@ DELETE
 `;
 
 }
-).join(
-""
-);
+)
+.join("");
 
 }
 
-/* ===== OPEN EDIT PRODUCT ===== */
+/* ================= OPEN EDIT PRODUCT ================= */
 
 window.openEditProduct =
 function(id){
@@ -2684,90 +2581,64 @@ return item.id === id;
 
 if(!product){
 
+alert(
+"Product not found."
+);
+
 return;
 
 }
 
 document
-.getElementById(
-"editProductId"
-)
+.getElementById("editProductId")
 .value =
 product.id;
 
 document
-.getElementById(
-"editProductName"
-)
+.getElementById("editProductName")
 .value =
-product.name ||
-"";
+product.name || "";
 
 document
-.getElementById(
-"editProductCategory"
-)
+.getElementById("editProductCategory")
 .value =
-product.category ||
-"Other";
+product.category || "Other";
 
 document
-.getElementById(
-"editProductPrice"
-)
+.getElementById("editProductPrice")
 .value =
-Number(
-product.price ||
-0
-);
+Number(product.price || 0);
 
 document
-.getElementById(
-"editProductStock"
-)
+.getElementById("editProductStock")
 .value =
-Number(
-product.stock ||
-0
-);
+Number(product.stock || 0);
 
 document
-.getElementById(
-"editProductDescription"
-)
+.getElementById("editProductDescription")
 .value =
-product.description ||
-"";
+product.description || "";
 
 const images =
-Array.isArray(
-product.images
-)
+Array.isArray(product.images)
 ?
 product.images
 :
 (
 product.image
 ?
-[
-product.image
-]
+[product.image]
 :
 []
 );
 
 editExistingImages =
-[
-...images
-];
+[...images];
 
-editNewImages =
-[];
+editNewImages = [];
 
 const sizes =
-Array.isArray(
-product.sizes
-)
+Array.isArray(product.sizes)
 ?
 product.sizes
 :
@@ -2791,23 +2662,19 @@ input.value
 renderEditImagePreview();
 
 document
-.getElementById(
-"editModal"
-)
+.getElementById("editModal")
 .classList.add(
 "active"
 );
 
 };
 
-/* ===== CLOSE EDIT MODAL ===== */
+/* ================= CLOSE EDIT MODAL ================= */
 
 function closeEditModal(){
 
 document
-.getElementById(
-"editModal"
-)
+.getElementById("editModal")
 .classList.remove(
 "active"
 );
@@ -2815,26 +2682,19 @@ document
 }
 
 document
-.getElementById(
-"closeModalBtn"
-)
+.getElementById("closeModalBtn")
 .addEventListener(
 "click",
 closeEditModal
 );
 
 document
-.getElementById(
-"editModal"
-)
+.getElementById("editModal")
 .addEventListener(
 "click",
 function(event){
 
-if(
-event.target.id ===
-"editModal"
-){
+if(event.target.id === "editModal"){
 
 closeEditModal();
 
@@ -2843,12 +2703,10 @@ closeEditModal();
 }
 );
 
-/* ===== UPDATE PRODUCT ===== */
+/* ================= UPDATE PRODUCT ================= */
 
 document
-.getElementById(
-"editProductForm"
-)
+.getElementById("editProductForm")
 .addEventListener(
 "submit",
 async function(event){
@@ -2857,12 +2715,14 @@ event.preventDefault();
 
 const id =
 document
-.getElementById(
-"editProductId"
-)
+.getElementById("editProductId")
 .value;
 
 if(!id){
+
+alert(
+"Product ID not found."
+);
 
 return;
 
@@ -2873,15 +2733,14 @@ document.getElementById(
 "updateProductBtn"
 );
 
-updateButton.disabled =
-true;
+updateButton.disabled = true;
 
 updateButton.textContent =
 "UPDATING...";
 
 try{
 
-const uploadedNewImages =
+const newImageUrls =
 editNewImages.length > 0
 ?
 await uploadProductImages(
@@ -2893,12 +2752,10 @@ editNewImages
 const finalImages =
 [
 ...editExistingImages,
-...uploadedNewImages
+...newImageUrls
 ];
 
-if(
-finalImages.length === 0
-){
+if(finalImages.length === 0){
 
 alert(
 "Please keep at least one product image."
@@ -2908,46 +2765,36 @@ return;
 
 }
 
-const productData = {
+const updatedProduct = {
 
 name:
 document
-.getElementById(
-"editProductName"
-)
+.getElementById("editProductName")
 .value
 .trim(),
 
 category:
 document
-.getElementById(
-"editProductCategory"
-)
+.getElementById("editProductCategory")
 .value,
 
 price:
 Number(
 document
-.getElementById(
-"editProductPrice"
-)
+.getElementById("editProductPrice")
 .value
 ),
 
 stock:
 Number(
 document
-.getElementById(
-"editProductStock"
-)
+.getElementById("editProductStock")
 .value
 ),
 
 description:
 document
-.getElementById(
-"editProductDescription"
-)
+.getElementById("editProductDescription")
 .value
 .trim(),
 
@@ -2973,7 +2820,7 @@ db,
 "products",
 id
 ),
-productData
+updatedProduct
 );
 
 alert(
@@ -2990,20 +2837,19 @@ await loadDashboard();
 catch(error){
 
 console.error(
-"Update error:",
+"Update product error:",
 error
 );
 
 alert(
-"Error: " +
+"Product update failed: " +
 error.message
 );
 
 }
 finally{
 
-updateButton.disabled =
-false;
+updateButton.disabled = false;
 
 updateButton.textContent =
 "UPDATE PRODUCT";
@@ -3013,7 +2859,7 @@ updateButton.textContent =
 }
 );
 
-/* ===== DELETE PRODUCT ===== */
+/* ================= DELETE PRODUCT ================= */
 
 window.deleteProduct =
 async function(id){
@@ -3027,7 +2873,7 @@ return item.id === id;
 }
 );
 
-const name =
+const productName =
 product
 ?
 product.name
@@ -3036,9 +2882,7 @@ product.name
 
 const confirmed =
 confirm(
-"Delete " +
-name +
-"?"
+`Are you sure you want to delete "${productName}"?`
 );
 
 if(!confirmed){
@@ -3069,19 +2913,20 @@ await loadDashboard();
 catch(error){
 
 console.error(
-"Delete error:",
+"Delete product error:",
 error
 );
 
 alert(
-"Unable to delete product."
+"Unable to delete product: " +
+error.message
 );
 
 }
 
 };
 
-/* ===== LOAD ORDERS ===== */
+/* ================= LOAD ORDERS ================= */
 
 async function loadOrders(){
 
@@ -3092,6 +2937,10 @@ document.getElementById(
 
 body.innerHTML =
 '<tr><td colspan="8" class="loading">Loading orders...</td></tr>';
+
+try{
+
+let snapshot;
 
 try{
 
@@ -3107,46 +2956,28 @@ orderBy(
 )
 );
 
-const snapshot =
+snapshot =
 await getDocs(
 ordersQuery
 );
 
-allOrders =
-snapshot.docs.map(
-function(orderDoc){
-
-return {
-
-id:
-orderDoc.id,
-
-...orderDoc.data()
-
-};
-
 }
+catch(queryError){
+
+console.warn(
+"Ordered query failed, using fallback:",
+queryError
 );
 
-renderOrders();
-
-}
-catch(error){
-
-console.error(
-"Orders query error:",
-error
-);
-
-try{
-
-const snapshot =
+snapshot =
 await getDocs(
 collection(
 db,
 "orders"
 )
 );
+
+}
 
 allOrders =
 snapshot.docs.map(
@@ -3183,8 +3014,7 @@ b.createdAt.seconds
 :
 0;
 
-return bTime -
-aTime;
+return bTime - aTime;
 
 }
 );
@@ -3192,11 +3022,11 @@ aTime;
 renderOrders();
 
 }
-catch(secondError){
+catch(error){
 
 console.error(
 "Load orders error:",
-secondError
+error
 );
 
 body.innerHTML =
@@ -3206,9 +3036,7 @@ body.innerHTML =
 
 }
 
-}
-
-/* ===== RENDER ORDERS ===== */
+/* ================= RENDER ORDERS ================= */
 
 function renderOrders(){
 
@@ -3217,9 +3045,7 @@ document.getElementById(
 "ordersBody"
 );
 
-if(
-allOrders.length === 0
-){
+if(allOrders.length === 0){
 
 body.innerHTML =
 '<tr><td colspan="8" class="empty">No orders found.</td></tr>';
@@ -3233,13 +3059,10 @@ allOrders.map(
 function(order){
 
 const customer =
-order.customer ||
-{};
+order.customer || {};
 
 const items =
-Array.isArray(
-order.items
-)
+Array.isArray(order.items)
 ?
 order.items
 :
@@ -3249,22 +3072,20 @@ const itemText =
 items.map(
 function(item){
 
-return escapeHtml(
-item.name ||
-"Product"
+return (
+escapeHtml(
+item.name || "Product"
 )
 +
 " × " +
 Number(
-item.quantity ||
-0
+item.quantity || 0
+)
 );
 
 }
 )
-.join(
-", "
-);
+.join(", ");
 
 const status =
 order.status ||
@@ -3275,9 +3096,7 @@ return `
 <tr>
 
 <td>
-${escapeHtml(
-order.id
-)}
+${escapeHtml(order.id)}
 </td>
 
 <td>
@@ -3297,16 +3116,11 @@ order.phone ||
 </td>
 
 <td>
-${itemText}
+${itemText || "-"}
 </td>
 
 <td>
-₹${Number(
-order.total ||
-0
-).toFixed(
-2
-)}
+₹${Number(order.total || 0).toFixed(2)}
 </td>
 
 <td>
@@ -3317,55 +3131,43 @@ order.paymentMethod ||
 </td>
 
 <td>
-${escapeHtml(
-status
-)}
+${escapeHtml(status)}
 </td>
 
 <td>
 
 <select
 class="status-select"
-onchange="window.updateOrderStatus('${order.id}',this.value)">
+onchange="updateOrderStatus('${order.id}', this.value)">
 
 <option
 value="Pending"
 ${status === "Pending" ? "selected" : ""}>
-
 Pending
-
 </option>
 
 <option
 value="Confirmed"
 ${status === "Confirmed" ? "selected" : ""}>
-
 Confirmed
-
 </option>
 
 <option
 value="Shipped"
 ${status === "Shipped" ? "selected" : ""}>
-
 Shipped
-
 </option>
 
 <option
 value="Delivered"
 ${status === "Delivered" ? "selected" : ""}>
-
 Delivered
-
 </option>
 
 <option
 value="Cancelled"
 ${status === "Cancelled" ? "selected" : ""}>
-
 Cancelled
-
 </option>
 
 </select>
@@ -3378,13 +3180,11 @@ Cancelled
 
 }
 )
-.join(
-""
-);
+.join("");
 
 }
 
-/* ===== UPDATE ORDER STATUS ===== */
+/* ================= UPDATE ORDER STATUS ================= */
 
 window.updateOrderStatus =
 async function(id,status){
@@ -3399,8 +3199,7 @@ id
 ),
 {
 
-status:
-status,
+status:status,
 
 updatedAt:
 serverTimestamp()
@@ -3421,19 +3220,18 @@ error
 );
 
 alert(
-"Unable to update order status."
+"Unable to update order status: " +
+error.message
 );
 
 }
 
 };
 
-/* ===== REFRESH ORDERS ===== */
+/* ================= REFRESH ORDERS ================= */
 
 document
-.getElementById(
-"refreshOrdersBtn"
-)
+.getElementById("refreshOrdersBtn")
 .addEventListener(
 "click",
 async function(){
@@ -3443,7 +3241,7 @@ await loadOrders();
 }
 );
 
-/* ===== DASHBOARD ===== */
+/* ================= DASHBOARD ================= */
 
 async function loadDashboard(){
 
@@ -3484,7 +3282,7 @@ orderDoc.id,
 }
 );
 
-const pending =
+const pendingOrders =
 orders.filter(
 function(order){
 
@@ -3494,17 +3292,26 @@ order.status ||
 ) === "Pending";
 
 }
-)
-.length;
+).length;
 
-const revenue =
-orders.reduce(
+const totalRevenue =
+orders
+.filter(
+function(order){
+
+return (
+order.status ||
+"Pending"
+) !== "Cancelled";
+
+}
+)
+.reduce(
 function(total,order){
 
 return total +
 Number(
-order.total ||
-0
+order.total || 0
 );
 
 },
@@ -3512,35 +3319,25 @@ order.total ||
 );
 
 document
-.getElementById(
-"totalProducts"
-)
+.getElementById("totalProducts")
 .textContent =
 products;
 
 document
-.getElementById(
-"totalOrders"
-)
+.getElementById("totalOrders")
 .textContent =
 orders.length;
 
 document
-.getElementById(
-"pendingOrders"
-)
+.getElementById("pendingOrders")
 .textContent =
-pending;
+pendingOrders;
 
 document
-.getElementById(
-"totalRevenue"
-)
+.getElementById("totalRevenue")
 .textContent =
 "₹" +
-revenue.toFixed(
-2
-);
+totalRevenue.toFixed(2);
 
 renderRecentOrders(
 orders
@@ -3558,18 +3355,16 @@ error
 
 }
 
-/* ===== RECENT ORDERS ===== */
+/* ================= RECENT ORDERS ================= */
 
-function renderRecentOrders(
-orders
-){
+function renderRecentOrders(orders){
 
 const body =
 document.getElementById(
 "recentOrdersBody"
 );
 
-const recent =
+const recentOrders =
 orders
 .slice()
 .sort(
@@ -3591,19 +3386,13 @@ b.createdAt.seconds
 :
 0;
 
-return bTime -
-aTime;
+return bTime - aTime;
 
 }
 )
-.slice(
-0,
-5
-);
+.slice(0,5);
 
-if(
-recent.length === 0
-){
+if(recentOrders.length === 0){
 
 body.innerHTML =
 '<tr><td colspan="4" class="empty">No orders yet.</td></tr>';
@@ -3613,12 +3402,11 @@ return;
 }
 
 body.innerHTML =
-recent.map(
+recentOrders.map(
 function(order){
 
 const customer =
-order.customer ||
-{};
+order.customer || {};
 
 const status =
 order.status ||
@@ -3629,9 +3417,7 @@ return `
 <tr>
 
 <td>
-${escapeHtml(
-order.id
-)}
+${escapeHtml(order.id)}
 </td>
 
 <td>
@@ -3643,18 +3429,11 @@ order.customerName ||
 </td>
 
 <td>
-₹${Number(
-order.total ||
-0
-).toFixed(
-2
-)}
+₹${Number(order.total || 0).toFixed(2)}
 </td>
 
 <td>
-${escapeHtml(
-status
-)}
+${escapeHtml(status)}
 </td>
 
 </tr>
@@ -3663,21 +3442,17 @@ status
 
 }
 )
-.join(
-""
-);
+.join("");
 
 }
 
-/* ===== ESC KEY CLOSE MODAL ===== */
+/* ================= CLOSE MODAL WITH ESC ================= */
 
 document.addEventListener(
 "keydown",
 function(event){
 
-if(
-event.key === "Escape"
-){
+if(event.key === "Escape"){
 
 closeEditModal();
 
@@ -3689,6 +3464,5 @@ closeEditModal();
 </script>
 
 </body>
-
 </html>
-  
+ 
