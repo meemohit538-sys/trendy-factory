@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -149,10 +150,12 @@ gap:18px;
 background:#fffaf4;
 cursor:pointer;
 transition:.25s;
+border:1px solid transparent;
 }
 
 .product:hover{
 transform:translateY(-5px);
+border-color:#ddd5ca;
 }
 
 .product-image{
@@ -517,6 +520,7 @@ color:white;
 border:none;
 cursor:pointer;
 font-size:10px;
+cursor:pointer;
 }
 
 .coupon-message{
@@ -648,7 +652,9 @@ grid-template-columns:1fr;
 }
 
 }
+
 </style>
+
 </head>
 
 <body>
@@ -673,7 +679,6 @@ BAG (<span id="cartCount">0</span>)
 
 </header>
 
-
 <!-- HERO -->
 
 <section class="hero">
@@ -695,17 +700,13 @@ SHOP MEN'S COLLECTION
 
 </section>
 
-
 <!-- SHOP -->
 
 <section class="section" id="shop">
 
 <div class="section-title">
-
 <h2>Men's Collection</h2>
-
 </div>
-
 
 <div class="filters">
 
@@ -731,11 +732,11 @@ JACKETS
 
 </div>
 
-
 <div class="products" id="productsContainer"></div>
 
 </section>
 
+<!-- BANNER -->
 
 <section class="banner">
 
@@ -748,13 +749,11 @@ modern wardrobe.
 
 </section>
 
-
 <footer>
 © 2026 TRENDY FACTORY · ALL RIGHTS RESERVED
 </footer>
 
 </div>
-
 
 <!-- PRODUCT MODAL -->
 
@@ -768,7 +767,6 @@ modern wardrobe.
 PRODUCT
 </div>
 
-
 <div class="modal-info">
 
 <h2 id="modalTitle"></h2>
@@ -779,32 +777,21 @@ PRODUCT
 
 <p class="description" id="modalDescription"></p>
 
-
-<span class="label">
-SELECT SIZE
-</span>
+<span class="label">SELECT SIZE</span>
 
 <div class="sizes" id="sizeContainer"></div>
 
-
-<span class="label">
-QUANTITY
-</span>
+<span class="label">QUANTITY</span>
 
 <div class="quantity">
 
-<button onclick="changeQty(-1)">
-−
-</button>
+<button onclick="changeQty(-1)">−</button>
 
 <span id="quantity">1</span>
 
-<button onclick="changeQty(1)">
-+
-</button>
+<button onclick="changeQty(1)">+</button>
 
 </div>
-
 
 <button class="btn" onclick="addSelectedProduct()">
 ADD TO BAG
@@ -816,7 +803,6 @@ ADD TO BAG
 
 </div>
 
-
 <!-- CART -->
 
 <div class="cart-panel" id="cartPanel">
@@ -825,15 +811,11 @@ ADD TO BAG
 
 <h2>Your Bag</h2>
 
-<button class="close" onclick="closeCart()">
-×
-</button>
+<button class="close" onclick="closeCart()">×</button>
 
 </div>
 
-
 <div id="cartItems"></div>
-
 
 <div class="cart-total">
 
@@ -843,13 +825,11 @@ Total: ₹<span id="cartTotal">0</span>
 
 </div>
 
-
 <button class="checkout-btn" onclick="openCheckout()">
 PROCEED TO CHECKOUT
 </button>
 
 </div>
-
 
 <!-- CHECKOUT -->
 
@@ -857,130 +837,85 @@ PROCEED TO CHECKOUT
 
 <div class="checkout-container">
 
-
 <button class="back-btn" onclick="backToShop()">
 ← BACK TO SHOP
 </button>
 
-
-<h1 class="checkout-title">
-Checkout
-</h1>
-
+<h1 class="checkout-title">Checkout</h1>
 
 <div class="checkout-grid" id="checkoutContent">
 
-
-<!-- CUSTOMER FORM -->
+<!-- CUSTOMER DETAILS -->
 
 <div class="form-card">
 
 <h3>Delivery Details</h3>
 
-
 <div class="form-group">
 
 <label>FULL NAME</label>
 
-<input
-id="customerName"
-type="text"
-placeholder="Enter your full name"
->
+<input id="customerName" type="text" placeholder="Enter your full name">
 
 </div>
 
-
 <div class="form-row">
-
 
 <div class="form-group">
 
 <label>MOBILE NUMBER</label>
 
-<input
-id="customerPhone"
-type="tel"
-placeholder="10 digit number"
->
+<input id="customerPhone" type="tel" placeholder="10 digit number">
 
 </div>
-
 
 <div class="form-group">
 
 <label>EMAIL</label>
 
-<input
-id="customerEmail"
-type="email"
-placeholder="you@email.com"
->
+<input id="customerEmail" type="email" placeholder="you@email.com">
 
 </div>
 
-
 </div>
-
 
 <div class="form-group">
 
 <label>FULL ADDRESS</label>
 
-<textarea
-id="customerAddress"
-placeholder="House no, street, area"
-></textarea>
+<textarea id="customerAddress" placeholder="House no, street, area"></textarea>
 
 </div>
 
-
 <div class="form-row">
-
 
 <div class="form-group">
 
 <label>CITY</label>
 
-<input
-id="customerCity"
-type="text"
-placeholder="City"
->
+<input id="customerCity" type="text" placeholder="City">
 
 </div>
-
 
 <div class="form-group">
 
 <label>STATE</label>
 
-<input
-id="customerState"
-type="text"
-placeholder="State"
->
+<input id="customerState" type="text" placeholder="State">
 
 </div>
 
-
 </div>
-
 
 <div class="form-group">
 
 <label>PIN CODE</label>
 
-<input
-id="customerPin"
-type="text"
-placeholder="PIN Code"
->
+<input id="customerPin" type="text" placeholder="PIN Code">
 
 </div>
 
 </div>
-
 
 <!-- ORDER SUMMARY -->
 
@@ -989,9 +924,6 @@ placeholder="PIN Code"
 <h3>Order Summary</h3>
 
 <div id="checkoutItems"></div>
-
-
-<!-- COUPON -->
 
 <div class="coupon-box">
 
@@ -1003,6 +935,7 @@ placeholder="PIN Code"
 id="couponCode"
 type="text"
 placeholder="ENTER COUPON CODE"
+
 >
 
 <button onclick="applyCoupon()">
@@ -1011,15 +944,9 @@ APPLY
 
 </div>
 
-<div
-class="coupon-message"
-id="couponMessage"
-></div>
+<div class="coupon-message" id="couponMessage"></div>
 
 </div>
-
-
-<!-- TOTAL -->
 
 <div class="order-line">
 
@@ -1030,7 +957,6 @@ id="couponMessage"
 </strong>
 
 </div>
-
 
 <div
 class="order-line discount-line"
@@ -1046,7 +972,6 @@ style="display:none"
 
 </div>
 
-
 <div class="order-total">
 
 <strong>Total</strong>
@@ -1057,20 +982,13 @@ style="display:none"
 
 </div>
 
-
-<button
-class="place-order"
-onclick="placeOrder()"
->
-
+<button class="place-order" onclick="placeOrder()">
 PLACE ORDER
-
 </button>
 
 </div>
 
 </div>
-
 
 <!-- SUCCESS -->
 
@@ -1078,9 +996,7 @@ PLACE ORDER
 
 <h2>Order Received!</h2>
 
-<p>
-Thank you for shopping with Trendy Factory.
-</p>
+<p>Thank you for shopping with Trendy Factory.</p>
 
 <p
 id="orderNumber"
@@ -1091,25 +1007,22 @@ style="margin-top:15px;font-weight:bold"
 class="btn"
 style="margin-top:25px"
 onclick="backToShop()"
+
 >
 
-CONTINUE SHOPPING
-
-</button>
-
-</div>
-
+CONTINUE SHOPPING </button>
 
 </div>
 
 </div>
 
+</div>
 
 <script>
 
-/* =========================
+/* ==========================================
 DEFAULT PRODUCTS
-========================= */
+========================================== */
 
 const defaultProducts = [
 
@@ -1196,172 +1109,103 @@ sizes:["S","M","L","XL","XXL"]
 ];
 
 
-/* =========================
+/* ==========================================
 PRODUCT STORAGE
-========================= */
+========================================== */
 
-const defaultProducts = [
+function getProducts(){
 
-{
-id:1,
-name:"Premium Linen Shirt",
-price:1999,
-category:"shirts",
-image:"LINEN SHIRT",
-description:"Premium breathable linen shirt with a clean modern fit.",
-sizes:["S","M","L","XL","XXL"]
-},
+let savedProducts;
 
-{
-id:2,
-name:"Oxford Classic Shirt",
-price:2299,
-category:"shirts",
-image:"OXFORD SHIRT",
-description:"Classic Oxford shirt designed for everyday and formal styling.",
-sizes:["S","M","L","XL","XXL"]
-},
+try{
 
-{
-id:3,
-name:"Oversized Essential T-Shirt",
-price:1199,
-category:"tshirts",
-image:"OVERSIZED T-SHIRT",
-description:"Heavyweight cotton oversized t-shirt with a relaxed silhouette.",
-sizes:["S","M","L","XL","XXL"]
-},
+savedProducts=JSON.parse(
+localStorage.getItem("trendyProducts")
+);
 
-{
-id:4,
-name:"Minimal Cotton T-Shirt",
-price:999,
-category:"tshirts",
-image:"COTTON T-SHIRT",
-description:"Soft premium cotton t-shirt for everyday comfort.",
-sizes:["S","M","L","XL","XXL"]
-},
+}catch(error){
 
-{
-id:5,
-name:"Relaxed Fit Trouser",
-price:2499,
-category:"pants",
-image:"RELAXED TROUSER",
-description:"Modern relaxed fit trousers with comfortable everyday tailoring.",
-sizes:["28","30","32","34","36","38","40"]
-},
+savedProducts=null;
 
-{
-id:6,
-name:"Classic Straight Jeans",
-price:2799,
-category:"pants",
-image:"STRAIGHT JEANS",
-description:"Classic straight fit jeans designed for timeless everyday style.",
-sizes:["28","30","32","34","36","38","40"]
-},
-
-{
-id:7,
-name:"Minimal Bomber Jacket",
-price:3999,
-category:"jackets",
-image:"BOMBER JACKET",
-description:"Clean minimal bomber jacket for a refined modern look.",
-sizes:["S","M","L","XL","XXL"]
-},
-
-{
-id:8,
-name:"Classic Oversized Jacket",
-price:4499,
-category:"jackets",
-image:"OVERSIZED JACKET",
-description:"Premium oversized jacket with a contemporary relaxed fit.",
-sizes:["S","M","L","XL","XXL"]
 }
 
-];
+if(!Array.isArray(savedProducts) || savedProducts.length===0){
 
-let products = JSON.parse(localStorage.getItem("trendyProducts"));
-
-if (!Array.isArray(products) || products.length === 0) {
-    products = [...defaultProducts];
-    localStorage.setItem("trendyProducts", JSON.stringify(products));
-  }
-
-if(!Array.isArray(products) || products.length === 0){
-
-products = [...defaultProducts];
+savedProducts=[...defaultProducts];
 
 localStorage.setItem(
 "trendyProducts",
-JSON.stringify(products)
+JSON.stringify(savedProducts)
 );
 
 }
 
+return savedProducts;
 
-/* =========================
+}
+
+let products=getProducts();
+
+
+/* ==========================================
 CART
-========================= */
+========================================== */
 
-let cart = JSON.parse(
+let cart;
+
+try{
+
+cart=JSON.parse(
 localStorage.getItem("trendyCart") || "[]"
 );
 
-let currentProduct = null;
-let selectedSize = "";
-let qty = 1;
+}catch(error){
 
-
-/* =========================
-COUPON
-========================= */
-
-let discount = 0;
-let appliedCoupon = "";
-
-
-/* =========================
-DISPLAY PRODUCTS
-========================= */
-
-function displayProducts(category="all"){
-
-products = JSON.parse(
-localStorage.getItem("trendyProducts") || "[]"
-);
-
-if(!Array.isArray(products) || products.length === 0){
-
-products = [...defaultProducts];
-
-localStorage.setItem(
-"trendyProducts",
-JSON.stringify(products)
-);
+cart=[];
 
 }
 
-const container =
+if(!Array.isArray(cart)){
+cart=[];
+}
+
+let currentProduct=null;
+let selectedSize="";
+let qty=1;
+
+
+/* ==========================================
+COUPON
+========================================== */
+
+let discount=0;
+let appliedCoupon="";
+
+
+/* ==========================================
+DISPLAY PRODUCTS
+========================================== */
+
+function displayProducts(category="all"){
+
+products=getProducts();
+
+const container=
 document.getElementById("productsContainer");
 
-container.innerHTML = "";
+container.innerHTML="";
 
-
-const filtered =
-category === "all"
-? products
-: products.filter(
-product => product.category === category
+const filtered=
+category==="all"
+?products
+:products.filter(
+product=>product.category===category
 );
 
+if(filtered.length===0){
 
-if(filtered.length === 0){
+container.innerHTML=`
 
-container.innerHTML = `
 <p style="
 grid-column:1/-1;
 text-align:center;
@@ -1370,20 +1214,19 @@ color:#766d63
 ">
 No products found.
 </p>
+
 `;
 
 return;
 
 }
 
+filtered.forEach(product=>{
 
-filtered.forEach(product => {
-
-const productImage =
+const productImage=
 product.image || product.name;
 
-
-container.innerHTML += `
+container.innerHTML+=`
 
 <div
 class="product"
@@ -1396,16 +1239,11 @@ ${productImage}
 
 </div>
 
-
 <div class="product-info">
 
-<h3>
-${product.name}
-</h3>
+<h3>${product.name}</h3>
 
-<p>
-₹${product.price}
-</p>
+<p>₹${product.price}</p>
 
 </div>
 
@@ -1418,15 +1256,15 @@ ${product.name}
 }
 
 
-/* =========================
+/* ==========================================
 FILTER PRODUCTS
-========================= */
+========================================== */
 
 function filterProducts(category,button){
 
 document
 .querySelectorAll(".filter-btn")
-.forEach(btn => {
+.forEach(btn=>{
 
 btn.classList.remove("active");
 
@@ -1439,19 +1277,18 @@ displayProducts(category);
 }
 
 
-/* =========================
+/* ==========================================
 OPEN PRODUCT
-========================= */
+========================================== */
 
 function openProduct(id){
 
-products = JSON.parse(
-localStorage.getItem("trendyProducts") || "[]"
+products=getProducts();
+
+currentProduct=
+products.find(
+product=>String(product.id)===String(id)
 );
-
-currentProduct =
-products.find(product => product.id == id);
-
 
 if(!currentProduct){
 
@@ -1461,87 +1298,60 @@ return;
 
 }
 
-
-document
-.getElementById("modalTitle")
-.textContent =
+document.getElementById("modalTitle").textContent=
 currentProduct.name;
 
-
-document
-.getElementById("modalPrice")
-.textContent =
+document.getElementById("modalPrice").textContent=
 currentProduct.price;
 
-
-document
-.getElementById("modalDescription")
-.textContent =
+document.getElementById("modalDescription").textContent=
 currentProduct.description || "";
 
-
-document
-.getElementById("modalImage")
-.textContent =
+document.getElementById("modalImage").textContent=
 currentProduct.image || currentProduct.name;
 
-
-const sizeContainer =
+const sizeContainer=
 document.getElementById("sizeContainer");
 
+sizeContainer.innerHTML="";
 
-sizeContainer.innerHTML = "";
-
-
-const productSizes =
+const productSizes=
 Array.isArray(currentProduct.sizes)
-? currentProduct.sizes
-: [];
+?currentProduct.sizes
+:[];
 
+selectedSize="";
 
-productSizes.forEach((size,index) => {
+productSizes.forEach((size,index)=>{
 
-const button =
+const button=
 document.createElement("button");
 
-button.className =
-"size-btn";
+button.className="size-btn";
 
-button.textContent =
-size;
+button.textContent=size;
 
+button.onclick=function(){
 
-button.onclick = function(){
-
-selectSize(
-this,
-size
-);
+selectSize(this,size);
 
 };
 
-
-if(index === 0){
+if(index===0){
 
 button.classList.add("active");
 
-selectedSize = size;
+selectedSize=size;
 
 }
-
 
 sizeContainer.appendChild(button);
 
 });
 
+qty=1;
 
-qty = 1;
-
-document
-.getElementById("quantity")
-.textContent =
-qty;
-
+document.getElementById("quantity").textContent=qty;
 
 document
 .getElementById("productModal")
@@ -1550,9 +1360,9 @@ document
 }
 
 
-/* =========================
+/* ==========================================
 CLOSE PRODUCT
-========================= */
+========================================== */
 
 function closeProduct(){
 
@@ -1563,55 +1373,49 @@ document
 }
 
 
-/* =========================
+/* ==========================================
 SELECT SIZE
-========================= */
+========================================== */
 
 function selectSize(button,size){
 
-selectedSize = size;
-
+selectedSize=size;
 
 document
 .querySelectorAll(".size-btn")
-.forEach(btn => {
+.forEach(btn=>{
 
 btn.classList.remove("active");
 
 });
-
 
 button.classList.add("active");
 
 }
 
 
-/* =========================
+/* ==========================================
 QUANTITY
-========================= */
+========================================== */
 
 function changeQty(change){
 
-qty += change;
+qty+=change;
 
-if(qty < 1){
-
-qty = 1;
-
+if(qty<1){
+qty=1;
 }
-
 
 document
 .getElementById("quantity")
-.textContent =
-qty;
+.textContent=qty;
 
 }
 
 
-/* =========================
+/* ==========================================
 ADD TO BAG
-========================= */
+========================================== */
 
 function addSelectedProduct(){
 
@@ -1621,7 +1425,6 @@ return;
 
 }
 
-
 if(!selectedSize){
 
 alert("Please select a size.");
@@ -1629,7 +1432,6 @@ alert("Please select a size.");
 return;
 
 }
-
 
 for(let i=0;i<qty;i++){
 
@@ -1645,7 +1447,6 @@ size:selectedSize
 
 }
 
-
 saveCart();
 
 closeProduct();
@@ -1655,9 +1456,9 @@ openCart();
 }
 
 
-/* =========================
+/* ==========================================
 SAVE CART
-========================= */
+========================================== */
 
 function saveCart(){
 
@@ -1671,42 +1472,34 @@ updateCart();
 }
 
 
-/* =========================
+/* ==========================================
 UPDATE CART
-========================= */
+========================================== */
 
 function updateCart(){
 
 document
 .getElementById("cartCount")
-.textContent =
-cart.length;
+.textContent=cart.length;
 
-
-const items =
+const items=
 document.getElementById("cartItems");
 
+items.innerHTML="";
 
-items.innerHTML = "";
+let total=0;
 
+cart.forEach((item,index)=>{
 
-let total = 0;
+total+=Number(item.price)||0;
 
-
-cart.forEach((item,index) => {
-
-total += Number(item.price) || 0;
-
-
-items.innerHTML += `
+items.innerHTML+=`
 
 <div class="cart-item">
 
 <div>
 
-<strong>
-${item.name}
-</strong>
+<strong>${item.name}</strong>
 
 <br>
 
@@ -1714,42 +1507,4 @@ Size: ${item.size}
 
 <br>
 
-₹${item.price}
-
-</div>
-
-
-<button
-class="remove"
-onclick="removeItem(${index})"
->
-
-REMOVE
-
-</button>
-
-</div>
-
-`;
-
-});
-
-
-if(cart.length === 0){
-
-items.innerHTML = `
-<p style="
-padding:30px 0;
-text-align:center;
-color:#766d63
-">
-Your bag is empty.
-</p>
-`;
-
-}
-
-
-document
-.getElementById("cartTotal")
-.textContent
+₹${item.p
