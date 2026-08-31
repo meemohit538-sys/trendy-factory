@@ -8,14 +8,14 @@
 
 <style>
 *{
+box-sizing:border-box;
 margin:0;
 padding:0;
-box-sizing:border-box;
 }
 
 :root{
 --dark:#111827;
---dark2:#1f2937;
+--dark-light:#1f2937;
 --primary:#2563eb;
 --danger:#dc2626;
 --warning:#f59e0b;
@@ -32,10 +32,7 @@ background:var(--bg);
 color:#111827;
 }
 
-button,
-input,
-select,
-textarea{
+button,input,select,textarea{
 font:inherit;
 }
 
@@ -44,7 +41,7 @@ border:none;
 cursor:pointer;
 }
 
-/* ================= LOGIN ================= */
+/* LOGIN */
 
 #loginPage{
 min-height:100vh;
@@ -59,22 +56,22 @@ background:linear-gradient(135deg,#111827,#374151);
 width:100%;
 max-width:400px;
 background:#fff;
-border-radius:16px;
 padding:32px;
+border-radius:16px;
 box-shadow:0 20px 50px rgba(0,0,0,.3);
 }
 
 .login-card h1{
 text-align:center;
-font-size:26px;
+font-size:25px;
 margin-bottom:8px;
 }
 
-.login-card .subtitle{
+.login-card p{
 text-align:center;
 color:var(--gray);
 font-size:14px;
-margin-bottom:28px;
+margin-bottom:25px;
 }
 
 .form-group{
@@ -84,7 +81,7 @@ margin-bottom:16px;
 .form-group label{
 display:block;
 font-size:13px;
-font-weight:700;
+font-weight:bold;
 margin-bottom:7px;
 }
 
@@ -114,8 +111,7 @@ resize:vertical;
 .btn{
 padding:11px 16px;
 border-radius:8px;
-font-weight:700;
-transition:.2s;
+font-weight:bold;
 }
 
 .btn:disabled{
@@ -128,25 +124,19 @@ background:var(--primary);
 color:#fff;
 }
 
-.btn-danger{
-background:var(--danger);
-color:#fff;
-}
-
-.btn-warning{
-background:var(--warning);
-color:#fff;
-}
-
 .btn-secondary{
 background:#e5e7eb;
 color:#111827;
 }
 
+.btn-danger{
+background:var(--danger);
+color:#fff;
+}
+
 .login-btn{
 width:100%;
 padding:13px;
-margin-top:4px;
 }
 
 .login-error{
@@ -157,7 +147,7 @@ color:var(--danger);
 text-align:center;
 }
 
-/* ================= ADMIN LAYOUT ================= */
+/* ADMIN */
 
 #adminApp{
 display:none;
@@ -170,8 +160,8 @@ display:flex;
 
 .sidebar{
 position:fixed;
-top:0;
 left:0;
+top:0;
 bottom:0;
 width:250px;
 background:var(--dark);
@@ -183,7 +173,6 @@ z-index:100;
 .brand{
 font-size:21px;
 font-weight:800;
-letter-spacing:.5px;
 padding:10px 12px 28px;
 }
 
@@ -196,7 +185,7 @@ background:transparent;
 color:#d1d5db;
 text-align:left;
 border-radius:8px;
-font-weight:700;
+font-weight:bold;
 }
 
 .nav-btn:hover,
@@ -207,14 +196,14 @@ color:#fff;
 
 .logout-btn{
 position:absolute;
-bottom:20px;
 left:14px;
 right:14px;
+bottom:20px;
+padding:12px;
 background:var(--danger);
 color:#fff;
-padding:12px;
 border-radius:8px;
-font-weight:700;
+font-weight:bold;
 }
 
 .main{
@@ -271,7 +260,7 @@ display:none;
 display:block;
 }
 
-/* ================= DASHBOARD ================= */
+/* DASHBOARD */
 
 .stats-grid{
 display:grid;
@@ -282,15 +271,15 @@ margin-bottom:25px;
 
 .stat-card{
 background:#fff;
-border-radius:12px;
 padding:20px;
+border-radius:12px;
 box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
 
 .stat-label{
 display:block;
 font-size:12px;
-font-weight:700;
+font-weight:bold;
 color:var(--gray);
 margin-bottom:10px;
 }
@@ -300,29 +289,25 @@ font-size:26px;
 font-weight:800;
 }
 
-/* ================= CARDS ================= */
+/* CARD */
 
 .card{
 background:#fff;
-border-radius:12px;
 padding:22px;
+border-radius:12px;
 box-shadow:0 2px 10px rgba(0,0,0,.05);
 margin-bottom:22px;
 }
 
 .card-header{
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
 gap:12px;
 margin-bottom:20px;
 }
 
-.card-header h3{
-font-size:18px;
-}
-
-/* ================= FORMS ================= */
+/* FORM */
 
 .form-grid{
 display:grid;
@@ -345,10 +330,9 @@ display:flex;
 align-items:center;
 gap:5px;
 font-size:14px;
-font-weight:600;
 }
 
-/* ================= IMAGE UPLOAD ================= */
+/* IMAGE UPLOAD */
 
 .upload-box{
 border:2px dashed #cbd5e1;
@@ -364,11 +348,11 @@ display:none;
 
 .upload-label{
 display:inline-block;
+padding:11px 17px;
 background:var(--dark);
 color:#fff;
-padding:11px 16px;
 border-radius:8px;
-font-weight:700;
+font-weight:bold;
 cursor:pointer;
 }
 
@@ -408,10 +392,10 @@ height:27px;
 border-radius:50%;
 background:var(--danger);
 color:#fff;
-font-size:17px;
+font-size:18px;
 }
 
-/* ================= TABLES ================= */
+/* TABLE */
 
 .table-wrap{
 overflow-x:auto;
@@ -423,26 +407,23 @@ border-collapse:collapse;
 min-width:700px;
 }
 
-th,
-td{
+th,td{
 padding:12px;
 border-bottom:1px solid var(--border);
 text-align:left;
 font-size:14px;
-vertical-align:middle;
 }
 
 th{
 font-size:12px;
-text-transform:uppercase;
 color:var(--gray);
 }
 
 .product-thumb{
 width:55px;
 height:65px;
-border-radius:7px;
 object-fit:cover;
+border-radius:7px;
 }
 
 .action-btn{
@@ -450,7 +431,7 @@ padding:7px 10px;
 border-radius:6px;
 color:#fff;
 font-size:12px;
-font-weight:700;
+font-weight:bold;
 margin-right:5px;
 }
 
@@ -475,7 +456,7 @@ padding:28px;
 color:var(--gray);
 }
 
-/* ================= MODAL ================= */
+/* MODAL */
 
 .modal{
 display:none;
@@ -509,24 +490,21 @@ right:15px;
 top:10px;
 background:transparent;
 font-size:28px;
-line-height:1;
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 @media(max-width:950px){
-
 .stats-grid{
 grid-template-columns:repeat(2,1fr);
 }
-
 }
 
 @media(max-width:700px){
 
 .sidebar{
 transform:translateX(-100%);
-transition:transform .25s ease;
+transition:.25s;
 }
 
 .sidebar.open{
@@ -569,93 +547,43 @@ grid-template-columns:repeat(3,1fr);
 
 <body>
 
-<!-- ================= LOGIN PAGE ================= -->
-
 <div id="loginPage">
-
 <div class="login-card">
 
 <h1>TRENDY FACTORY</h1>
-
-<p class="subtitle">Admin Panel Login</p>
+<p>Admin Panel Login</p>
 
 <form id="loginForm">
 
 <div class="form-group">
-
 <label for="email">Admin Email</label>
-
-<input
-id="email"
-type="email"
-placeholder="Enter admin email"
-autocomplete="email"
-required>
-
+<input id="email" type="email" placeholder="Enter admin email" required>
 </div>
 
 <div class="form-group">
-
 <label for="password">Password</label>
-
-<input
-id="password"
-type="password"
-placeholder="Enter password"
-autocomplete="current-password"
-required>
-
+<input id="password" type="password" placeholder="Enter password" required>
 </div>
 
-<button
-id="loginBtn"
-type="submit"
-class="btn btn-primary login-btn">
-
+<button id="loginBtn" type="submit" class="btn btn-primary login-btn">
 LOGIN
-
 </button>
 
-<div
-id="loginError"
-class="login-error">
-</div>
+<div id="loginError" class="login-error"></div>
 
 </form>
-
 </div>
-
 </div>
-
-<!-- ================= ADMIN APPLICATION ================= -->
 
 <div id="adminApp">
 
 <aside id="sidebar" class="sidebar">
 
-<div class="brand">
-TRENDY FACTORY
-</div>
+<div class="brand">TRENDY FACTORY</div>
 
-<button class="nav-btn active" data-page="dashboard">
-📊 Dashboard
-</button>
+<button class="nav-btn active" data-page="dashboard">📊 Dashboard</button> <button class="nav-btn" data-page="products">📦 Products</button> <button class="nav-btn" data-page="addProduct">➕ Add Product</button> <button class="nav-btn" data-page="orders">🛒 Orders</button>
 
-<button class="nav-btn" data-page="products">
-📦 Products
-</button>
-
-<button class="nav-btn" data-page="addProduct">
-➕ Add Product
-</button>
-
-<button class="nav-btn" data-page="orders">
-🛒 Orders
-</button>
-
-<button id="logoutBtn" class="logout-btn">
-LOGOUT
-</button>
+<button id="logoutBtn" class="logout-btn">LOGOUT</button>
 
 </aside>
 
@@ -664,20 +592,8 @@ LOGOUT
 <header class="topbar">
 
 <div class="topbar-left">
-
-<button
-id="mobileMenu"
-type="button"
-class="mobile-menu">
-
-☰
-
-</button>
-
-<h2 id="pageTitle">
-Dashboard
-</h2>
-
+<button id="mobileMenu" type="button" class="mobile-menu">☰</button>
+<h2 id="pageTitle">Dashboard</h2>
 </div>
 
 <div id="adminEmail"></div>
@@ -685,7 +601,6 @@ Dashboard
 </header>
 
 <div class="content">
-
 <!-- ================= DASHBOARD PAGE ================= -->
 
 <section id="dashboardPage" class="page active">
@@ -717,24 +632,16 @@ Dashboard
 <div class="card">
 
 <div class="card-header">
-
 <h3>Recent Orders</h3>
 
-<button
-id="viewOrdersBtn"
-type="button"
-class="btn btn-secondary">
-
+<button id="viewOrdersBtn" type="button" class="btn btn-secondary">
 VIEW ALL
-
 </button>
-
 </div>
 
 <div class="table-wrap">
 
 <table>
-
 <thead>
 <tr>
 <th>Order ID</th>
@@ -745,19 +652,14 @@ VIEW ALL
 </thead>
 
 <tbody id="recentOrdersBody">
-
 <tr>
-<td colspan="4" class="empty">
-No orders yet.
-</td>
+<td colspan="4" class="empty">No orders yet.</td>
 </tr>
-
 </tbody>
 
 </table>
 
 </div>
-
 </div>
 
 </section>
@@ -772,13 +674,8 @@ No orders yet.
 
 <h3>All Products</h3>
 
-<button
-id="goAddBtn"
-type="button"
-class="btn btn-primary">
-
+<button id="goAddBtn" type="button" class="btn btn-primary">
 ➕ ADD PRODUCT
-
 </button>
 
 </div>
@@ -788,7 +685,6 @@ class="btn btn-primary">
 <table>
 
 <thead>
-
 <tr>
 <th>Image</th>
 <th>Name</th>
@@ -797,23 +693,17 @@ class="btn btn-primary">
 <th>Stock</th>
 <th>Action</th>
 </tr>
-
 </thead>
 
 <tbody id="productsBody">
-
 <tr>
-<td colspan="6" class="empty">
-Loading products...
-</td>
+<td colspan="6" class="empty">Loading products...</td>
 </tr>
-
 </tbody>
 
 </table>
 
 </div>
-
 </div>
 
 </section>
@@ -825,18 +715,11 @@ Loading products...
 <div class="card">
 
 <div class="card-header">
-
 <h3>Add New Product</h3>
 
-<button
-id="clearBtn"
-type="button"
-class="btn btn-secondary">
-
+<button id="clearBtn" type="button" class="btn btn-secondary">
 CLEAR FORM
-
 </button>
-
 </div>
 
 <form id="productForm">
@@ -844,10 +727,7 @@ CLEAR FORM
 <div class="form-grid">
 
 <div class="form-group">
-
-<label for="productName">
-Product Name
-</label>
+<label for="productName">Product Name</label>
 
 <input
 id="productName"
@@ -858,99 +738,60 @@ required>
 </div>
 
 <div class="form-group">
+<label for="productCategory">Category</label>
 
-<label for="productCategory">
-Category
-</label>
-
-<select
-id="productCategory"
-required>
-
-<option value="">
-Select Category
-</option>
-
-<option value="T-Shirt">
-T-Shirt
-</option>
-
-<option value="Shirt">
-Shirt
-</option>
-
-<option value="Jeans">
-Jeans
-</option>
-
-<option value="Hoodie">
-Hoodie
-</option>
-
-<option value="Jacket">
-Jacket
-</option>
-
-<option value="Other">
-Other
-</option>
-
+<select id="productCategory" required>
+<option value="">Select Category</option>
+<option value="T-Shirt">T-Shirt</option>
+<option value="Shirt">Shirt</option>
+<option value="Jeans">Jeans</option>
+<option value="Hoodie">Hoodie</option>
+<option value="Jacket">Jacket</option>
+<option value="Other">Other</option>
 </select>
 
 </div>
 
 <div class="form-group">
-
-<label for="productPrice">
-Price (₹)
-</label>
+<label for="productPrice">Price (₹)</label>
 
 <input
 id="productPrice"
 type="number"
 min="0"
-step="0.01"
+step="1"
 placeholder="Enter price"
 required>
 
 </div>
 
 <div class="form-group">
-
-<label for="productStock">
-Stock Quantity
-</label>
+<label for="productStock">Stock Quantity</label>
 
 <input
 id="productStock"
 type="number"
 min="0"
 step="1"
-placeholder="Enter available stock"
+placeholder="Enter stock quantity"
 required>
 
 </div>
 
 <div class="form-group full-width">
-
-<label for="productDescription">
-Description
-</label>
+<label for="productDescription">Description</label>
 
 <textarea
 id="productDescription"
-placeholder="Write product description">
-</textarea>
+placeholder="Write product description"></textarea>
 
 </div>
 
-<!-- ================= PRODUCT IMAGE UPLOAD ================= -->
+<!-- ================= IMAGE UPLOAD ================= -->
 
 <div class="form-group full-width">
 
-<label>
-Product Photos (Maximum 5)
-</label>
+<label>Product Photos (Maximum 5)</label>
 
 <div class="upload-box">
 
@@ -960,22 +801,15 @@ type="file"
 accept="image/*"
 multiple>
 
-<label
-for="productImages"
-class="upload-label">
-
+<label for="productImages" class="upload-label">
 📷 CHOOSE PHOTOS FROM GALLERY
-
 </label>
 
 <p class="upload-help">
-Select up to 5 photos. You can select photos multiple times.
+You can select up to 5 photos.
 </p>
 
-<div
-id="imagePreview"
-class="preview-grid">
-</div>
+<div id="imagePreview" class="preview-grid"></div>
 
 </div>
 
@@ -985,51 +819,11 @@ class="preview-grid">
 
 <div class="form-group full-width">
 
-<label>
-Available Sizes
-</label>
+<label>Available Sizes</label>
 
 <div class="sizes">
 
-<label>
-<input
-type="checkbox"
-name="productSize"
-value="S">
-S
-</label>
-
-<label>
-<input
-type="checkbox"
-name="productSize"
-value="M">
-M
-</label>
-
-<label>
-<input
-type="checkbox"
-name="productSize"
-value="L">
-L
-</label>
-
-<label>
-<input
-type="checkbox"
-name="productSize"
-value="XL">
-XL
-</label>
-
-<label>
-<input
-type="checkbox"
-name="productSize"
-value="XXL">
-XXL
-</label>
+<label><input type="checkbox" name="productSize" value="S"> S</label> <label><input type="checkbox" name="productSize" value="M"> M</label> <label><input type="checkbox" name="productSize" value="L"> L</label> <label><input type="checkbox" name="productSize" value="XL"> XL</label> <label><input type="checkbox" name="productSize" value="XXL"> XXL</label>
 
 </div>
 
@@ -1037,13 +831,8 @@ XXL
 
 <div class="form-group full-width">
 
-<button
-id="saveBtn"
-type="submit"
-class="btn btn-primary">
-
+<button id="saveBtn" type="submit" class="btn btn-primary">
 SAVE PRODUCT
-
 </button>
 
 </div>
@@ -1066,13 +855,8 @@ SAVE PRODUCT
 
 <h3>All Orders</h3>
 
-<button
-id="refreshOrdersBtn"
-type="button"
-class="btn btn-secondary">
-
+<button id="refreshOrdersBtn" type="button" class="btn btn-secondary">
 ↻ REFRESH
-
 </button>
 
 </div>
@@ -1082,7 +866,6 @@ class="btn btn-secondary">
 <table>
 
 <thead>
-
 <tr>
 <th>Order ID</th>
 <th>Customer</th>
@@ -1093,17 +876,12 @@ class="btn btn-secondary">
 <th>Status</th>
 <th>Update</th>
 </tr>
-
 </thead>
 
 <tbody id="ordersBody">
-
 <tr>
-<td colspan="8" class="empty">
-Loading orders...
-</td>
+<td colspan="8" class="empty">Loading orders...</td>
 </tr>
-
 </tbody>
 
 </table>
@@ -1131,26 +909,19 @@ id="closeModal"
 type="button"
 class="close-modal"
 aria-label="Close">
-
 × </button>
 
-<h2 style="margin-bottom:20px;">
-Edit Product
-</h2>
+<h2 style="margin-bottom:20px;">Edit Product</h2>
 
 <form id="editForm">
 
-<input
-id="editId"
-type="hidden">
+<input id="editId" type="hidden">
 
 <div class="form-grid">
 
 <div class="form-group">
 
-<label for="editName">
-Product Name
-</label>
+<label for="editName">Product Name</label>
 
 <input
 id="editName"
@@ -1161,43 +932,35 @@ required>
 
 <div class="form-group">
 
-<label for="editCategory">
-Category
-</label>
+<label for="editCategory">Category</label>
 
-<select id="editCategory">
-
+<select id="editCategory" required>
 <option value="T-Shirt">T-Shirt</option>
 <option value="Shirt">Shirt</option>
 <option value="Jeans">Jeans</option>
 <option value="Hoodie">Hoodie</option>
 <option value="Jacket">Jacket</option>
 <option value="Other">Other</option>
-
 </select>
 
 </div>
 
 <div class="form-group">
 
-<label for="editPrice">
-Price (₹)
-</label>
+<label for="editPrice">Price (₹)</label>
 
 <input
 id="editPrice"
 type="number"
 min="0"
-step="0.01"
+step="1"
 required>
 
 </div>
 
 <div class="form-group">
 
-<label for="editStock">
-Stock Quantity
-</label>
+<label for="editStock">Stock Quantity</label>
 
 <input
 id="editStock"
@@ -1210,21 +973,17 @@ required>
 
 <div class="form-group full-width">
 
-<label for="editDescription">
-Description
-</label>
+<label for="editDescription">Description</label>
 
 <textarea id="editDescription"></textarea>
 
 </div>
 
-<!-- ================= EDIT PRODUCT PHOTOS ================= -->
+<!-- ================= EDIT IMAGE UPLOAD ================= -->
 
 <div class="form-group full-width">
 
-<label>
-Product Photos (Maximum 5)
-</label>
+<label>Product Photos (Maximum 5)</label>
 
 <div class="upload-box">
 
@@ -1234,76 +993,29 @@ type="file"
 accept="image/*"
 multiple>
 
-<label
-for="editImages"
-class="upload-label">
-
+<label for="editImages" class="upload-label">
 📷 ADD PHOTOS FROM GALLERY
-
 </label>
 
 <p class="upload-help">
-Remove existing photos or add new photos. Maximum 5 photos total.
+Maximum 5 photos total.
 </p>
 
-<div
-id="editPreview"
-class="preview-grid">
-</div>
+<div id="editPreview" class="preview-grid"></div>
 
 </div>
 
 </div>
 
-<!-- ================= EDIT PRODUCT SIZES ================= -->
+<!-- ================= EDIT SIZES ================= -->
 
 <div class="form-group full-width">
 
-<label>
-Available Sizes
-</label>
+<label>Available Sizes</label>
 
 <div class="sizes">
 
-<label>
-<input
-type="checkbox"
-name="editSize"
-value="S">
-S
-</label>
-
-<label>
-<input
-type="checkbox"
-name="editSize"
-value="M">
-M
-</label>
-
-<label>
-<input
-type="checkbox"
-name="editSize"
-value="L">
-L
-</label>
-
-<label>
-<input
-type="checkbox"
-name="editSize"
-value="XL">
-XL
-</label>
-
-<label>
-<input
-type="checkbox"
-name="editSize"
-value="XXL">
-XXL
-</label>
+<label><input type="checkbox" name="editSize" value="S"> S</label> <label><input type="checkbox" name="editSize" value="M"> M</label> <label><input type="checkbox" name="editSize" value="L"> L</label> <label><input type="checkbox" name="editSize" value="XL"> XL</label> <label><input type="checkbox" name="editSize" value="XXL"> XXL</label>
 
 </div>
 
@@ -1311,13 +1023,8 @@ XXL
 
 <div class="form-group full-width">
 
-<button
-id="updateBtn"
-type="submit"
-class="btn btn-primary">
-
+<button id="updateBtn" type="submit" class="btn btn-primary">
 UPDATE PRODUCT
-
 </button>
 
 </div>
@@ -1330,25 +1037,17 @@ UPDATE PRODUCT
 
 </div>
 
-<!-- ================= FIREBASE + JAVASCRIPT ================= -->
+<!-- ================= FIREBASE SCRIPT START ================= -->
 
 <script type="module">
 
-import {
-db,
-auth,
-storage
-}
-from "./firebase.js";
-
+import { db, auth, storage } from "./firebase.js";
 
 import {
 signInWithEmailAndPassword,
 signOut,
 onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 import {
 collection,
@@ -1358,28 +1057,23 @@ updateDoc,
 deleteDoc,
 doc,
 serverTimestamp
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
 ref,
 uploadBytes,
 getDownloadURL
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 
-/* ================= APPLICATION VARIABLES ================= */
+/* ================= APP VARIABLES ================= */
 
 let products = [];
-
 let orders = [];
 
 let selectedImages = [];
 
 let editExistingImages = [];
-
 let editNewImages = [];
 
 
@@ -1389,337 +1083,233 @@ const loginForm = document.getElementById("loginForm");
 const loginBtn = document.getElementById("loginBtn");
 const loginError = document.getElementById("loginError");
 
-loginForm.addEventListener("submit", async (event) => {
-
+loginForm.addEventListener("submit", async function(event) {
 event.preventDefault();
 
+```
 const email = document.getElementById("email").value.trim();
 const password = document.getElementById("password").value;
 
 loginError.textContent = "";
 
-if(!email || !password){
-
-loginError.textContent =
-"Please enter email and password.";
-
-return;
-
+if (!email || !password) {
+    loginError.textContent = "Please enter email and password.";
+    return;
 }
 
 loginBtn.disabled = true;
 loginBtn.textContent = "LOGGING IN...";
 
-try{
+try {
+    await signInWithEmailAndPassword(auth, email, password);
+} catch (error) {
+    console.error("Login error:", error);
 
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
+    const errorMessages = {
+        "auth/invalid-email": "Invalid email address.",
+        "auth/user-not-found": "No account found with this email.",
+        "auth/wrong-password": "Incorrect password.",
+        "auth/invalid-credential": "Incorrect email or password.",
+        "auth/user-disabled": "This account has been disabled.",
+        "auth/network-request-failed": "Network error. Check your internet connection.",
+        "auth/too-many-requests": "Too many login attempts. Please try again later."
+    };
 
+    loginError.textContent =
+        errorMessages[error.code] ||
+        "Login failed. Please check your details.";
+} finally {
+    loginBtn.disabled = false;
+    loginBtn.textContent = "LOGIN";
 }
-catch(error){
-
-console.error("LOGIN ERROR:", error);
-
-const errorMap = {
-
-"auth/invalid-email":
-"Invalid email address.",
-
-"auth/user-not-found":
-"No account found with this email.",
-
-"auth/wrong-password":
-"Incorrect password.",
-
-"auth/invalid-credential":
-"Incorrect email or password.",
-
-"auth/user-disabled":
-"This account has been disabled.",
-
-"auth/network-request-failed":
-"Network error. Check your internet connection.",
-
-"auth/too-many-requests":
-"Too many attempts. Please try again later."
-
-};
-
-loginError.textContent =
-errorMap[error.code] ||
-("Login failed: " + error.message);
-
-}
-finally{
-
-loginBtn.disabled = false;
-loginBtn.textContent = "LOGIN";
-
-}
+```
 
 });
 
 /* ================= AUTH STATE ================= */
 
-onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(auth, async function(user) {
 
-if(user){
+```
+if (user) {
 
-document.getElementById("loginPage").style.display = "none";
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("adminApp").classList.add("show");
+    document.getElementById("adminEmail").textContent = user.email || "";
 
-document.getElementById("adminApp").classList.add("show");
+    try {
+        await loadProducts();
+        await loadOrders();
+        await loadDashboard();
+    } catch (error) {
+        console.error("Admin loading error:", error);
+    }
 
-document.getElementById("adminEmail").textContent =
-user.email || "";
+} else {
 
-try{
-
-await loadProducts();
-await loadOrders();
-await loadDashboard();
-
-}
-catch(error){
-
-console.error("ADMIN LOAD ERROR:", error);
-
-}
+    document.getElementById("loginPage").style.display = "flex";
+    document.getElementById("adminApp").classList.remove("show");
 
 }
-else{
-
-document.getElementById("loginPage").style.display = "flex";
-
-document.getElementById("adminApp").classList.remove("show");
-
-}
+```
 
 });
 
 /* ================= LOGOUT ================= */
 
-document.getElementById("logoutBtn").addEventListener(
-"click",
-async () => {
+document.getElementById("logoutBtn").addEventListener("click", async function() {
 
-try{
-
-await signOut(auth);
-
+```
+try {
+    await signOut(auth);
+} catch (error) {
+    console.error("Logout error:", error);
+    alert("Logout failed: " + error.message);
 }
-catch(error){
+```
 
-console.error("LOGOUT ERROR:", error);
-
-alert("Logout failed: " + error.message);
-
-}
-
-}
-);
+});
 
 /* ================= NAVIGATION ================= */
 
-const pages = {
-
-dashboard:"dashboardPage",
-
-products:"productsPage",
-
-addProduct:"addProductPage",
-
-orders:"ordersPage"
-
+const pageMap = {
+dashboard: "dashboardPage",
+products: "productsPage",
+addProduct: "addProductPage",
+orders: "ordersPage"
 };
 
-const titles = {
-
-dashboard:"Dashboard",
-
-products:"Products",
-
-addProduct:"Add Product",
-
-orders:"Orders"
-
+const pageTitles = {
+dashboard: "Dashboard",
+products: "Products",
+addProduct: "Add Product",
+orders: "Orders"
 };
 
-function showPage(pageName){
+function showPage(pageName) {
 
-document.querySelectorAll(".page").forEach((page) => {
-
-page.classList.remove("active");
-
+```
+document.querySelectorAll(".page").forEach(function(page) {
+    page.classList.remove("active");
 });
 
-const pageId = pages[pageName];
+const pageId = pageMap[pageName];
 
-if(pageId){
-
-document
-.getElementById(pageId)
-.classList.add("active");
-
+if (pageId) {
+    document.getElementById(pageId).classList.add("active");
 }
 
-document.querySelectorAll(".nav-btn").forEach((button) => {
-
-button.classList.toggle(
-"active",
-button.dataset.page === pageName
-);
-
+document.querySelectorAll(".nav-btn").forEach(function(button) {
+    button.classList.toggle(
+        "active",
+        button.dataset.page === pageName
+    );
 });
 
 document.getElementById("pageTitle").textContent =
-titles[pageName] || "Admin Panel";
+    pageTitles[pageName] || "Admin Panel";
 
 document.getElementById("sidebar").classList.remove("open");
+```
 
 }
 
-document.querySelectorAll(".nav-btn").forEach((button) => {
+document.querySelectorAll(".nav-btn").forEach(function(button) {
 
-button.addEventListener("click", () => {
-
-showPage(button.dataset.page);
+```
+button.addEventListener("click", function() {
+    showPage(button.dataset.page);
+});
+```
 
 });
 
-});
-
-document.getElementById("goAddBtn").addEventListener(
-"click",
-() => {
-
+document.getElementById("goAddBtn").addEventListener("click", function() {
 showPage("addProduct");
+});
 
-}
-);
-
-document.getElementById("viewOrdersBtn").addEventListener(
-"click",
-() => {
-
+document.getElementById("viewOrdersBtn").addEventListener("click", function() {
 showPage("orders");
-
-}
-);
+});
 
 /* ================= MOBILE MENU ================= */
 
-document.getElementById("mobileMenu").addEventListener(
-"click",
-() => {
-
-document
-.getElementById("sidebar")
-.classList.toggle("open");
-
-}
-);
+document.getElementById("mobileMenu").addEventListener("click", function() {
+document.getElementById("sidebar").classList.toggle("open");
+});
 
 /* ================= HTML ESCAPE ================= */
 
-function escapeHtml(value){
+function escapeHtml(value) {
 
-return String(value ?? "")
-.replace(/&/g, "&")
-.replace(/</g, "<")
-.replace(/>/g, ">")
-.replace(/"/g, """)
-.replace(/'/g, "'");
+```
+const div = document.createElement("div");
+div.textContent = String(value ?? "");
+return div.innerHTML;
+```
 
 }
 
-/* ================= GET SIZES ================= */
+/* ================= GET CHECKED SIZES ================= */
 
-function getCheckedValues(name){
+function getCheckedValues(name) {
 
+```
 return Array.from(
-document.querySelectorAll(
-`input[name="${name}"]:checked`
-)
-).map((input) => input.value);
+    document.querySelectorAll(`input[name="${name}"]:checked`)
+).map(function(input) {
+    return input.value;
+});
+```
 
 }
 
-/* ================= NEW PRODUCT IMAGE PREVIEW ================= */
+/* ================= IMAGE PREVIEW ================= */
 
-function renderImagePreview(){
+function renderImagePreview() {
 
-const preview =
-document.getElementById("imagePreview");
-
+```
+const preview = document.getElementById("imagePreview");
 preview.innerHTML = "";
 
-selectedImages.forEach((file,index) => {
+selectedImages.forEach(function(file, index) {
 
-const item =
-document.createElement("div");
+    const item = document.createElement("div");
+    item.className = "preview-item";
 
-item.className =
-"preview-item";
+    const image = document.createElement("img");
+    image.src = URL.createObjectURL(file);
 
-const image =
-document.createElement("img");
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.className = "remove-image";
+    removeButton.textContent = "×";
 
-image.src =
-URL.createObjectURL(file);
+    removeButton.addEventListener("click", function() {
+        selectedImages.splice(index, 1);
+        renderImagePreview();
+    });
 
-const remove =
-document.createElement("button");
-
-remove.type = "button";
-
-remove.className =
-"remove-image";
-
-remove.textContent = "×";
-
-remove.addEventListener(
-"click",
-() => {
-
-selectedImages.splice(index,1);
-
-renderImagePreview();
-
-}
-);
-
-item.appendChild(image);
-
-item.appendChild(remove);
-
-preview.appendChild(item);
+    item.appendChild(image);
+    item.appendChild(removeButton);
+    preview.appendChild(item);
 
 });
+```
 
 }
 
 /* ================= SELECT PRODUCT IMAGES ================= */
 
-document.getElementById("productImages").addEventListener(
-"change",
-(event) => {
+document.getElementById("productImages").addEventListener("change", function(event) {
 
-const files =
-Array.from(event.target.files);
+```
+const files = Array.from(event.target.files);
 
-if(selectedImages.length + files.length > 5){
-
-alert(
-"You can upload maximum 5 product photos."
-);
-
-event.target.value = "";
-
-return;
-
+if (selectedImages.length + files.length > 5) {
+    alert("You can upload maximum 5 product photos.");
+    event.target.value = "";
+    return;
 }
 
 selectedImages.push(...files);
@@ -1727,134 +1317,85 @@ selectedImages.push(...files);
 renderImagePreview();
 
 event.target.value = "";
+```
 
-}
-);
+});
 
 /* ================= EDIT IMAGE PREVIEW ================= */
 
-function renderEditPreview(){
+function renderEditPreview() {
 
-const preview =
-document.getElementById("editPreview");
-
+```
+const preview = document.getElementById("editPreview");
 preview.innerHTML = "";
 
-/* EXISTING IMAGES */
+editExistingImages.forEach(function(url, index) {
 
-editExistingImages.forEach((url,index) => {
+    const item = document.createElement("div");
+    item.className = "preview-item";
 
-const item =
-document.createElement("div");
+    const image = document.createElement("img");
+    image.src = url;
 
-item.className =
-"preview-item";
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.className = "remove-image";
+    removeButton.textContent = "×";
 
-const image =
-document.createElement("img");
+    removeButton.addEventListener("click", function() {
+        editExistingImages.splice(index, 1);
+        renderEditPreview();
+    });
 
-image.src = url;
-
-const remove =
-document.createElement("button");
-
-remove.type = "button";
-
-remove.className =
-"remove-image";
-
-remove.textContent = "×";
-
-remove.addEventListener(
-"click",
-() => {
-
-editExistingImages.splice(index,1);
-
-renderEditPreview();
-
-}
-);
-
-item.appendChild(image);
-
-item.appendChild(remove);
-
-preview.appendChild(item);
+    item.appendChild(image);
+    item.appendChild(removeButton);
+    preview.appendChild(item);
 
 });
 
-/* NEW IMAGES */
+editNewImages.forEach(function(file, index) {
 
-editNewImages.forEach((file,index) => {
+    const item = document.createElement("div");
+    item.className = "preview-item";
 
-const item =
-document.createElement("div");
+    const image = document.createElement("img");
+    image.src = URL.createObjectURL(file);
 
-item.className =
-"preview-item";
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.className = "remove-image";
+    removeButton.textContent = "×";
 
-const image =
-document.createElement("img");
+    removeButton.addEventListener("click", function() {
+        editNewImages.splice(index, 1);
+        renderEditPreview();
+    });
 
-image.src =
-URL.createObjectURL(file);
-
-const remove =
-document.createElement("button");
-
-remove.type = "button";
-
-remove.className =
-"remove-image";
-
-remove.textContent = "×";
-
-remove.addEventListener(
-"click",
-() => {
-
-editNewImages.splice(index,1);
-
-renderEditPreview();
-
-}
-);
-
-item.appendChild(image);
-
-item.appendChild(remove);
-
-preview.appendChild(item);
+    item.appendChild(image);
+    item.appendChild(removeButton);
+    preview.appendChild(item);
 
 });
+```
 
 }
 
 /* ================= SELECT EDIT IMAGES ================= */
 
-document.getElementById("editImages").addEventListener(
-"change",
-(event) => {
+document.getElementById("editImages").addEventListener("change", function(event) {
 
-const files =
-Array.from(event.target.files);
+```
+const files = Array.from(event.target.files);
 
-const total =
-editExistingImages.length +
-editNewImages.length +
-files.length;
+const totalImages =
+    editExistingImages.length +
+    editNewImages.length +
+    files.length;
 
-if(total > 5){
-
-alert(
-"Maximum 5 product photos allowed."
-);
-
-event.target.value = "";
-
-return;
-
+if (totalImages > 5) {
+    alert("Maximum 5 product photos allowed.");
+    event.target.value = "";
+    return;
 }
 
 editNewImages.push(...files);
@@ -1862,1229 +1403,815 @@ editNewImages.push(...files);
 renderEditPreview();
 
 event.target.value = "";
+```
 
-}
-);
+});
 
-/* ================= UPLOAD TO FIREBASE STORAGE ================= */
+/* ================= UPLOAD IMAGES ================= */
 
-async function uploadProductImages(files){
+async function uploadProductImages(files) {
 
+```
 const imageUrls = [];
 
-for(let index = 0; index < files.length; index++){
+for (let index = 0; index < files.length; index++) {
 
-const file = files[index];
+    const file = files[index];
 
-const safeFileName =
-file.name.replace(
-/[^a-zA-Z0-9.*-]/g,
-"*"
-);
+    const safeName = file.name.replace(
+        /[^a-zA-Z0-9._-]/g,
+        "_"
+    );
 
-const filePath =
-"products/" +
-Date.now() +
-"*" +
-index +
-"*" +
-safeFileName;
+    const path =
+        "products/" +
+        Date.now() +
+        "_" +
+        index +
+        "_" +
+        safeName;
 
-const storageReference =
-ref(
-storage,
-filePath
-);
+    const storageRef = ref(storage, path);
 
-await uploadBytes(
-storageReference,
-file
-);
+    await uploadBytes(storageRef, file);
 
-const downloadUrl =
-await getDownloadURL(
-storageReference
-);
+    const downloadUrl =
+        await getDownloadURL(storageRef);
 
-imageUrls.push(
-downloadUrl
-);
+    imageUrls.push(downloadUrl);
 
 }
 
 return imageUrls;
+```
 
 }
 
-/* ================= CLEAR ADD PRODUCT ================= */
+/* ================= CLEAR PRODUCT FORM ================= */
 
-function clearProductForm(){
+function clearProductForm() {
 
-document
-.getElementById("productForm")
-.reset();
+```
+document.getElementById("productForm").reset();
 
 selectedImages = [];
 
-document
-.getElementById("imagePreview")
-.innerHTML = "";
+document.getElementById("imagePreview").innerHTML = "";
+```
 
 }
 
-document.getElementById("clearBtn").addEventListener(
-"click",
-clearProductForm
-);
+document.getElementById("clearBtn").addEventListener("click", function() {
+clearProductForm();
+});
 
 /* ================= ADD PRODUCT ================= */
 
 document.getElementById("productForm").addEventListener(
 "submit",
-async (event) => {
+async function(event) {
 
-event.preventDefault();
+```
+    event.preventDefault();
 
-if(selectedImages.length === 0){
+    if (selectedImages.length === 0) {
+        alert("Please select at least one product photo.");
+        return;
+    }
 
-alert(
-"Please select at least one product photo."
-);
+    const saveBtn = document.getElementById("saveBtn");
 
-return;
+    saveBtn.disabled = true;
+    saveBtn.textContent = "UPLOADING...";
 
-}
+    try {
 
-const saveBtn =
-document.getElementById("saveBtn");
+        const uploadedImages =
+            await uploadProductImages(selectedImages);
 
-saveBtn.disabled = true;
+        const productData = {
+            name: document.getElementById("productName").value.trim(),
+            category: document.getElementById("productCategory").value,
+            price: Number(document.getElementById("productPrice").value),
+            stock: Number(document.getElementById("productStock").value),
+            description: document.getElementById("productDescription").value.trim(),
+            sizes: getCheckedValues("productSize"),
+            images: uploadedImages,
+            image: uploadedImages[0],
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp()
+        };
 
-saveBtn.textContent =
-"UPLOADING...";
+        await addDoc(
+            collection(db, "products"),
+            productData
+        );
 
-try{
+        alert("Product added successfully!");
 
-const uploadedImages =
-await uploadProductImages(
-selectedImages
-);
+        clearProductForm();
 
-const product = {
+        await loadProducts();
+        await loadDashboard();
 
-name:
-document.getElementById("productName")
-.value
-.trim(),
+        showPage("products");
 
-category:
-document.getElementById("productCategory")
-.value,
+    } catch (error) {
 
-price:
-Number(
-document.getElementById("productPrice")
-.value
-),
+        console.error("Product add error:", error);
 
-stock:
-Number(
-document.getElementById("productStock")
-.value
-),
+        alert(
+            "Product upload failed: " +
+            error.message
+        );
 
-description:
-document.getElementById("productDescription")
-.value
-.trim(),
+    } finally {
 
-sizes:
-getCheckedValues(
-"productSize"
-),
+        saveBtn.disabled = false;
+        saveBtn.textContent = "SAVE PRODUCT";
 
-images:
-uploadedImages,
-
-image:
-uploadedImages[0],
-
-createdAt:
-serverTimestamp(),
-
-updatedAt:
-serverTimestamp()
-
-};
-
-await addDoc(
-collection(db,"products"),
-product
-);
-
-alert(
-"Product added successfully!"
-);
-
-clearProductForm();
-
-await loadProducts();
-
-await loadDashboard();
-
-showPage(
-"products"
-);
+    }
 
 }
-catch(error){
+```
 
-console.error(
-"PRODUCT ADD ERROR:",
-error
-);
-
-alert(
-"Product upload failed: " +
-error.message
-);
-
-}
-finally{
-
-saveBtn.disabled = false;
-
-saveBtn.textContent =
-"SAVE PRODUCT";
-
-}
-
-}
 );
 
 /* ================= LOAD PRODUCTS ================= */
 
-async function loadProducts(){
+async function loadProducts() {
 
-const body =
-document.getElementById("productsBody");
-
-body.innerHTML =
-'<tr><td colspan="6" class="empty">Loading products...</td></tr>';
-
-try{
-
-const snapshot =
-await getDocs(
-collection(db,"products")
-);
-
-products =
-snapshot.docs.map((documentSnapshot) => ({
-
-id:
-documentSnapshot.id,
-
-...documentSnapshot.data()
-
-}));
-
-renderProducts();
-
-}
-catch(error){
-
-console.error(
-"LOAD PRODUCTS ERROR:",
-error
-);
+```
+const body = document.getElementById("productsBody");
 
 body.innerHTML =
-'<tr><td colspan="6" class="empty">Unable to load products.</td></tr>';
+    '<tr><td colspan="6" class="empty">Loading products...</td></tr>';
+
+try {
+
+    const snapshot =
+        await getDocs(collection(db, "products"));
+
+    products = snapshot.docs.map(function(documentSnapshot) {
+
+        return {
+            id: documentSnapshot.id,
+            ...documentSnapshot.data()
+        };
+
+    });
+
+    renderProducts();
+
+} catch (error) {
+
+    console.error("Load products error:", error);
+
+    body.innerHTML =
+        '<tr><td colspan="6" class="empty">Unable to load products.</td></tr>';
 
 }
+```
 
 }
 
 /* ================= RENDER PRODUCTS ================= */
 
-function renderProducts(){
+function renderProducts() {
 
-const body =
-document.getElementById("productsBody");
+```
+const body = document.getElementById("productsBody");
 
-if(products.length === 0){
+if (products.length === 0) {
 
-body.innerHTML =
-'<tr><td colspan="6" class="empty">No products found.</td></tr>';
+    body.innerHTML =
+        '<tr><td colspan="6" class="empty">No products found.</td></tr>';
 
-return;
-
+    return;
 }
 
-body.innerHTML =
-products.map((product) => {
+body.innerHTML = products.map(function(product) {
 
-const images =
-Array.isArray(product.images)
-?
-product.images
-:
-(
-product.image
-?
-[product.image]
-:
-[]
-);
+    const images =
+        Array.isArray(product.images)
+            ? product.images
+            : (product.image ? [product.image] : []);
 
-const firstImage =
-images[0] || "";
+    const firstImage = images[0] || "";
 
-return `
+    return `
+        <tr>
+            <td>
+                ${
+                    firstImage
+                        ? `<img src="${escapeHtml(firstImage)}"
+                           class="product-thumb"
+                           alt="${escapeHtml(product.name || "Product")}">`
+                        : "—"
+                }
+            </td>
+            <td>${escapeHtml(product.name || "")}</td>
+            <td>${escapeHtml(product.category || "")}</td>
+            <td>₹${Number(product.price || 0).toFixed(2)}</td>
+            <td>${Number(product.stock || 0)}</td>
+            <td>
+                <button
+                    type="button"
+                    class="action-btn action-edit"
+                    data-edit="${product.id}">
+                    EDIT
+                </button>
 
-<tr>
-
-<td>
-
-${
-firstImage
-?
-`<img
-src="${escapeHtml(firstImage)}"
-class="product-thumb"
-alt="${escapeHtml(product.name || "Product")}">`
-:
-"—"
-}
-
-</td>
-
-<td>
-${escapeHtml(product.name || "")}
-</td>
-
-<td>
-${escapeHtml(product.category || "")}
-</td>
-
-<td>
-₹${Number(product.price || 0).toFixed(2)}
-</td>
-
-<td>
-${Number(product.stock || 0)}
-</td>
-
-<td>
-
-<button
-type="button"
-class="action-btn action-edit"
-data-edit="${product.id}">
-
-EDIT
-
-</button>
-
-<button
-type="button"
-class="action-btn action-delete"
-data-delete="${product.id}">
-
-DELETE
-
-</button>
-
-</td>
-
-</tr>
-
-`;
+                <button
+                    type="button"
+                    class="action-btn action-delete"
+                    data-delete="${product.id}">
+                    DELETE
+                </button>
+            </td>
+        </tr>
+    `;
 
 }).join("");
 
-document.querySelectorAll("[data-edit]").forEach((button) => {
+document.querySelectorAll("[data-edit]").forEach(function(button) {
 
-button.addEventListener(
-"click",
-() => {
-
-openEditModal(
-button.dataset.edit
-);
-
-}
-);
+    button.addEventListener("click", function() {
+        openEditModal(button.dataset.edit);
+    });
 
 });
 
-document.querySelectorAll("[data-delete]").forEach((button) => {
+document.querySelectorAll("[data-delete]").forEach(function(button) {
 
-button.addEventListener(
-"click",
-() => {
-
-deleteProduct(
-button.dataset.delete
-);
-
-}
-);
+    button.addEventListener("click", function() {
+        deleteProduct(button.dataset.delete);
+    });
 
 });
+```
 
 }
 
 /* ================= OPEN EDIT MODAL ================= */
 
-function openEditModal(id){
+function openEditModal(id) {
 
-const product =
-products.find(
-(item) => item.id === id
-);
+```
+const product = products.find(function(item) {
+    return item.id === id;
+});
 
-if(!product){
-
-alert(
-"Product not found."
-);
-
-return;
-
+if (!product) {
+    alert("Product not found.");
+    return;
 }
 
-document
-.getElementById("editId")
-.value =
-product.id;
-
-document
-.getElementById("editName")
-.value =
-product.name || "";
-
-document
-.getElementById("editCategory")
-.value =
-product.category || "Other";
-
-document
-.getElementById("editPrice")
-.value =
-Number(product.price || 0);
-
-document
-.getElementById("editStock")
-.value =
-Number(product.stock || 0);
-
-document
-.getElementById("editDescription")
-.value =
-product.description || "";
-
-const images =
-Array.isArray(product.images)
-?
-product.images
-:
-(
-product.image
-?
-[product.image]
-:
-[]
-);
+document.getElementById("editId").value = product.id;
+document.getElementById("editName").value = product.name || "";
+document.getElementById("editCategory").value =
+    product.category || "Other";
+document.getElementById("editPrice").value =
+    Number(product.price || 0);
+document.getElementById("editStock").value =
+    Number(product.stock || 0);
+document.getElementById("editDescription").value =
+    product.description || "";
 
 editExistingImages =
-[...images];
+    Array.isArray(product.images)
+        ? [...product.images]
+        : (product.image ? [product.image] : []);
 
 editNewImages = [];
 
 const sizes =
-Array.isArray(product.sizes)
-?
-product.sizes
-:
-[];
+    Array.isArray(product.sizes)
+        ? product.sizes
+        : [];
 
 document
-.querySelectorAll(
-'input[name="editSize"]'
-)
-.forEach((input) => {
-
-input.checked =
-sizes.includes(
-input.value
-);
-
-});
+    .querySelectorAll('input[name="editSize"]')
+    .forEach(function(input) {
+        input.checked = sizes.includes(input.value);
+    });
 
 renderEditPreview();
 
-document
-.getElementById("editModal")
-.classList.add("show");
+document.getElementById("editModal").classList.add("show");
+```
 
 }
 
-/* ================= CLOSE MODAL ================= */
+/* ================= CLOSE EDIT MODAL ================= */
 
-function closeEditModal(){
-
-document
-.getElementById("editModal")
-.classList.remove("show");
-
+function closeEditModal() {
+document.getElementById("editModal").classList.remove("show");
 }
 
-document
-.getElementById("closeModal")
-.addEventListener(
+document.getElementById("closeModal").addEventListener(
 "click",
 closeEditModal
 );
 
-document
-.getElementById("editModal")
-.addEventListener(
+document.getElementById("editModal").addEventListener(
 "click",
-(event) => {
+function(event) {
 
-if(
-event.target.id === "editModal"
-){
-
-closeEditModal();
-
-}
+```
+    if (event.target.id === "editModal") {
+        closeEditModal();
+    }
 
 }
+```
+
 );
 
 /* ================= UPDATE PRODUCT ================= */
 
-document
-.getElementById("editForm")
-.addEventListener(
+document.getElementById("editForm").addEventListener(
 "submit",
-async (event) => {
+async function(event) {
 
-event.preventDefault();
+```
+    event.preventDefault();
 
-const id =
-document
-.getElementById("editId")
-.value;
+    const id = document.getElementById("editId").value;
 
-if(!id){
+    if (!id) {
+        alert("Product ID is missing.");
+        return;
+    }
 
-alert(
-"Product ID is missing."
-);
+    const updateBtn =
+        document.getElementById("updateBtn");
 
-return;
+    updateBtn.disabled = true;
+    updateBtn.textContent = "UPDATING...";
 
-}
+    try {
 
-const updateBtn =
-document.getElementById(
-"updateBtn"
-);
+        const newImageUrls =
+            editNewImages.length > 0
+                ? await uploadProductImages(editNewImages)
+                : [];
 
-updateBtn.disabled = true;
+        const finalImages = [
+            ...editExistingImages,
+            ...newImageUrls
+        ];
 
-updateBtn.textContent =
-"UPDATING...";
+        if (finalImages.length === 0) {
+            throw new Error(
+                "At least one product photo is required."
+            );
+        }
 
-try{
+        await updateDoc(
+            doc(db, "products", id),
+            {
+                name: document.getElementById("editName").value.trim(),
+                category: document.getElementById("editCategory").value,
+                price: Number(document.getElementById("editPrice").value),
+                stock: Number(document.getElementById("editStock").value),
+                description:
+                    document.getElementById("editDescription").value.trim(),
+                sizes: getCheckedValues("editSize"),
+                images: finalImages,
+                image: finalImages[0],
+                updatedAt: serverTimestamp()
+            }
+        );
 
-const newImages =
-editNewImages.length > 0
-?
-await uploadProductImages(
-editNewImages
-)
-:
-[];
+        alert("Product updated successfully!");
 
-const finalImages =
-[
-...editExistingImages,
-...newImages
-];
+        closeEditModal();
 
-if(finalImages.length === 0){
+        await loadProducts();
+        await loadDashboard();
 
-throw new Error(
-"At least one product photo is required."
-);
+    } catch (error) {
 
-}
+        console.error("Product update error:", error);
 
-await updateDoc(
-doc(
-db,
-"products",
-id
-),
-{
+        alert(
+            "Update failed: " +
+            error.message
+        );
 
-name:
-document.getElementById(
-"editName"
-)
-.value
-.trim(),
+    } finally {
 
-category:
-document.getElementById(
-"editCategory"
-)
-.value,
+        updateBtn.disabled = false;
+        updateBtn.textContent = "UPDATE PRODUCT";
 
-price:
-Number(
-document.getElementById(
-"editPrice"
-)
-.value
-),
-
-stock:
-Number(
-document.getElementById(
-"editStock"
-)
-.value
-),
-
-description:
-document.getElementById(
-"editDescription"
-)
-.value
-.trim(),
-
-sizes:
-getCheckedValues(
-"editSize"
-),
-
-images:
-finalImages,
-
-image:
-finalImages[0],
-
-updatedAt:
-serverTimestamp()
+    }
 
 }
-);
+```
 
-alert(
-"Product updated successfully!"
-);
-
-closeEditModal();
-
-await loadProducts();
-
-await loadDashboard();
-
-}
-catch(error){
-
-console.error(
-"PRODUCT UPDATE ERROR:",
-error
-);
-
-alert(
-"Update failed: " +
-error.message
-);
-
-}
-finally{
-
-updateBtn.disabled = false;
-
-updateBtn.textContent =
-"UPDATE PRODUCT";
-
-}
-
-}
 );
 
 /* ================= DELETE PRODUCT ================= */
 
-async function deleteProduct(id){
+async function deleteProduct(id) {
 
-const product =
-products.find(
-(item) => item.id === id
-);
+```
+const product = products.find(function(item) {
+    return item.id === id;
+});
 
-const name =
-product?.name ||
-"this product";
+const productName =
+    product ? product.name : "this product";
 
 const confirmed =
-confirm(
-`Delete "${name}"?`
-);
+    confirm(`Delete "${productName}"?`);
 
-if(!confirmed){
-
-return;
-
+if (!confirmed) {
+    return;
 }
 
-try{
+try {
 
-await deleteDoc(
-doc(
-db,
-"products",
-id
-)
-);
+    await deleteDoc(
+        doc(db, "products", id)
+    );
 
-alert(
-"Product deleted successfully!"
-);
+    alert("Product deleted successfully!");
 
-await loadProducts();
+    await loadProducts();
+    await loadDashboard();
 
-await loadDashboard();
+} catch (error) {
 
-}
-catch(error){
+    console.error("Delete product error:", error);
 
-console.error(
-"DELETE PRODUCT ERROR:",
-error
-);
-
-alert(
-"Delete failed: " +
-error.message
-);
+    alert(
+        "Delete failed: " +
+        error.message
+    );
 
 }
+```
 
 }
 
 /* ================= LOAD ORDERS ================= */
 
-async function loadOrders(){
+async function loadOrders() {
 
+```
 const body =
-document.getElementById(
-"ordersBody"
-);
-
-try{
-
-const snapshot =
-await getDocs(
-collection(
-db,
-"orders"
-)
-);
-
-orders =
-snapshot.docs.map(
-(documentSnapshot) => ({
-
-id:
-documentSnapshot.id,
-
-...documentSnapshot.data()
-
-})
-);
-
-orders.sort(
-(a,b) => {
-
-const aTime =
-a.createdAt?.seconds || 0;
-
-const bTime =
-b.createdAt?.seconds || 0;
-
-return bTime - aTime;
-
-}
-);
-
-renderOrders();
-
-}
-catch(error){
-
-console.error(
-"LOAD ORDERS ERROR:",
-error
-);
+    document.getElementById("ordersBody");
 
 body.innerHTML =
-'<tr><td colspan="8" class="empty">Unable to load orders.</td></tr>';
+    '<tr><td colspan="8" class="empty">Loading orders...</td></tr>';
+
+try {
+
+    const snapshot =
+        await getDocs(collection(db, "orders"));
+
+    orders = snapshot.docs.map(function(documentSnapshot) {
+
+        return {
+            id: documentSnapshot.id,
+            ...documentSnapshot.data()
+        };
+
+    });
+
+    orders.sort(function(a, b) {
+        return (
+            (b.createdAt?.seconds || 0) -
+            (a.createdAt?.seconds || 0)
+        );
+    });
+
+    renderOrders();
+
+} catch (error) {
+
+    console.error("Load orders error:", error);
+
+    body.innerHTML =
+        '<tr><td colspan="8" class="empty">Unable to load orders.</td></tr>';
 
 }
+```
 
 }
 
 /* ================= RENDER ORDERS ================= */
 
-function renderOrders(){
+function renderOrders() {
 
+```
 const body =
-document.getElementById(
-"ordersBody"
-);
+    document.getElementById("ordersBody");
 
-if(orders.length === 0){
+if (orders.length === 0) {
 
-body.innerHTML =
-'<tr><td colspan="8" class="empty">No orders found.</td></tr>';
+    body.innerHTML =
+        '<tr><td colspan="8" class="empty">No orders found.</td></tr>';
 
-return;
-
+    return;
 }
 
-body.innerHTML =
-orders.map(
-(order) => {
+body.innerHTML = orders.map(function(order) {
 
-const customer =
-order.customer || {};
+    const customer = order.customer || {};
 
-const items =
-Array.isArray(order.items)
-?
-order.items
-:
-[];
+    const items =
+        Array.isArray(order.items)
+            ? order.items
+            : [];
 
-const itemText =
-items.map(
-(item) => {
+    const itemText = items.map(function(item) {
 
-return (
-escapeHtml(
-item.name || "Product"
-)
-+
-" × "
-+
-Number(
-item.quantity || 0
-)
-);
+        return (
+            escapeHtml(item.name || "Product") +
+            " × " +
+            Number(item.quantity || 0)
+        );
 
-}
-).join(", ");
+    }).join(", ");
 
-const status =
-order.status ||
-"Pending";
+    const status = order.status || "Pending";
 
-return `
+    return `
+        <tr>
+            <td>${escapeHtml(order.id)}</td>
 
-<tr>
+            <td>
+                ${escapeHtml(
+                    customer.name ||
+                    order.customerName ||
+                    "Unknown"
+                )}
+            </td>
 
-<td>
-${escapeHtml(order.id)}
-</td>
+            <td>
+                ${escapeHtml(
+                    customer.phone ||
+                    order.phone ||
+                    "-"
+                )}
+            </td>
 
-<td>
-${escapeHtml(
-customer.name ||
-order.customerName ||
-"Unknown"
-)}
-</td>
+            <td>${itemText || "-"}</td>
 
-<td>
-${escapeHtml(
-customer.phone ||
-order.phone ||
-"-"
-)}
-</td>
+            <td>
+                ₹${Number(order.total || 0).toFixed(2)}
+            </td>
 
-<td>
-${itemText || "-"}
-</td>
+            <td>
+                ${escapeHtml(
+                    order.paymentMethod ||
+                    "COD"
+                )}
+            </td>
 
-<td>
-₹${Number(
-order.total || 0
-).toFixed(2)}
-</td>
+            <td>${escapeHtml(status)}</td>
 
-<td>
-${escapeHtml(
-order.paymentMethod ||
-"COD"
-)}
-</td>
+            <td>
+                <select
+                    class="status-select"
+                    data-order-status="${order.id}">
 
-<td>
-${escapeHtml(status)}
-</td>
+                    <option value="Pending"
+                        ${status === "Pending" ? "selected" : ""}>
+                        Pending
+                    </option>
 
-<td>
+                    <option value="Confirmed"
+                        ${status === "Confirmed" ? "selected" : ""}>
+                        Confirmed
+                    </option>
 
-<select
-class="status-select"
-data-order-status="${order.id}">
-
-<option
-value="Pending"
-${status === "Pending" ? "selected" : ""}>
-Pending
+                    <option value="Shipped"
+    ${status === "Shipped" ? "selected" : ""}>
+    Shipped
 </option>
 
-<option
-value="Confirmed"
-${status === "Confirmed" ? "selected" : ""}>
-Confirmed
+<option value="Delivered"
+    ${status === "Delivered" ? "selected" : ""}>
+    Delivered
 </option>
 
-<option
-value="Shipped"
-${status === "Shipped" ? "selected" : ""}>
-Shipped
-</option>
-
-<option
-value="Delivered"
-${status === "Delivered" ? "selected" : ""}>
-Delivered
-</option>
-
-<option
-value="Cancelled"
-${status === "Cancelled" ? "selected" : ""}>
-Cancelled
+<option value="Cancelled"
+    ${status === "Cancelled" ? "selected" : ""}>
+    Cancelled
 </option>
 
 </select>
-
 </td>
 
 </tr>
-
 `;
 
-}
-).join("");
+}).join("");
 
 document
-.querySelectorAll(
-"[data-order-status]"
-)
-.forEach(
-(select) => {
+.querySelectorAll("[data-order-status]")
+.forEach(function(select) {
 
-select.addEventListener(
-"change",
-async () => {
+```
+    select.addEventListener(
+        "change",
+        async function() {
 
-await updateOrderStatus(
-select.dataset.orderStatus,
-select.value
-);
+            await updateOrderStatus(
+                select.dataset.orderStatus,
+                select.value
+            );
 
-}
-);
+        }
+    );
 
-}
-);
+});
+```
 
 }
 
 /* ================= UPDATE ORDER STATUS ================= */
 
-async function updateOrderStatus(
-id,
-status
-){
+async function updateOrderStatus(id, status) {
 
-try{
+```
+try {
 
-await updateDoc(
-doc(
-db,
-"orders",
-id
-),
-{
+    await updateDoc(
+        doc(db, "orders", id),
+        {
+            status: status,
+            updatedAt: serverTimestamp()
+        }
+    );
 
-status:
-status,
+    await loadOrders();
+    await loadDashboard();
 
-updatedAt:
-serverTimestamp()
+} catch (error) {
 
-}
-);
+    console.error("Order status error:", error);
 
-await loadOrders();
-
-await loadDashboard();
+    alert(
+        "Status update failed: " +
+        error.message
+    );
 
 }
-catch(error){
-
-console.error(
-"ORDER STATUS ERROR:",
-error
-);
-
-alert(
-"Status update failed: " +
-error.message
-);
+```
 
 }
 
-}
-
-document
-.getElementById(
-"refreshOrdersBtn"
-)
-.addEventListener(
+document.getElementById("refreshOrdersBtn").addEventListener(
 "click",
 loadOrders
 );
 
 /* ================= DASHBOARD ================= */
 
-async function loadDashboard(){
+async function loadDashboard() {
 
-try{
+```
+try {
 
-const productSnapshot =
-await getDocs(
-collection(
-db,
-"products"
-)
-);
+    const productSnapshot =
+        await getDocs(collection(db, "products"));
 
-const orderSnapshot =
-await getDocs(
-collection(
-db,
-"orders"
-)
-);
+    const orderSnapshot =
+        await getDocs(collection(db, "orders"));
 
-const dashboardOrders =
-orderSnapshot.docs.map(
-(documentSnapshot) => ({
+    const dashboardOrders =
+        orderSnapshot.docs.map(function(documentSnapshot) {
 
-id:
-documentSnapshot.id,
+            return {
+                id: documentSnapshot.id,
+                ...documentSnapshot.data()
+            };
 
-...documentSnapshot.data()
+        });
 
-})
-);
+    const pendingOrders =
+        dashboardOrders.filter(function(order) {
 
-const pending =
-dashboardOrders.filter(
-(order) => {
+            return (order.status || "Pending") === "Pending";
 
-return (
-order.status ||
-"Pending"
-) === "Pending";
+        }).length;
 
-}
-).length;
+    const totalRevenue =
+        dashboardOrders
+            .filter(function(order) {
+                return (order.status || "Pending") !== "Cancelled";
+            })
+            .reduce(function(total, order) {
+                return total + Number(order.total || 0);
+            }, 0);
 
-const revenue =
-dashboardOrders
-.filter(
-(order) => {
+    document.getElementById("totalProducts").textContent =
+        productSnapshot.size;
 
-return (
-order.status ||
-"Pending"
-) !== "Cancelled";
+    document.getElementById("totalOrders").textContent =
+        dashboardOrders.length;
 
-}
-)
-.reduce(
-(total,order) => {
+    document.getElementById("pendingOrders").textContent =
+        pendingOrders;
 
-return total +
-Number(
-order.total || 0
-);
+    document.getElementById("totalRevenue").textContent =
+        "₹" + totalRevenue.toFixed(2);
 
-},
-0
-);
+    renderRecentOrders(dashboardOrders);
 
-document
-.getElementById(
-"totalProducts"
-)
-.textContent =
-productSnapshot.size;
+} catch (error) {
 
-document
-.getElementById(
-"totalOrders"
-)
-.textContent =
-dashboardOrders.length;
-
-document
-.getElementById(
-"pendingOrders"
-)
-.textContent =
-pending;
-
-document
-.getElementById(
-"totalRevenue"
-)
-.textContent =
-"₹" +
-revenue.toFixed(2);
-
-renderRecentOrders(
-dashboardOrders
-);
+    console.error("Dashboard error:", error);
 
 }
-catch(error){
-
-console.error(
-"DASHBOARD ERROR:",
-error
-);
-
-}
+```
 
 }
 
 /* ================= RECENT ORDERS ================= */
 
-function renderRecentOrders(
-orderList
-){
+function renderRecentOrders(orderList) {
 
+```
 const body =
-document.getElementById(
-"recentOrdersBody"
-);
+    document.getElementById("recentOrdersBody");
 
-const recent =
-orderList
-.slice()
-.sort(
-(a,b) => {
+const recentOrders =
+    orderList
+        .slice()
+        .sort(function(a, b) {
 
-return (
-(b.createdAt?.seconds || 0)
----------------------------
+            return (
+                (b.createdAt?.seconds || 0) -
+                (a.createdAt?.seconds || 0)
+            );
 
-(a.createdAt?.seconds || 0)
-);
+        })
+        .slice(0, 5);
 
-}
-)
-.slice(0,5);
+if (recentOrders.length === 0) {
 
-if(recent.length === 0){
+    body.innerHTML =
+        '<tr><td colspan="4" class="empty">No orders yet.</td></tr>';
 
-body.innerHTML =
-'<tr><td colspan="4" class="empty">No orders yet.</td></tr>';
-
-return;
-
+    return;
 }
 
 body.innerHTML =
-recent.map(
-(order) => {
+    recentOrders.map(function(order) {
 
-const customer =
-order.customer || {};
+        const customer = order.customer || {};
 
-return `
+        return `
+            <tr>
+                <td>${escapeHtml(order.id)}</td>
 
-<tr>
+                <td>
+                    ${escapeHtml(
+                        customer.name ||
+                        order.customerName ||
+                        "Unknown"
+                    )}
+                </td>
 
-<td>
-${escapeHtml(order.id)}
-</td>
+                <td>
+                    ₹${Number(order.total || 0).toFixed(2)}
+                </td>
 
-<td>
-${escapeHtml(
-customer.name ||
-order.customerName ||
-"Unknown"
-)}
-</td>
+                <td>
+                    ${escapeHtml(
+                        order.status || "Pending"
+                    )}
+                </td>
+            </tr>
+        `;
 
-<td>
-₹${Number(
-order.total || 0
-).toFixed(2)}
-</td>
-
-<td>
-${escapeHtml(
-order.status ||
-"Pending"
-)}
-</td>
-
-</tr>
-
-`;
-
-}
-).join("");
+    }).join("");
+```
 
 }
 
-/* ================= ESCAPE KEY ================= */
+/* ================= ESC KEY ================= */
 
-document.addEventListener(
-"keydown",
-(event) => {
+document.addEventListener("keydown", function(event) {
 
-if(event.key === "Escape"){
-
-closeEditModal();
-
+```
+if (event.key === "Escape") {
+    closeEditModal();
 }
+```
 
-}
-);
+});
 
 </script>
 
 </body>
 </html>
+
  
  
