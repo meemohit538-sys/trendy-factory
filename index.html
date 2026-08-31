@@ -150,12 +150,10 @@ gap:18px;
 background:#fffaf4;
 cursor:pointer;
 transition:.25s;
-border:1px solid transparent;
 }
 
 .product:hover{
 transform:translateY(-5px);
-border-color:#ddd5ca;
 }
 
 .product-image{
@@ -184,6 +182,13 @@ margin-bottom:8px;
 .product-info p{
 font-size:13px;
 color:#625a52;
+}
+
+.loading{
+grid-column:1/-1;
+text-align:center;
+padding:40px;
+color:#766d63;
 }
 
 /* BANNER */
@@ -520,7 +525,6 @@ color:white;
 border:none;
 cursor:pointer;
 font-size:10px;
-cursor:pointer;
 }
 
 .coupon-message{
@@ -652,14 +656,11 @@ grid-template-columns:1fr;
 }
 
 }
-
 </style>
 
 </head>
 
 <body>
-
-<!-- MAIN WEBSITE -->
 
 <div id="mainWebsite">
 
@@ -679,8 +680,6 @@ BAG (<span id="cartCount">0</span>)
 
 </header>
 
-<!-- HERO -->
-
 <section class="hero">
 
 <div>
@@ -699,8 +698,6 @@ SHOP MEN'S COLLECTION
 </div>
 
 </section>
-
-<!-- SHOP -->
 
 <section class="section" id="shop">
 
@@ -732,11 +729,11 @@ JACKETS
 
 </div>
 
-<div class="products" id="productsContainer"></div>
+<div class="products" id="productsContainer">
+<div class="loading">Loading products...</div>
+</div>
 
 </section>
-
-<!-- BANNER -->
 
 <section class="banner">
 
@@ -841,11 +838,11 @@ PROCEED TO CHECKOUT
 ← BACK TO SHOP
 </button>
 
-<h1 class="checkout-title">Checkout</h1>
+<h1 class="checkout-title">
+Checkout
+</h1>
 
 <div class="checkout-grid" id="checkoutContent">
-
-<!-- CUSTOMER DETAILS -->
 
 <div class="form-card">
 
@@ -855,7 +852,12 @@ PROCEED TO CHECKOUT
 
 <label>FULL NAME</label>
 
-<input id="customerName" type="text" placeholder="Enter your full name">
+<input
+id="customerName"
+type="text"
+placeholder="Enter your full name"
+
+>
 
 </div>
 
@@ -865,7 +867,12 @@ PROCEED TO CHECKOUT
 
 <label>MOBILE NUMBER</label>
 
-<input id="customerPhone" type="tel" placeholder="10 digit number">
+<input
+id="customerPhone"
+type="tel"
+placeholder="10 digit number"
+
+>
 
 </div>
 
@@ -873,7 +880,12 @@ PROCEED TO CHECKOUT
 
 <label>EMAIL</label>
 
-<input id="customerEmail" type="email" placeholder="you@email.com">
+<input
+id="customerEmail"
+type="email"
+placeholder="[you@email.com](mailto:you@email.com)"
+
+>
 
 </div>
 
@@ -883,7 +895,10 @@ PROCEED TO CHECKOUT
 
 <label>FULL ADDRESS</label>
 
-<textarea id="customerAddress" placeholder="House no, street, area"></textarea>
+<textarea
+id="customerAddress"
+placeholder="House no, street, area"
+></textarea>
 
 </div>
 
@@ -893,7 +908,12 @@ PROCEED TO CHECKOUT
 
 <label>CITY</label>
 
-<input id="customerCity" type="text" placeholder="City">
+<input
+id="customerCity"
+type="text"
+placeholder="City"
+
+>
 
 </div>
 
@@ -901,7 +921,12 @@ PROCEED TO CHECKOUT
 
 <label>STATE</label>
 
-<input id="customerState" type="text" placeholder="State">
+<input
+id="customerState"
+type="text"
+placeholder="State"
+
+>
 
 </div>
 
@@ -911,7 +936,12 @@ PROCEED TO CHECKOUT
 
 <label>PIN CODE</label>
 
-<input id="customerPin" type="text" placeholder="PIN Code">
+<input
+id="customerPin"
+type="text"
+placeholder="PIN Code"
+
+>
 
 </div>
 
@@ -982,21 +1012,28 @@ style="display:none"
 
 </div>
 
-<button class="place-order" onclick="placeOrder()">
+<button
+class="place-order"
+onclick="placeOrder()"
+id="placeOrderBtn"
+
+>
+
 PLACE ORDER
+
 </button>
 
 </div>
 
 </div>
 
-<!-- SUCCESS -->
-
 <div class="success" id="successMessage">
 
 <h2>Order Received!</h2>
 
-<p>Thank you for shopping with Trendy Factory.</p>
+<p>
+Thank you for shopping with Trendy Factory.
+</p>
 
 <p
 id="orderNumber"
@@ -1010,7 +1047,9 @@ onclick="backToShop()"
 
 >
 
-CONTINUE SHOPPING </button>
+CONTINUE SHOPPING
+
+</button>
 
 </div>
 
@@ -1018,202 +1057,162 @@ CONTINUE SHOPPING </button>
 
 </div>
 
-<script>
+<script type="module">
 
-/* ==========================================
-DEFAULT PRODUCTS
-========================================== */
+/* ========================================
+FIREBASE IMPORTS
+======================================== */
 
-const defaultProducts = [
+import {
+initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-{
-id:1,
-name:"Premium Linen Shirt",
-price:1999,
-category:"shirts",
-image:"LINEN SHIRT",
-description:"Premium breathable linen shirt with a clean modern fit.",
-sizes:["S","M","L","XL","XXL"]
-},
-
-{
-id:2,
-name:"Oxford Classic Shirt",
-price:2299,
-category:"shirts",
-image:"OXFORD SHIRT",
-description:"Classic Oxford shirt designed for everyday and formal styling.",
-sizes:["S","M","L","XL","XXL"]
-},
-
-{
-id:3,
-name:"Oversized Essential T-Shirt",
-price:1199,
-category:"tshirts",
-image:"OVERSIZED T-SHIRT",
-description:"Heavyweight cotton oversized t-shirt with a relaxed silhouette.",
-sizes:["S","M","L","XL","XXL"]
-},
-
-{
-id:4,
-name:"Minimal Cotton T-Shirt",
-price:999,
-category:"tshirts",
-image:"COTTON T-SHIRT",
-description:"Soft premium cotton t-shirt for everyday comfort.",
-sizes:["S","M","L","XL","XXL"]
-},
-
-{
-id:5,
-name:"Relaxed Fit Trouser",
-price:2499,
-category:"pants",
-image:"RELAXED TROUSER",
-description:"Modern relaxed fit trousers with comfortable everyday tailoring.",
-sizes:["28","30","32","34","36","38","40"]
-},
-
-{
-id:6,
-name:"Classic Straight Jeans",
-price:2799,
-category:"pants",
-image:"STRAIGHT JEANS",
-description:"Classic straight fit jeans designed for timeless everyday style.",
-sizes:["28","30","32","34","36","38","40"]
-},
-
-{
-id:7,
-name:"Minimal Bomber Jacket",
-price:3999,
-category:"jackets",
-image:"BOMBER JACKET",
-description:"Clean minimal bomber jacket for a refined modern look.",
-sizes:["S","M","L","XL","XXL"]
-},
-
-{
-id:8,
-name:"Classic Oversized Jacket",
-price:4499,
-category:"jackets",
-image:"OVERSIZED JACKET",
-description:"Premium oversized jacket with a contemporary relaxed fit.",
-sizes:["S","M","L","XL","XXL"]
-}
-
-];
+import {
+getFirestore,
+collection,
+getDocs,
+addDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-/* ==========================================
-PRODUCT STORAGE
-========================================== */
+/* ========================================
+FIREBASE CONFIG
+======================================== */
 
-function getProducts(){
+const firebaseConfig = {
 
-let savedProducts;
+apiKey: "AIzaSyCZjafz8Ze5p6xSoir4j5IdKc_MJE_Eyns",
+
+authDomain: "trendy-factory.firebaseapp.com",
+
+projectId: "trendy-factory",
+
+storageBucket: "trendy-factory.firebasestorage.app",
+
+messagingSenderId: "811817163762",
+
+appId: "1:811817163762:web:c9aecc5db2cb332a13696b",
+
+measurementId: "G-8YDMBE9T7C"
+
+};
+
+
+/* ========================================
+INITIALIZE FIREBASE
+======================================== */
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+/* ========================================
+PRODUCTS
+======================================== */
+
+let products = [];
+
+let currentCategory = "all";
+
+let currentProduct = null;
+
+let selectedSize = "";
+
+let qty = 1;
+
+
+/* LOAD PRODUCTS FROM FIREBASE */
+
+async function loadProducts(){
+
+const container =
+document.getElementById(
+"productsContainer"
+);
+
+container.innerHTML =
+'<div class="loading">Loading products...</div>';
+
 
 try{
 
-savedProducts=JSON.parse(
-localStorage.getItem("trendyProducts")
+const querySnapshot =
+await getDocs(
+collection(db,"products")
 );
+
+
+products = [];
+
+
+querySnapshot.forEach(
+(documentItem) => {
+
+products.push({
+
+firebaseId:
+documentItem.id,
+
+...documentItem.data()
+
+});
+
+});
+
+
+displayProducts(
+currentCategory
+);
+
 
 }catch(error){
 
-savedProducts=null;
+console.error(error);
+
+container.innerHTML =
+'<div class="loading">Unable to load products. Please refresh.</div>';
 
 }
 
-if(!Array.isArray(savedProducts) || savedProducts.length===0){
-
-savedProducts=[...defaultProducts];
-
-localStorage.setItem(
-"trendyProducts",
-JSON.stringify(savedProducts)
-);
-
 }
 
-return savedProducts;
 
-}
-
-let products=getProducts();
-
-
-/* ==========================================
-CART
-========================================== */
-
-let cart;
-
-try{
-
-cart=JSON.parse(
-localStorage.getItem("trendyCart") || "[]"
-);
-
-}catch(error){
-
-cart=[];
-
-}
-
-if(!Array.isArray(cart)){
-cart=[];
-}
-
-let currentProduct=null;
-let selectedSize="";
-let qty=1;
-
-
-/* ==========================================
-COUPON
-========================================== */
-
-let discount=0;
-let appliedCoupon="";
-
-
-/* ==========================================
-DISPLAY PRODUCTS
-========================================== */
+/* DISPLAY PRODUCTS */
 
 function displayProducts(category="all"){
 
-products=getProducts();
+currentCategory = category;
 
-const container=
-document.getElementById("productsContainer");
 
-container.innerHTML="";
-
-const filtered=
-category==="all"
-?products
-:products.filter(
-product=>product.category===category
+const container =
+document.getElementById(
+"productsContainer"
 );
 
-if(filtered.length===0){
 
-container.innerHTML=`
+container.innerHTML = "";
 
-<p style="
-grid-column:1/-1;
-text-align:center;
-padding:40px;
-color:#766d63
-">
+
+const filtered =
+
+category === "all"
+
+? products
+
+: products.filter(
+product =>
+product.category === category
+);
+
+
+if(filtered.length === 0){
+
+container.innerHTML = `
+
+<div class="loading">
 No products found.
-</p>
+</div>
 
 `;
 
@@ -1221,203 +1220,340 @@ return;
 
 }
 
-filtered.forEach(product=>{
 
-const productImage=
-product.image || product.name;
+filtered.forEach(product => {
 
-container.innerHTML+=`
 
-<div
-class="product"
-onclick="openProduct(${product.id})"
->
+const productCard =
+document.createElement("div");
+
+
+productCard.className =
+"product";
+
+
+productCard.onclick =
+function(){
+
+openProduct(
+product.firebaseId
+);
+
+};
+
+
+const imageText =
+product.image ||
+product.name ||
+"PRODUCT";
+
+
+productCard.innerHTML = `
 
 <div class="product-image">
 
-${productImage}
+${imageText}
 
 </div>
 
 <div class="product-info">
 
-<h3>${product.name}</h3>
+<h3>
+${product.name || ""}
+</h3>
 
-<p>₹${product.price}</p>
-
-</div>
+<p>
+₹${product.price || 0}
+</p>
 
 </div>
 
 `;
 
-});
 
-}
-
-
-/* ==========================================
-FILTER PRODUCTS
-========================================== */
-
-function filterProducts(category,button){
-
-document
-.querySelectorAll(".filter-btn")
-.forEach(btn=>{
-
-btn.classList.remove("active");
-
-});
-
-button.classList.add("active");
-
-displayProducts(category);
-
-}
-
-
-/* ==========================================
-OPEN PRODUCT
-========================================== */
-
-function openProduct(id){
-
-products=getProducts();
-
-currentProduct=
-products.find(
-product=>String(product.id)===String(id)
+container.appendChild(
+productCard
 );
 
-if(!currentProduct){
-
-alert("Product not found.");
-
-return;
+});
 
 }
 
-document.getElementById("modalTitle").textContent=
-currentProduct.name;
 
-document.getElementById("modalPrice").textContent=
-currentProduct.price;
+/* FILTER PRODUCTS */
 
-document.getElementById("modalDescription").textContent=
-currentProduct.description || "";
+window.filterProducts =
+function(category,button){
 
-document.getElementById("modalImage").textContent=
-currentProduct.image || currentProduct.name;
+document
+.querySelectorAll(
+".filter-btn"
+)
+.forEach(btn => {
 
-const sizeContainer=
-document.getElementById("sizeContainer");
+btn.classList.remove(
+"active"
+);
 
-sizeContainer.innerHTML="";
+});
 
-const productSizes=
-Array.isArray(currentProduct.sizes)
-?currentProduct.sizes
-:[];
 
-selectedSize="";
+button.classList.add(
+"active"
+);
 
-productSizes.forEach((size,index)=>{
 
-const button=
-document.createElement("button");
-
-button.className="size-btn";
-
-button.textContent=size;
-
-button.onclick=function(){
-
-selectSize(this,size);
+displayProducts(
+category
+);
 
 };
 
-if(index===0){
 
-button.classList.add("active");
+/* ========================================
+PRODUCT MODAL
+======================================== */
 
-selectedSize=size;
+function openProduct(firebaseId){
+
+currentProduct =
+products.find(
+product =>
+product.firebaseId === firebaseId
+);
+
+
+if(!currentProduct){
+
+alert(
+"Product not found."
+);
+
+return;
 
 }
 
-sizeContainer.appendChild(button);
-
-});
-
-qty=1;
-
-document.getElementById("quantity").textContent=qty;
 
 document
-.getElementById("productModal")
-.classList.add("active");
+.getElementById(
+"modalTitle"
+).textContent =
+currentProduct.name;
 
-}
-
-
-/* ==========================================
-CLOSE PRODUCT
-========================================== */
-
-function closeProduct(){
 
 document
-.getElementById("productModal")
-.classList.remove("active");
+.getElementById(
+"modalPrice"
+).textContent =
+currentProduct.price;
+
+
+document
+.getElementById(
+"modalDescription"
+).textContent =
+currentProduct.description ||
+"";
+
+
+document
+.getElementById(
+"modalImage"
+).textContent =
+currentProduct.image ||
+currentProduct.name;
+
+
+const sizeContainer =
+document.getElementById(
+"sizeContainer"
+);
+
+
+sizeContainer.innerHTML = "";
+
+
+const sizes =
+Array.isArray(
+currentProduct.sizes
+)
+
+? currentProduct.sizes
+
+: [];
+
+
+selectedSize = "";
+
+
+sizes.forEach(
+(size,index) => {
+
+
+const button =
+document.createElement(
+"button"
+);
+
+
+button.className =
+"size-btn";
+
+
+button.textContent =
+size;
+
+
+button.onclick =
+function(){
+
+selectSize(
+button,
+size
+);
+
+};
+
+
+if(index === 0){
+
+button.classList.add(
+"active"
+);
+
+selectedSize = size;
 
 }
 
 
-/* ==========================================
-SELECT SIZE
-========================================== */
+sizeContainer.appendChild(
+button
+);
+
+}
+);
+
+
+qty = 1;
+
+
+document
+.getElementById(
+"quantity"
+).textContent =
+qty;
+
+
+document
+.getElementById(
+"productModal"
+).classList.add(
+"active"
+);
+
+}
+
+
+/* CLOSE PRODUCT */
+
+window.closeProduct =
+function(){
+
+document
+.getElementById(
+"productModal"
+).classList.remove(
+"active"
+);
+
+};
+
+
+/* SELECT SIZE */
 
 function selectSize(button,size){
 
-selectedSize=size;
+selectedSize = size;
+
 
 document
-.querySelectorAll(".size-btn")
-.forEach(btn=>{
+.querySelectorAll(
+".size-btn"
+)
+.forEach(btn => {
 
-btn.classList.remove("active");
+btn.classList.remove(
+"active"
+);
 
 });
 
-button.classList.add("active");
+
+button.classList.add(
+"active"
+);
 
 }
 
 
-/* ==========================================
-QUANTITY
-========================================== */
+/* QUANTITY */
 
-function changeQty(change){
+window.changeQty =
+function(change){
 
-qty+=change;
+qty += change;
 
-if(qty<1){
-qty=1;
+
+if(qty < 1){
+
+qty = 1;
+
 }
+
 
 document
-.getElementById("quantity")
-.textContent=qty;
+.getElementById(
+"quantity"
+).textContent =
+qty;
+
+};
+
+
+/* ========================================
+CART
+======================================== */
+
+let cart = [];
+
+
+try{
+
+cart =
+JSON.parse(
+localStorage.getItem(
+"trendyCart"
+) || "[]"
+);
+
+
+if(!Array.isArray(cart)){
+
+cart = [];
+
+}
+
+}catch(error){
+
+cart = [];
 
 }
 
 
-/* ==========================================
-ADD TO BAG
-========================================== */
+/* ADD TO BAG */
 
-function addSelectedProduct(){
+window.addSelectedProduct =
+function(){
 
 if(!currentProduct){
 
@@ -1425,81 +1561,118 @@ return;
 
 }
 
+
 if(!selectedSize){
 
-alert("Please select a size.");
+alert(
+"Please select a size."
+);
 
 return;
 
 }
 
-for(let i=0;i<qty;i++){
+
+for(let i = 0; i < qty; i++){
 
 cart.push({
 
-name:currentProduct.name,
+firebaseId:
+currentProduct.firebaseId,
 
-price:Number(currentProduct.price),
+name:
+currentProduct.name,
 
-size:selectedSize
+price:
+Number(
+currentProduct.price
+),
+
+size:
+selectedSize
 
 });
 
 }
 
+
 saveCart();
+
 
 closeProduct();
 
+
 openCart();
 
-}
+};
 
 
-/* ==========================================
-SAVE CART
-========================================== */
+/* SAVE CART */
 
 function saveCart(){
 
 localStorage.setItem(
+
 "trendyCart",
+
 JSON.stringify(cart)
+
 );
+
 
 updateCart();
 
 }
 
 
-/* ==========================================
-UPDATE CART
-========================================== */
+/* UPDATE CART */
 
 function updateCart(){
 
 document
-.getElementById("cartCount")
-.textContent=cart.length;
+.getElementById(
+"cartCount"
+).textContent =
+cart.length;
 
-const items=
-document.getElementById("cartItems");
 
-items.innerHTML="";
+const items =
+document.getElementById(
+"cartItems"
+);
 
-let total=0;
 
-cart.forEach((item,index)=>{
+items.innerHTML = "";
 
-total+=Number(item.price)||0;
 
-items.innerHTML+=`
+let total = 0;
 
-<div class="cart-item">
+
+cart.forEach(
+(item,index) => {
+
+
+total +=
+Number(item.price) || 0;
+
+
+const itemElement =
+document.createElement(
+"div"
+);
+
+
+itemElement.className =
+"cart-item";
+
+
+itemElement.innerHTML = `
 
 <div>
 
-<strong>${item.name}</strong>
+<strong>
+${item.name}
+</strong>
 
 <br>
 
@@ -1507,4 +1680,123 @@ Size: ${item.size}
 
 <br>
 
-₹${item.p
+₹${item.price}
+
+</div>
+
+<button class="remove">
+REMOVE
+</button>
+
+`;
+
+
+itemElement
+.querySelector(
+".remove"
+)
+.onclick =
+function(){
+
+removeItem(
+index
+);
+
+};
+
+
+items.appendChild(
+itemElement
+);
+
+}
+);
+
+
+if(cart.length === 0){
+
+items.innerHTML = `
+
+<p style="
+padding:30px 0;
+text-align:center;
+color:#766d63
+">
+
+Your bag is empty.
+
+</p>
+
+`;
+
+}
+
+
+document
+.getElementById(
+"cartTotal"
+).textContent =
+total;
+
+}
+
+
+/* REMOVE CART ITEM */
+
+function removeItem(index){
+
+cart.splice(
+index,
+1
+);
+
+
+saveCart();
+
+}
+
+
+/* OPEN CART */
+
+window.openCart =
+function(){
+
+document
+.getElementById(
+"cartPanel"
+).classList.add(
+"active"
+);
+
+
+updateCart();
+
+};
+
+
+/* CLOSE CART */
+
+window.closeCart =
+function(){
+
+document
+.getElementById(
+"cartPanel"
+).classList.remove(
+"active"
+);
+
+};
+
+
+/* ========================================
+CHECKOUT
+======================================== */
+
+window.openCheckout =
+function(){
+
+if(cart.length === 0){
+
+alert(
+"Your 
