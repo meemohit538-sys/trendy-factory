@@ -1,6 +1,5 @@
-let delivery = 199;
-let total = subtotal + delivery;
+subtotal: cart.reduce((sum,item)=>sum+item.price,0),
 
-document.getElementById("checkoutSubtotal").textContent = subtotal;
-document.getElementById("deliveryCharge").textContent = "₹" + delivery;
-document.getElementById("checkoutTotal").textContent = total;
+deliveryCharge: 299,
+
+total: cart.reduce((sum,item)=>sum+item.price,0) + 299,
