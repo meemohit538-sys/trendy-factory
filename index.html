@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trendy Factory</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f1e9;
+      color: #25211d;
+    }
+
+    header {
+      height: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 6%;
+      background: #faf7f1;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo {
+      font-size: 22px;
+      letter-spacing: 3px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin-left: 18px;
+      text-decoration: none;
+      color: #25211d;
+      font-size: 13px;
+    }
+
+    .hero {
+      height: 75vh;
+      background: #d9c7b4;
+      display: flex;
+      align-items: end;
+      padding: 8%;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 10vw, 120px);
+      font-weight: 400;
+      line-height: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      letter-spacing: 2px;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #25211d;
+      color: white;
+      padding: 15px 28px;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    section {
+      padding: 70px 6%;
+    }
+
+    h2 {
+      font-size: 38px;
+      font-weight: 400;
+      margin-bottom: 35px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #fffaf4;
+    }
+
+    .image {
+      height: 300px;
+      background: #d8c9b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .card h3 {
+      padding: 15px;
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid #ddd;
+      font-size: 12px;
+    }
+
+    @media(max-width:700px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .image {
+        height: 220px;
+      }
+
+      nav a {
+        margin-left: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">TRENDY FACTORY</div>
+
+  <nav>
+    <a href="#shop">SHOP</a>
+    <a href="#women">WOMEN</a>
+    <a href="#men">MEN</a>
+    <a href="#cart">BAG</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div>
+    <p>NEW COLLECTION · 2026</p>
+
+    <h1>
+      Quiet Luxury.<br>
+      Everyday.
+    </h1>
+
+    <a href="#shop" class="btn">
+      SHOP COLLECTION
+    </a>
+  </div>
+</div>
+
+<section id="shop">
+
+  <h2>Designed for modern wardrobes.</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="image">WOMEN</div>
+      <h3>Women's Collection</h3>
+    </div>
+
+    <div class="card">
+      <div class="image">MEN</div>
+      <h3>Men's Collection</h3>
+    </div>
+
+    <div class="card">
+      <div class="image">ACCESSORIES</div>
+      <h3>Accessories</h3>
+    </div>
+
+    <div class="card">
+      <div class="image">NEW ARRIVALS</div>
+      <h3>New Arrivals</h3>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 TRENDY FACTORY · ALL RIGHTS RESERVED
+</footer>
+
+</body>
+</html>
