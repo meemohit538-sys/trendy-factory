@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,7 @@
 <title>TRENDY FACTORY — Men's Fashion</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -171,11 +172,6 @@ width:100%;
 height:100%;
 object-fit:cover;
 display:block;
-transition:.4s;
-}
-
-.product:hover .product-image img{
-transform:scale(1.05);
 }
 
 .no-image{
@@ -260,10 +256,10 @@ position:relative;
 .modal-image{
 min-height:520px;
 background:#d8c9b8;
+overflow:hidden;
 display:flex;
 align-items:center;
 justify-content:center;
-overflow:hidden;
 }
 
 .modal-image img{
@@ -345,13 +341,10 @@ position:absolute;
 right:15px;
 top:10px;
 border:none;
-background:#fff;
+background:none;
 font-size:28px;
 cursor:pointer;
-z-index:10;
-width:40px;
-height:40px;
-border-radius:50%;
+z-index:2;
 }
 
 /* CART */
@@ -591,6 +584,8 @@ cursor:pointer;
 letter-spacing:1px;
 }
 
+/* SUCCESS */
+
 .success{
 display:none;
 text-align:center;
@@ -606,6 +601,8 @@ font-size:42px;
 font-weight:400;
 margin-bottom:15px;
 }
+
+/* FOOTER */
 
 footer{
 background:#e6ddd2;
@@ -653,11 +650,11 @@ grid-template-columns:1fr;
 }
 
 .modal-image{
-min-height:300px;
+min-height:280px;
 }
 
 .modal-image img{
-min-height:300px;
+min-height:280px;
 }
 
 .modal-info{
@@ -692,20 +689,28 @@ grid-template-columns:1fr;
 <div id="mainWebsite">
 
 <header>
+
 <div class="logo">TRENDY FACTORY</div>
 
 <nav>
+
 <a href="#shop">SHOP</a>
+
 <a href="#shop">NEW</a>
 
 <button onclick="openCart()">
 BAG (<span id="cartCount">0</span>)
 </button>
+
 </nav>
+
 </header>
 
+
 <section class="hero">
+
 <div>
+
 <p>MEN'S COLLECTION · 2026</p>
 
 <h1>
@@ -716,8 +721,11 @@ Everyday.
 <a href="#shop" class="btn">
 SHOP MEN'S COLLECTION
 </a>
+
 </div>
+
 </section>
+
 
 <section class="section" id="shop">
 
@@ -725,44 +733,59 @@ SHOP MEN'S COLLECTION
 <h2>Men's Collection</h2>
 </div>
 
+
 <div class="filters">
 
-<button class="filter-btn active" onclick="filterProducts('all',this)">
+<button class="filter-btn active"
+onclick="filterProducts('all',this)">
 ALL
 </button>
 
-<button class="filter-btn" onclick="filterProducts('shirts',this)">
+<button class="filter-btn"
+onclick="filterProducts('shirts',this)">
 SHIRTS
 </button>
 
-<button class="filter-btn" onclick="filterProducts('tshirts',this)">
+<button class="filter-btn"
+onclick="filterProducts('tshirts',this)">
 T-SHIRTS
 </button>
 
-<button class="filter-btn" onclick="filterProducts('pants',this)">
+<button class="filter-btn"
+onclick="filterProducts('pants',this)">
 PANTS
 </button>
 
-<button class="filter-btn" onclick="filterProducts('jackets',this)">
+<button class="filter-btn"
+onclick="filterProducts('jackets',this)">
 JACKETS
 </button>
 
 </div>
 
+
 <div class="products" id="productsContainer">
-<div class="loading">Loading products...</div>
+
+<div class="loading">
+Loading products...
+</div>
+
 </div>
 
 </section>
 
+
 <section class="banner">
+
 <p>TRENDY FACTORY MEN</p>
 
 <h2>
 Built for the<br>
 modern wardrobe.
 </h2>
+
 </section>
+
 
 <footer>
 © 2026 TRENDY FACTORY · ALL RIGHTS RESERVED
@@ -770,16 +793,18 @@ modern wardrobe.
 
 </div>
 
+
 <!-- PRODUCT MODAL -->
 
 <div class="modal" id="productModal">
 
 <div class="modal-content">
 
-<button class="modal-close" onclick="closeProduct()">×</button>
+<button class="modal-close"
+onclick="closeProduct()">×</button>
 
 <div class="modal-image" id="modalImage">
-<div class="no-image">PRODUCT IMAGE</div>
+PRODUCT
 </div>
 
 <div class="modal-info">
@@ -790,113 +815,190 @@ modern wardrobe.
 ₹<span id="modalPrice"></span>
 </div>
 
-<p class="description" id="modalDescription"></p>
+<p class="description"
+id="modalDescription"></p>
 
-<span class="label">SELECT SIZE</span>
+<span class="label">
+SELECT SIZE
+</span>
 
-<div class="sizes" id="sizeContainer"></div>
+<div class="sizes"
+id="sizeContainer"></div>
 
-<span class="label">QUANTITY</span>
+<span class="label">
+QUANTITY
+</span>
 
 <div class="quantity">
+
 <button onclick="changeQty(-1)">−</button>
+
 <span id="quantity">1</span>
+
 <button onclick="changeQty(1)">+</button>
+
 </div>
 
-<button class="btn" onclick="addSelectedProduct()">
+<button class="btn"
+onclick="addSelectedProduct()">
 ADD TO BAG
 </button>
 
 </div>
+
 </div>
+
 </div>
+
 
 <!-- CART -->
 
-<div class="cart-panel" id="cartPanel">
+<div class="cart-panel"
+id="cartPanel">
 
 <div class="cart-header">
+
 <h2>Your Bag</h2>
-<button class="close" onclick="closeCart()">×</button>
+
+<button class="close"
+onclick="closeCart()">×</button>
+
 </div>
 
 <div id="cartItems"></div>
 
 <div class="cart-total">
+
 <strong>
 Total: ₹<span id="cartTotal">0</span>
 </strong>
+
 </div>
 
-<button class="checkout-btn" onclick="openCheckout()">
+<button class="checkout-btn"
+onclick="openCheckout()">
 PROCEED TO CHECKOUT
 </button>
 
 </div>
 
+
 <!-- CHECKOUT -->
 
-<div class="checkout-page" id="checkoutPage">
+<div class="checkout-page"
+id="checkoutPage">
 
 <div class="checkout-container">
 
-<button class="back-btn" onclick="backToShop()">
+<button class="back-btn"
+onclick="backToShop()">
 ← BACK TO SHOP
 </button>
 
-<h1 class="checkout-title">Checkout</h1>
+<h1 class="checkout-title">
+Checkout
+</h1>
 
-<div class="checkout-grid" id="checkoutContent">
+<div class="checkout-grid"
+id="checkoutContent">
+
 
 <div class="form-card">
 
 <h3>Delivery Details</h3>
 
 <div class="form-group">
+
 <label>FULL NAME</label>
-<input id="customerName" type="text" placeholder="Enter your full name">
+
+<input
+id="customerName"
+type="text"
+placeholder="Enter your full name">
+
 </div>
+
 
 <div class="form-row">
 
 <div class="form-group">
+
 <label>MOBILE NUMBER</label>
-<input id="customerPhone" type="tel" placeholder="10 digit number">
+
+<input
+id="customerPhone"
+type="tel"
+placeholder="10 digit number">
+
 </div>
 
 <div class="form-group">
+
 <label>EMAIL</label>
-<input id="customerEmail" type="email" placeholder="you@email.com">
+
+<input
+id="customerEmail"
+type="email"
+placeholder="you@email.com">
+
 </div>
 
 </div>
+
 
 <div class="form-group">
+
 <label>FULL ADDRESS</label>
-<textarea id="customerAddress" placeholder="House no, street, area"></textarea>
+
+<textarea
+id="customerAddress"
+placeholder="House no, street, area"></textarea>
+
 </div>
+
 
 <div class="form-row">
 
 <div class="form-group">
+
 <label>CITY</label>
-<input id="customerCity" type="text" placeholder="City">
+
+<input
+id="customerCity"
+type="text"
+placeholder="City">
+
 </div>
 
 <div class="form-group">
+
 <label>STATE</label>
-<input id="customerState" type="text" placeholder="State">
+
+<input
+id="customerState"
+type="text"
+placeholder="State">
+
 </div>
 
 </div>
+
 
 <div class="form-group">
+
 <label>PIN CODE</label>
-<input id="customerPin" type="text" placeholder="PIN Code">
+
+<input
+id="customerPin"
+type="text"
+placeholder="PIN Code">
+
 </div>
 
 </div>
+
+
+<!-- ORDER SUMMARY -->
 
 <div class="summary-card">
 
@@ -904,13 +1006,17 @@ PROCEED TO CHECKOUT
 
 <div id="checkoutItems"></div>
 
+
 <div class="coupon-box">
 
 <label>DISCOUNT COUPON</label>
 
 <div class="coupon-row">
 
-<input id="couponCode" type="text" placeholder="ENTER COUPON CODE">
+<input
+id="couponCode"
+type="text"
+placeholder="ENTER COUPON CODE">
 
 <button onclick="applyCoupon()">
 APPLY
@@ -918,61 +1024,108 @@ APPLY
 
 </div>
 
-<div class="coupon-message" id="couponMessage"></div>
+<div class="coupon-message"
+id="couponMessage"></div>
 
 </div>
+
 
 <div class="order-line">
+
 <span>Subtotal</span>
-<strong>₹<span id="checkoutSubtotal">0</span></strong>
+
+<strong>
+₹<span id="checkoutSubtotal">0</span>
+</strong>
+
 </div>
 
-<div class="order-line discount-line" id="discountRow" style="display:none">
+
+<div class="order-line discount-line"
+id="discountRow"
+style="display:none">
+
 <span>Discount</span>
-<strong>-₹<span id="checkoutDiscount">0</span></strong>
+
+<strong>
+-₹<span id="checkoutDiscount">0</span>
+</strong>
+
 </div>
+
 
 <div class="order-total">
+
 <strong>Total</strong>
-<strong>₹<span id="checkoutTotal">0</span></strong>
+
+<strong>
+₹<span id="checkoutTotal">0</span>
+</strong>
+
 </div>
 
-<button class="place-order" onclick="placeOrder()" id="placeOrderBtn">
+
+<button
+class="place-order"
+onclick="placeOrder()"
+id="placeOrderBtn">
+
 PLACE ORDER
+
 </button>
 
 </div>
 
 </div>
 
-<div class="success" id="successMessage">
+
+<div class="success"
+id="successMessage">
 
 <h2>Order Received!</h2>
 
-<p>Thank you for shopping with Trendy Factory.</p>
+<p>
+Thank you for shopping with Trendy Factory.
+</p>
 
-<p id="orderNumber" style="margin-top:15px;font-weight:bold"></p>
+<p
+id="orderNumber"
+style="margin-top:15px;font-weight:bold">
+</p>
 
-<button class="btn" style="margin-top:25px" onclick="backToShop()">
+<button
+class="btn"
+style="margin-top:25px"
+onclick="backToShop()">
+
 CONTINUE SHOPPING
+
 </button>
 
 </div>
 
 </div>
+
 </div>
+
 
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+initializeApp
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
 getFirestore,
 collection,
 getDocs,
 addDoc
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+
+/* FIREBASE CONFIG */
 
 const firebaseConfig = {
 
@@ -993,7 +1146,10 @@ measurementId: "G-8YDMBE9T7C"
 };
 
 
+/* INITIALIZE FIREBASE */
+
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
 
 
@@ -1019,15 +1175,20 @@ container.innerHTML =
 try{
 
 const querySnapshot =
-await getDocs(collection(db,"products"));
+await getDocs(
+collection(db,"products")
+);
 
 products = [];
 
 querySnapshot.forEach((documentItem) => {
 
 products.push({
+
 firebaseId: documentItem.id,
+
 ...documentItem.data()
+
 });
 
 });
@@ -1058,15 +1219,12 @@ document.getElementById("productsContainer");
 container.innerHTML = "";
 
 const filtered =
-
 category === "all"
-
 ? products
-
 : products.filter(
 product =>
-String(product.category || "").toLowerCase() ===
-String(category).toLowerCase()
+String(product.category || "")
+.toLowerCase() === category.toLowerCase()
 );
 
 
@@ -1088,15 +1246,14 @@ document.createElement("div");
 productCard.className = "product";
 
 productCard.onclick = function(){
+
 openProduct(product.firebaseId);
+
 };
 
 
-const imageUrl =
-typeof product.image === "string" &&
-product.image.startsWith("http")
-? product.image
-: "";
+const image =
+product.image || "";
 
 
 productCard.innerHTML = `
@@ -1104,11 +1261,10 @@ productCard.innerHTML = `
 <div class="product-image">
 
 ${
-imageUrl
-
-? `<img src="${imageUrl}" alt="${product.name || "Product"}">`
-
-: `<div class="no-image">${product.name || "PRODUCT"}</div>`
+image
+? `<img src="${image}" alt="${product.name || "Product"}"
+onerror="this.style.display='none';this.parentElement.innerHTML='<div class=no-image>IMAGE NOT AVAILABLE</div>'">`
+: `<div class="no-image">PRODUCT IMAGE</div>`
 }
 
 </div>
@@ -1122,6 +1278,7 @@ imageUrl
 </div>
 
 `;
+
 
 container.appendChild(productCard);
 
@@ -1138,7 +1295,9 @@ function(category,button){
 document
 .querySelectorAll(".filter-btn")
 .forEach((btn) => {
+
 btn.classList.remove("active");
+
 });
 
 button.classList.add("active");
@@ -1154,13 +1313,17 @@ function openProduct(firebaseId){
 
 currentProduct =
 products.find(
-product => product.firebaseId === firebaseId
+product =>
+product.firebaseId === firebaseId
 );
 
 
 if(!currentProduct){
+
 alert("Product not found.");
+
 return;
+
 }
 
 
@@ -1179,33 +1342,39 @@ currentProduct.price || 0;
 document
 .getElementById("modalDescription")
 .textContent =
-currentProduct.description || "";
+currentProduct.description ||
+"No description available.";
 
 
 const modalImage =
 document.getElementById("modalImage");
 
 
-const imageUrl =
-typeof currentProduct.image === "string" &&
-currentProduct.image.startsWith("http")
-? currentProduct.image
-: "";
+if(currentProduct.image){
+
+modalImage.innerHTML = `
+
+<img
+src="${currentProduct.image}"
+alt="${currentProduct.name || "Product"}"
+onerror="this.style.display='none';this.parentElement.innerHTML='PRODUCT IMAGE'">
+
+`;
+
+}else{
+
+modalImage.textContent =
+"PRODUCT IMAGE";
+
+}
 
 
-modalImage.innerHTML =
-imageUrl
-
-? `<img src="${imageUrl}" alt="${currentProduct.name || "Product"}">`
-
-: `<div class="no-image">${currentProduct.name || "PRODUCT IMAGE"}</div>`;
-
+/* SIZES */
 
 const sizeContainer =
 document.getElementById("sizeContainer");
 
 sizeContainer.innerHTML = "";
-
 
 const sizes =
 Array.isArray(currentProduct.sizes)
@@ -1218,8 +1387,18 @@ selectedSize = "";
 
 if(sizes.length === 0){
 
-sizeContainer.innerHTML =
-'<div class="no-image">No sizes available</div>';
+selectedSize = "Standard";
+
+const button =
+document.createElement("button");
+
+button.className =
+"size-btn active";
+
+button.textContent =
+"Standard";
+
+sizeContainer.appendChild(button);
 
 }else{
 
@@ -1228,12 +1407,18 @@ sizes.forEach((size,index) => {
 const button =
 document.createElement("button");
 
-button.className = "size-btn";
+button.className =
+"size-btn";
 
-button.textContent = size;
+button.textContent =
+size;
 
-button.onclick = function(){
+
+button.onclick =
+function(){
+
 selectSize(button,size);
+
 };
 
 
@@ -1245,6 +1430,7 @@ selectedSize = size;
 
 }
 
+
 sizeContainer.appendChild(button);
 
 });
@@ -1252,12 +1438,17 @@ sizeContainer.appendChild(button);
 }
 
 
+/* QUANTITY */
+
 qty = 1;
 
 document
 .getElementById("quantity")
-.textContent = qty;
+.textContent =
+qty;
 
+
+/* OPEN MODAL */
 
 document
 .getElementById("productModal")
@@ -1265,6 +1456,8 @@ document
 
 }
 
+
+/* CLOSE PRODUCT */
 
 window.closeProduct =
 function(){
@@ -1276,6 +1469,8 @@ document
 };
 
 
+/* SELECT SIZE */
+
 function selectSize(button,size){
 
 selectedSize = size;
@@ -1283,7 +1478,9 @@ selectedSize = size;
 document
 .querySelectorAll(".size-btn")
 .forEach((btn) => {
+
 btn.classList.remove("active");
+
 });
 
 button.classList.add("active");
@@ -1291,18 +1488,23 @@ button.classList.add("active");
 }
 
 
+/* QUANTITY */
+
 window.changeQty =
 function(change){
 
 qty += change;
 
 if(qty < 1){
+
 qty = 1;
+
 }
 
 document
 .getElementById("quantity")
-.textContent = qty;
+.textContent =
+qty;
 
 };
 
@@ -1319,7 +1521,9 @@ localStorage.getItem("trendyCart") || "[]"
 );
 
 if(!Array.isArray(cart)){
+
 cart = [];
+
 }
 
 }catch(error){
@@ -1329,11 +1533,15 @@ cart = [];
 }
 
 
+/* ADD TO BAG */
+
 window.addSelectedProduct =
 function(){
 
 if(!currentProduct){
+
 return;
+
 }
 
 
@@ -1350,13 +1558,20 @@ for(let i = 0; i < qty; i++){
 
 cart.push({
 
-firebaseId: currentProduct.firebaseId,
+firebaseId:
+currentProduct.firebaseId,
 
-name: currentProduct.name,
+name:
+currentProduct.name,
 
-price: Number(currentProduct.price) || 0,
+price:
+Number(currentProduct.price) || 0,
 
-size: selectedSize
+size:
+selectedSize,
+
+image:
+currentProduct.image || ""
 
 });
 
@@ -1372,6 +1587,8 @@ openCart();
 };
 
 
+/* SAVE CART */
+
 function saveCart(){
 
 localStorage.setItem(
@@ -1383,6 +1600,8 @@ updateCart();
 
 }
 
+
+/* UPDATE CART */
 
 function updateCart(){
 
@@ -1402,28 +1621,32 @@ let total = 0;
 
 cart.forEach((item,index) => {
 
-total += Number(item.price) || 0;
+const price =
+Number(item.price) || 0;
+
+total += price;
 
 
 const itemElement =
 document.createElement("div");
 
-itemElement.className = "cart-item";
+itemElement.className =
+"cart-item";
 
 
 itemElement.innerHTML = `
 
 <div>
 
-<strong>${item.name}</strong>
+<strong>${item.name || "Product"}</strong>
 
 <br>
 
-Size: ${item.size}
+Size: ${item.size || ""}
 
 <br>
 
-₹${item.price}
+₹${price}
 
 </div>
 
@@ -1436,8 +1659,11 @@ REMOVE
 
 itemElement
 .querySelector(".remove")
-.onclick = function(){
+.onclick =
+function(){
+
 removeItem(index);
+
 };
 
 
@@ -1456,10 +1682,13 @@ items.innerHTML =
 
 document
 .getElementById("cartTotal")
-.textContent = total;
+.textContent =
+total;
 
 }
 
+
+/* REMOVE ITEM */
 
 function removeItem(index){
 
@@ -1469,6 +1698,8 @@ saveCart();
 
 }
 
+
+/* OPEN CART */
 
 window.openCart =
 function(){
@@ -1482,6 +1713,8 @@ updateCart();
 };
 
 
+/* CLOSE CART */
+
 window.closeCart =
 function(){
 
@@ -1490,49 +1723,47 @@ document
 .classList.remove("active");
 
 };
-/* ========================================
-CHECKOUT
-======================================== */
+
+
+/* CHECKOUT */
 
 window.openCheckout =
 function(){
 
 if(cart.length === 0){
 
-alert(
-"Your bag is empty."
-);
+alert("Your bag is empty.");
 
 return;
 
 }
 
+
 closeCart();
 
+
 document
-.getElementById(
-"mainWebsite"
-).style.display =
+.getElementById("mainWebsite")
+.style.display =
 "none";
 
-document
-.getElementById(
-"checkoutPage"
-).classList.add(
-"active"
-);
 
 document
-.getElementById(
-"successMessage"
-).style.display =
+.getElementById("checkoutPage")
+.classList.add("active");
+
+
+document
+.getElementById("successMessage")
+.style.display =
 "none";
 
+
 document
-.getElementById(
-"checkoutContent"
-).style.display =
+.getElementById("checkoutContent")
+.style.display =
 "grid";
+
 
 renderCheckout();
 
@@ -1545,17 +1776,15 @@ window.backToShop =
 function(){
 
 document
-.getElementById(
-"checkoutPage"
-).classList.remove(
-"active"
-);
+.getElementById("checkoutPage")
+.classList.remove("active");
+
 
 document
-.getElementById(
-"mainWebsite"
-).style.display =
+.getElementById("mainWebsite")
+.style.display =
 "block";
+
 
 window.scrollTo({
 top:0,
@@ -1565,12 +1794,9 @@ behavior:"smooth"
 };
 
 
-/* ========================================
-COUPON
-======================================== */
+/* COUPON */
 
 let appliedCoupon = null;
-
 let discountAmount = 0;
 
 
@@ -1580,14 +1806,10 @@ window.applyCoupon =
 async function(){
 
 const couponInput =
-document.getElementById(
-"couponCode"
-);
+document.getElementById("couponCode");
 
 const message =
-document.getElementById(
-"couponMessage"
-);
+document.getElementById("couponMessage");
 
 const code =
 couponInput.value
@@ -1597,8 +1819,7 @@ couponInput.value
 
 if(!code){
 
-message.style.color =
-"#b42318";
+message.style.color = "#b42318";
 
 message.textContent =
 "Please enter a coupon code.";
@@ -1619,19 +1840,14 @@ try{
 
 const couponSnapshot =
 await getDocs(
-collection(
-db,
-"coupons"
-)
+collection(db,"coupons")
 );
 
 
-let foundCoupon =
-null;
+let foundCoupon = null;
 
 
-couponSnapshot.forEach(
-(documentItem) => {
+couponSnapshot.forEach((documentItem) => {
 
 const data =
 documentItem.data();
@@ -1639,9 +1855,7 @@ documentItem.data();
 
 if(
 data.code &&
-String(
-data.code
-)
+String(data.code)
 .toUpperCase() === code
 ){
 
@@ -1656,8 +1870,7 @@ documentItem.id,
 
 }
 
-}
-);
+});
 
 
 if(!foundCoupon){
@@ -1679,11 +1892,9 @@ return;
 }
 
 
-/* CHECK IF COUPON ACTIVE */
+/* CHECK ACTIVE */
 
-if(
-foundCoupon.active === false
-){
+if(foundCoupon.active === false){
 
 appliedCoupon = null;
 
@@ -1702,54 +1913,42 @@ return;
 }
 
 
-/* CALCULATE SUBTOTAL */
+/* SUBTOTAL */
 
 const subtotal =
 cart.reduce(
 (total,item) =>
-total +
-(
-Number(item.price) || 0
-),
+total + (Number(item.price) || 0),
 0
 );
 
 
-/* DISCOUNT TYPE */
+/* DISCOUNT */
 
 if(
-foundCoupon.type ===
-"percentage"
+String(foundCoupon.type || "")
+.toLowerCase() === "percentage"
 ){
 
 discountAmount =
 Math.round(
 subtotal *
-(
-Number(
-foundCoupon.discount
-) || 0
-) / 100
+(Number(foundCoupon.discount) || 0)
+/
+100
 );
 
 }else{
 
 discountAmount =
-Number(
-foundCoupon.discount
-) || 0;
+Number(foundCoupon.discount) || 0;
 
 }
 
 
-/* DISCOUNT CANNOT BE MORE THAN SUBTOTAL */
+if(discountAmount > subtotal){
 
-if(
-discountAmount > subtotal
-){
-
-discountAmount =
-subtotal;
+discountAmount = subtotal;
 
 }
 
@@ -1757,8 +1956,6 @@ subtotal;
 appliedCoupon =
 foundCoupon;
 
-
-/* SUCCESS MESSAGE */
 
 message.style.color =
 "#147a3d";
@@ -1788,41 +1985,28 @@ message.textContent =
 };
 
 
-/* ========================================
-RENDER CHECKOUT
-======================================== */
+/* RENDER CHECKOUT */
 
 function renderCheckout(){
 
 const checkoutItems =
-document.getElementById(
-"checkoutItems"
-);
+document.getElementById("checkoutItems");
 
-checkoutItems.innerHTML =
-"";
-
+checkoutItems.innerHTML = "";
 
 let subtotal = 0;
 
 
-/* SHOW CART ITEMS */
-
-cart.forEach(
-item => {
+cart.forEach((item) => {
 
 const price =
-Number(
-item.price
-) || 0;
+Number(item.price) || 0;
 
 subtotal += price;
 
 
 const itemElement =
-document.createElement(
-"div"
-);
+document.createElement("div");
 
 itemElement.className =
 "order-item";
@@ -1833,13 +2017,13 @@ itemElement.innerHTML = `
 <div>
 
 <strong>
-${item.name}
+${item.name || "Product"}
 </strong>
 
 <br>
 
 <small>
-Size: ${item.size}
+Size: ${item.size || ""}
 </small>
 
 </div>
@@ -1851,42 +2035,30 @@ Size: ${item.size}
 `;
 
 
-checkoutItems.appendChild(
-itemElement
-);
+checkoutItems.appendChild(itemElement);
 
-}
-);
+});
 
-
-/* UPDATE SUBTOTAL */
 
 document
-.getElementById(
-"checkoutSubtotal"
-).textContent =
+.getElementById("checkoutSubtotal")
+.textContent =
 subtotal;
 
 
-/* DISCOUNT */
-
 const discountRow =
-document.getElementById(
-"discountRow"
-);
+document.getElementById("discountRow");
 
 
-if(
-discountAmount > 0
-){
+if(discountAmount > 0){
 
 discountRow.style.display =
 "flex";
 
+
 document
-.getElementById(
-"checkoutDiscount"
-).textContent =
+.getElementById("checkoutDiscount")
+.textContent =
 discountAmount;
 
 }else{
@@ -1897,16 +2069,11 @@ discountRow.style.display =
 }
 
 
-/* FINAL TOTAL */
-
 let finalTotal =
-subtotal -
-discountAmount;
+subtotal - discountAmount;
 
 
-if(
-finalTotal < 0
-){
+if(finalTotal < 0){
 
 finalTotal = 0;
 
@@ -1914,83 +2081,66 @@ finalTotal = 0;
 
 
 document
-.getElementById(
-"checkoutTotal"
-).textContent =
+.getElementById("checkoutTotal")
+.textContent =
 finalTotal;
 
-  }  ```javascript
-/* ========================================
-PLACE ORDER
-======================================== */
+}
+
+
+/* PLACE ORDER */
 
 window.placeOrder =
 async function(){
 
 const name =
 document
-.getElementById(
-"customerName"
-)
+.getElementById("customerName")
 .value
 .trim();
 
 
 const phone =
 document
-.getElementById(
-"customerPhone"
-)
+.getElementById("customerPhone")
 .value
 .trim();
 
 
 const email =
 document
-.getElementById(
-"customerEmail"
-)
+.getElementById("customerEmail")
 .value
 .trim();
 
 
 const address =
 document
-.getElementById(
-"customerAddress"
-)
+.getElementById("customerAddress")
 .value
 .trim();
 
 
 const city =
 document
-.getElementById(
-"customerCity"
-)
+.getElementById("customerCity")
 .value
 .trim();
 
 
 const state =
 document
-.getElementById(
-"customerState"
-)
+.getElementById("customerState")
 .value
 .trim();
 
 
 const pin =
 document
-.getElementById(
-"customerPin"
-)
+.getElementById("customerPin")
 .value
 .trim();
 
-
-/* VALIDATION */
 
 if(
 !name ||
@@ -2010,11 +2160,7 @@ return;
 }
 
 
-/* PHONE VALIDATION */
-
-if(
-phone.length < 10
-){
+if(phone.length < 10){
 
 alert(
 "Please enter a valid mobile number."
@@ -2025,15 +2171,10 @@ return;
 }
 
 
-/* CALCULATE TOTAL */
-
 const subtotal =
 cart.reduce(
 (total,item) =>
-total +
-(
-Number(item.price) || 0
-),
+total + (Number(item.price) || 0),
 0
 );
 
@@ -2041,31 +2182,21 @@ Number(item.price) || 0
 const total =
 Math.max(
 0,
-subtotal -
-discountAmount
+subtotal - discountAmount
 );
 
-
-/* DISABLE BUTTON */
 
 const button =
-document.getElementById(
-"placeOrderBtn"
-);
+document.getElementById("placeOrderBtn");
 
 
-button.disabled =
-true;
-
+button.disabled = true;
 
 button.textContent =
 "PROCESSING...";
 
 
 try{
-
-
-/* CREATE ORDER */
 
 const orderData = {
 
@@ -2087,176 +2218,83 @@ pin:pin
 
 },
 
-
 items:cart,
-
 
 subtotal:subtotal,
 
-
 discount:discountAmount,
 
-
 coupon:
-
 appliedCoupon
-
 ? appliedCoupon.code
-
 : null,
-
 
 total:total,
 
+status:"pending",
 
-status:
-"pending",
+paymentStatus:"pending",
 
-
-paymentStatus:
-"pending",
-
-
-paymentMethod:
-"cash_on_delivery",
-
+paymentMethod:"cash_on_delivery",
 
 createdAt:
-new Date()
+new Date().toISOString()
 
 };
 
 
-/* SAVE TO FIREBASE */
-
 const orderRef =
 await addDoc(
-
-collection(
-db,
-"orders"
-),
-
+collection(db,"orders"),
 orderData
-
 );
 
 
-/* ORDER SUCCESS */
+/* SUCCESS */
 
 cart = [];
-
 
 localStorage.removeItem(
 "trendyCart"
 );
 
-
 updateCart();
 
+appliedCoupon = null;
 
-appliedCoupon =
-null;
+discountAmount = 0;
 
-
-discountAmount =
-0;
-
-
-/* HIDE CHECKOUT */
 
 document
-.getElementById(
-"checkoutContent"
-)
+.getElementById("checkoutContent")
 .style.display =
 "none";
 
 
-/* SHOW SUCCESS */
-
 const success =
-document.getElementById(
-"successMessage"
-);
-
+document.getElementById("successMessage");
 
 success.style.display =
 "block";
 
 
 document
-.getElementById(
-"orderNumber"
-).textContent =
-
-"Order ID: " +
-orderRef.id;
+.getElementById("orderNumber")
+.textContent =
+"Order ID: " + orderRef.id;
 
 
 /* CLEAR FORM */
 
-document
-.getElementById(
-"customerName"
-).value =
-"";
-
-
-document
-.getElementById(
-"customerPhone"
-).value =
-"";
-
-
-document
-.getElementById(
-"customerEmail"
-).value =
-"";
-
-
-document
-.getElementById(
-"customerAddress"
-).value =
-"";
-
-
-document
-.getElementById(
-"customerCity"
-).value =
-"";
-
-
-document
-.getElementById(
-"customerState"
-).value =
-"";
-
-
-document
-.getElementById(
-"customerPin"
-).value =
-"";
-
-
-document
-.getElementById(
-"couponCode"
-).value =
-"";
-
-
-document
-.getElementById(
-"couponMessage"
-).textContent =
-"";
+document.getElementById("customerName").value = "";
+document.getElementById("customerPhone").value = "";
+document.getElementById("customerEmail").value = "";
+document.getElementById("customerAddress").value = "";
+document.getElementById("customerCity").value = "";
+document.getElementById("customerState").value = "";
+document.getElementById("customerPin").value = "";
+document.getElementById("couponCode").value = "";
+document.getElementById("couponMessage").textContent = "";
 
 
 }catch(error){
@@ -2266,15 +2304,11 @@ console.error(
 error
 );
 
-
 alert(
 "Unable to place order. Please try again."
 );
 
-
-button.disabled =
-false;
-
+button.disabled = false;
 
 button.textContent =
 "PLACE ORDER";
@@ -2284,9 +2318,7 @@ button.textContent =
 };
 
 
-/* ========================================
-INITIALIZE WEBSITE
-======================================== */
+/* INITIALIZE */
 
 loadProducts();
 
@@ -2295,7 +2327,4 @@ updateCart();
 </script>
 
 </body>
-
-</html>
-```
-  
+  </html>
