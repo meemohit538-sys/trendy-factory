@@ -416,7 +416,7 @@ background:#eee5da;
 color:#211e1a;
 border-radius:7px;
 }
-  /* ================= CART ================= */
+/* ================= CART ================= */
 
 .cart-panel{
 position:fixed;
@@ -970,7 +970,7 @@ CONTINUE SHOPPING
 </div>
 </section>
 
-<!-- WHATSAPP FLOATING BUTTON -->
+<!-- WHATSAPP -->
 
 <a
 href="https://wa.me/919079508505"
@@ -1023,7 +1023,6 @@ measurementId: "G-8YDMBE9T7C"
 /* ================= FIREBASE START ================= */
 
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
 
 /* ================= VARIABLES ================= */
@@ -1041,18 +1040,22 @@ JSON.parse(localStorage.getItem("trendyFactoryCart")) || [];
 
 /* ================= START ================= */
 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener(
+"DOMContentLoaded",
+function(){
 
 updateCart();
 loadProducts();
 
-});
+}
+);
 
 /* ================= LOAD PRODUCTS ================= */
 
 async function loadProducts(){
 
-const grid = document.getElementById("productGrid");
+const grid =
+document.getElementById("productGrid");
 
 try{
 
@@ -1237,7 +1240,8 @@ currentProduct.image ||
 currentProduct.imageUrl ||
 "";
 
-document.getElementById("modalProductImage").src = image;
+document.getElementById("modalProductImage").src =
+image;
 
 document.getElementById("modalProductName").textContent =
 currentProduct.name || "Product";
@@ -1341,7 +1345,11 @@ return;
 }
 
 if(stock > 0 && nextQuantity > stock){
+
+alert("Maximum available stock is " + stock);
+
 return;
+
 }
 
 modalQuantity = nextQuantity;
@@ -1351,7 +1359,7 @@ modalQuantity;
 
 };
 
-/* ================= ADD CART ================= */
+/* ================= ADD TO CART ================= */
 
 window.addCurrentProductToCart = function(){
 
@@ -1388,7 +1396,11 @@ item.size === selectedSize;
 
 if(existingItem){
 
-if(existingItem.quantity + modalQuantity > stock){
+if(
+existingItem.quantity +
+modalQuantity >
+stock
+){
 
 alert("Not enough stock available.");
 
@@ -1396,7 +1408,8 @@ return;
 
 }
 
-existingItem.quantity += modalQuantity;
+existingItem.quantity +=
+modalQuantity;
 
 }
 else{
@@ -1405,26 +1418,37 @@ cart.push({
 
 id:currentProduct.id,
 
-name:currentProduct.name || "Product",
+name:
+currentProduct.name ||
+"Product",
 
-price:Number(currentProduct.price || 0),
+price:
+Number(
+currentProduct.price ||
+0
+),
 
 image:
 currentProduct.image ||
 currentProduct.imageUrl ||
 "",
 
-size:selectedSize,
+size:
+selectedSize,
 
-quantity:modalQuantity
+quantity:
+modalQuantity
 
 });
 
 }
 
 saveCart();
+
 updateCart();
+
 closeProductModal();
+
 openCart();
 
 };
@@ -1554,7 +1578,7 @@ totalElement.textContent =
 
 }
 
-/* ================= REMOVE CART ================= */
+/* ================= REMOVE CART ITEM ================= */
 
 window.removeCartItem = function(index){
 
@@ -1566,7 +1590,7 @@ updateCart();
 
 };
 
-/* ================= CART ================= */
+/* ================= CART OPEN/CLOSE ================= */
 
 window.openCart = function(){
 
@@ -1582,7 +1606,7 @@ document.getElementById("cartPanel")
 
 };
 
-/* ================= CHECKOUT ================= */
+/* ================= GO TO CHECKOUT ================= */
 
 window.goToCheckout = function(){
 
@@ -1596,8 +1620,8 @@ return;
 
 closeCart();
 
-document.getElementById("mainWebsite").style.display =
-"none";
+document.getElementById("mainWebsite")
+.style.display = "none";
 
 document.getElementById("checkoutPage")
 .classList.add("active");
@@ -1609,10 +1633,12 @@ renderCheckout();
 
 };
 
+/* ================= BACK TO SHOP ================= */
+
 window.backToShop = function(){
 
-document.getElementById("mainWebsite").style.display =
-"block";
+document.getElementById("mainWebsite")
+.style.display = "block";
 
 document.getElementById("checkoutPage")
 .classList.remove("active");
@@ -1627,7 +1653,7 @@ behavior:"smooth"
 
 };
 
-/* ================= CHECKOUT RENDER ================= */
+/* ================= RENDER CHECKOUT ================= */
 
 function renderCheckout(){
 
@@ -1673,8 +1699,8 @@ ${Number(item.quantity)}
 
 updateCheckoutTotals();
 
-  }
-  /* ================= COUPON ================= */
+}
+/* ================= COUPON ================= */
 
 window.applyCoupon = function(){
 
@@ -1716,7 +1742,7 @@ updateCheckoutTotals();
 
 };
 
-/* ================= TOTALS ================= */
+/* ================= UPDATE TOTALS ================= */
 
 function updateCheckoutTotals(){
 
@@ -1729,14 +1755,20 @@ if(appliedCoupon){
 
 discount =
 subtotal *
-(Number(appliedCoupon.value) / 100);
+(
+Number(appliedCoupon.value) / 100
+);
 
 }
 
 const total =
-Math.max(0,subtotal - discount);
+Math.max(
+0,
+subtotal - discount
+);
 
-document.getElementById("checkoutSubtotal").textContent =
+document.getElementById("checkoutSubtotal")
+.textContent =
 "₹" + subtotal;
 
 const discountRow =
@@ -1744,26 +1776,33 @@ document.getElementById("discountRow");
 
 if(discount > 0){
 
-discountRow.style.display = "flex";
+discountRow.style.display =
+"flex";
 
-document.getElementById("checkoutDiscount").textContent =
-"- ₹" + discount.toFixed(2);
+document.getElementById("checkoutDiscount")
+.textContent =
+"- ₹" +
+discount.toFixed(2);
 
 }
 else{
 
-discountRow.style.display = "none";
+discountRow.style.display =
+"none";
 
 }
 
-document.getElementById("checkoutTotal").textContent =
-"₹" + total.toFixed(2);
+document.getElementById("checkoutTotal")
+.textContent =
+"₹" +
+total.toFixed(2);
 
 }
 
 /* ================= PLACE ORDER ================= */
 
-window.placeOrder = async function(event){
+window.placeOrder =
+async function(event){
 
 event.preventDefault();
 
@@ -1808,12 +1847,17 @@ if(appliedCoupon){
 
 discount =
 subtotal *
-(Number(appliedCoupon.value) / 100);
+(
+Number(appliedCoupon.value) / 100
+);
 
 }
 
 const total =
-Math.max(0,subtotal - discount);
+Math.max(
+0,
+subtotal - discount
+);
 
 try{
 
@@ -1821,46 +1865,79 @@ await runTransaction(
 db,
 async function(transaction){
 
-for(const item of cart){
+for(
+const item of cart
+){
 
 const productRef =
-doc(db,"products",item.id);
+doc(
+db,
+"products",
+item.id
+);
 
 const productSnapshot =
-await transaction.get(productRef);
+await transaction.get(
+productRef
+);
 
-if(!productSnapshot.exists()){
+if(
+!productSnapshot.exists()
+){
 
 throw new Error(
-item.name + " no longer exists."
+item.name +
+" no longer exists."
 );
 
 }
 
 const stock =
-Number(productSnapshot.data().stock || 0);
+Number(
+productSnapshot
+.data()
+.stock ||
+0
+);
 
-if(stock < Number(item.quantity)){
+if(
+stock <
+Number(item.quantity)
+){
 
 throw new Error(
-"Not enough stock for " + item.name
+"Not enough stock for " +
+item.name
 );
 
 }
 
-transaction.update(productRef,{
+transaction.update(
+productRef,
+{
+
 stock:
-stock - Number(item.quantity)
-});
+stock -
+Number(
+item.quantity
+)
+
+}
+);
 
 }
 
 }
 );
+
+/* ================= SAVE ORDER ================= */
 
 const orderRef =
 await addDoc(
-collection(db,"orders"),
+collection(
+db,
+"orders"
+),
 {
 
 customer:{
@@ -1871,38 +1948,61 @@ address:address
 },
 
 items:
-cart.map(function(item){
+cart.map(
+function(item){
 
 return {
+
 id:item.id,
+
 name:item.name,
-price:Number(item.price),
-image:item.image,
-size:item.size,
-quantity:Number(item.quantity)
+
+price:
+Number(item.price),
+
+image:
+item.image,
+
+size:
+item.size,
+
+quantity:
+Number(item.quantity)
+
 };
 
-}),
+}
+),
 
-subtotal:subtotal,
+subtotal:
+subtotal,
 
-discount:discount,
+discount:
+discount,
 
-total:total,
+total:
+total,
 
 coupon:
-appliedCoupon ?
-appliedCoupon.code :
+appliedCoupon
+?
+appliedCoupon.code
+:
 null,
 
-paymentMethod:paymentMethod,
+paymentMethod:
+paymentMethod,
 
-status:"Pending",
+status:
+"Pending",
 
-createdAt:serverTimestamp()
+createdAt:
+serverTimestamp()
 
 }
 );
+
+/* ================= CLEAR CART ================= */
 
 cart = [];
 
@@ -1911,6 +2011,8 @@ saveCart();
 updateCart();
 
 appliedCoupon = null;
+
+/* ================= SUCCESS PAGE ================= */
 
 document.getElementById("checkoutPage")
 .classList.remove("active");
@@ -1925,7 +2027,14 @@ name +
 "! Your order has been placed successfully. Order ID: " +
 orderRef.id;
 
-document.getElementById("checkoutForm").reset();
+document.getElementById("checkoutForm")
+.reset();
+
+document.getElementById("couponInput")
+.value = "";
+
+document.getElementById("couponMessage")
+.textContent = "";
 
 loadProducts();
 
@@ -1945,12 +2054,16 @@ error.message ||
 
 /* ================= MODAL BACKGROUND CLOSE ================= */
 
-document.getElementById("productModal")
+document
+.getElementById("productModal")
 .addEventListener(
 "click",
 function(event){
 
-if(event.target.id === "productModal"){
+if(
+event.target.id ===
+"productModal"
+){
 
 closeProductModal();
 
@@ -1959,15 +2072,18 @@ closeProductModal();
 }
 );
 
-/* ================= ESC KEY ================= */
+/* ================= ESCAPE KEY ================= */
 
 document.addEventListener(
 "keydown",
 function(event){
 
-if(event.key === "Escape"){
+if(
+event.key === "Escape"
+){
 
 closeProductModal();
+
 closeCart();
 
 }
