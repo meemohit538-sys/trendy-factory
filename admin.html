@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TRENDY FACTORY — Admin Panel</title>
+<title>Trendy Factory - Admin Panel</title>
 
 <style>
 
@@ -21,10 +21,7 @@ background:#f5f0e8;
 color:#211e1a;
 }
 
-button,
-input,
-textarea,
-select{
+button,input,textarea,select{
 font:inherit;
 }
 
@@ -59,8 +56,6 @@ color:#655d55;
 margin-bottom:25px;
 }
 
-/* FORM */
-
 .form-group{
 margin-bottom:18px;
 }
@@ -90,7 +85,7 @@ resize:vertical;
 .primary-btn{
 border:none;
 background:#211e1a;
-color:white;
+color:#fff;
 padding:14px 20px;
 cursor:pointer;
 font-size:11px;
@@ -109,21 +104,19 @@ letter-spacing:1px;
 .danger-btn{
 border:none;
 background:#b42318;
-color:white;
+color:#fff;
 padding:9px 13px;
 cursor:pointer;
 font-size:10px;
-letter-spacing:1px;
 }
 
 .edit-btn{
 border:none;
 background:#211e1a;
-color:white;
+color:#fff;
 padding:9px 13px;
 cursor:pointer;
 font-size:10px;
-letter-spacing:1px;
 }
 
 .full-btn{
@@ -135,6 +128,7 @@ font-size:12px;
 margin-top:12px;
 min-height:18px;
 }
+
 
 /* ADMIN PANEL */
 
@@ -180,7 +174,7 @@ color:#655d55;
 .logout-btn{
 border:none;
 background:#211e1a;
-color:white;
+color:#fff;
 padding:10px 14px;
 cursor:pointer;
 font-size:10px;
@@ -199,6 +193,7 @@ font-size:42px;
 font-weight:400;
 margin-bottom:30px;
 }
+
 
 /* TABS */
 
@@ -220,7 +215,7 @@ letter-spacing:1px;
 
 .tab-btn.active{
 background:#211e1a;
-color:white;
+color:#fff;
 }
 
 .tab-content{
@@ -230,6 +225,7 @@ display:none;
 .tab-content.active{
 display:block;
 }
+
 
 /* CARDS */
 
@@ -246,7 +242,8 @@ font-weight:400;
 margin-bottom:25px;
 }
 
-/* FORM GRID */
+
+/* FORM */
 
 .form-grid{
 display:grid;
@@ -263,6 +260,7 @@ display:flex;
 gap:10px;
 margin-top:25px;
 }
+
 
 /* IMAGE UPLOAD */
 
@@ -330,6 +328,7 @@ cursor:pointer;
 font-size:16px;
 }
 
+
 /* PRODUCTS */
 
 .admin-products{
@@ -381,17 +380,6 @@ gap:8px;
 margin-top:15px;
 }
 
-.stock-good{
-color:#147a3d !important;
-}
-
-.stock-low{
-color:#b54708 !important;
-}
-
-.stock-out{
-color:#b42318 !important;
-}
 
 /* COUPONS */
 
@@ -424,6 +412,7 @@ display:flex;
 gap:8px;
 margin-top:15px;
 }
+
 
 /* ORDERS */
 
@@ -480,6 +469,7 @@ text-align:center;
 padding:40px;
 color:#766d63;
 }
+
 
 /* MOBILE */
 
@@ -554,7 +544,7 @@ flex-direction:column;
 
 <body>
 
-<!-- LOGIN PAGE -->
+<!-- LOGIN -->
 
 <div class="login-page" id="loginPage">
 
@@ -643,8 +633,6 @@ LOGOUT
 Dashboard
 </h1>
 
-<!-- TABS -->
-
 <div class="tabs">
 
 <button
@@ -681,7 +669,7 @@ ORDERS
 
 </div>
 
-<!-- PRODUCTS TAB -->
+<!-- PRODUCTS -->
 
 <div
 class="tab-content active"
@@ -705,7 +693,7 @@ Loading products...
 
 </div>
 
-<!-- ADD PRODUCT TAB -->
+<!-- ADD PRODUCT -->
 
 <div
 class="tab-content"
@@ -811,8 +799,6 @@ placeholder="Write product description">
 
 </div>
 
-<!-- IMAGE UPLOAD -->
-
 <div class="form-group full-width">
 
 <label>PRODUCT IMAGES (MAXIMUM 5)</label>
@@ -824,7 +810,7 @@ for="productImages"
 class="upload-label">
 
 <strong>
-📷 SELECT PRODUCT IMAGES
+SELECT PRODUCT IMAGES
 </strong>
 
 Choose images from your gallery
@@ -886,7 +872,7 @@ id="productMessage">
 
 </div>
 
-<!-- COUPONS TAB -->
+<!-- COUPONS -->
 
 <div
 class="tab-content"
@@ -894,7 +880,7 @@ id="couponsTab">
 
 <div class="admin-card">
 
-<h2>Create / Edit Coupon</h2>
+<h2>Create Coupon</h2>
 
 <input
 type="hidden"
@@ -1009,7 +995,7 @@ Loading coupons...
 
 </div>
 
-<!-- ORDERS TAB -->
+<!-- ORDERS -->
 
 <div
 class="tab-content"
@@ -1035,8 +1021,7 @@ Loading orders...
 
 </div>
 
-</div>
-
+  </div>
   <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -1060,99 +1045,66 @@ serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-/* FIREBASE CONFIG */
-
 const firebaseConfig = {
-
 apiKey: "AIzaSyCZjafz8Ze5p6xSoir4j5IdKc_MJE_Eyns",
-
 authDomain: "trendy-factory.firebaseapp.com",
-
 projectId: "trendy-factory",
-
 storageBucket: "trendy-factory.firebasestorage.app",
-
 messagingSenderId: "811817163762",
-
 appId: "1:811817163762:web:c9aecc5db2cb332a13696b"
-
 };
 
 
-/* CLOUDINARY CONFIG */
+/* CLOUDINARY */
 
 const CLOUDINARY_CLOUD_NAME = "sl15i2do";
-
 const CLOUDINARY_UPLOAD_PRESET = "trendy_factory_products";
 
 
-/* INITIALIZE */
-
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
-
 const db = getFirestore(app);
 
 
-/* VARIABLES */
-
 let selectedImages = [];
-
 let existingImages = [];
-
 let allProducts = [];
-
 let allCoupons = [];
-
 let allOrders = [];
 
 
-/* ADMIN LOGIN */
+/* LOGIN */
 
 window.adminLogin = async function(){
 
-const email =
-document.getElementById("adminEmail").value.trim();
-
-const password =
-document.getElementById("adminPassword").value;
-
-const errorBox =
-document.getElementById("loginError");
+const email = document.getElementById("adminEmail").value.trim();
+const password = document.getElementById("adminPassword").value;
+const errorBox = document.getElementById("loginError");
 
 errorBox.textContent = "";
 
 if(!email || !password){
 
-errorBox.textContent =
-"Please enter email and password.";
-
+errorBox.textContent = "Please enter email and password.";
 return;
 
 }
 
 try{
 
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
+await signInWithEmailAndPassword(auth,email,password);
 
 }catch(error){
 
 console.error(error);
-
-errorBox.textContent =
-"Invalid email or password.";
+errorBox.textContent = error.message;
 
 }
 
 };
 
 
-/* ADMIN LOGOUT */
+/* LOGOUT */
 
 window.adminLogout = async function(){
 
@@ -1169,43 +1121,34 @@ console.error(error);
 };
 
 
-/* AUTH STATE */
+/* AUTH CHECK */
 
 onAuthStateChanged(auth,function(user){
 
 if(user){
 
-document.getElementById("loginPage").style.display =
-"none";
+document.getElementById("loginPage").style.display = "none";
 
-document.getElementById("adminPanel").classList.add(
-"active"
-);
+document.getElementById("adminPanel").classList.add("active");
 
-document.getElementById("adminUser").textContent =
-user.email;
+document.getElementById("adminUser").textContent = user.email;
 
 loadProducts();
-
 loadCoupons();
-
 loadOrders();
 
 }else{
 
-document.getElementById("loginPage").style.display =
-"flex";
+document.getElementById("loginPage").style.display = "flex";
 
-document.getElementById("adminPanel").classList.remove(
-"active"
-);
+document.getElementById("adminPanel").classList.remove("active");
 
 }
 
 });
 
 
-/* OPEN TAB */
+/* TABS */
 
 window.openTab = function(tabName,button){
 
@@ -1221,38 +1164,24 @@ btn.classList.remove("active");
 
 });
 
-document.getElementById(tabName + "Tab").classList.add(
-"active"
-);
+document.getElementById(tabName + "Tab").classList.add("active");
 
 button.classList.add("active");
 
-if(tabName === "products"){
-loadProducts();
-}
-
-if(tabName === "coupons"){
-loadCoupons();
-}
-
-if(tabName === "orders"){
-loadOrders();
-}
+if(tabName === "products") loadProducts();
+if(tabName === "coupons") loadCoupons();
+if(tabName === "orders") loadOrders();
 
 };
 
 
-/* IMAGE SELECTION */
+/* SELECT IMAGES */
 
 window.handleImageSelection = function(event){
 
 const files = Array.from(event.target.files);
 
-if(
-files.length +
-selectedImages.length +
-existingImages.length > 5
-){
+if(files.length + selectedImages.length + existingImages.length > 5){
 
 alert("Maximum 5 images allowed.");
 
@@ -1283,31 +1212,23 @@ event.target.value = "";
 
 function renderImagePreviews(){
 
-const grid =
-document.getElementById("imagePreviewGrid");
+const grid = document.getElementById("imagePreviewGrid");
 
 grid.innerHTML = "";
 
 
-/* EXISTING IMAGES */
-
 existingImages.forEach(function(imageUrl,index){
 
 const box = document.createElement("div");
-
 box.className = "image-preview";
 
 const image = document.createElement("img");
-
 image.src = imageUrl;
 
-const removeButton =
-document.createElement("button");
+const removeButton = document.createElement("button");
 
 removeButton.type = "button";
-
 removeButton.className = "remove-image";
-
 removeButton.textContent = "×";
 
 removeButton.onclick = function(){
@@ -1319,15 +1240,12 @@ renderImagePreviews();
 };
 
 box.appendChild(image);
-
 box.appendChild(removeButton);
 
 grid.appendChild(box);
 
 });
 
-
-/* NEW IMAGES */
 
 selectedImages.forEach(function(file,index){
 
@@ -1336,20 +1254,15 @@ const reader = new FileReader();
 reader.onload = function(event){
 
 const box = document.createElement("div");
-
 box.className = "image-preview";
 
 const image = document.createElement("img");
-
 image.src = event.target.result;
 
-const removeButton =
-document.createElement("button");
+const removeButton = document.createElement("button");
 
 removeButton.type = "button";
-
 removeButton.className = "remove-image";
-
 removeButton.textContent = "×";
 
 removeButton.onclick = function(){
@@ -1361,7 +1274,6 @@ renderImagePreviews();
 };
 
 box.appendChild(image);
-
 box.appendChild(removeButton);
 
 grid.appendChild(box);
@@ -1405,8 +1317,6 @@ const data = await response.json();
 
 if(!response.ok){
 
-console.error(data);
-
 throw new Error(
 data.error ?
 data.error.message :
@@ -1424,62 +1334,51 @@ return data.secure_url;
 
 window.saveProduct = async function(){
 
-const name =
-document.getElementById("productName").value.trim();
+const name = document.getElementById("productName").value.trim();
 
-const category =
-document.getElementById("productCategory").value;
+const category = document.getElementById("productCategory").value;
 
-const price =
-Number(document.getElementById("productPrice").value);
+const price = Number(document.getElementById("productPrice").value);
 
-const stock =
-Number(document.getElementById("productStock").value);
+const stock = Number(document.getElementById("productStock").value);
 
-const sizesText =
-document.getElementById("productSizes").value.trim();
+const sizesText = document.getElementById("productSizes").value.trim();
 
-const description =
-document.getElementById("productDescription").value.trim();
+const description = document.getElementById("productDescription").value.trim();
 
-const editId =
-document.getElementById("editProductId").value;
+const editId = document.getElementById("editProductId").value;
 
-const message =
-document.getElementById("productMessage");
+const message = document.getElementById("productMessage");
 
-const button =
-document.getElementById("saveProductBtn");
+const button = document.getElementById("saveProductBtn");
+
 
 message.textContent = "";
+
 
 if(!name || !category || price <= 0 || !description){
 
 message.style.color = "#b42318";
 
-message.textContent =
-"Please fill all required fields.";
+message.textContent = "Please fill all required fields.";
 
 return;
 
 }
 
-if(
-existingImages.length === 0 &&
-selectedImages.length === 0
-){
+
+if(existingImages.length === 0 && selectedImages.length === 0){
 
 message.style.color = "#b42318";
 
-message.textContent =
-"Please select at least one product image.";
+message.textContent = "Please select at least one image.";
 
 return;
 
 }
 
-const sizes =
-sizesText
+
+const sizes = sizesText
 .split(",")
 .map(function(size){
 return size.trim();
@@ -1490,7 +1389,6 @@ return size;
 
 
 button.disabled = true;
-
 button.textContent = "UPLOADING...";
 
 
@@ -1499,22 +1397,16 @@ try{
 let uploadedUrls = [];
 
 
-/* UPLOAD NEW IMAGES */
-
 for(const file of selectedImages){
 
-const imageUrl =
-await uploadImageToCloudinary(file);
+const imageUrl = await uploadImageToCloudinary(file);
 
 uploadedUrls.push(imageUrl);
 
 }
 
 
-/* FINAL IMAGES */
-
-const finalImages =
-existingImages
+const finalImages = existingImages
 .concat(uploadedUrls)
 .slice(0,5);
 
@@ -1522,21 +1414,13 @@ existingImages
 const productData = {
 
 name:name,
-
 category:category,
-
 price:price,
-
 stock:stock,
-
 sizes:sizes,
-
 description:description,
-
 images:finalImages,
-
 image:finalImages[0] || "",
-
 updatedAt:serverTimestamp()
 
 };
@@ -1554,35 +1438,30 @@ productData
 
 message.style.color = "#147a3d";
 
-message.textContent =
-"Product updated successfully!";
+message.textContent = "Product updated successfully!";
 
 
 }else{
 
-productData.createdAt =
-serverTimestamp();
+productData.createdAt = serverTimestamp();
 
 await addDoc(
-
 collection(db,"products"),
-
 productData
-
 );
 
 message.style.color = "#147a3d";
 
-message.textContent =
-"Product added successfully!";
+message.textContent = "Product added successfully!";
 
 }
 
 
+selectedImages = [];
+
 setTimeout(function(){
 
 resetProductForm();
-
 loadProducts();
 
 },1000);
@@ -1594,8 +1473,7 @@ console.error(error);
 
 message.style.color = "#b42318";
 
-message.textContent =
-"Error: " + error.message;
+message.textContent = "Error: " + error.message;
 
 }finally{
 
@@ -1615,27 +1493,21 @@ document.getElementById("editProductId").value
 
 async function loadProducts(){
 
-const container =
-document.getElementById("adminProducts");
+const container = document.getElementById("adminProducts");
 
-container.innerHTML =
-'<div class="loading">Loading products...</div>';
+container.innerHTML = '<div class="loading">Loading products...</div>';
 
 try{
 
-const snapshot =
-await getDocs(collection(db,"products"));
+const snapshot = await getDocs(collection(db,"products"));
 
 allProducts = [];
 
 snapshot.forEach(function(item){
 
 allProducts.push({
-
 firebaseId:item.id,
-
 ...item.data()
-
 });
 
 });
@@ -1654,14 +1526,14 @@ container.innerHTML =
 }
 
 
-/* RENDER PRODUCTS */
+/* DISPLAY PRODUCTS */
 
 function renderProducts(){
 
-const container =
-document.getElementById("adminProducts");
+const container = document.getElementById("adminProducts");
 
 container.innerHTML = "";
+
 
 if(allProducts.length === 0){
 
@@ -1672,49 +1544,28 @@ return;
 
 }
 
+
 allProducts.forEach(function(product){
 
-const card =
-document.createElement("div");
+const card = document.createElement("div");
 
-card.className =
-"admin-product-card";
+card.className = "admin-product-card";
 
 
 const imageUrl =
-
-product.images &&
-product.images.length > 0
-
+product.images && product.images.length > 0
 ? product.images[0]
-
 : product.image || "";
 
 
-let stockClass =
-"stock-good";
+const imageBox = document.createElement("div");
 
-if(Number(product.stock) === 0){
+imageBox.className = "admin-product-image";
 
-stockClass = "stock-out";
-
-}else if(Number(product.stock) < 5){
-
-stockClass = "stock-low";
-
-}
-
-
-const imageBox =
-document.createElement("div");
-
-imageBox.className =
-"admin-product-image";
 
 if(imageUrl){
 
-const image =
-document.createElement("img");
+const image = document.createElement("img");
 
 image.src = imageUrl;
 
@@ -1729,85 +1580,61 @@ imageBox.textContent = "NO IMAGE";
 }
 
 
-const info =
-document.createElement("div");
+const info = document.createElement("div");
 
-info.className =
-"admin-product-info";
+info.className = "admin-product-info";
 
 
-const title =
-document.createElement("h3");
+const title = document.createElement("h3");
 
-title.textContent =
-product.name || "";
+title.textContent = product.name || "";
 
 
-const priceText =
-document.createElement("p");
+const priceText = document.createElement("p");
 
-priceText.textContent =
-"₹" + (product.price || 0);
+priceText.textContent = "₹" + (product.price || 0);
 
 
-const categoryText =
-document.createElement("p");
+const categoryText = document.createElement("p");
 
 categoryText.textContent =
 "Category: " + (product.category || "");
 
 
-const stockText =
-document.createElement("p");
-
-stockText.className =
-stockClass;
+const stockText = document.createElement("p");
 
 stockText.textContent =
 "Stock: " +
 (product.stock !== undefined ? product.stock : 0);
 
 
-const actions =
-document.createElement("div");
+const actions = document.createElement("div");
 
-actions.className =
-"admin-product-actions";
+actions.className = "admin-product-actions";
 
 
-const editButton =
-document.createElement("button");
+const editButton = document.createElement("button");
 
-editButton.className =
-"edit-btn";
+editButton.className = "edit-btn";
 
-editButton.textContent =
-"EDIT";
+editButton.textContent = "EDIT";
 
-editButton.onclick =
-function(){
+editButton.onclick = function(){
 
 editProduct(product.firebaseId);
 
 };
 
 
-const deleteButton =
-document.createElement("button");
+const deleteButton = document.createElement("button");
 
-deleteButton.className =
-"danger-btn";
+deleteButton.className = "danger-btn";
 
-deleteButton.textContent =
-"DELETE";
+deleteButton.textContent = "DELETE";
 
-deleteButton.onclick =
-function(){
+deleteButton.onclick = function(){
 
-deleteProduct(
-product.firebaseId,
-product.name
-);
+deleteProduct(product.firebaseId,product.name);
 
 };
 
@@ -1843,32 +1670,25 @@ container.appendChild(card);
 
 window.editProduct = function(firebaseId){
 
-const product =
-allProducts.find(function(item){
+const product = allProducts.find(function(item){
 
 return item.firebaseId === firebaseId;
 
 });
 
-if(!product){
-return;
-}
+if(!product) return;
 
-document.getElementById("editProductId").value =
-product.firebaseId;
 
-document.getElementById("productName").value =
-product.name || "";
+document.getElementById("editProductId").value = product.firebaseId;
 
-document.getElementById("productCategory").value =
-product.category || "";
+document.getElementById("productName").value = product.name || "";
 
-document.getElementById("productPrice").value =
-product.price || "";
+document.getElementById("productCategory").value = product.category || "";
+
+document.getElementById("productPrice").value = product.price || "";
 
 document.getElementById("productStock").value =
-product.stock !== undefined ?
-product.stock : "";
+product.stock !== undefined ? product.stock : "";
 
 document.getElementById("productSizes").value =
 Array.isArray(product.sizes)
@@ -1911,13 +1731,9 @@ btn.classList.remove("active");
 
 });
 
-document.getElementById("addProductTab").classList.add(
-"active"
-);
+document.getElementById("addProductTab").classList.add("active");
 
-document.querySelectorAll(".tab-btn")[1].classList.add(
-"active"
-);
+document.querySelectorAll(".tab-btn")[1].classList.add("active");
 
 window.scrollTo({
 top:0,
@@ -1929,21 +1745,13 @@ behavior:"smooth"
 
 /* DELETE PRODUCT */
 
-window.deleteProduct =
-async function(firebaseId,productName){
+window.deleteProduct = async function(firebaseId,productName){
 
-const confirmDelete =
-confirm('Delete "' + productName + '"?');
-
-if(!confirmDelete){
-return;
-}
+if(!confirm('Delete "' + productName + '"?')) return;
 
 try{
 
-await deleteDoc(
-doc(db,"products",firebaseId)
-);
+await deleteDoc(doc(db,"products",firebaseId));
 
 loadProducts();
 
@@ -1999,23 +1807,19 @@ document.getElementById("productMessage").textContent = "";
 
 window.saveCoupon = async function(){
 
-const code =
-document.getElementById("couponCode")
+const code = document.getElementById("couponCode")
 .value
 .trim()
 .toUpperCase();
 
-const type =
-document.getElementById("couponType").value;
+const type = document.getElementById("couponType").value;
 
-const discount =
-Number(
+const discount = Number(
 document.getElementById("couponDiscount").value
 );
 
 const active =
-document.getElementById("couponActive").value ===
-"true";
+document.getElementById("couponActive").value === "true";
 
 const editId =
 document.getElementById("editCouponId").value;
@@ -2023,7 +1827,6 @@ document.getElementById("editCouponId").value;
 const message =
 document.getElementById("couponMessage");
 
-message.textContent = "";
 
 if(!code || discount <= 0){
 
@@ -2036,18 +1839,15 @@ return;
 
 }
 
+
 try{
 
 const couponData = {
 
 code:code,
-
 type:type,
-
 discount:discount,
-
 active:active,
-
 updatedAt:serverTimestamp()
 
 };
@@ -2056,11 +1856,8 @@ updatedAt:serverTimestamp()
 if(editId){
 
 await updateDoc(
-
 doc(db,"coupons",editId),
-
 couponData
-
 );
 
 message.style.color = "#147a3d";
@@ -2068,18 +1865,13 @@ message.style.color = "#147a3d";
 message.textContent =
 "Coupon updated successfully!";
 
-
 }else{
 
-couponData.createdAt =
-serverTimestamp();
+couponData.createdAt = serverTimestamp();
 
 await addDoc(
-
 collection(db,"coupons"),
-
 couponData
-
 );
 
 message.style.color = "#147a3d";
@@ -2133,11 +1925,8 @@ allCoupons = [];
 snapshot.forEach(function(item){
 
 allCoupons.push({
-
 firebaseId:item.id,
-
 ...item.data()
-
 });
 
 });
@@ -2156,7 +1945,7 @@ container.innerHTML =
 }
 
 
-/* RENDER COUPONS */
+/* DISPLAY COUPONS */
 
 function renderCoupons(){
 
@@ -2164,6 +1953,7 @@ const container =
 document.getElementById("couponList");
 
 container.innerHTML = "";
+
 
 if(allCoupons.length === 0){
 
@@ -2173,6 +1963,7 @@ container.innerHTML =
 return;
 
 }
+
 
 allCoupons.forEach(function(coupon){
 
@@ -2193,15 +1984,11 @@ coupon.code || "";
 const discountText =
 document.createElement("p");
 
-const discountValue =
-coupon.type === "percentage"
-
-? coupon.discount + "%"
-
-: "₹" + coupon.discount;
-
 discountText.textContent =
-"Discount: " + discountValue;
+"Discount: " +
+(coupon.type === "percentage"
+? coupon.discount + "%"
+: "₹" + coupon.discount);
 
 
 const statusText =
@@ -2288,9 +2075,8 @@ return item.firebaseId === firebaseId;
 
 });
 
-if(!coupon){
-return;
-}
+if(!coupon) return;
+
 
 document.getElementById("editCouponId").value =
 coupon.firebaseId;
@@ -2305,14 +2091,7 @@ document.getElementById("couponDiscount").value =
 coupon.discount || "";
 
 document.getElementById("couponActive").value =
-coupon.active !== false
-? "true"
-: "false";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+coupon.active !== false ? "true" : "false";
 
 };
 
@@ -2322,15 +2101,11 @@ behavior:"smooth"
 window.deleteCoupon =
 async function(firebaseId,code){
 
-if(!confirm('Delete coupon "' + code + '"?')){
-return;
-}
+if(!confirm('Delete coupon "' + code + '"?')) return;
 
 try{
 
-await deleteDoc(
-doc(db,"coupons",firebaseId)
-);
+await deleteDoc(doc(db,"coupons",firebaseId));
 
 loadCoupons();
 
@@ -2387,16 +2162,11 @@ allOrders = [];
 snapshot.forEach(function(item){
 
 allOrders.push({
-
 firebaseId:item.id,
-
 ...item.data()
-
 });
 
 });
-
-allOrders.reverse();
 
 renderOrders();
 
@@ -2412,7 +2182,7 @@ container.innerHTML =
 }
 
 
-/* RENDER ORDERS */
+/* DISPLAY ORDERS */
 
 function renderOrders(){
 
@@ -2420,6 +2190,7 @@ const container =
 document.getElementById("ordersList");
 
 container.innerHTML = "";
+
 
 if(allOrders.length === 0){
 
@@ -2429,6 +2200,7 @@ container.innerHTML =
 return;
 
 }
+
 
 allOrders.forEach(function(order){
 
@@ -2484,29 +2256,11 @@ phone.textContent =
 customer.phone || "";
 
 
-const address =
-document.createElement("p");
-
-address.style.fontSize = "12px";
-
-address.style.marginTop = "4px";
-
-address.style.color = "#655d55";
-
-address.textContent =
-(customer.city || "") +
-(customer.state
-? ", " + customer.state
-: "");
-
-
 customerBox.appendChild(orderId);
 
 customerBox.appendChild(customerName);
 
 customerBox.appendChild(phone);
-
-customerBox.appendChild(address);
 
 
 const statusBox =
@@ -2521,19 +2275,12 @@ statusSelect.className =
 
 
 const statuses = [
-
 "pending",
-
 "confirmed",
-
 "processing",
-
 "shipped",
-
 "delivered",
-
 "cancelled"
-
 ];
 
 
@@ -2556,6 +2303,7 @@ statusSelect.appendChild(option);
 statusSelect.value =
 order.status || "pending";
 
+
 statusSelect.onchange =
 async function(){
 
@@ -2566,11 +2314,8 @@ await updateDoc(
 doc(db,"orders",order.firebaseId),
 
 {
-
 status:statusSelect.value,
-
 updatedAt:serverTimestamp()
-
 }
 
 );
@@ -2585,11 +2330,13 @@ alert("Unable to update order status.");
 
 };
 
+
 statusBox.appendChild(statusSelect);
 
 top.appendChild(customerBox);
 
 top.appendChild(statusBox);
+
 
 const itemsBox =
 document.createElement("div");
@@ -2597,10 +2344,12 @@ document.createElement("div");
 itemsBox.className =
 "order-items";
 
+
 const items =
 Array.isArray(order.items)
 ? order.items
 : [];
+
 
 items.forEach(function(item){
 
@@ -2609,6 +2358,7 @@ document.createElement("div");
 
 row.className =
 "order-item-row";
+
 
 const itemName =
 document.createElement("span");
@@ -2619,11 +2369,13 @@ itemName.textContent =
 ? " (" + item.size + ")"
 : "");
 
+
 const itemPrice =
 document.createElement("strong");
 
 itemPrice.textContent =
 "₹" + (item.price || 0);
+
 
 row.appendChild(itemName);
 
