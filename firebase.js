@@ -1,9 +1,12 @@
-```javascript
 // ============================================
 // TRENDY FACTORY V4 - FIREBASE CONFIG
 // ============================================
 
-// Firebase App
+
+// ============================================
+// FIREBASE APP
+// ============================================
+
 import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -31,7 +34,7 @@ import {
 
 
 // ============================================
-// FIREBASE AUTH
+// FIREBASE AUTHENTICATION
 // ============================================
 
 import {
@@ -97,14 +100,14 @@ const storage = getStorage(app);
 
 export {
 
-    // Firebase services
+    // Firebase Services
     app,
     db,
     auth,
     storage,
 
 
-    // Firestore functions
+    // Firestore Functions
     collection,
     getDocs,
     addDoc,
@@ -119,16 +122,16 @@ export {
     serverTimestamp,
 
 
-    // Authentication functions
+    // Authentication Functions
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
 
 
-    // Storage functions
+    // Storage Functions
     ref,
     uploadBytes,
     getDownloadURL,
     deleteObject
-};
 
+};
