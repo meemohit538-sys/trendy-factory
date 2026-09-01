@@ -1,7 +1,6 @@
 ```javascript
 // ============================================
-// TRENDY FACTORY V4
-// FIREBASE CONFIGURATION
+// TRENDY FACTORY V4 - FIREBASE CONFIG
 // ============================================
 
 // Firebase App
@@ -10,21 +9,49 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
-// Firebase Firestore
+// ============================================
+// FIRESTORE
+// ============================================
+
 import {
-    getFirestore
+    getFirestore,
+    collection,
+    getDocs,
+    addDoc,
+    doc,
+    updateDoc,
+    deleteDoc,
+    setDoc,
+    getDoc,
+    query,
+    where,
+    orderBy,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
-// Firebase Authentication
+// ============================================
+// FIREBASE AUTH
+// ============================================
+
 import {
-    getAuth
+    getAuth,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 
-// Firebase Storage
+// ============================================
+// FIREBASE STORAGE
+// ============================================
+
 import {
-    getStorage
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    deleteObject
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 
@@ -52,46 +79,56 @@ const firebaseConfig = {
 
 
 // ============================================
-// INITIALIZE FIREBASE APP
+// INITIALIZE FIREBASE
 // ============================================
 
 const app = initializeApp(firebaseConfig);
 
-
-// ============================================
-// INITIALIZE FIRESTORE DATABASE
-// ============================================
-
 const db = getFirestore(app);
 
-
-// ============================================
-// INITIALIZE AUTHENTICATION
-// ============================================
-
 const auth = getAuth(app);
-
-
-// ============================================
-// INITIALIZE STORAGE
-// ============================================
 
 const storage = getStorage(app);
 
 
 // ============================================
-// EXPORT FIREBASE SERVICES
+// EXPORT EVERYTHING
 // ============================================
 
 export {
 
+    // Firebase services
     app,
-
     db,
-
     auth,
+    storage,
 
-    storage
 
+    // Firestore functions
+    collection,
+    getDocs,
+    addDoc,
+    doc,
+    updateDoc,
+    deleteDoc,
+    setDoc,
+    getDoc,
+    query,
+    where,
+    orderBy,
+    serverTimestamp,
+
+
+    // Authentication functions
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged,
+
+
+    // Storage functions
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    deleteObject
 };
 
