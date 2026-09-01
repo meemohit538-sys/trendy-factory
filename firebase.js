@@ -1,66 +1,97 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+```javascript
+// ============================================
+// TRENDY FACTORY V4
+// FIREBASE CONFIGURATION
+// ============================================
 
+// Firebase App
 import {
-getFirestore
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-import {
-getAuth
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
+// Firebase Firestore
 import {
-getStorage
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+    getFirestore
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+// Firebase Authentication
+import {
+    getAuth
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+// Firebase Storage
+import {
+    getStorage
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+
+// ============================================
+// FIREBASE CONFIG
+// ============================================
 
 const firebaseConfig = {
 
-apiKey: "AIzaSyCZjafz8Ze5p6xSoir4j5IdKc_MJE_Eyns",
+    apiKey: "AIzaSyCZjafz8Ze5p6xSoir4j5IdKc_MJE_Eyns",
 
-authDomain: "trendy-factory.firebaseapp.com",
+    authDomain: "trendy-factory.firebaseapp.com",
 
-projectId: "trendy-factory",
+    projectId: "trendy-factory",
 
-storageBucket: "trendy-factory.firebasestorage.app",
+    storageBucket: "trendy-factory.firebasestorage.app",
 
-messagingSenderId: "811817163762",
+    messagingSenderId: "811817163762",
 
-appId: "1:811817163762:web:c9aecc5db2cb332a13696b",
+    appId: "1:811817163762:web:c9aecc5db2cb332a13696b",
 
-measurementId: "G-8YDMBE9T7C"
+    measurementId: "G-8YDMBE9T7C"
 
 };
 
-/* ================= INITIALIZE FIREBASE ================= */
 
-const app =
-initializeApp(firebaseConfig);
+// ============================================
+// INITIALIZE FIREBASE APP
+// ============================================
 
-/* ================= FIRESTORE ================= */
+const app = initializeApp(firebaseConfig);
 
-const db =
-getFirestore(app);
 
-/* ================= AUTHENTICATION ================= */
+// ============================================
+// INITIALIZE FIRESTORE DATABASE
+// ============================================
 
-const auth =
-getAuth(app);
+const db = getFirestore(app);
 
-/* ================= STORAGE ================= */
 
-const storage =
-getStorage(app);
+// ============================================
+// INITIALIZE AUTHENTICATION
+// ============================================
 
-/* ================= EXPORT ================= */
+const auth = getAuth(app);
+
+
+// ============================================
+// INITIALIZE STORAGE
+// ============================================
+
+const storage = getStorage(app);
+
+
+// ============================================
+// EXPORT FIREBASE SERVICES
+// ============================================
 
 export {
 
-db,
+    app,
 
-auth,
+    db,
 
-storage
+    auth,
+
+    storage
 
 };
+
