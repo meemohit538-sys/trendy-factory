@@ -1,1 +1,3259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>TRENDY FACTORY | Admin Panel</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#f5f1eb;
+    --white:#ffffff;
+    --black:#111111;
+    --gray:#777777;
+    --border:#e4dfd7;
+    --beige:#d7c2a3;
+    --red:#d9534f;
+    --green:#198754;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--black);
+}
+
+button,
+input,
+select,
+textarea{
+    font-family:inherit;
+}
+
+/* LOGIN */
+
+#loginScreen{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.login-box{
+    width:100%;
+    max-width:420px;
+    background:var(--white);
+    padding:40px 30px;
+    border:1px solid var(--border);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.logo h1{
+    font-size:28px;
+    letter-spacing:5px;
+}
+
+.logo p{
+    margin-top:8px;
+    font-size:11px;
+    letter-spacing:3px;
+    color:var(--gray);
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:block;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:1px;
+    margin-bottom:8px;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select{
+    width:100%;
+    padding:13px;
+    border:1px solid #d8d8d8;
+    outline:none;
+    background:#fff;
+    font-size:14px;
+}
+
+.input-group textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus{
+    border-color:#111;
+}
+
+/* BUTTONS */
+
+.btn{
+    border:none;
+    padding:13px 20px;
+    cursor:pointer;
+    font-weight:bold;
+    letter-spacing:1px;
+    transition:.2s;
+}
+
+.btn:hover{
+    opacity:.85;
+}
+
+.btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+.btn-black{
+    background:#111;
+    color:#fff;
+}
+
+.btn-full{
+    width:100%;
+}
+
+.btn-beige{
+    background:var(--beige);
+    color:#111;
+}
+
+.btn-danger{
+    background:var(--red);
+    color:#fff;
+}
+
+/* ADMIN APP */
+
+#adminApp{
+    display:none;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:240px;
+    height:100vh;
+    background:#111;
+    color:#fff;
+    padding:25px 18px;
+    z-index:1000;
+}
+
+.sidebar-brand{
+    padding:10px;
+    margin-bottom:30px;
+}
+
+.sidebar-brand h2{
+    font-size:18px;
+    letter-spacing:3px;
+}
+
+.sidebar-brand p{
+    font-size:9px;
+    letter-spacing:2px;
+    color:#aaa;
+    margin-top:8px;
+}
+
+.nav-btn{
+    width:100%;
+    text-align:left;
+    padding:14px;
+    margin-bottom:6px;
+    border:none;
+    background:transparent;
+    color:#bbb;
+    cursor:pointer;
+    font-size:13px;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+    background:#292929;
+    color:#fff;
+}
+
+.sidebar-bottom{
+    position:absolute;
+    left:18px;
+    right:18px;
+    bottom:25px;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:240px;
+    min-height:100vh;
+}
+
+.topbar{
+    height:75px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 35px;
+}
+
+.topbar h2{
+    font-size:20px;
+    letter-spacing:1px;
+}
+
+.admin-info{
+    font-size:12px;
+    color:#777;
+}
+
+.mobile-menu{
+    display:none;
+    border:none;
+    background:none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.content{
+    padding:30px;
+}
+
+/* PAGES */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+/* DASHBOARD */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.stat-card{
+    background:#fff;
+    border:1px solid var(--border);
+    padding:25px;
+}
+
+.stat-card p{
+    font-size:11px;
+    color:#777;
+    letter-spacing:1px;
+}
+
+.stat-card h2{
+    margin-top:12px;
+    font-size:28px;
+}
+
+/* CARDS */
+
+.card{
+    background:#fff;
+    border:1px solid var(--border);
+    padding:25px;
+    margin-bottom:25px;
+}
+
+.card-title{
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+/* FORM */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.full-width{
+    grid-column:1/-1;
+}
+
+.size-options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.size-options label{
+    border:1px solid #ddd;
+    padding:10px 14px;
+    cursor:pointer;
+    font-size:13px;
+}
+
+/* IMAGE UPLOAD */
+
+.image-upload-box{
+    border:2px dashed #ccc;
+    padding:25px;
+    text-align:center;
+}
+
+.image-upload-box input{
+    margin-top:12px;
+}
+
+.preview-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.preview-item{
+    position:relative;
+    height:140px;
+    border:1px solid #ddd;
+    overflow:hidden;
+}
+
+.preview-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.remove-image{
+    position:absolute;
+    top:6px;
+    right:6px;
+    width:28px;
+    height:28px;
+    border:none;
+    border-radius:50%;
+    background:#111;
+    color:#fff;
+    font-size:18px;
+    cursor:pointer;
+}
+
+/* TABLE */
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    min-width:700px;
+    border-collapse:collapse;
+}
+
+th,
+td{
+    padding:14px;
+    border-bottom:1px solid #eee;
+    text-align:left;
+}
+
+th{
+    background:#f8f7f4;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+td{
+    font-size:13px;
+}
+
+.product-thumb{
+    width:55px;
+    height:65px;
+    object-fit:cover;
+}
+
+.action-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.edit-btn,
+.delete-btn{
+    border:none;
+    padding:8px 10px;
+    cursor:pointer;
+    font-size:11px;
+}
+
+.edit-btn{
+    background:#111;
+    color:#fff;
+}
+
+.delete-btn{
+    background:#d9534f;
+    color:#fff;
+}
+
+/* COUPONS */
+
+.coupon-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.coupon-card{
+    border:1px solid var(--border);
+    padding:20px;
+    margin-bottom:12px;
+}
+
+.coupon-code{
+    font-size:20px;
+    font-weight:bold;
+    letter-spacing:3px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .sidebar{
+        transform:translateX(-100%);
+        transition:.3s;
+    }
+
+    .sidebar.show{
+        transform:translateX(0);
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .topbar{
+        padding:0 20px;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .form-grid,
+    .coupon-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:500px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .topbar h2{
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+  <!-- =========================================
+     LOGIN SCREEN
+========================================= -->
+
+<div id="loginScreen">
+
+    <div class="login-box">
+
+        <div class="logo">
+            <h1>TRENDY FACTORY</h1>
+            <p>ADMIN PANEL</p>
+        </div>
+
+        <form id="loginForm">
+
+            <div class="input-group">
+                <label>EMAIL</label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Admin Email"
+                    required
+                >
+            </div>
+
+            <div class="input-group">
+                <label>PASSWORD</label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Password"
+                    required
+                >
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-black btn-full"
+            >
+                LOGIN
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     ADMIN APPLICATION
+========================================= -->
+
+<div id="adminApp">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <h2>TRENDY FACTORY</h2>
+
+            <p>ADMIN DASHBOARD</p>
+
+        </div>
+
+
+        <button
+            class="nav-btn active"
+            data-page="dashboard"
+        >
+            📊 Dashboard
+        </button>
+
+
+        <button
+            class="nav-btn"
+            data-page="products"
+        >
+            🛍 Products
+        </button>
+
+
+        <button
+            class="nav-btn"
+            data-page="addProduct"
+        >
+            ➕ Add Product
+        </button>
+
+
+        <button
+            class="nav-btn"
+            data-page="orders"
+        >
+            📦 Orders
+        </button>
+
+
+        <button
+            class="nav-btn"
+            data-page="coupons"
+        >
+            🎟 Coupons
+        </button>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="btn btn-danger btn-full"
+                id="logoutBtn"
+            >
+                LOGOUT
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div
+                style="
+                display:flex;
+                align-items:center;
+                gap:15px;
+                "
+            >
+
+                <button
+                    class="mobile-menu"
+                    id="mobileMenu"
+                >
+                    ☰
+                </button>
+
+                <h2 id="pageTitle">
+                    Dashboard
+                </h2>
+
+            </div>
+
+
+            <div
+                class="admin-info"
+                id="adminEmail"
+            >
+                Admin
+            </div>
+
+        </div>
+
+
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+
+            <!-- =========================================
+                 DASHBOARD PAGE
+            ========================================= -->
+
+            <section
+                class="page active"
+                id="dashboardPage"
+            >
+
+                <div class="stats">
+
+
+                    <div class="stat-card">
+
+                        <p>TOTAL PRODUCTS</p>
+
+                        <h2 id="totalProducts">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <p>TOTAL ORDERS</p>
+
+                        <h2 id="totalOrders">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <p>PENDING ORDERS</p>
+
+                        <h2 id="pendingOrders">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <p>TOTAL REVENUE</p>
+
+                        <h2 id="totalRevenue">
+                            ₹0
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================================
+                 PRODUCTS PAGE
+            ========================================= -->
+
+            <section
+                class="page"
+                id="productsPage"
+            >
+
+                <div class="card">
+
+                    <h3 class="card-title">
+                        All Products
+                    </h3>
+
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>IMAGE</th>
+                                    <th>PRODUCT</th>
+                                    <th>CATEGORY</th>
+                                    <th>PRICE</th>
+                                    <th>STOCK</th>
+                                    <th>ACTION</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="productsBody">
+
+                                <tr>
+
+                                    <td colspan="6">
+                                        Loading products...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================================
+                 ADD PRODUCT PAGE
+            ========================================= -->
+
+            <section
+                class="page"
+                id="addProductPage"
+            >
+
+                <div class="card">
+
+                    <h3
+                        class="card-title"
+                        id="productFormTitle"
+                    >
+                        Add Product
+                    </h3>
+
+
+                    <form id="productForm">
+
+
+                        <div class="form-grid">
+
+
+                            <!-- PRODUCT NAME -->
+
+                            <div class="input-group">
+
+                                <label>
+                                    PRODUCT NAME
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="productName"
+                                    placeholder="Enter product name"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- CATEGORY -->
+
+                            <div class="input-group">
+
+                                <label>
+                                    CATEGORY
+                                </label>
+
+                                <select
+                                    id="productCategory"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Category
+                                    </option>
+
+                                    <option value="Men">
+                                        Men
+                                    </option>
+
+                                    <option value="Women">
+                                        Women
+                                    </option>
+
+                                    <option value="Kids">
+                                        Kids
+                                    </option>
+
+                                    <option value="Accessories">
+                                        Accessories
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- PRICE -->
+
+                            <div class="input-group">
+
+                                <label>
+                                    PRICE ₹
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="productPrice"
+                                    min="0"
+                                    placeholder="Enter price"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- STOCK -->
+
+                            <div class="input-group">
+
+                                <label>
+                                    STOCK QUANTITY
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="productStock"
+                                    min="0"
+                                    placeholder="Available stock"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- DESCRIPTION -->
+
+                            <div
+                                class="
+                                input-group
+                                full-width
+                                "
+                            >
+
+                                <label>
+                                    DESCRIPTION
+                                </label>
+
+                                <textarea
+                                    id="productDescription"
+                                    placeholder="Write product description..."
+                                    required
+                                ></textarea>
+
+                            </div>
+
+
+
+                            <!-- SIZES -->
+
+                            <div
+                                class="
+                                input-group
+                                full-width
+                                "
+                            >
+
+                                <label>
+                                    AVAILABLE SIZES
+                                </label>
+
+
+                                <div class="size-options">
+
+
+                                    <label>
+
+                                        <input
+                                            type="checkbox"
+                                            name="productSize"
+                                            value="XS"
+                                        >
+
+                                        XS
+
+                                    </label>
+
+
+                                    <label>
+
+                                        <input
+                                            type="checkbox"
+                                            name="productSize"
+                                            value="S"
+                                        >
+
+                                        S
+
+                                    </label>
+
+
+                                    <label>
+
+                                        <input
+                                            type="checkbox"
+                                            name="productSize"
+                                            value="M"
+                                        >
+
+                                        M
+
+                                    </label>
+
+
+                                    <label>
+
+                                        <input
+                                            type="checkbox"
+                                            name="productSize"
+                                            value="L"
+                                        >
+
+                                        L
+
+                                    </label>
+
+
+                                    <label>
+
+                                        <input
+                                            type="checkbox"
+                                            name="productSize"
+                                            value="XL"
+                                        >
+
+                                        XL
+
+                                    </label>
+
+
+                                    <label>
+
+                                        <input
+                                            type="checkbox"
+                                            name="productSize"
+                                            value="XXL"
+                                        >
+
+                                        XXL
+
+                                    </label>
+
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- IMAGE UPLOAD -->
+
+                            <div
+                                class="
+                                input-group
+                                full-width
+                                "
+                            >
+
+                                <label>
+                                    PRODUCT PHOTOS
+                                    (Maximum 5 Images)
+                                </label>
+
+
+                                <div class="image-upload-box">
+
+                                    <p>
+                                        Select product images
+                                    </p>
+
+                                    <input
+                                        type="file"
+                                        id="productImages"
+                                        accept="image/*"
+                                        multiple
+                                    >
+
+                                </div>
+
+
+                                <!-- IMAGE PREVIEW -->
+
+                                <div
+                                    class="preview-grid"
+                                    id="imagePreview"
+                                ></div>
+
+                            </div>
+
+
+
+                            <!-- BUTTONS -->
+
+                            <div
+                                class="full-width"
+                                style="
+                                display:flex;
+                                gap:10px;
+                                "
+                            >
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-black"
+                                    id="saveBtn"
+                                >
+                                    SAVE PRODUCT
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="btn btn-beige"
+                                    id="cancelEditBtn"
+                                >
+                                    CLEAR
+                                </button>
+
+                            </div>
+
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+  </section>
+              <!-- =========================================
+                 ORDERS PAGE
+            ========================================= -->
+
+            <section
+                class="page"
+                id="ordersPage"
+            >
+
+                <div class="card">
+
+                    <h3 class="card-title">
+                        Customer Orders
+                    </h3>
+
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>ORDER ID</th>
+                                    <th>CUSTOMER</th>
+                                    <th>AMOUNT</th>
+                                    <th>PAYMENT</th>
+                                    <th>STATUS</th>
+                                    <th>ACTION</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="ordersBody">
+
+                                <tr>
+
+                                    <td colspan="6">
+                                        Loading orders...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================================
+                 COUPONS PAGE
+            ========================================= -->
+
+            <section
+                class="page"
+                id="couponsPage"
+            >
+
+                <div class="coupon-grid">
+
+
+                    <!-- CREATE COUPON -->
+
+                    <div class="card">
+
+                        <h3 class="card-title">
+                            Create Coupon
+                        </h3>
+
+
+                        <form id="couponForm">
+
+
+                            <div class="input-group">
+
+                                <label>
+                                    COUPON CODE
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="couponCode"
+                                    placeholder="WELCOME10"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <div class="input-group">
+
+                                <label>
+                                    DISCOUNT (%)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="couponDiscount"
+                                    min="1"
+                                    max="100"
+                                    placeholder="10"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-black btn-full"
+                            >
+                                CREATE COUPON
+                            </button>
+
+
+                        </form>
+
+                    </div>
+
+
+
+                    <!-- ACTIVE COUPONS -->
+
+                    <div class="card">
+
+                        <h3 class="card-title">
+                            Active Coupons
+                        </h3>
+
+
+                        <div id="couponsList">
+
+                            Loading coupons...
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     JAVASCRIPT START
+========================================= -->
+
+<script type="module">
+  // =============================================
+// TRENDY FACTORY V4 ADMIN PANEL
+// =============================================
+
+// FIREBASE CONFIG
+import {
+    db,
+    auth,
+    storage
+} from "./firebase.js";
+
+
+// FIRESTORE
+import {
+    collection,
+    addDoc,
+    getDocs,
+    getDoc,
+    doc,
+    updateDoc,
+    deleteDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+// AUTH
+import {
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+// STORAGE
+import {
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    deleteObject
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+
+// =============================================
+// GLOBAL VARIABLES
+// =============================================
+
+let selectedImages = [];
+let existingImages = [];
+let editingProductId = null;
+
+
+// =============================================
+// DOM ELEMENTS
+// =============================================
+
+const loginScreen =
+    document.getElementById("loginScreen");
+
+const adminApp =
+    document.getElementById("adminApp");
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+const adminEmail =
+    document.getElementById("adminEmail");
+
+const productForm =
+    document.getElementById("productForm");
+
+const imageInput =
+    document.getElementById("productImages");
+
+const imagePreview =
+    document.getElementById("imagePreview");
+
+const saveBtn =
+    document.getElementById("saveBtn");
+
+const cancelEditBtn =
+    document.getElementById("cancelEditBtn");
+
+
+// =============================================
+// AUTH STATE
+// =============================================
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (user) {
+
+        loginScreen.style.display = "none";
+        adminApp.style.display = "block";
+
+        adminEmail.textContent = user.email || "Admin";
+
+        await loadProducts();
+        await loadOrders();
+        await loadCoupons();
+        await updateDashboard();
+
+    } else {
+
+        loginScreen.style.display = "flex";
+        adminApp.style.display = "none";
+
+    }
+
+});
+
+
+// =============================================
+// LOGIN
+// =============================================
+
+loginForm.addEventListener(
+    "submit",
+    async (event) => {
+
+        event.preventDefault();
+
+        const email =
+            document
+            .getElementById("loginEmail")
+            .value
+            .trim();
+
+        const password =
+            document
+            .getElementById("loginPassword")
+            .value;
+
+        try {
+
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Login failed: " +
+                error.message
+            );
+
+        }
+
+    }
+);
+
+
+// =============================================
+// LOGOUT
+// =============================================
+
+logoutBtn.addEventListener(
+    "click",
+    async () => {
+
+        try {
+
+            await signOut(auth);
+
+        } catch (error) {
+
+            alert(
+                "Logout failed: " +
+                error.message
+            );
+
+        }
+
+    }
+);
+
+
+// =============================================
+// NAVIGATION
+// =============================================
+
+const navButtons =
+    document.querySelectorAll(".nav-btn");
+
+
+navButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const page =
+                button.dataset.page;
+
+            showPage(page);
+
+        }
+    );
+
+});
+
+
+function showPage(page) {
+
+    document
+    .querySelectorAll(".page")
+    .forEach(item => {
+
+        item.classList.remove("active");
+
+    });
+
+
+    const targetPage =
+        document.getElementById(
+            page + "Page"
+        );
+
+
+    if (targetPage) {
+
+        targetPage.classList.add("active");
+
+    }
+
+
+    navButtons.forEach(button => {
+
+        button.classList.remove("active");
+
+    });
+
+
+    const activeButton =
+        document.querySelector(
+            `[data-page="${page}"]`
+        );
+
+
+    if (activeButton) {
+
+        activeButton.classList.add("active");
+
+    }
+
+
+    const titles = {
+
+        dashboard: "Dashboard",
+        products: "Products",
+        addProduct:
+            editingProductId
+                ? "Edit Product"
+                : "Add Product",
+        orders: "Orders",
+        coupons: "Coupons"
+
+    };
+
+
+    document
+    .getElementById("pageTitle")
+    .textContent =
+        titles[page] || "Admin";
+
+
+    document
+    .querySelector(".sidebar")
+    .classList.remove("show");
+
+}
+
+
+// =============================================
+// MOBILE MENU
+// =============================================
+
+document
+.getElementById("mobileMenu")
+.addEventListener(
+    "click",
+    () => {
+
+        document
+        .querySelector(".sidebar")
+        .classList.toggle("show");
+
+    }
+);
+
+
+// =============================================
+// IMAGE SELECTION
+// =============================================
+
+imageInput.addEventListener(
+    "change",
+    event => {
+
+        const files =
+            Array.from(
+                event.target.files
+            );
+
+
+        files.forEach(file => {
+
+            if (
+                !file.type.startsWith(
+                    "image/"
+                )
+            ) {
+
+                alert(
+                    "Only image files are allowed."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                file.size >
+                5 * 1024 * 1024
+            ) {
+
+                alert(
+                    "Each image must be under 5MB."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                selectedImages.length +
+                existingImages.length >= 5
+            ) {
+
+                alert(
+                    "Maximum 5 images allowed."
+                );
+
+                return;
+
+            }
+
+
+            selectedImages.push(file);
+
+        });
+
+
+        syncFileInput();
+
+        renderImages();
+
+    }
+);
+
+
+// =============================================
+// SYNC FILE INPUT
+// =============================================
+
+function syncFileInput() {
+
+    const dataTransfer =
+        new DataTransfer();
+
+
+    selectedImages.forEach(file => {
+
+        dataTransfer.items.add(file);
+
+    });
+
+
+    imageInput.files =
+        dataTransfer.files;
+
+}
+
+
+// =============================================
+// RENDER IMAGE PREVIEW
+// =============================================
+
+function renderImages() {
+
+    imagePreview.innerHTML = "";
+
+
+    // EXISTING IMAGES
+
+    existingImages.forEach(
+        (image, index) => {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "preview-item";
+
+
+            item.innerHTML = `
+                <img
+                    src="${image.url}"
+                    alt="Product Image"
+                >
+
+                <button
+                    type="button"
+                    class="remove-image"
+                >
+                    ×
+                </button>
+            `;
+
+
+            item
+            .querySelector(".remove-image")
+            .addEventListener(
+                "click",
+                () => {
+
+                    existingImages.splice(
+                        index,
+                        1
+                    );
+
+                    renderImages();
+
+                }
+            );
+
+
+            imagePreview.appendChild(item);
+
+        }
+    );
+
+
+    // NEW SELECTED IMAGES
+
+    selectedImages.forEach(
+        (file, index) => {
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                event => {
+
+                    const item =
+                        document.createElement("div");
+
+                    item.className =
+                        "preview-item";
+
+
+                    item.innerHTML = `
+                        <img
+                            src="${event.target.result}"
+                            alt="New Product Image"
+                        >
+
+                        <button
+                            type="button"
+                            class="remove-image"
+                        >
+                            ×
+                        </button>
+                    `;
+
+
+                    item
+                    .querySelector(".remove-image")
+                    .addEventListener(
+                        "click",
+                        () => {
+
+                            selectedImages.splice(
+                                index,
+                                1
+                            );
+
+                            syncFileInput();
+
+                            renderImages();
+
+                        }
+                    );
+
+
+                    imagePreview.appendChild(item);
+
+                };
+
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+}
+
+
+// =============================================
+// UPLOAD IMAGE TO FIREBASE STORAGE
+// =============================================
+
+async function uploadImage(
+    file,
+    productId
+) {
+
+    const safeFileName =
+        file.name.replace(
+            /[^a-zA-Z0-9.\-_]/g,
+            "_"
+        );
+
+
+    const fileName =
+        Date.now() +
+        "_" +
+        Math.random()
+        .toString(36)
+        .substring(2, 8) +
+        "_" +
+        safeFileName;
+
+
+    const storagePath =
+        `products/${productId}/${fileName}`;
+
+
+    const imageRef =
+        ref(
+            storage,
+            storagePath
+        );
+
+
+    await uploadBytes(
+        imageRef,
+        file
+    );
+
+
+    const url =
+        await getDownloadURL(
+            imageRef
+        );
+
+
+    return {
+
+        url: url,
+
+        path: storagePath
+
+    };
+
+}
+
+
+// =============================================
+// GET SELECTED SIZES
+// =============================================
+
+function getSizes() {
+
+    return Array.from(
+
+        document.querySelectorAll(
+            'input[name="productSize"]:checked'
+        )
+
+    ).map(
+        input => input.value
+    );
+
+}
+
+
+// =============================================
+// SAVE / UPDATE PRODUCT
+// =============================================
+
+productForm.addEventListener(
+    "submit",
+    async event => {
+
+        event.preventDefault();
+
+
+        const name =
+            document
+            .getElementById("productName")
+            .value
+            .trim();
+
+
+        const category =
+            document
+            .getElementById("productCategory")
+            .value;
+
+
+        const price =
+            Number(
+                document
+                .getElementById("productPrice")
+                .value
+            );
+
+
+        const stock =
+            Number(
+                document
+                .getElementById("productStock")
+                .value
+            );
+
+
+        const description =
+            document
+            .getElementById("productDescription")
+            .value
+            .trim();
+
+
+        const sizes =
+            getSizes();
+
+
+        if (
+            !editingProductId &&
+            selectedImages.length === 0
+        ) {
+
+            alert(
+                "Please select at least one product image."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            sizes.length === 0
+        ) {
+
+            alert(
+                "Please select at least one size."
+            );
+
+            return;
+
+        }
+
+
+        saveBtn.disabled = true;
+
+        saveBtn.textContent =
+            editingProductId
+                ? "UPDATING..."
+                : "SAVING...";
+
+
+        try {
+
+
+            // =============================================
+            // ADD NEW PRODUCT
+            // =============================================
+
+            if (!editingProductId) {
+
+
+                const productRef =
+                    await addDoc(
+
+                        collection(
+                            db,
+                            "products"
+                        ),
+
+                        {
+
+                            name: name,
+
+                            category: category,
+
+                            price: price,
+
+                            stock: stock,
+
+                            description: description,
+
+                            sizes: sizes,
+
+                            images: [],
+
+                            createdAt:
+                                serverTimestamp(),
+
+                            updatedAt:
+                                serverTimestamp()
+
+                        }
+
+                    );
+
+
+                const uploadedImages = [];
+
+
+                for (
+                    const file of selectedImages
+                ) {
+
+                    const uploadedImage =
+                        await uploadImage(
+                            file,
+                            productRef.id
+                        );
+
+
+                    uploadedImages.push(
+                        uploadedImage
+                    );
+
+                }
+
+
+                await updateDoc(
+
+                    doc(
+                        db,
+                        "products",
+                        productRef.id
+                    ),
+
+                    {
+
+                        images:
+                            uploadedImages
+
+                    }
+
+                );
+
+
+                alert(
+                    "Product added successfully!"
+                );
+
+            }
+
+
+            // =============================================
+            // UPDATE PRODUCT
+            // =============================================
+
+            else {
+
+
+                const uploadedImages = [];
+
+
+                for (
+                    const file of selectedImages
+                ) {
+
+                    const uploadedImage =
+                        await uploadImage(
+                            file,
+                            editingProductId
+                        );
+
+
+                    uploadedImages.push(
+                        uploadedImage
+                    );
+
+                }
+
+
+                const finalImages = [
+
+                    ...existingImages,
+
+                    ...uploadedImages
+
+                ];
+
+
+                if (
+                    finalImages.length === 0
+                ) {
+
+                    alert(
+                        "Product must have at least one image."
+                    );
+
+                    return;
+
+                }
+
+
+                await updateDoc(
+
+                    doc(
+                        db,
+                        "products",
+                        editingProductId
+                    ),
+
+                    {
+
+                        name: name,
+
+                        category: category,
+
+                        price: price,
+
+                        stock: stock,
+
+                        description: description,
+
+                        sizes: sizes,
+
+                        images: finalImages,
+
+                        updatedAt:
+                            serverTimestamp()
+
+                    }
+
+                );
+
+
+                alert(
+                    "Product updated successfully!"
+                );
+
+            }
+
+
+            clearProductForm();
+
+            await loadProducts();
+
+            await updateDashboard();
+
+            showPage("products");
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Product save failed: " +
+                error.message
+            );
+
+        } finally {
+
+            saveBtn.disabled = false;
+
+            saveBtn.textContent =
+                "SAVE PRODUCT";
+
+        }
+
+    }
+);
+
+
+// =============================================
+// LOAD PRODUCTS
+// =============================================
+
+async function loadProducts() {
+
+    const body =
+        document.getElementById(
+            "productsBody"
+        );
+
+
+    body.innerHTML = `
+        <tr>
+            <td colspan="6">
+                Loading products...
+            </td>
+        </tr>
+    `;
+
+
+    try {
+
+        const snapshot =
+            await getDocs(
+
+                collection(
+                    db,
+                    "products"
+                )
+
+            );
+
+
+        if (snapshot.empty) {
+
+            body.innerHTML = `
+                <tr>
+                    <td colspan="6">
+                        No products found.
+                    </td>
+                </tr>
+            `;
+
+            return;
+
+        }
+
+
+        let html = "";
+
+
+        snapshot.forEach(
+            productDoc => {
+
+                const product =
+                    productDoc.data();
+
+
+                let imageUrl = "";
+
+
+                if (
+                    product.images &&
+                    product.images.length > 0
+                ) {
+
+                    const firstImage =
+                        product.images[0];
+
+
+                    imageUrl =
+                        typeof firstImage === "string"
+                            ? firstImage
+                            : firstImage.url;
+
+                }
+
+
+                html += `
+
+                    <tr>
+
+                        <td>
+
+                            ${
+                                imageUrl
+                                    ? `
+                                    <img
+                                        class="product-thumb"
+                                        src="${imageUrl}"
+                                        alt="Product"
+                                    >
+                                    `
+                                    : "No Image"
+                            }
+
+                        </td>
+
+
+                        <td>
+                            ${escapeHTML(
+                                product.name || ""
+                            )}
+                        </td>
+
+
+                        <td>
+                            ${escapeHTML(
+                                product.category || ""
+                            )}
+                        </td>
+
+
+                        <td>
+                            ₹${Number(
+                                product.price || 0
+                            ).toLocaleString("en-IN")}
+                        </td>
+
+
+                        <td>
+                            ${product.stock ?? 0}
+                        </td>
+
+
+                        <td>
+
+                            <div class="action-buttons">
+
+                                <button
+                                    class="edit-btn"
+                                    onclick="window.editProduct('${productDoc.id}')"
+                                >
+                                    EDIT
+                                </button>
+
+
+                                <button
+                                    class="delete-btn"
+                                    onclick="window.deleteProduct('${productDoc.id}')"
+                                >
+                                    DELETE
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+        );
+
+
+        body.innerHTML = html;
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        body.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    Error loading products.
+                </td>
+            </tr>
+        `;
+
+    }
+
+}
+
+
+// =============================================
+// EDIT PRODUCT
+// =============================================
+
+window.editProduct =
+async function (productId) {
+
+    try {
+
+        const snapshot =
+            await getDoc(
+                doc(
+                    db,
+                    "products",
+                    productId
+                )
+            );
+
+        if (!snapshot.exists()) {
+
+            alert("Product not found.");
+            return;
+
+        }
+
+        const product =
+            snapshot.data();
+
+        editingProductId =
+            productId;
+
+
+        document
+            .getElementById("productName")
+            .value =
+            product.name || "";
+
+
+        document
+            .getElementById("productCategory")
+            .value =
+            product.category || "";
+
+
+        document
+            .getElementById("productPrice")
+            .value =
+            product.price ?? "";
+
+
+        document
+            .getElementById("productStock")
+            .value =
+            product.stock ?? "";
+
+
+        document
+            .getElementById("productDescription")
+            .value =
+            product.description || "";
+
+
+        document
+            .querySelectorAll(
+                'input[name="productSize"]'
+            )
+            .forEach(
+                input => {
+
+                    input.checked =
+                        (product.sizes || [])
+                        .includes(input.value);
+
+                }
+            );
+
+
+        existingImages =
+            (product.images || [])
+            .map(image => {
+
+                if (
+                    typeof image === "string"
+                ) {
+
+                    return {
+                        url: image,
+                        path: null
+                    };
+
+                }
+
+                return image;
+
+            });
+
+
+        selectedImages = [];
+
+        imageInput.value = "";
+
+        renderImages();
+
+
+        document
+            .getElementById("productFormTitle")
+            .textContent =
+            "Edit Product";
+
+
+        saveBtn.textContent =
+            "UPDATE PRODUCT";
+
+
+        showPage("addProduct");
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Edit failed: " +
+            error.message
+        );
+
+    }
+
+};
+
+
+// =============================================
+// DELETE PRODUCT
+// =============================================
+
+window.deleteProduct =
+async function (productId) {
+
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to permanently delete this product?"
+        );
+
+
+    if (!confirmDelete) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const snapshot =
+            await getDoc(
+                doc(
+                    db,
+                    "products",
+                    productId
+                )
+            );
+
+
+        if (snapshot.exists()) {
+
+            const product =
+                snapshot.data();
+
+
+            if (
+                Array.isArray(product.images)
+            ) {
+
+                for (
+                    const image of product.images
+                ) {
+
+                    if (
+                        typeof image === "object" &&
+                        image.path
+                    ) {
+
+                        try {
+
+                            await deleteObject(
+                                ref(
+                                    storage,
+                                    image.path
+                                )
+                            );
+
+                        } catch (error) {
+
+                            console.warn(
+                                "Image delete warning:",
+                                error
+                            );
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+        await deleteDoc(
+            doc(
+                db,
+                "products",
+                productId
+            )
+        );
+
+
+        alert(
+            "Product deleted successfully!"
+        );
+
+
+        await loadProducts();
+
+        await updateDashboard();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Delete failed: " +
+            error.message
+        );
+
+    }
+
+};
+
+
+// =============================================
+// CLEAR PRODUCT FORM
+// =============================================
+
+function clearProductForm() {
+
+    editingProductId = null;
+
+    selectedImages = [];
+
+    existingImages = [];
+
+
+    productForm.reset();
+
+    imageInput.value = "";
+
+    imagePreview.innerHTML = "";
+
+
+    document
+        .getElementById("productFormTitle")
+        .textContent =
+        "Add Product";
+
+
+    saveBtn.textContent =
+        "SAVE PRODUCT";
+
+}
+
+
+cancelEditBtn.addEventListener(
+    "click",
+    () => {
+
+        clearProductForm();
+
+    }
+);
+
+
+// =============================================
+// LOAD ORDERS
+// =============================================
+
+async function loadOrders() {
+
+    const body =
+        document.getElementById(
+            "ordersBody"
+        );
+
+
+    try {
+
+        const snapshot =
+            await getDocs(
+                collection(
+                    db,
+                    "orders"
+                )
+            );
+
+
+        if (snapshot.empty) {
+
+            body.innerHTML = `
+                <tr>
+                    <td colspan="6">
+                        No orders found.
+                    </td>
+                </tr>
+            `;
+
+            return;
+
+        }
+
+
+        let html = "";
+
+
+        snapshot.forEach(
+            orderDoc => {
+
+                const order =
+                    orderDoc.data();
+
+
+                html += `
+
+                    <tr>
+
+                        <td>
+                            ${orderDoc.id.slice(0, 8)}
+                        </td>
+
+
+                        <td>
+                            ${escapeHTML(
+                                order.customerName ||
+                                order.name ||
+                                "Customer"
+                            )}
+                        </td>
+
+
+                        <td>
+                            ₹${Number(
+                                order.total ||
+                                order.amount ||
+                                0
+                            ).toLocaleString("en-IN")}
+                        </td>
+
+
+                        <td>
+                            ${escapeHTML(
+                                order.paymentStatus ||
+                                order.paymentMethod ||
+                                "Pending"
+                            )}
+                        </td>
+
+
+                        <td>
+
+                            <select
+                                onchange="window.updateOrderStatus('${orderDoc.id}', this.value)"
+                            >
+
+                                <option
+                                    value="pending"
+                                    ${
+                                        order.status === "pending"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Pending
+                                </option>
+
+
+                                <option
+                                    value="processing"
+                                    ${
+                                        order.status === "processing"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Processing
+                                </option>
+
+
+                                <option
+                                    value="shipped"
+                                    ${
+                                        order.status === "shipped"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Shipped
+                                </option>
+
+
+                                <option
+                                    value="delivered"
+                                    ${
+                                        order.status === "delivered"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Delivered
+                                </option>
+
+                            </select>
+
+                        </td>
+
+
+                        <td>
+
+                            <button
+                                class="delete-btn"
+                                onclick="window.deleteOrder('${orderDoc.id}')"
+                            >
+                                DELETE
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+        );
+
+
+        body.innerHTML = html;
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        body.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    Error loading orders.
+                </td>
+            </tr>
+        `;
+
+    }
+
+}
+
+
+// =============================================
+// UPDATE ORDER STATUS
+// =============================================
+
+window.updateOrderStatus =
+async function (
+    orderId,
+    status
+) {
+
+    try {
+
+        await updateDoc(
+            doc(
+                db,
+                "orders",
+                orderId
+            ),
+            {
+                status: status,
+                updatedAt:
+                    serverTimestamp()
+            }
+        );
+
+
+        await updateDashboard();
+
+
+    } catch (error) {
+
+        alert(
+            "Status update failed: " +
+            error.message
+        );
+
+    }
+
+};
+
+
+// =============================================
+// DELETE ORDER
+// =============================================
+
+window.deleteOrder =
+async function (orderId) {
+
+    if (
+        !confirm(
+            "Delete this order?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        await deleteDoc(
+            doc(
+                db,
+                "orders",
+                orderId
+            )
+        );
+
+
+        await loadOrders();
+
+        await updateDashboard();
+
+
+    } catch (error) {
+
+        alert(
+            "Order delete failed: " +
+            error.message
+        );
+
+    }
+
+};
+
+
+// =============================================
+// CREATE COUPON
+// =============================================
+
+document
+    .getElementById("couponForm")
+    .addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
+
+
+            const code =
+                document
+                    .getElementById("couponCode")
+                    .value
+                    .trim()
+                    .toUpperCase();
+
+
+            const discount =
+                Number(
+                    document
+                        .getElementById("couponDiscount")
+                        .value
+                );
+
+
+            if (!code) {
+
+                alert(
+                    "Enter coupon code."
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                await addDoc(
+                    collection(
+                        db,
+                        "coupons"
+                    ),
+                    {
+                        code: code,
+                        discount: discount,
+                        active: true,
+                        createdAt:
+                            serverTimestamp()
+                    }
+                );
+
+
+                alert(
+                    "Coupon created successfully!"
+                );
+
+
+                event.target.reset();
+
+                await loadCoupons();
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Coupon creation failed: " +
+                    error.message
+                );
+
+            }
+
+        }
+    );
+
+
+// =============================================
+// LOAD COUPONS
+// =============================================
+
+async function loadCoupons() {
+
+    const container =
+        document.getElementById(
+            "couponsList"
+        );
+
+
+    try {
+
+        const snapshot =
+            await getDocs(
+                collection(
+                    db,
+                    "coupons"
+                )
+            );
+
+
+        if (snapshot.empty) {
+
+            container.innerHTML =
+                "<p>No active coupons found.</p>";
+
+            return;
+
+        }
+
+
+        let html = "";
+
+
+        snapshot.forEach(
+            couponDoc => {
+
+                const coupon =
+                    couponDoc.data();
+
+
+                html += `
+
+                    <div class="coupon-card">
+
+                        <div class="coupon-code">
+
+                            ${escapeHTML(
+                                coupon.code || ""
+                            )}
+
+                        </div>
+
+
+                        <p style="margin:10px 0;">
+
+                            ${Number(
+                                coupon.discount || 0
+                            )}% OFF
+
+                        </p>
+
+
+                        <button
+                            class="delete-btn"
+                            onclick="window.deleteCoupon('${couponDoc.id}')"
+                        >
+                            DELETE
+                        </button>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+
+        container.innerHTML = html;
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        container.innerHTML =
+            "<p>Error loading coupons.</p>";
+
+    }
+
+}
+
+
+// =============================================
+// DELETE COUPON
+// =============================================
+
+window.deleteCoupon =
+async function (couponId) {
+
+    if (
+        !confirm(
+            "Delete this coupon?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    try {
+
+        await deleteDoc(
+            doc(
+                db,
+                "coupons",
+                couponId
+            )
+        );
+
+
+        await loadCoupons();
+
+
+    } catch (error) {
+
+        alert(
+            "Coupon delete failed: " +
+            error.message
+        );
+
+    }
+
+};
+
+
+// =============================================
+// DASHBOARD STATISTICS
+// =============================================
+
+async function updateDashboard() {
+
+    try {
+
+        const productsSnapshot =
+            await getDocs(
+                collection(
+                    db,
+                    "products"
+                )
+            );
+
+
+        const ordersSnapshot =
+            await getDocs(
+                collection(
+                    db,
+                    "orders"
+                )
+            );
+
+
+        let pendingOrders = 0;
+
+        let totalRevenue = 0;
+
+
+        ordersSnapshot.forEach(
+            orderDoc => {
+
+                const order =
+                    orderDoc.data();
+
+
+                if (
+                    order.status === "pending"
+                ) {
+
+                    pendingOrders++;
+
+                }
+
+
+                if (
+                    order.status !== "cancelled"
+                ) {
+
+                    totalRevenue +=
+                        Number(
+                            order.total ||
+                            order.amount ||
+                            0
+                        );
+
+                }
+
+            }
+        );
+
+
+        document
+            .getElementById("totalProducts")
+            .textContent =
+            productsSnapshot.size;
+
+
+        document
+            .getElementById("totalOrders")
+            .textContent =
+            ordersSnapshot.size;
+
+
+        document
+            .getElementById("pendingOrders")
+            .textContent =
+            pendingOrders;
+
+
+        document
+            .getElementById("totalRevenue")
+            .textContent =
+            "₹" +
+            totalRevenue.toLocaleString(
+                "en-IN"
+            );
+
+
+    } catch (error) {
+
+        console.error(
+            "Dashboard error:",
+            error
+        );
+
+    }
+
+}
+
+
+// =============================================
+// SAFE HTML FUNCTION
+// =============================================
+
+function escapeHTML(value) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        String(value ?? "");
+
+    return div.innerHTML;
+
+}
+
+</script>
+
+</body>
+</html>
+
+    
+
+        
+            
+
+  
