@@ -1292,7 +1292,6 @@ td{
 import {
     db,
     auth,
-    storage
 } from "./firebase.js";
 
 
@@ -1802,62 +1801,77 @@ function renderImages() {
 
 
 // =============================================
-// UPLOAD IMAGE TO FIREBASE STORAGE
+// UPLOAD IMAGE TO CLOUDINARY
 // =============================================
+
+const CLOUDINARY_CLOUD_NAME = "sl15i2do";
+const CLOUDINARY_UPLOAD_PRESET = "unsigned";
 
 async function uploadImage(
     file,
     productId
 ) {
 
-    const safeFileName =
-        file.name.replace(
-            /[^a-zA-Z0-9.\-_]/g,
-            "_"
-        );
+    const uploadUrl =
+        `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
 
+    const formData =
+        new FormData();
 
-    const fileName =
-        Date.now() +
-        "_" +
-        Math.random()
-        .toString(36)
-        .substring(2, 8) +
-        "_" +
-        safeFileName;
-
-
-    const storagePath =
-        `products/${productId}/${fileName}`;
-
-
-    const imageRef =
-        ref(
-            storage,
-            storagePath
-        );
-
-
-    await uploadBytes(
-        imageRef,
+    formData.append(
+        "file",
         file
     );
 
+    formData.append(
+        "upload_preset",
+        CLOUDINARY_UPLOAD_PRESET
+    );
 
-    const url =
-        await getDownloadURL(
-            imageRef
+    formData.append(
+        "folder",
+        `trendy-factory/products/${productId}`
+    );
+
+    const response =
+        await fetch(
+            uploadUrl,
+            {
+                method: "POST",
+                body: formData
+            }
         );
 
+    const data =
+        await response.json();
+
+    if (!response.ok) {
+
+        console.error(
+            "Cloudinary error:",
+            data
+        );
+
+        throw new Error(
+            data?.error?.message ||
+            "Cloudinary upload failed."
+        );
+    }
+
+    if (!data.secure_url) {
+
+        throw new Error(
+            "Cloudinary image URL not received."
+        );
+    }
 
     return {
 
-        url: url,
+        url: data.secure_url,
 
-        path: storagePath
-
+        publicId:
+            data.public_id || null
     };
-
 }
 
 
