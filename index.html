@@ -1235,13 +1235,14 @@ if(!currentProduct){
 return;
 }
 
-const image =
-currentProduct.image ||
-currentProduct.imageUrl ||
-"";
+const firstImage = currentProduct.images?.[0];
 
-document.getElementById("modalProductImage").src =
-image;
+const image =
+    typeof firstImage === "string"
+        ? firstImage
+        : firstImage?.url || "";
+
+document.getElementById("modalProductImage").src = image;
 
 document.getElementById("modalProductName").textContent =
 currentProduct.name || "Product";
