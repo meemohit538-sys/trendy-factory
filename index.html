@@ -1226,63 +1226,42 @@ renderProducts();
 
 window.openProduct = function(id){
 
-currentProduct =
-products.find(function(product){
+    currentProduct = products.find(function(product){
+        return product.id === id;
+    });
 
-return product.id === id;
+    if(!currentProduct){
+        return;
+    }
 
-});
+    const firstImage = currentProduct.images?.[0];
 
-if(!currentProduct){
-return;
-}
+    const image =
+        typeof firstImage === "string"
+            ? firstImage
+            : firstImage?.url || "";
 
-const firstImage = currentProduct.images?.[0];
+    document.getElementById("modalProductImage").src = image;
 
-const image =
-    typeof firstImage === "string"
-        ? firstImage
-        : firstImage?.url || "";
+    document.getElementById("modalProductName").textContent =
+        currentProduct.name || "Product";
 
-document.getElementById("modalProductImage").src = image; index) {
+    document.getElementById("modalProductPrice").textContent =
+        "₹" + Number(currentProduct.price || 0);
 
-    const thumb = document.createElement("img");
+    document.getElementById("modalProductDescription").textContent =
+        currentProduct.description || "";
 
-    thumb.src = imageUrl;
+    selectedSize = "";
 
-    thumb.style.width = "65px";
-    thumb.style.height = "65px";
-    thumb.style.objectFit = "cover";
-    thumb.style.borderRadius = "6px";
-    thumb.style.cursor = "pointer";
+    modalQuantity = 1;
 
-    thumb.onclick = function() {
-        mainImage.src = imageUrl;
-    };
+    document.getElementById("modalQuantity").textContent = "1";
 
-    gallery.appendChild(thumb);
+    renderSizes();
 
-});
-
-document.getElementById("modalProductName").textContent =
-currentProduct.name || "Product";
-
-document.getElementById("modalProductPrice").textContent =
-"₹" + Number(currentProduct.price || 0);
-
-document.getElementById("modalProductDescription").textContent =
-currentProduct.description || "";
-
-selectedSize = "";
-
-modalQuantity = 1;
-
-document.getElementById("modalQuantity").textContent = "1";
-
-renderSizes();
-
-document.getElementById("productModal")
-.classList.add("active");
+    document.getElementById("productModal")
+        .classList.add("active");
 
 };
 /* ================= CLOSE PRODUCT ================= */
