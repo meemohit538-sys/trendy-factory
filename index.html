@@ -1235,42 +1235,43 @@ window.openProduct = function(id){
     }
 
     const images = (currentProduct.images || [])
-    .map(function(img){
-        return typeof img === "string"
-            ? img
-            : img?.url || "";
-    })
-    .filter(Boolean);
+        .map(function(img){
+            return typeof img === "string"
+                ? img
+                : img?.url || "";
+        })
+        .filter(Boolean);
 
-const mainImage =
-    document.getElementById("modalProductImage");
+    const mainImage =
+        document.getElementById("modalProductImage");
 
-const gallery =
-    document.getElementById("productImageGallery");
+    const gallery =
+        document.getElementById("productImageGallery");
 
-mainImage.src = images[0] || "";
+    mainImage.src = images[0] || "";
 
-gallery.innerHTML = "";
+    gallery.innerHTML = "";
 
-images.forEach(function(imageUrl){
+    images.forEach(function(imageUrl){
 
-    const thumb = document.createElement("img");
+        const thumb = document.createElement("img");
 
-    thumb.src = imageUrl;
+        thumb.src = imageUrl;
 
-    thumb.style.width = "65px";
-    thumb.style.height = "65px";
-    thumb.style.objectFit = "cover";
-    thumb.style.margin = "5px";
-    thumb.style.cursor = "pointer";
+        thumb.style.width = "65px";
+        thumb.style.height = "65px";
+        thumb.style.objectFit = "cover";
+        thumb.style.margin = "5px";
+        thumb.style.cursor = "pointer";
+        thumb.style.borderRadius = "6px";
 
-    thumb.onclick = function(){
-        mainImage.src = imageUrl;
-    };
+        thumb.onclick = function(){
+            mainImage.src = imageUrl;
+        };
 
-    gallery.appendChild(thumb);
+        gallery.appendChild(thumb);
 
-});
+    });
 
     document.getElementById("modalProductName").textContent =
         currentProduct.name || "Product";
@@ -1293,6 +1294,9 @@ images.forEach(function(imageUrl){
         .classList.add("active");
 
 };
+
+
+
 /* ================= CLOSE PRODUCT ================= */
 
 window.closeProductModal = function(){
