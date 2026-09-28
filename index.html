@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>TRENDY FACTORY — Men's Fashion</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -555,12 +562,15 @@ button{
 }
 
 @media(max-width:900px){
+
     .product-grid{
         grid-template-columns:repeat(3,1fr);
     }
+
 }
 
 @media(max-width:650px){
+
     .product-grid{
         grid-template-columns:repeat(2,1fr);
         gap:12px;
@@ -577,11 +587,13 @@ button{
     .modal-right{
         padding:20px;
     }
+
 }
 
 @media(max-width:400px){
+
     .product-grid{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:repeat(2,1fr);
     }
 
     .product-info{
@@ -595,88 +607,111 @@ button{
     .product-price{
         font-size:16px;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
 <header class="header">
-    <div class="logo">TRENDY FACTORY</div>
 
-    <button class="bag-btn" onclick="openCart()">
+    <div class="logo">
+        TRENDY FACTORY
+    </div>
+
+    <button
+        class="bag-btn"
+        onclick="openCart()"
+    >
         BAG (<span id="cartCount">0</span>)
     </button>
+
 </header>
 
 <section class="hero">
-    <h1>Men's Fashion</h1>
-    <p>Trendy styles. Premium looks. Great prices.</p>
+
+    <h1>
+        Men's Fashion
+    </h1>
+
+    <p>
+        Trendy styles. Premium looks. Great prices.
+    </p>
+
 </section>
 
 <main class="container">
 
     <div class="search-box">
+
         <input
             type="search"
             id="searchInput"
             placeholder="Search products..."
             oninput="filterProducts()"
         >
+
     </div>
 
     <div class="categories">
+
         <button
             class="category-btn active"
-            data-category="all"
-            onclick="setCategory('all', this)"
+            onclick="setCategory('all',this)"
         >
             ALL
         </button>
 
         <button
             class="category-btn"
-            data-category="tshirt"
-            onclick="setCategory('tshirt', this)"
+            onclick="setCategory('tshirt',this)"
         >
             T-SHIRTS
         </button>
 
         <button
             class="category-btn"
-            data-category="shirt"
-            onclick="setCategory('shirt', this)"
+            onclick="setCategory('shirt',this)"
         >
             SHIRTS
         </button>
 
         <button
             class="category-btn"
-            data-category="jeans"
-            onclick="setCategory('jeans', this)"
+            onclick="setCategory('jeans',this)"
         >
             JEANS
         </button>
 
         <button
             class="category-btn"
-            data-category="hoodie"
-            onclick="setCategory('hoodie', this)"
+            onclick="setCategory('hoodie',this)"
         >
             HOODIES
         </button>
+
     </div>
 
-    <div id="productGrid" class="product-grid">
-        <div class="loading">Loading products...</div>
+    <div
+        id="productGrid"
+        class="product-grid"
+    >
+
+        <div class="loading">
+            Loading products...
+        </div>
+
     </div>
 
 </main>
 
-
-<!-- PRODUCT MODAL -->
-
-<div id="productModal" class="modal-overlay">
+<div
+    id="productModal"
+    class="modal-overlay"
+>
 
     <div class="modal">
 
@@ -734,7 +769,9 @@ button{
 
                 <div class="quantity-box">
 
-                    <button onclick="changeModalQuantity(-1)">
+                    <button
+                        onclick="changeModalQuantity(-1)"
+                    >
                         −
                     </button>
 
@@ -742,7 +779,9 @@ button{
                         1
                     </strong>
 
-                    <button onclick="changeModalQuantity(1)">
+                    <button
+                        onclick="changeModalQuantity(1)"
+                    >
                         +
                     </button>
 
@@ -763,247 +802,11 @@ button{
 
 </div>
 
-
-<!-- CART -->
-
-<div id="cartPanel" class="cart-panel">
-
-    <div class="cart-box">
-
-        <div class="cart-header">
-
-            <h2>Your Bag</h2>
-
-            <button
-                class="close-btn"
-                style="position:static"
-                onclick="closeCart()"
-            >
-                ×
-            </button>
-
-        </div>
-
-        <div
-            id="cartItems"
-            class="cart-items"
-        ></div>
-
-        <div class="cart-footer">
-
-            <div class="cart-total">
-
-                <span>Total</span>
-
-                <span id="cartTotal">
-                    ₹0
-                </span>
-
-            </div>
-
-            <button
-                class="checkout-btn"
-                onclick="goToCheckout()"
-            >
-                PROCEED TO CHECKOUT
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- CHECKOUT -->
-
-<section
-    id="checkoutPage"
-    class="checkout-page"
->
-
-    <div class="checkout-box">
-
-        <h2>Checkout</h2>
-
-        <div
-            id="checkoutItems"
-            class="checkout-items"
-        ></div>
-
-        <form id="checkoutForm">
-
-            <div class="form-group">
-                <label for="customerName">
-                    Full Name
-                </label>
-
-                <input
-                    id="customerName"
-                    type="text"
-                    required
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="customerPhone">
-                    Mobile Number
-                </label>
-
-                <input
-                    id="customerPhone"
-                    type="tel"
-                    maxlength="10"
-                    required
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="customerEmail">
-                    Email
-                </label>
-
-                <input
-                    id="customerEmail"
-                    type="email"
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="customerAddress">
-                    Delivery Address
-                </label>
-
-                <textarea
-                    id="customerAddress"
-                    required
-                ></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="paymentMethod">
-                    Payment Method
-                </label>
-
-                <select
-                    id="paymentMethod"
-                    required
-                >
-                    <option value="">
-                        Select Payment Method
-                    </option>
-
-                    <option value="COD">
-                        Cash on Delivery
-                    </option>
-
-                    <option value="ONLINE">
-                        Online Payment
-                    </option>
-                </select>
-            </div>
-
-            <div class="coupon-box">
-
-                <input
-                    id="couponInput"
-                    type="text"
-                    placeholder="Coupon code"
-                >
-
-                <button
-                    type="button"
-                    onclick="applyCoupon()"
-                >
-                    APPLY
-                </button>
-
-            </div>
-
-            <div
-                id="couponMessage"
-                style="font-size:13px;margin-bottom:10px;"
-            ></div>
-
-            <div class="checkout-summary">
-
-                <div class="summary-row">
-                    <span>Subtotal</span>
-                    <span id="checkoutSubtotal">₹0</span>
-                </div>
-
-                <div
-                    id="discountRow"
-                    class="summary-row"
-                    style="display:none;"
-                >
-                    <span>Discount</span>
-                    <span id="checkoutDiscount">₹0</span>
-                </div>
-
-                <div class="summary-row summary-total">
-                    <span>Total</span>
-                    <span id="checkoutTotal">₹0</span>
-                </div>
-
-            </div>
-
-            <button
-                type="submit"
-                class="checkout-btn"
-                style="margin-top:20px;"
-            >
-                PLACE ORDER
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-
-
-<!-- SUCCESS -->
-
-<section
-    id="successPage"
-    class="success-page"
->
-
-    <div class="success-box">
-
-        <h2>Order Placed Successfully 🎉</h2>
-
-        <p id="successMessage">
-            Your order has been placed.
-        </p>
-
-        <button
-            class="checkout-btn"
-            style="margin-top:20px;"
-            onclick="backToShop()"
-        >
-            CONTINUE SHOPPING
-        </button>
-
-    </div>
-
-</section>
-
-
-<a
-    class="whatsapp-btn"
-    href="https://wa.me/919079508505"
-    target="_blank"
-    aria-label="WhatsApp"
->
-    ☎
-</a>
-
-
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
     getFirestore,
@@ -1018,26 +821,35 @@ import {
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyCZjafz8Ze5p6xSoir4j5IdKc_MJE_Eyns",
+    apiKey:
+        "AIzaSyCZjaf8zZe5p6xSoir4j5IdKc_MJE_Eyns",
 
-    authDomain: "trendy-factory.firebaseapp.com",
+    authDomain:
+        "trendy-factory.firebaseapp.com",
 
-    projectId: "trendy-factory",
+    projectId:
+        "trendy-factory",
 
-    storageBucket: "trendy-factory.firebasestorage.app",
+    storageBucket:
+        "trendy-factory.firebasestorage.app",
 
-    messagingSenderId: "811817163762",
+    messagingSenderId:
+        "811817163762",
 
-    appId: "1:811817163762:web:c9aecc5db2cb332a13696b",
+    appId:
+        "1:811817163762:web:c9aecc5db2cb332a13696b",
 
-    measurementId: "G-8YDMBE9T7C"
+    measurementId:
+        "G-8YDMBE9T7C"
 
 };
 
 
-const app = initializeApp(firebaseConfig);
+const app =
+    initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+const db =
+    getFirestore(app);
 
 
 let products = [];
@@ -1056,14 +868,16 @@ let appliedCoupon = null;
 
 let cart = [];
 
-try {
+try{
 
     cart =
         JSON.parse(
-            localStorage.getItem("trendyFactoryCart")
+            localStorage.getItem(
+                "trendyFactoryCart"
+            )
         ) || [];
 
-} catch(error) {
+}catch(error){
 
     cart = [];
 
@@ -1089,25 +903,25 @@ function getImageUrl(product){
         product.images.length
     ){
 
-        const firstImage =
+        const image =
             product.images[0];
 
         if(
-            typeof firstImage === "string" &&
-            firstImage.trim()
+            typeof image === "string" &&
+            image.trim()
         ){
 
-            return firstImage;
+            return image;
 
         }
 
         if(
-            firstImage &&
-            typeof firstImage === "object" &&
-            firstImage.url
+            image &&
+            typeof image === "object" &&
+            image.url
         ){
 
-            return firstImage.url;
+            return image.url;
 
         }
 
@@ -1133,7 +947,9 @@ function getImageUrl(product){
 async function loadProducts(){
 
     const grid =
-        document.getElementById("productGrid");
+        document.getElementById(
+            "productGrid"
+        );
 
     if(grid){
 
@@ -1146,18 +962,26 @@ async function loadProducts(){
 
         const snapshot =
             await getDocs(
-                collection(db,"products")
+                collection(
+                    db,
+                    "products"
+                )
             );
 
         products =
-            snapshot.docs.map(function(item){
+            snapshot.docs.map(
+                function(item){
 
-                return {
-                    id:item.id,
-                    ...item.data()
-                };
+                    return {
 
-            });
+                        id:item.id,
+
+                        ...item.data()
+
+                    };
+
+                }
+            );
 
         filteredProducts =
             [...products];
@@ -1190,7 +1014,9 @@ async function loadProducts(){
 function renderProducts(){
 
     const grid =
-        document.getElementById("productGrid");
+        document.getElementById(
+            "productGrid"
+        );
 
     if(!grid){
 
@@ -1211,69 +1037,99 @@ function renderProducts(){
     }
 
     grid.innerHTML =
-        filteredProducts.map(function(product){
+        filteredProducts.map(
+            function(product){
 
-            const stock =
-                Number(product.stock || 0);
+                const stock =
+                    Number(
+                        product.stock || 0
+                    );
 
-            const image =
-                getImageUrl(product);
+                const image =
+                    getImageUrl(product);
 
-            return `
+                return `
 
-                <div
-                    class="product-card"
-                    onclick="openProduct('${product.id}')"
-                >
-
-                    <img
-                        class="product-image"
-                        src="${escapeHtml(image)}"
-                        alt="${escapeHtml(product.name || "Product")}"
-                        onerror="this.src='https://via.placeholder.com/600x600?text=No+Image'"
+                    <div
+                        class="product-card"
+                        onclick="openProduct('${product.id}')"
                     >
 
-                    <div class="product-info">
+                        <img
+                            class="product-image"
+                            src="${escapeHtml(image)}"
+                            alt="${escapeHtml(product.name || "Product")}"
+                            onerror="this.src='https://via.placeholder.com/600x600?text=No+Image'"
+                        >
 
-                        <h3>
-                            ${escapeHtml(product.name || "Unnamed Product")}
-                        </h3>
+                        <div class="product-info">
 
-                        <div class="product-price">
-                            ₹${Number(product.price || 0)}
-                        </div>
+                            <h3>
+                                ${escapeHtml(
+                                    product.name ||
+                                    "Unnamed Product"
+                                )}
+                            </h3>
 
-                        <div class="stock-text ${stock > 0 ? "in-stock" : "out-stock"}">
-                            ${stock > 0 ? "IN STOCK" : "OUT OF STOCK"}
+                            <div class="product-price">
+                                ₹${Number(
+                                    product.price || 0
+                                )}
+                            </div>
+
+                            <div
+                                class="stock-text ${
+                                    stock > 0
+                                        ? "in-stock"
+                                        : "out-stock"
+                                }"
+                            >
+                                ${
+                                    stock > 0
+                                        ? "IN STOCK"
+                                        : "OUT OF STOCK"
+                                }
+                            </div>
+
                         </div>
 
                     </div>
 
-                </div>
+                `;
 
-            `;
-
-        }).join("");
+            }
+        ).join("");
 
 }
 
 
-function setCategory(category,button){
+function setCategory(
+    category,
+    button
+){
 
     selectedCategory =
         category;
 
     document
-        .querySelectorAll(".category-btn")
-        .forEach(function(item){
+        .querySelectorAll(
+            ".category-btn"
+        )
+        .forEach(
+            function(item){
 
-            item.classList.remove("active");
+                item.classList.remove(
+                    "active"
+                );
 
-        });
+            }
+        );
 
     if(button){
 
-        button.classList.add("active");
+        button.classList.add(
+            "active"
+        );
 
     }
 
@@ -1285,66 +1141,84 @@ function setCategory(category,button){
 function filterProducts(){
 
     const searchInput =
-        document.getElementById("searchInput");
+        document.getElementById(
+            "searchInput"
+        );
 
     const search =
-        (searchInput?.value || "")
-            .trim()
-            .toLowerCase();
+        (
+            searchInput?.value ||
+            ""
+        )
+        .trim()
+        .toLowerCase();
 
     filteredProducts =
-        products.filter(function(product){
+        products.filter(
+            function(product){
 
-            const name =
-                String(product.name || "")
-                    .toLowerCase();
+                const name =
+                    String(
+                        product.name || ""
+                    ).toLowerCase();
 
-            const category =
-                String(product.category || "")
-                    .toLowerCase();
+                const category =
+                    String(
+                        product.category || ""
+                    ).toLowerCase();
 
-            const matchesSearch =
-                !search ||
-                name.includes(search) ||
-                category.includes(search);
+                const matchesSearch =
+                    !search ||
+                    name.includes(search) ||
+                    category.includes(search);
 
-            const matchesCategory =
-                selectedCategory === "all" ||
-                category === selectedCategory;
+                const matchesCategory =
+                    selectedCategory === "all" ||
+                    category === selectedCategory;
 
-            return (
-                matchesSearch &&
-                matchesCategory
-            );
+                return (
+                    matchesSearch &&
+                    matchesCategory
+                );
 
-        });
+            }
+        );
 
     renderProducts();
 
 }
-    /* ================= PRODUCT MODAL ================= */
+/* ================= PRODUCT MODAL ================= */
 
 window.openProduct = function(id){
 
     currentProduct =
         products.find(function(product){
+
             return product.id === id;
+
         });
 
     if(!currentProduct){
+
         return;
+
     }
 
     const images =
         (currentProduct.images || [])
             .map(function(img){
 
-                return typeof img === "string"
-                    ? img
-                    : img?.url || "";
+                if(typeof img === "string"){
+
+                    return img;
+
+                }
+
+                return img?.url || "";
 
             })
             .filter(Boolean);
+
 
     if(!images.length){
 
@@ -1354,20 +1228,32 @@ window.openProduct = function(id){
 
     }
 
+
     const mainImage =
-        document.getElementById("modalProductImage");
+        document.getElementById(
+            "modalProductImage"
+        );
 
     const gallery =
-        document.getElementById("productImageGallery");
+        document.getElementById(
+            "productImageGallery"
+        );
 
     const name =
-        document.getElementById("modalProductName");
+        document.getElementById(
+            "modalProductName"
+        );
 
     const price =
-        document.getElementById("modalProductPrice");
+        document.getElementById(
+            "modalProductPrice"
+        );
 
     const description =
-        document.getElementById("modalProductDescription");
+        document.getElementById(
+            "modalProductDescription"
+        );
+
 
     if(mainImage){
 
@@ -1384,39 +1270,47 @@ window.openProduct = function(id){
 
     }
 
+
     if(gallery){
 
         gallery.innerHTML =
             images.map(function(image){
 
                 return `
+
                     <img
                         src="${escapeHtml(image)}"
                         alt="Product image"
                         onclick="changeMainImage('${escapeHtml(image)}')"
                         onerror="this.style.display='none'"
                     >
+
                 `;
 
             }).join("");
 
     }
 
+
     if(name){
 
         name.textContent =
-            currentProduct.name || "Product";
+            currentProduct.name ||
+            "Product";
 
     }
+
 
     if(price){
 
         price.textContent =
-            "₹" + Number(
+            "₹" +
+            Number(
                 currentProduct.price || 0
             );
 
     }
+
 
     if(description){
 
@@ -1426,12 +1320,16 @@ window.openProduct = function(id){
 
     }
 
+
     selectedSize = "";
 
     modalQuantity = 1;
 
+
     const quantity =
-        document.getElementById("modalQuantity");
+        document.getElementById(
+            "modalQuantity"
+        );
 
     if(quantity){
 
@@ -1440,14 +1338,20 @@ window.openProduct = function(id){
 
     }
 
+
     renderSizes();
 
+
     const modal =
-        document.getElementById("productModal");
+        document.getElementById(
+            "productModal"
+        );
 
     if(modal){
 
-        modal.classList.add("show");
+        modal.classList.add(
+            "show"
+        );
 
     }
 
@@ -1457,7 +1361,9 @@ window.openProduct = function(id){
 window.changeMainImage = function(image){
 
     const mainImage =
-        document.getElementById("modalProductImage");
+        document.getElementById(
+            "modalProductImage"
+        );
 
     if(mainImage){
 
@@ -1469,254 +1375,20 @@ window.changeMainImage = function(image){
 };
 
 
-/* ================= CART HTML ================= */
-
-function renderCheckoutItems(){
-
-    const container =
-        document.getElementById("checkoutItems");
-
-    if(!container){
-
-        return;
-
-    }
-
-    if(!cart.length){
-
-        container.innerHTML =
-            "<p>Your bag is empty.</p>";
-
-        return;
-
-    }
-
-    container.innerHTML =
-        cart.map(function(item){
-
-            const itemTotal =
-                Number(item.price || 0) *
-                Number(item.quantity || 1);
-
-            return `
-
-                <div
-                    style="
-                        display:flex;
-                        justify-content:space-between;
-                        gap:10px;
-                        padding:10px 0;
-                        border-bottom:1px solid #eee;
-                    "
-                >
-
-                    <div>
-
-                        <strong>
-                            ${escapeHtml(item.name || "Product")}
-                        </strong>
-
-                        <div style="font-size:13px;color:#666;">
-                            Size: ${escapeHtml(item.size || "-")}
-                            × ${Number(item.quantity || 1)}
-                        </div>
-
-                    </div>
-
-                    <strong>
-                        ₹${itemTotal}
-                    </strong>
-
-                </div>
-
-            `;
-
-        }).join("");
-
-}
-
-
-/* ================= CHECKOUT ELEMENTS ================= */
-
-const checkoutPage =
-    document.getElementById("checkoutPage");
-
-const checkoutForm =
-    document.getElementById("checkoutForm");
-
-const customerName =
-    document.getElementById("customerName");
-
-const customerPhone =
-    document.getElementById("customerPhone");
-
-const customerEmail =
-    document.getElementById("customerEmail");
-
-const customerAddress =
-    document.getElementById("customerAddress");
-
-const paymentMethod =
-    document.getElementById("paymentMethod");
-
-const checkoutItems =
-    document.getElementById("checkoutItems");
-
-const couponInput =
-    document.getElementById("couponInput");
-
-const couponMessage =
-    document.getElementById("couponMessage");
-
-document.getElementById("checkoutSubtotal");
-
-const discountRow =
-    document.getElementById("discountRow");
-
-const checkoutDiscount =
-    document.getElementById("checkoutDiscount");
-
-const checkoutTotal =
-    document.getElementById("checkoutTotal");
-
-const successPage =
-    document.getElementById("successPage");
-
-const successMessage =
-    document.getElementById("successMessage");
-
-
-/* ================= CHECKOUT FORM ================= */
-
-if(checkoutForm){
-
-    checkoutForm.addEventListener(
-        "submit",
-        function(event){
-
-            event.preventDefault();
-
-            placeOrder(event);
-
-        }
-    );
-
-}
-
-
-/* ================= INITIAL CHECKOUT DISPLAY ================= */
-
-function showCheckoutPage(){
-
-    if(checkoutPage){
-
-        checkoutPage.classList.add("show");
-
-    }
-
-    const cartPanel =
-        document.getElementById("cartPanel");
-
-    if(cartPanel){
-
-        cartPanel.classList.remove("show");
-
-    }
-
-    const productModal =
-        document.getElementById("productModal");
-
-    if(productModal){
-
-        productModal.classList.remove("show");
-
-    }
-
-    renderCheckoutItems();
-
-    updateCheckoutTotals();
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-
-/* ================= PAGE DISPLAY ================= */
-
-function hideCheckoutPage(){
-
-    if(checkoutPage){
-
-        checkoutPage.classList.remove("show");
-
-    }
-
-}
-
-
-function hideSuccessPage(){
-
-    if(successPage){
-
-        successPage.classList.remove("show");
-
-    }
-
-}
-
-
-/* ================= BACKGROUND MODAL ================= */
-
-const productModal =
-    document.getElementById("productModal");
-
-if(productModal){
-
-    productModal.addEventListener(
-        "click",
-        function(event){
-
-            if(event.target === productModal){
-
-                closeProductModal();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* ================= ESC KEY ================= */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Escape"){
-
-            closeProductModal();
-
-            closeCart();
-
-        }
-
-    }
-);
-    /* ================= CLOSE PRODUCT MODAL ================= */
+/* ================= CLOSE MODAL ================= */
 
 window.closeProductModal = function(){
 
     const modal =
-        document.getElementById("productModal");
+        document.getElementById(
+            "productModal"
+        );
 
     if(modal){
 
-        modal.classList.remove("show");
+        modal.classList.remove(
+            "show"
+        );
 
     }
 
@@ -1728,7 +1400,9 @@ window.closeProductModal = function(){
 function renderSizes(){
 
     const container =
-        document.getElementById("sizeOptions");
+        document.getElementById(
+            "sizeOptions"
+        );
 
     if(!container){
 
@@ -1736,26 +1410,34 @@ function renderSizes(){
 
     }
 
+
     const sizes =
         currentProduct?.sizes || [];
 
     let sizeList = [];
 
+
     if(Array.isArray(sizes)){
 
-        sizeList = sizes;
+        sizeList =
+            sizes;
 
-    }else if(typeof sizes === "string"){
+    }else if(
+        typeof sizes === "string"
+    ){
 
         sizeList =
             sizes
                 .split(",")
                 .map(function(size){
+
                     return size.trim();
+
                 })
                 .filter(Boolean);
 
     }
+
 
     if(!sizeList.length){
 
@@ -1769,6 +1451,7 @@ function renderSizes(){
 
     }
 
+
     container.innerHTML =
         sizeList.map(function(size){
 
@@ -1778,6 +1461,7 @@ function renderSizes(){
                     : "";
 
             return `
+
                 <button
                     type="button"
                     class="size-btn ${active}"
@@ -1785,6 +1469,7 @@ function renderSizes(){
                 >
                     ${escapeHtml(size)}
                 </button>
+
             `;
 
         }).join("");
@@ -1802,42 +1487,54 @@ window.selectSize = function(size){
 };
 
 
-window.changeModalQuantity = function(change){
+window.changeModalQuantity =
+    function(change){
 
-    let newQuantity =
-        modalQuantity + Number(change);
+        let newQuantity =
+            modalQuantity +
+            Number(change);
 
-    const stock =
-        Number(
-            currentProduct?.stock || 0
-        );
+        const stock =
+            Number(
+                currentProduct?.stock || 0
+            );
 
-    if(newQuantity < 1){
 
-        newQuantity = 1;
+        if(newQuantity < 1){
 
-    }
+            newQuantity = 1;
 
-    if(stock > 0 && newQuantity > stock){
+        }
 
-        newQuantity = stock;
 
-    }
+        if(
+            stock > 0 &&
+            newQuantity > stock
+        ){
 
-    modalQuantity =
-        newQuantity;
+            newQuantity =
+                stock;
 
-    const quantity =
-        document.getElementById("modalQuantity");
+        }
 
-    if(quantity){
 
-        quantity.textContent =
-            modalQuantity;
+        modalQuantity =
+            newQuantity;
 
-    }
 
-};
+        const quantity =
+            document.getElementById(
+                "modalQuantity"
+            );
+
+        if(quantity){
+
+            quantity.textContent =
+                modalQuantity;
+
+        }
+
+    };
 
 
 /* ================= SAVE CART ================= */
@@ -1865,103 +1562,428 @@ function saveCart(){
 
 /* ================= ADD TO CART ================= */
 
-window.addCurrentProductToCart = function(){
+window.addCurrentProductToCart =
+    function(){
 
-    if(!currentProduct){
+        if(!currentProduct){
 
-        return;
+            return;
 
-    }
+        }
 
-    const stock =
-        Number(
-            currentProduct.stock || 0
-        );
 
-    if(stock <= 0){
-
-        alert("This product is out of stock.");
-
-        return;
-
-    }
-
-    if(!selectedSize){
-
-        alert("Please select a size.");
-
-        return;
-
-    }
-
-    const existing =
-        cart.find(function(item){
-
-            return (
-                item.id === currentProduct.id &&
-                item.size === selectedSize
+        const stock =
+            Number(
+                currentProduct.stock || 0
             );
 
-        });
 
-    if(existing){
-
-        const newQuantity =
-            Number(existing.quantity || 0) +
-            Number(modalQuantity || 1);
-
-        if(newQuantity > stock){
+        if(stock <= 0){
 
             alert(
-                "Only " +
-                stock +
-                " item(s) available in stock."
+                "This product is out of stock."
             );
 
             return;
 
         }
 
-        existing.quantity =
-            newQuantity;
 
-    }else{
+        if(!selectedSize){
 
-        cart.push({
+            alert(
+                "Please select a size."
+            );
 
-            id: currentProduct.id,
+            return;
 
-            name: currentProduct.name || "Product",
+        }
 
-            price:
+
+        const existing =
+            cart.find(function(item){
+
+                return (
+                    item.id === currentProduct.id &&
+                    item.size === selectedSize
+                );
+
+            });
+
+
+        if(existing){
+
+            const newQuantity =
                 Number(
-                    currentProduct.price || 0
-                ),
+                    existing.quantity || 0
+                ) +
+                Number(
+                    modalQuantity || 1
+                );
 
-            image:
-                getImageUrl(currentProduct),
 
-            size: selectedSize,
+            if(newQuantity > stock){
 
-            quantity:
-                Number(modalQuantity || 1)
+                alert(
+                    "Only " +
+                    stock +
+                    " item(s) available in stock."
+                );
 
-        });
+                return;
 
+            }
+
+
+            existing.quantity =
+                newQuantity;
+
+        }else{
+
+            cart.push({
+
+                id:
+                    currentProduct.id,
+
+                name:
+                    currentProduct.name ||
+                    "Product",
+
+                price:
+                    Number(
+                        currentProduct.price || 0
+                    ),
+
+                image:
+                    getImageUrl(
+                        currentProduct
+                    ),
+
+                size:
+                    selectedSize,
+
+                quantity:
+                    Number(
+                        modalQuantity || 1
+                    )
+
+            });
+
+        }
+
+
+        saveCart();
+
+        updateCart();
+
+        closeProductModal();
+
+        alert(
+            "Product added to cart."
+        );
+
+    };/* ================= EXTRA UI ================= */
+
+function createExtraUI(){
+
+    if(document.getElementById("cartPanel")){
+        return;
     }
 
-    saveCart();
+    document.body.insertAdjacentHTML("beforeend", `
 
-    updateCart();
+        <!-- CART PANEL -->
+        <div id="cartPanel" class="cart-panel">
 
-    closeProductModal();
+            <div class="cart-box">
 
-    alert("Product added to cart.");
+                <div class="cart-header">
 
-};
+                    <h2>Your Bag</h2>
+
+                    <button
+                        class="close-btn"
+                        style="position:static"
+                        onclick="closeCart()"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+                <div
+                    id="cartItems"
+                    class="cart-items"
+                ></div>
+
+                <div class="cart-footer">
+
+                    <div class="cart-total">
+
+                        <span>Total</span>
+
+                        <span id="cartTotal">
+                            ₹0
+                        </span>
+
+                    </div>
+
+                    <button
+                        class="checkout-btn"
+                        onclick="goToCheckout()"
+                    >
+                        PROCEED TO CHECKOUT
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
 
 
-/* ================= UPDATE CART ================= */
+        <!-- CHECKOUT PAGE -->
+        <section
+            id="checkoutPage"
+            class="checkout-page"
+        >
+
+            <div class="checkout-box">
+
+                <h2>Checkout</h2>
+
+                <div
+                    id="checkoutItems"
+                    class="checkout-items"
+                ></div>
+
+
+                <form id="checkoutForm">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Full Name
+                        </label>
+
+                        <input
+                            id="customerName"
+                            type="text"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Mobile Number
+                        </label>
+
+                        <input
+                            id="customerPhone"
+                            type="tel"
+                            maxlength="10"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            id="customerEmail"
+                            type="email"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Delivery Address
+                        </label>
+
+                        <textarea
+                            id="customerAddress"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Payment Method
+                        </label>
+
+                        <select
+                            id="paymentMethod"
+                            required
+                        >
+
+                            <option value="">
+                                Select Payment Method
+                            </option>
+
+                            <option value="COD">
+                                Cash on Delivery
+                            </option>
+
+                            <option value="ONLINE">
+                                Online Payment
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="coupon-box">
+
+                        <input
+                            id="couponInput"
+                            type="text"
+                            placeholder="Coupon code"
+                        >
+
+                        <button
+                            type="button"
+                            onclick="applyCoupon()"
+                        >
+                            APPLY
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="couponMessage"
+                        style="
+                            font-size:13px;
+                            margin-bottom:10px;
+                        "
+                    ></div>
+
+
+                    <div class="checkout-summary">
+
+                        <div class="summary-row">
+
+                            <span>
+                                Subtotal
+                            </span>
+
+                            <span id="checkoutSubtotal">
+                                ₹0
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            id="discountRow"
+                            class="summary-row"
+                            style="display:none;"
+                        >
+
+                            <span>
+                                Discount
+                            </span>
+
+                            <span id="checkoutDiscount">
+                                ₹0
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-row summary-total">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <span id="checkoutTotal">
+                                ₹0
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="checkout-btn"
+                        style="margin-top:20px;"
+                    >
+                        PLACE ORDER
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUCCESS PAGE -->
+        <section
+            id="successPage"
+            class="success-page"
+        >
+
+            <div class="success-box">
+
+                <h2>
+                    Order Placed Successfully 🎉
+                </h2>
+
+                <p id="successMessage">
+                    Your order has been placed.
+                </p>
+
+                <button
+                    class="checkout-btn"
+                    style="margin-top:20px;"
+                    onclick="backToShop()"
+                >
+                    CONTINUE SHOPPING
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- WHATSAPP -->
+        <a
+            class="whatsapp-btn"
+            href="https://wa.me/919079508505"
+            target="_blank"
+            aria-label="WhatsApp"
+        >
+            ☎
+        </a>
+
+    `);
+
+}
+
+createExtraUI();
+
+
+/* ================= CART ================= */
 
 window.updateCart = function(){
 
@@ -1970,14 +1992,20 @@ window.updateCart = function(){
             function(total,item){
 
                 return total +
-                    Number(item.quantity || 0);
+                    Number(
+                        item.quantity || 0
+                    );
 
             },
             0
         );
 
+
     const cartCount =
-        document.getElementById("cartCount");
+        document.getElementById(
+            "cartCount"
+        );
+
 
     if(cartCount){
 
@@ -1986,12 +2014,11 @@ window.updateCart = function(){
 
     }
 
+
     renderCart();
 
 };
 
-
-/* ================= CART TOTAL ================= */
 
 function getCartSubtotal(){
 
@@ -1999,9 +2026,11 @@ function getCartSubtotal(){
         function(total,item){
 
             return total +
-                (
-                    Number(item.price || 0) *
-                    Number(item.quantity || 0)
+                Number(
+                    item.price || 0
+                ) *
+                Number(
+                    item.quantity || 0
                 );
 
         },
@@ -2011,15 +2040,18 @@ function getCartSubtotal(){
 }
 
 
-/* ================= RENDER CART ================= */
-
 function renderCart(){
 
     const container =
-        document.getElementById("cartItems");
+        document.getElementById(
+            "cartItems"
+        );
 
     const totalElement =
-        document.getElementById("cartTotal");
+        document.getElementById(
+            "cartTotal"
+        );
+
 
     if(!container){
 
@@ -2027,9 +2059,11 @@ function renderCart(){
 
     }
 
+
     if(!cart.length){
 
         container.innerHTML = `
+
             <div
                 style="
                     text-align:center;
@@ -2039,7 +2073,9 @@ function renderCart(){
             >
                 Your bag is empty.
             </div>
+
         `;
+
 
         if(totalElement){
 
@@ -2052,62 +2088,106 @@ function renderCart(){
 
     }
 
+
     container.innerHTML =
-        cart.map(function(item,index){
+        cart.map(
+            function(item,index){
 
-            const itemTotal =
-                Number(item.price || 0) *
-                Number(item.quantity || 0);
+                const itemTotal =
+                    Number(
+                        item.price || 0
+                    ) *
+                    Number(
+                        item.quantity || 0
+                    );
 
-            return `
 
-                <div class="cart-item">
+                return `
 
-                    <img
-                        src="${escapeHtml(item.image || "https://via.placeholder.com/100")}"
-                        alt="${escapeHtml(item.name || "Product")}"
-                        onerror="this.src='https://via.placeholder.com/100?text=No+Image'"
-                    >
+                    <div class="cart-item">
 
-                    <div class="cart-item-info">
-
-                        <h4>
-                            ${escapeHtml(item.name || "Product")}
-                        </h4>
-
-                        <div style="font-size:13px;color:#666;">
-                            Size:
-                            ${escapeHtml(item.size || "-")}
-                        </div>
-
-                        <div style="font-size:13px;color:#666;">
-                            Quantity:
-                            ${Number(item.quantity || 0)}
-                        </div>
-
-                        <div class="cart-item-price">
-                            ₹${itemTotal}
-                        </div>
-
-                        <button
-                            class="remove-cart"
-                            onclick="removeCartItem(${index})"
+                        <img
+                            src="${escapeHtml(
+                                item.image ||
+                                "https://via.placeholder.com/100"
+                            )}"
+                            alt="${escapeHtml(
+                                item.name ||
+                                "Product"
+                            )}"
+                            onerror="
+                                this.src='https://via.placeholder.com/100?text=No+Image'
+                            "
                         >
-                            REMOVE
-                        </button>
+
+
+                        <div class="cart-item-info">
+
+                            <h4>
+                                ${escapeHtml(
+                                    item.name ||
+                                    "Product"
+                                )}
+                            </h4>
+
+
+                            <div
+                                style="
+                                    font-size:13px;
+                                    color:#666;
+                                "
+                            >
+                                Size:
+                                ${escapeHtml(
+                                    item.size || "-"
+                                )}
+                            </div>
+
+
+                            <div
+                                style="
+                                    font-size:13px;
+                                    color:#666;
+                                "
+                            >
+                                Quantity:
+                                ${Number(
+                                    item.quantity || 0
+                                )}
+                            </div>
+
+
+                            <div class="cart-item-price">
+
+                                ₹${itemTotal}
+
+                            </div>
+
+
+                            <button
+                                class="remove-cart"
+                                onclick="
+                                    removeCartItem(${index})
+                                "
+                            >
+                                REMOVE
+                            </button>
+
+                        </div>
 
                     </div>
 
-                </div>
+                `;
 
-            `;
+            }
+        ).join("");
 
-        }).join("");
 
     if(totalElement){
 
         totalElement.textContent =
-            "₹" + getCartSubtotal();
+            "₹" +
+            getCartSubtotal();
 
     }
 
@@ -2116,28 +2196,34 @@ function renderCart(){
 
 /* ================= REMOVE CART ITEM ================= */
 
-window.removeCartItem = function(index){
+window.removeCartItem =
+    function(index){
 
-    if(
-        index < 0 ||
-        index >= cart.length
-    ){
+        if(
+            index < 0 ||
+            index >= cart.length
+        ){
 
-        return;
+            return;
 
-    }
+        }
 
-    cart.splice(index,1);
 
-    saveCart();
+        cart.splice(
+            index,
+            1
+        );
 
-    updateCart();
 
-    renderCheckoutItems();
+        saveCart();
 
-    updateCheckoutTotals();
+        updateCart();
 
-};
+        renderCheckoutItems();
+
+        updateCheckoutTotals();
+
+    };
 
 
 /* ================= OPEN CART ================= */
@@ -2145,13 +2231,19 @@ window.removeCartItem = function(index){
 window.openCart = function(){
 
     const panel =
-        document.getElementById("cartPanel");
+        document.getElementById(
+            "cartPanel"
+        );
+
 
     if(panel){
 
-        panel.classList.add("show");
+        panel.classList.add(
+            "show"
+        );
 
     }
+
 
     renderCart();
 
@@ -2163,11 +2255,16 @@ window.openCart = function(){
 window.closeCart = function(){
 
     const panel =
-        document.getElementById("cartPanel");
+        document.getElementById(
+            "cartPanel"
+        );
+
 
     if(panel){
 
-        panel.classList.remove("show");
+        panel.classList.remove(
+            "show"
+        );
 
     }
 
@@ -2176,78 +2273,232 @@ window.closeCart = function(){
 
 /* ================= GO TO CHECKOUT ================= */
 
-window.goToCheckout = function(){
+window.goToCheckout =
+    function(){
 
-    if(!cart.length){
+        if(!cart.length){
 
-        alert("Your bag is empty.");
+            alert(
+                "Your bag is empty."
+            );
+
+            return;
+
+        }
+
+
+        const checkoutPage =
+            document.getElementById(
+                "checkoutPage"
+            );
+
+        const cartPanel =
+            document.getElementById(
+                "cartPanel"
+            );
+
+
+        if(cartPanel){
+
+            cartPanel.classList.remove(
+                "show"
+            );
+
+        }
+
+
+        if(checkoutPage){
+
+            checkoutPage.classList.add(
+                "show"
+            );
+
+        }
+
+
+        renderCheckoutItems();
+
+        updateCheckoutTotals();
+
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    };
+
+
+/* ================= CHECKOUT ITEMS ================= */
+
+function renderCheckoutItems(){
+
+    const container =
+        document.getElementById(
+            "checkoutItems"
+        );
+
+
+    if(!container){
 
         return;
 
     }
 
-    showCheckoutPage();
 
-};
+    if(!cart.length){
+
+        container.innerHTML =
+            "<p>Your bag is empty.</p>";
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        cart.map(
+            function(item){
+
+                const itemTotal =
+                    Number(
+                        item.price || 0
+                    ) *
+                    Number(
+                        item.quantity || 1
+                    );
+
+
+                return `
+
+                    <div
+                        style="
+                            display:flex;
+                            justify-content:space-between;
+                            gap:10px;
+                            padding:10px 0;
+                            border-bottom:1px solid #eee;
+                        "
+                    >
+
+                        <div>
+
+                            <strong>
+                                ${escapeHtml(
+                                    item.name ||
+                                    "Product"
+                                )}
+                            </strong>
+
+                            <div
+                                style="
+                                    font-size:13px;
+                                    color:#666;
+                                "
+                            >
+                                Size:
+                                ${escapeHtml(
+                                    item.size || "-"
+                                )}
+
+                                ×
+
+                                ${Number(
+                                    item.quantity || 1
+                                )}
+                            </div>
+
+                        </div>
+
+
+                        <strong>
+                            ₹${itemTotal}
+                        </strong>
+
+                    </div>
+
+                `;
+
+            }
+        ).join("");
+
+}
 
 
 /* ================= COUPON ================= */
 
-window.applyCoupon = function(){
+window.applyCoupon =
+    function(){
 
-    const input =
-        document.getElementById("couponInput");
+        const input =
+            document.getElementById(
+                "couponInput"
+            );
 
-    const message =
-        document.getElementById("couponMessage");
+        const message =
+            document.getElementById(
+                "couponMessage"
+            );
 
-    if(!input){
 
-        return;
+        if(!input){
 
-    }
-
-    const code =
-        input.value
-            .trim()
-            .toUpperCase();
-
-    if(code === "TRENDY10"){
-
-        appliedCoupon = {
-            code:"TRENDY10",
-            percent:10
-        };
-
-        if(message){
-
-            message.textContent =
-                "Coupon applied successfully — 10% OFF.";
-
-            message.style.color =
-                "#198754";
+            return;
 
         }
 
-    }else{
 
-        appliedCoupon = null;
+        const code =
+            input.value
+                .trim()
+                .toUpperCase();
 
-        if(message){
 
-            message.textContent =
-                "Invalid coupon code.";
+        if(code === "TRENDY10"){
 
-            message.style.color =
-                "#d9534f";
+            appliedCoupon = {
+
+                code:
+                    "TRENDY10",
+
+                percent:
+                    10
+
+            };
+
+
+            if(message){
+
+                message.textContent =
+                    "Coupon applied successfully — 10% OFF.";
+
+                message.style.color =
+                    "#198754";
+
+            }
+
+        }else{
+
+            appliedCoupon =
+                null;
+
+
+            if(message){
+
+                message.textContent =
+                    "Invalid coupon code.";
+
+                message.style.color =
+                    "#d9534f";
+
+            }
 
         }
 
-    }
 
-    updateCheckoutTotals();
+        updateCheckoutTotals();
 
-};
+    };
 
 
 /* ================= CHECKOUT TOTALS ================= */
@@ -2257,7 +2508,10 @@ function updateCheckoutTotals(){
     const subtotal =
         getCartSubtotal();
 
-    let discount = 0;
+
+    let discount =
+        0;
+
 
     if(appliedCoupon){
 
@@ -2271,32 +2525,61 @@ function updateCheckoutTotals(){
 
     }
 
+
     const total =
         Math.max(
             0,
             subtotal - discount
         );
 
+
+    const checkoutSubtotal =
+        document.getElementById(
+            "checkoutSubtotal"
+        );
+
+    const discountRow =
+        document.getElementById(
+            "discountRow"
+        );
+
+    const checkoutDiscount =
+        document.getElementById(
+            "checkoutDiscount"
+        );
+
+    const checkoutTotal =
+        document.getElementById(
+            "checkoutTotal"
+        );
+
+
     if(checkoutSubtotal){
 
         checkoutSubtotal.textContent =
-            "₹" + subtotal.toFixed(2);
+            "₹" +
+            subtotal.toFixed(2);
 
     }
+
 
     if(checkoutDiscount){
 
         checkoutDiscount.textContent =
-            "₹" + discount.toFixed(2);
+            "₹" +
+            discount.toFixed(2);
 
     }
+
 
     if(checkoutTotal){
 
         checkoutTotal.textContent =
-            "₹" + total.toFixed(2);
+            "₹" +
+            total.toFixed(2);
 
     }
+
 
     if(discountRow){
 
@@ -2307,205 +2590,260 @@ function updateCheckoutTotals(){
 
     }
 
-}
- /* ================= PLACE ORDER ================= */
-
-window.placeOrder = async function(event){
-
-    if(event){
-
-        event.preventDefault();
-
     }
+    /* ================= ORDER SYSTEM ================= */
 
-    if(!cart.length){
-
-        alert("Your bag is empty.");
-
-        return;
-
-    }
+function getCheckoutData(){
 
     const name =
-        document.getElementById("customerName")
-            ?.value
-            .trim();
+        document.getElementById(
+            "customerName"
+        )?.value.trim() || "";
 
     const phone =
-        document.getElementById("customerPhone")
-            ?.value
-            .trim();
+        document.getElementById(
+            "customerPhone"
+        )?.value.trim() || "";
 
     const email =
-        document.getElementById("customerEmail")
-            ?.value
-            .trim();
+        document.getElementById(
+            "customerEmail"
+        )?.value.trim() || "";
 
     const address =
-        document.getElementById("customerAddress")
-            ?.value
-            .trim();
+        document.getElementById(
+            "customerAddress"
+        )?.value.trim() || "";
 
-    const payment =
-        document.getElementById("paymentMethod")
-            ?.value;
+    const paymentMethod =
+        document.getElementById(
+            "paymentMethod"
+        )?.value || "";
 
-    if(!name){
 
-        alert("Please enter your name.");
+    return {
+        name,
+        phone,
+        email,
+        address,
+        paymentMethod
+    };
 
-        return;
-
-    }
-
-    if(!/^[0-9]{10}$/.test(phone)){
-
-        alert(
-            "Please enter a valid 10-digit mobile number."
-        );
-
-        return;
-
-    }
-
-    if(!address){
-
-        alert("Please enter your delivery address.");
-
-        return;
-
-    }
-
-    if(!payment){
-
-        alert("Please select a payment method.");
-
-        return;
-
-    }
-
-    const subtotal =
-        getCartSubtotal();
-
-    let discount = 0;
-
-    if(appliedCoupon){
-
-        discount =
-            subtotal *
-            (
-                Number(
-                    appliedCoupon.percent || 0
-                ) / 100
-            );
-
-    }
+}
 
 
 /* ================= PLACE ORDER ================= */
 
-window.placeOrder = async function(event){
+window.placeOrder =
+    async function(){
 
-    if(event){
-        event.preventDefault();
-    }
+        if(!cart.length){
 
-    if(!cart.length){
-        alert("Your bag is empty.");
-        return;
-    }
-
-    const name =
-        document.getElementById("customerName")?.value.trim();
-
-    const phone =
-        document.getElementById("customerPhone")?.value.trim();
-
-    const email =
-        document.getElementById("customerEmail")?.value.trim();
-
-    const address =
-        document.getElementById("customerAddress")?.value.trim();
-
-    const payment =
-        document.getElementById("paymentMethod")?.value;
-
-    if(!name){
-        alert("Please enter your name.");
-        return;
-    }
-
-    if(!/^[0-9]{10}$/.test(phone)){
-        alert("Please enter a valid 10-digit mobile number.");
-        return;
-    }
-
-    if(!address){
-        alert("Please enter your delivery address.");
-        return;
-    }
-
-    if(!payment){
-        alert("Please select a payment method.");
-        return;
-    }
-
-    const subtotal =
-        getCartSubtotal();
-
-    let discount = 0;
-
-    if(appliedCoupon){
-
-        discount =
-            subtotal *
-            (
-                Number(appliedCoupon.percent || 0) / 100
+            alert(
+                "Your bag is empty."
             );
 
-    }
+            return;
 
-    const total =
-        Math.max(
-            0,
-            subtotal - discount
-        );
+        }
 
-    try{
+
+        const data =
+            getCheckoutData();
+
+
+        if(!data.name){
+
+            alert(
+                "Please enter your name."
+            );
+
+            return;
+
+        }
+
+
+        if(!/^[0-9]{10}$/.test(data.phone)){
+
+            alert(
+                "Please enter a valid 10 digit mobile number."
+            );
+
+            return;
+
+        }
+
+
+        if(!data.address){
+
+            alert(
+                "Please enter your delivery address."
+            );
+
+            return;
+
+        }
+
+
+        if(!data.paymentMethod){
+
+            alert(
+                "Please select a payment method."
+            );
+
+            return;
+
+        }
+
+
+        const subtotal =
+            getCartSubtotal();
+
+
+        let discount =
+            0;
+
+
+        if(appliedCoupon){
+
+            discount =
+                subtotal *
+                (
+                    Number(
+                        appliedCoupon.percent || 0
+                    ) / 100
+                );
+
+        }
+
+
+        const total =
+            Math.max(
+                0,
+                subtotal - discount
+            );
+
 
         const orderItems =
-            cart.map(function(item){
+            cart.map(
+                function(item){
 
-                return {
+                    return {
 
-                    productId: item.id,
+                        productId:
+                            item.id,
 
-                    name: item.name,
+                        name:
+                            item.name,
 
-                    price:
-                        Number(item.price || 0),
+                        price:
+                            Number(
+                                item.price || 0
+                            ),
 
-                    size:
-                        item.size || "",
+                        size:
+                            item.size || "",
 
-                    quantity:
-                        Number(item.quantity || 1),
+                        quantity:
+                            Number(
+                                item.quantity || 1
+                            ),
 
-                    image:
-                        item.image || ""
+                        image:
+                            item.image || ""
 
-                };
+                    };
 
-            });
+                }
+            );
 
 
-        /* CHECK STOCK + DECREASE STOCK */
+        const orderData = {
 
-        await runTransaction(
-            db,
-            async function(transaction){
+            customerName:
+                data.name,
 
-                for(const item of cart){
+            customerPhone:
+                data.phone,
+
+            customerEmail:
+                data.email,
+
+            customerAddress:
+                data.address,
+
+            paymentMethod:
+                data.paymentMethod,
+
+            items:
+                orderItems,
+
+            subtotal:
+                subtotal,
+
+            discount:
+                discount,
+
+            total:
+                total,
+
+            coupon:
+                appliedCoupon
+                    ? appliedCoupon.code
+                    : "",
+
+            status:
+                "pending",
+
+            createdAt:
+                serverTimestamp()
+
+        };
+
+
+        const button =
+            document.querySelector(
+                '#checkoutForm button[type="submit"]'
+            );
+
+
+        if(button){
+
+            button.disabled =
+                true;
+
+            button.textContent =
+                "PLACING ORDER...";
+
+        }
+
+
+        try{
+
+            const ordersRef =
+                collection(
+                    db,
+                    "orders"
+                );
+
+
+            const orderRef =
+                await addDoc(
+                    ordersRef,
+                    orderData
+                );
+
+
+            /*
+             * Reduce product stock
+             * after successful order.
+             */
+
+            for(
+                const item of cart
+            ){
+
+                try{
 
                     const productRef =
                         doc(
@@ -2514,215 +2852,438 @@ window.placeOrder = async function(event){
                             item.id
                         );
 
-                    const productSnap =
-                        await transaction.get(
-                            productRef
-                        );
 
-                    if(!productSnap.exists()){
+                    await runTransaction(
+                        db,
+                        async function(transaction){
 
-                        throw new Error(
-                            "Product not found: " +
-                            item.name
-                        );
+                            const snapshot =
+                                await transaction.get(
+                                    productRef
+                                );
 
-                    }
 
-                    const productData =
-                        productSnap.data();
+                            if(!snapshot.exists()){
 
-                    const currentStock =
-                        Number(
-                            productData.stock || 0
-                        );
+                                return;
 
-                    const requestedQuantity =
-                        Number(
-                            item.quantity || 1
-                        );
+                            }
 
-                    if(
-                        currentStock <
-                        requestedQuantity
-                    ){
 
-                        throw new Error(
-                            item.name +
-                            " has only " +
-                            currentStock +
-                            " item(s) left."
-                        );
+                            const product =
+                                snapshot.data();
 
-                    }
 
-                    transaction.update(
-                        productRef,
-                        {
-                            stock:
-                                currentStock -
-                                requestedQuantity
+                            const oldStock =
+                                Number(
+                                    product.stock || 0
+                                );
+
+
+                            const orderedQuantity =
+                                Number(
+                                    item.quantity || 1
+                                );
+
+
+                            const newStock =
+                                Math.max(
+                                    0,
+                                    oldStock -
+                                    orderedQuantity
+                                );
+
+
+                            transaction.update(
+                                productRef,
+                                {
+                                    stock:
+                                        newStock
+                                }
+                            );
+
                         }
+                    );
+
+                }catch(stockError){
+
+                    console.error(
+                        "Stock update error:",
+                        stockError
                     );
 
                 }
 
             }
-        );
 
 
-        /* CREATE ORDER */
-
-        const orderData = {
-
-            customer: {
-
-                name: name,
-
-                phone: phone,
-
-                email: email,
-
-                address: address
-
-            },
-
-            items: orderItems,
-
-            subtotal: subtotal,
-
-            discount: discount,
-
-            total: total,
-
-            coupon:
-                appliedCoupon
-                    ? appliedCoupon.code
-                    : "",
-
-            paymentMethod: payment,
-
-            status: "Pending",
-
-            createdAt:
-                serverTimestamp()
-
-        };
+            const orderId =
+                orderRef.id;
 
 
-        const orderRef =
-            await addDoc(
-                collection(db,"orders"),
-                orderData
+            cart = [];
+
+            appliedCoupon =
+                null;
+
+
+            saveCart();
+
+            updateCart();
+
+
+            const form =
+                document.getElementById(
+                    "checkoutForm"
+                );
+
+
+            if(form){
+
+                form.reset();
+
+            }
+
+
+            const checkoutPage =
+                document.getElementById(
+                    "checkoutPage"
+                );
+
+            const successPage =
+                document.getElementById(
+                    "successPage"
+                );
+
+            const successMessage =
+                document.getElementById(
+                    "successMessage"
+                );
+
+
+            if(checkoutPage){
+
+                checkoutPage.classList.remove(
+                    "show"
+                );
+
+            }
+
+
+            if(successMessage){
+
+                successMessage.textContent =
+                    "Your order ID is " +
+                    orderId +
+                    ". We will contact you shortly.";
+
+            }
+
+
+            if(successPage){
+
+                successPage.classList.add(
+                    "show"
+                );
+
+            }
+
+
+            window.scrollTo({
+                top:0,
+                behavior:"smooth"
+            });
+
+
+            /*
+             * Refresh products so the
+             * updated stock appears.
+             */
+
+            await loadProducts();
+
+
+        }catch(error){
+
+            console.error(
+                "Order error:",
+                error
             );
 
 
-        /* CLEAR CART */
-
-        cart = [];
-
-        saveCart();
-
-        appliedCoupon = null;
-
-        updateCart();
-
-        updateCheckoutTotals();
+            alert(
+                "Order could not be placed. Please try again."
+            );
 
 
-        if(checkoutForm){
+        }finally{
 
-            checkoutForm.reset();
+            if(button){
+
+                button.disabled =
+                    false;
+
+                button.textContent =
+                    "PLACE ORDER";
+
+            }
+
+        }
+
+    };
+
+
+/* ================= CHECKOUT FORM ================= */
+
+document.addEventListener(
+    "submit",
+    function(event){
+
+        if(
+            event.target &&
+            event.target.id ===
+            "checkoutForm"
+        ){
+
+            event.preventDefault();
+
+            window.placeOrder();
+
+        }
+
+    }
+);
+
+
+/* ================= BACK TO SHOP ================= */
+
+window.backToShop =
+    function(){
+
+        const successPage =
+            document.getElementById(
+                "successPage"
+            );
+
+
+        if(successPage){
+
+            successPage.classList.remove(
+                "show"
+            );
 
         }
 
 
-        hideCheckoutPage();
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    };
 
 
-        /* SUCCESS PAGE */
+/* ================= CART BUTTON ================= */
 
-        if(successMessage){
+document.addEventListener(
+    "click",
+    function(event){
 
-            successMessage.innerHTML = `
-                Your order has been placed successfully.<br><br>
+        const target =
+            event.target;
 
-                <strong>Order ID:</strong><br>
 
-                ${escapeHtml(orderRef.id)}
-            `;
+        if(
+            target &&
+            (
+                target.id ===
+                "cartButton" ||
+
+                target.closest &&
+                target.closest(
+                    "#cartButton"
+                )
+            )
+        ){
+
+            event.preventDefault();
+
+            openCart();
+
+        }
+
+    }
+);
+
+
+/* ================= INITIAL CART ================= */
+
+updateCart();
+
+
+/* ================= ESC KEY ================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key !== "Escape"){
+
+            return;
+
+        }
+
+
+        closeProductModal();
+
+        closeCart();
+
+
+        const checkoutPage =
+            document.getElementById(
+                "checkoutPage"
+            );
+
+        const successPage =
+            document.getElementById(
+                "successPage"
+            );
+
+
+        if(checkoutPage){
+
+            checkoutPage.classList.remove(
+                "show"
+            );
 
         }
 
 
         if(successPage){
 
-            successPage.classList.add("show");
+            successPage.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+/* ================= MODAL BACKDROP ================= */
+
+document.addEventListener(
+    "click",
+    function(event){
+
+        const modal =
+            document.getElementById(
+                "productModal"
+            );
+
+
+        if(
+            modal &&
+            event.target === modal
+        ){
+
+            closeProductModal();
 
         }
 
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        const cartPanel =
+            document.getElementById(
+                "cartPanel"
+            );
 
 
-        /* REFRESH PRODUCTS */
+        if(
+            cartPanel &&
+            event.target === cartPanel
+        ){
 
-        await loadProducts();
+            closeCart();
 
-
-    }catch(error){
-
-        console.error(
-            "Order error:",
-            error
-        );
-
-        alert(
-            error.message ||
-            "Order place nahi ho saka. Please try again."
-        );
+        }
 
     }
+);
+    /* ================= FINAL STARTUP ================= */
 
-};
+function startStore(){
 
+    try{
 
-/* ================= BACK TO SHOP ================= */
-
-window.backToShop = function(){
-
-    hideSuccessPage();
-
-    hideCheckoutPage();
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-    updateCart();
-
-    loadProducts();
-
-};
-
-
-/* ================= START STORE ================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
+        createExtraUI();
 
         updateCart();
 
         loadProducts();
 
+    }catch(error){
+
+        console.error(
+            "Store startup error:",
+            error
+        );
+
+        const grid =
+            document.getElementById(
+                "productGrid"
+            );
+
+        if(grid){
+
+            grid.innerHTML = `
+                <div
+                    style="
+                        grid-column:1/-1;
+                        text-align:center;
+                        padding:40px 20px;
+                    "
+                >
+                    <h3>
+                        Unable to load products
+                    </h3>
+
+                    <p>
+                        Please refresh the page and try again.
+                    </p>
+                </div>
+            `;
+
+        }
+
     }
-);
+
+}
+
+
+/* ================= START STORE ================= */
+
+if(
+    document.readyState ===
+    "loading"
+){
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        startStore
+    );
+
+}else{
+
+    startStore();
+
+}
+
+
+/* ================= FINAL SCRIPT ================= */
 
 </script>
 
 </body>
+
 </html>
