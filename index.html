@@ -1243,12 +1243,153 @@ window.openProduct = function(id){
         .filter(Boolean);
 
     const mainImage =
-        document.getElementById("modalProductImage");
+    function renderProducts(){
 
-    if(mainImage){
-        mainImage.src = images[0] || "";
-    }
+const grid =
+document.getElementById("productGrid");
 
+if(filteredProducts.length === 0){
+
+grid.innerHTML =
+'<div class="empty-state">No products found.</div>';
+
+return;
+
+}
+
+grid.innerHTML =
+filteredProducts.map(function(product){
+
+const stock =
+Number(product.stock || 0);
+
+const firstImage = product.images?.[0];
+
+const image =
+    typeof firstImage === "string"
+        ? firstImage
+        : firstImage?.url || "";
+
+return `
+
+<div class="product-card" onclick="openProduct('${product.id}')">
+
+<div class="product-image">
+
+${
+image
+?
+`<img src="${escapeHtml(image)}" alt="${escapeHtml(product.name)}">`
+:
+"NO IMAGE"
+}
+
+</div>
+
+<div class="product-info">
+
+<h3>
+${escapeHtml(product.name || "Unnamed Product")}
+</h3>
+
+<div class="product-price">
+₹${Number(product.price || 0)}
+</div>
+
+<div class="stock-text ${stock > 0 ? "in-stock" : "out-stock"}">
+${stock > 0 ? "IN STOCK" : "OUT OF STOCK"}
+</div>
+
+</div>
+</div>
+
+`;
+
+}).join("");
+function renderProducts(){
+
+const grid =
+document.getElementById("productGrid");
+
+if(filteredProducts.length === 0){
+
+grid.innerHTML =
+'<div class="empty-state">No products found.</div>';
+
+return;
+
+}
+
+grid.innerHTML =
+filteredProducts.map(function(product){
+
+const stock =
+Number(product.stock || 0);
+
+const firstImage = product.images?.[0];
+
+const image =
+    typeof firstImage === "string"
+        ? firstImage
+        : firstImage?.url || "";
+
+return `
+
+<div class="product-card" onclick="openProduct('${product.id}')">
+
+<div class="product-image">
+
+${
+image
+?
+`<img src="${escapeHtml(image)}" alt="${escapeHtml(product.name)}">`
+:
+"NO IMAGE"
+}
+
+</div>
+
+<div class="product-info">
+
+<h3>
+${escapeHtml(product.name || "Unnamed Product")}
+</h3>
+
+<div class="product-price">
+₹${Number(product.price || 0)}
+</div>
+
+<div class="stock-text ${stock > 0 ? "in-stock" : "out-stock"}">
+${stock > 0 ? "IN STOCK" : "OUT OF STOCK"}
+</div>
+
+</div>
+</div>
+
+`;
+
+}).join("");
+
+}
+}createElement("img");
+
+        thumb.src = imageUrl;
+
+        thumb.style.width = "65px";
+        thumb.style.height = "65px";
+        thumb.style.objectFit = "cover";
+        thumb.style.margin = "5px";
+        thumb.style.cursor = "pointer";
+        thumb.style.borderRadius = "6px";
+
+        thumb.onclick = function(){
+            mainImage.src = imageUrl;
+        };
+
+        gallery.appendChild(thumb);
+
+    });
+  }
     document.getElementById("modalProductName").textContent =
         currentProduct.name || "Product";
 
