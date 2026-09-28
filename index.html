@@ -1,564 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>TRENDY FACTORY — Men's Fashion</title>
 
 <style>
-
-/* ================= RESET ================= */
-
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#f5f0e8;
-    color:#211e1a;
-    line-height:1.5;
+    background:#f5f1eb;
+    color:#111;
 }
 
 button,
 input,
-textarea,
-select{
+select,
+textarea{
     font:inherit;
 }
 
 button{
     cursor:pointer;
-    border:none;
 }
 
-img{
-    max-width:100%;
-    display:block;
-}
-
-/* ================= HEADER ================= */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:#211e1a;
-    color:white;
-    padding:14px 5%;
+.header{
+    background:#111;
+    color:#fff;
+    padding:16px 20px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    box-shadow:0 2px 10px rgba(0,0,0,0.18);
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
 .logo{
-    font-size:21px;
+    font-size:22px;
     font-weight:800;
-    letter-spacing:2px;
+    letter-spacing:1px;
 }
 
-.cart-btn{
-    position:relative;
-    background:transparent;
-    color:white;
-    padding:9px 14px;
-    border:1px solid rgba(255,255,255,0.35);
-    border-radius:7px;
-    font-weight:bold;
+.bag-btn{
+    border:0;
+    background:#d7c2a3;
+    color:#111;
+    padding:10px 16px;
+    border-radius:8px;
+    font-weight:700;
 }
-
-.cart-count{
-    position:absolute;
-    top:-9px;
-    right:-8px;
-    width:21px;
-    height:21px;
-    border-radius:50%;
-    background:#d97b36;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:11px;
-}
-
-/* ================= HERO ================= */
 
 .hero{
-    min-height:420px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    padding:45px 20px;
     text-align:center;
-    padding:70px 20px;
-    background:linear-gradient(135deg,#211e1a,#514438);
-    color:white;
-}
-
-.hero-content{
-    max-width:750px;
+    background:#e8ddcf;
 }
 
 .hero h1{
-    font-size:clamp(38px,8vw,72px);
-    letter-spacing:4px;
-    line-height:1.1;
-    margin-bottom:18px;
+    font-size:34px;
+    margin-bottom:10px;
 }
 
 .hero p{
+    color:#555;
     font-size:16px;
-    color:#e6ddd2;
-    max-width:600px;
-    margin:auto;
 }
 
-.shop-now{
-    display:inline-block;
-    margin-top:28px;
-    padding:14px 30px;
-    background:#d97b36;
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    border-radius:6px;
-}
-
-/* ================= SEARCH ================= */
-
-.search-section{
+.container{
+    width:100%;
     max-width:1200px;
     margin:auto;
-    padding:35px 5% 20px;
+    padding:25px 16px 60px;
 }
 
 .search-box{
+    margin-bottom:20px;
+}
+
+.search-box input{
     width:100%;
-    padding:15px;
-    border:1px solid #d5c9bc;
-    border-radius:8px;
+    padding:14px 16px;
+    border:1px solid #ddd;
+    border-radius:10px;
     outline:none;
-    background:white;
+    background:#fff;
 }
 
-.search-box:focus{
-    border-color:#d97b36;
-}
-
-/* ================= FILTERS ================= */
-
-.filters{
-    max-width:1200px;
-    margin:auto;
-    padding:0 5% 30px;
+.categories{
     display:flex;
-    gap:10px;
-    flex-wrap:wrap;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:10px;
+    margin-bottom:25px;
 }
 
-.filter-btn{
-    padding:10px 18px;
-    border-radius:25px;
-    background:white;
-    border:1px solid #d5c9bc;
-    color:#211e1a;
+.category-btn{
+    white-space:nowrap;
+    border:1px solid #ccc;
+    background:#fff;
+    padding:10px 15px;
+    border-radius:20px;
 }
 
-.filter-btn.active,
-.filter-btn:hover{
-    background:#211e1a;
-    color:white;
-}
-
-/* ================= PRODUCTS ================= */
-
-.products-section{
-    max-width:1300px;
-    margin:auto;
-    padding:20px 5% 80px;
-}
-
-.section-title{
-    text-align:center;
-    font-size:30px;
-    letter-spacing:2px;
-    margin-bottom:30px;
+.category-btn.active{
+    background:#111;
+    color:#fff;
+    border-color:#111;
 }
 
 .product-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
-    gap:22px;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
 }
-
-.loading,
-.empty-state{
-    grid-column:1/-1;
-    text-align:center;
-    padding:50px;
-    color:#6c6258;
-}
-
-/* ================= PRODUCT CARD ================= */
 
 .product-card{
-    background:white;
+    background:#fff;
     border-radius:12px;
     overflow:hidden;
-    box-shadow:0 5px 18px rgba(0,0,0,0.08);
+    box-shadow:0 2px 10px rgba(0,0,0,.07);
     cursor:pointer;
-    transition:transform 0.2s ease;
+    transition:.2s;
 }
 
 .product-card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-3px);
 }
 
 .product-image{
-    height:300px;
-    background:#eee5da;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.product-image img{
     width:100%;
-    height:100%;
+    aspect-ratio:1/1;
     object-fit:cover;
+    display:block;
+    background:#eee;
 }
 
 .product-info{
-    padding:16px;
+    padding:14px;
 }
 
 .product-info h3{
-    font-size:16px;
+    font-size:17px;
     margin-bottom:8px;
 }
 
 .product-price{
     font-size:18px;
-    font-weight:bold;
-    color:#b65d20;
+    font-weight:800;
+    margin-bottom:6px;
 }
 
 .stock-text{
     font-size:12px;
-    margin-top:7px;
-    font-weight:bold;
+    font-weight:700;
 }
 
 .in-stock{
-    color:#16803d;
+    color:#198754;
 }
 
 .out-stock{
-    color:#b3261e;
+    color:#d9534f;
 }
 
-/* ================= MODAL ================= */
+.loading,
+.empty-message,
+.error-message{
+    text-align:center;
+    padding:40px 15px;
+    grid-column:1/-1;
+}
 
-.modal{
+.error-message{
+    color:#d9534f;
+}
+
+.modal-overlay{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.65);
-    z-index:2000;
+    background:rgba(0,0,0,.65);
+    z-index:500;
     padding:20px;
-    overflow:auto;
+    overflow-y:auto;
 }
 
-.modal.active{
+.modal-overlay.show{
     display:flex;
     align-items:center;
     justify-content:center;
 }
 
-.modal-content{
-    width:min(900px,100%);
-    background:white;
+.modal{
+    width:100%;
+    max-width:850px;
+    background:#fff;
     border-radius:14px;
+    overflow:hidden;
     position:relative;
-    padding:25px;
+}
+
+.close-btn{
+    position:absolute;
+    right:12px;
+    top:12px;
+    z-index:5;
+    width:38px;
+    height:38px;
+    border:0;
+    border-radius:50%;
+    background:#111;
+    color:#fff;
+    font-size:22px;
+}
+
+.modal-content{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:30px;
 }
 
-.close-modal{
-    position:absolute;
-    top:10px;
-    right:15px;
-    background:none;
-    font-size:30px;
-    z-index:5;
+.modal-left{
+    padding:15px;
 }
 
-.modal-image{
-    min-height:380px;
-    background:#eee5da;
-    border-radius:10px;
-    overflow:hidden;
-}
-
-.modal-image > img{
+.modal-main-image{
     width:100%;
-    height:380px;
+    aspect-ratio:1/1;
     object-fit:cover;
+    border-radius:10px;
+    background:#eee;
 }
 
-#productImageGallery{
+.gallery{
     display:flex;
     gap:8px;
-    flex-wrap:wrap;
-    padding:8px;
-    background:white;
+    margin-top:10px;
+    overflow-x:auto;
 }
 
-#productImageGallery img{
+.gallery img{
     width:65px;
     height:65px;
     object-fit:cover;
-    border-radius:6px;
+    border-radius:7px;
     cursor:pointer;
-    border:1px solid #ddd;
+    border:2px solid transparent;
 }
 
-.modal-details{
-    padding-top:20px;
+.gallery img:hover{
+    border-color:#111;
 }
 
-.modal-details h2{
-    font-size:28px;
+.modal-right{
+    padding:30px 25px;
+}
+
+.modal-right h2{
     margin-bottom:10px;
 }
 
 .modal-price{
     font-size:24px;
-    font-weight:bold;
-    color:#b65d20;
+    font-weight:800;
     margin-bottom:15px;
 }
 
 .modal-description{
-    color:#655d55;
+    color:#666;
+    line-height:1.6;
     margin-bottom:20px;
 }
 
-/* ================= SIZE ================= */
-
-.size-label{
-    display:block;
-    font-weight:bold;
+.size-title{
+    font-weight:700;
     margin-bottom:10px;
 }
 
 .size-options{
     display:flex;
-    gap:10px;
     flex-wrap:wrap;
+    gap:8px;
     margin-bottom:20px;
 }
 
 .size-btn{
-    width:48px;
-    height:42px;
-    background:white;
-    border:1px solid #cfc3b7;
+    border:1px solid #ccc;
+    background:#fff;
+    padding:9px 15px;
+    border-radius:7px;
+}
+
+.size-btn.selected{
+    background:#111;
+    color:#fff;
+}
+
+.quantity-box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.quantity-box button{
+    width:35px;
+    height:35px;
+    border:1px solid #ccc;
+    background:#fff;
     border-radius:6px;
 }
 
-.size-btn.active{
-    background:#211e1a;
-    color:white;
-}
-
-/* ================= QUANTITY ================= */
-
-.quantity-row{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin-bottom:22px;
-}
-
-.quantity-controls{
-    display:flex;
-    align-items:center;
-    border:1px solid #cfc3b7;
-    border-radius:6px;
-    overflow:hidden;
-}
-
-.quantity-controls button{
-    width:42px;
-    height:42px;
-    background:#f7f3ed;
-    font-size:18px;
-}
-
-.quantity-controls span{
-    width:45px;
-    text-align:center;
-    font-weight:bold;
-}
-
-/* ================= BUTTONS ================= */
-
-.primary-btn{
+.add-cart-btn{
     width:100%;
     padding:14px;
-    background:#211e1a;
-    color:white;
-    border-radius:7px;
-    font-weight:bold;
+    border:0;
+    background:#111;
+    color:#fff;
+    border-radius:8px;
+    font-weight:700;
 }
-
-.primary-btn:hover{
-    background:#3d352e;
-}
-
-.secondary-btn{
-    padding:12px 18px;
-    background:#eee5da;
-    color:#211e1a;
-    border-radius:7px;
-}
-
-/* ================= CART ================= */
 
 .cart-panel{
+    display:none;
     position:fixed;
-    top:0;
-    right:-450px;
-    width:min(430px,100%);
-    height:100vh;
-    background:white;
-    z-index:3000;
-    padding:22px;
-    display:flex;
-    flex-direction:column;
-    box-shadow:-5px 0 20px rgba(0,0,0,0.18);
-    transition:right 0.3s ease;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    z-index:600;
 }
 
-.cart-panel.active{
+.cart-panel.show{
+    display:block;
+}
+
+.cart-box{
+    position:absolute;
     right:0;
+    top:0;
+    height:100%;
+    width:100%;
+    max-width:430px;
+    background:#fff;
+    display:flex;
+    flex-direction:column;
 }
 
 .cart-header{
+    padding:18px;
+    border-bottom:1px solid #ddd;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    padding-bottom:18px;
-    border-bottom:1px solid #e5ddd3;
-}
-
-.cart-close{
-    background:none;
-    font-size:28px;
+    justify-content:space-between;
 }
 
 .cart-items{
     flex:1;
     overflow-y:auto;
-    padding:15px 0;
+    padding:15px;
 }
 
 .cart-item{
-    display:grid;
-    grid-template-columns:70px 1fr auto;
+    display:flex;
     gap:12px;
-    padding:14px 0;
+    padding:12px 0;
     border-bottom:1px solid #eee;
 }
 
 .cart-item img{
-    width:70px;
-    height:80px;
+    width:75px;
+    height:75px;
     object-fit:cover;
-    border-radius:6px;
+    border-radius:8px;
 }
 
-.cart-item-name{
-    font-size:14px;
-    font-weight:bold;
+.cart-item-info{
+    flex:1;
 }
 
-.cart-item-details{
-    font-size:12px;
-    color:#6c6258;
-    margin-top:4px;
+.cart-item-info h4{
+    margin-bottom:5px;
 }
 
 .cart-item-price{
-    font-size:13px;
-    font-weight:bold;
-    margin-top:6px;
+    font-weight:700;
 }
 
-.remove-btn{
+.remove-cart{
+    border:0;
     background:none;
-    color:#b3261e;
-    font-size:11px;
-    font-weight:bold;
+    color:#d9534f;
+    font-size:13px;
 }
 
 .cart-footer{
-    border-top:1px solid #e5ddd3;
-    padding-top:18px;
+    padding:18px;
+    border-top:1px solid #ddd;
 }
 
 .cart-total{
     display:flex;
     justify-content:space-between;
     font-size:19px;
-    font-weight:bold;
+    font-weight:800;
     margin-bottom:15px;
 }
 
-/* ================= CHECKOUT ================= */
+.checkout-btn{
+    width:100%;
+    padding:14px;
+    border:0;
+    background:#111;
+    color:#fff;
+    border-radius:8px;
+    font-weight:700;
+}
 
 .checkout-page{
     display:none;
     min-height:100vh;
-    max-width:1200px;
-    margin:auto;
-    padding:40px 5%;
+    padding:30px 16px;
 }
 
-.checkout-page.active{
+.checkout-page.show{
     display:block;
 }
 
-.checkout-title{
-    margin:25px 0;
-}
-
-.checkout-grid{
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:30px;
-}
-
-.checkout-card{
-    background:white;
-    padding:24px;
+.checkout-box{
+    max-width:700px;
+    margin:auto;
+    background:#fff;
+    padding:25px;
     border-radius:12px;
-    box-shadow:0 4px 16px rgba(0,0,0,0.07);
 }
 
-.checkout-card h2{
+.checkout-box h2{
     margin-bottom:20px;
 }
 
@@ -568,9 +449,8 @@ header{
 
 .form-group label{
     display:block;
-    font-size:13px;
-    font-weight:bold;
     margin-bottom:6px;
+    font-weight:600;
 }
 
 .form-group input,
@@ -578,320 +458,552 @@ header{
 .form-group select{
     width:100%;
     padding:12px;
-    border:1px solid #d5c9bc;
-    border-radius:6px;
+    border:1px solid #ccc;
+    border-radius:8px;
     outline:none;
 }
 
 .form-group textarea{
-    min-height:100px;
+    min-height:90px;
     resize:vertical;
 }
 
-.checkout-item{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    padding:12px 0;
-    border-bottom:1px solid #eee;
-    font-size:13px;
+.checkout-items{
+    margin-bottom:20px;
 }
 
-.coupon-row{
-    display:flex;
-    gap:8px;
-    margin:18px 0 8px;
-}
-
-.coupon-row input{
-    flex:1;
-    padding:11px;
-    border:1px solid #d5c9bc;
-    border-radius:6px;
-}
-
-.coupon-row button{
-    padding:11px 14px;
-    background:#211e1a;
-    color:white;
-    border-radius:6px;
-}
-
-.coupon-message{
-    font-size:12px;
-    min-height:20px;
+.checkout-summary{
+    border-top:1px solid #ddd;
+    margin-top:20px;
+    padding-top:15px;
 }
 
 .summary-row{
     display:flex;
     justify-content:space-between;
-    padding:9px 0;
+    margin-bottom:9px;
 }
 
 .summary-total{
     font-size:20px;
-    font-weight:bold;
+    font-weight:800;
     border-top:1px solid #ddd;
-    margin-top:10px;
-    padding-top:15px;
+    padding-top:12px;
 }
 
-/* ================= SUCCESS ================= */
+.coupon-box{
+    display:flex;
+    gap:8px;
+    margin:15px 0;
+}
+
+.coupon-box input{
+    flex:1;
+    padding:11px;
+    border:1px solid #ccc;
+    border-radius:7px;
+}
+
+.coupon-box button{
+    border:0;
+    background:#111;
+    color:#fff;
+    padding:11px 15px;
+    border-radius:7px;
+}
 
 .success-page{
     display:none;
     min-height:100vh;
-    padding:80px 20px;
+    align-items:center;
+    justify-content:center;
     text-align:center;
+    padding:25px;
 }
 
-.success-page.active{
-    display:block;
+.success-page.show{
+    display:flex;
 }
 
 .success-box{
-    max-width:550px;
-    margin:auto;
-    background:white;
-    padding:45px 25px;
-    border-radius:15px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    background:#fff;
+    padding:35px 25px;
+    border-radius:14px;
+    max-width:500px;
+    width:100%;
 }
 
-.success-icon{
-    font-size:60px;
-    margin-bottom:15px;
+.success-box h2{
+    margin-bottom:12px;
 }
 
-/* ================= WHATSAPP ================= */
-
-.whatsapp-float{
+.whatsapp-btn{
     position:fixed;
-    bottom:25px;
-    right:25px;
-    width:58px;
-    height:58px;
-    background:#25D366;
+    right:18px;
+    bottom:18px;
+    width:55px;
+    height:55px;
     border-radius:50%;
+    background:#25D366;
+    color:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
-    z-index:9999;
-    box-shadow:0 5px 18px rgba(0,0,0,0.25);
+    text-decoration:none;
+    font-size:25px;
+    z-index:400;
 }
 
-.whatsapp-float svg{
-    width:30px;
-    height:30px;
+@media(max-width:900px){
+    .product-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
 }
 
-/* ================= MOBILE ================= */
-
-@media(max-width:800px){
-
-    .modal-content{
-        grid-template-columns:1fr;
-    }
-
-    .modal-image{
-        min-height:300px;
-    }
-
-    .checkout-grid{
-        grid-template-columns:1fr;
-    }
-
-}
-
-@media(max-width:600px){
-
-    header{
-        padding:13px 4%;
-    }
-
-    .logo{
-        font-size:16px;
-    }
-
-    .hero{
-        min-height:380px;
-    }
-
+@media(max-width:650px){
     .product-grid{
         grid-template-columns:repeat(2,1fr);
         gap:12px;
     }
 
-    .product-image{
-        height:220px;
-    }
-
-    .product-info{
-        padding:12px;
-    }
-
-    .product-info h3{
-        font-size:14px;
-    }
-
-    .modal{
-        padding:10px;
+    .hero h1{
+        font-size:27px;
     }
 
     .modal-content{
-        padding:18px;
+        grid-template-columns:1fr;
     }
 
-    .modal-image > img{
-        height:380px;
+    .modal-right{
+        padding:20px;
     }
-
-    .whatsapp-float{
-        width:54px;
-        height:54px;
-        bottom:18px;
-        right:18px;
-    }
-
 }
 
-</style>
+@media(max-width:400px){
+    .product-grid{
+        grid-template-columns:1fr 1fr;
+    }
 
+    .product-info{
+        padding:10px;
+    }
+
+    .product-info h3{
+        font-size:15px;
+    }
+
+    .product-price{
+        font-size:16px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<!-- ================= MAIN WEBSITE ================= -->
+<header class="header">
+    <div class="logo">TRENDY FACTORY</div>
 
-<div id="mainWebsite">
-
-<header>
-
-    <div class="logo">
-        TRENDY FACTORY
-    </div>
-
-    <button class="cart-btn" onclick="openCart()">
-        BAG
-        <span id="cartCount" class="cart-count">0</span>
+    <button class="bag-btn" onclick="openCart()">
+        BAG (<span id="cartCount">0</span>)
     </button>
-
 </header>
 
-
-<!-- ================= HERO ================= -->
-
 <section class="hero">
+    <h1>Men's Fashion</h1>
+    <p>Trendy styles. Premium looks. Great prices.</p>
+</section>
 
-    <div class="hero-content">
+<main class="container">
 
-        <h1>TRENDY FACTORY</h1>
-
-        <p>
-            Premium men's fashion.
-            Discover modern styles, quality fabrics
-            and everyday essentials.
-        </p>
-
-        <a href="#products" class="shop-now">
-            SHOP NOW
-        </a>
-
+    <div class="search-box">
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Search products..."
+            oninput="filterProducts()"
+        >
     </div>
 
-</section>
+    <div class="categories">
+        <button
+            class="category-btn active"
+            data-category="all"
+            onclick="setCategory('all', this)"
+        >
+            ALL
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="tshirt"
+            onclick="setCategory('tshirt', this)"
+        >
+            T-SHIRTS
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="shirt"
+            onclick="setCategory('shirt', this)"
+        >
+            SHIRTS
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="jeans"
+            onclick="setCategory('jeans', this)"
+        >
+            JEANS
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="hoodie"
+            onclick="setCategory('hoodie', this)"
+        >
+            HOODIES
+        </button>
+    </div>
+
+    <div id="productGrid" class="product-grid">
+        <div class="loading">Loading products...</div>
+    </div>
+
+</main>
 
 
-<!-- ================= SEARCH ================= -->
+<!-- PRODUCT MODAL -->
 
-<section class="search-section">
+<div id="productModal" class="modal-overlay">
 
-    <input
-        type="text"
-        id="searchInput"
-        class="search-box"
-        placeholder="Search products..."
-        oninput="filterProducts()"
-    >
+    <div class="modal">
 
-</section>
+        <button
+            class="close-btn"
+            onclick="closeProductModal()"
+        >
+            ×
+        </button>
 
+        <div class="modal-content">
 
-<!-- ================= FILTERS ================= -->
+            <div class="modal-left">
 
-<section class="filters">
+                <img
+                    id="modalProductImage"
+                    class="modal-main-image"
+                    src=""
+                    alt="Product"
+                >
 
-    <button
-        class="filter-btn active"
-        onclick="setCategory('all',this)"
-    >
-        ALL
-    </button>
+                <div
+                    id="productImageGallery"
+                    class="gallery"
+                ></div>
 
-    <button
-        class="filter-btn"
-        onclick="setCategory('tshirt',this)"
-    >
-        T-SHIRTS
-    </button>
+            </div>
 
-    <button
-        class="filter-btn"
-        onclick="setCategory('shirt',this)"
-    >
-        SHIRTS
-    </button>
+            <div class="modal-right">
 
-    <button
-        class="filter-btn"
-        onclick="setCategory('jeans',this)"
-    >
-        JEANS
-    </button>
+                <h2 id="modalProductName">
+                    Product
+                </h2>
 
-    <button
-        class="filter-btn"
-        onclick="setCategory('hoodie',this)"
-    >
-        HOODIES
-    </button>
+                <div
+                    id="modalProductPrice"
+                    class="modal-price"
+                >
+                    ₹0
+                </div>
 
-</section>
+                <div
+                    id="modalProductDescription"
+                    class="modal-description"
+                ></div>
 
+                <div class="size-title">
+                    Select Size
+                </div>
 
-<!-- ================= PRODUCTS ================= -->
+                <div
+                    id="sizeOptions"
+                    class="size-options"
+                ></div>
 
-<section
-    id="products"
-    class="products-section"
->
+                <div class="quantity-box">
 
-    <h2 class="section-title">
-        LATEST COLLECTION
-    </h2>
+                    <button onclick="changeModalQuantity(-1)">
+                        −
+                    </button>
 
-    <div
-        id="productGrid"
-        class="product-grid"
-    >
+                    <strong id="modalQuantity">
+                        1
+                    </strong>
 
-        <div class="loading">
-            Loading products...
+                    <button onclick="changeModalQuantity(1)">
+                        +
+                    </button>
+
+                </div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addCurrentProductToCart()"
+                >
+                    ADD TO CART
+                </button>
+
+            </div>
+
         </div>
 
     </div>
 
-</section>
+</div>
+
+
+<!-- CART -->
+
+<div id="cartPanel" class="cart-panel">
+
+    <div class="cart-box">
+
+        <div class="cart-header">
+
+            <h2>Your Bag</h2>
+
+            <button
+                class="close-btn"
+                style="position:static"
+                onclick="closeCart()"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div
+            id="cartItems"
+            class="cart-items"
+        ></div>
+
+        <div class="cart-footer">
+
+            <div class="cart-total">
+
+                <span>Total</span>
+
+                <span id="cartTotal">
+                    ₹0
+                </span>
+
+            </div>
+
+            <button
+                class="checkout-btn"
+                onclick="goToCheckout()"
+            >
+                PROCEED TO CHECKOUT
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
 
-<!-- ================= FIREBASE + JAVASCRIPT ================= -->
+<!-- CHECKOUT -->
+
+<section
+    id="checkoutPage"
+    class="checkout-page"
+>
+
+    <div class="checkout-box">
+
+        <h2>Checkout</h2>
+
+        <div
+            id="checkoutItems"
+            class="checkout-items"
+        ></div>
+
+        <form id="checkoutForm">
+
+            <div class="form-group">
+                <label for="customerName">
+                    Full Name
+                </label>
+
+                <input
+                    id="customerName"
+                    type="text"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="customerPhone">
+                    Mobile Number
+                </label>
+
+                <input
+                    id="customerPhone"
+                    type="tel"
+                    maxlength="10"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="customerEmail">
+                    Email
+                </label>
+
+                <input
+                    id="customerEmail"
+                    type="email"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="customerAddress">
+                    Delivery Address
+                </label>
+
+                <textarea
+                    id="customerAddress"
+                    required
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="paymentMethod">
+                    Payment Method
+                </label>
+
+                <select
+                    id="paymentMethod"
+                    required
+                >
+                    <option value="">
+                        Select Payment Method
+                    </option>
+
+                    <option value="COD">
+                        Cash on Delivery
+                    </option>
+
+                    <option value="ONLINE">
+                        Online Payment
+                    </option>
+                </select>
+            </div>
+
+            <div class="coupon-box">
+
+                <input
+                    id="couponInput"
+                    type="text"
+                    placeholder="Coupon code"
+                >
+
+                <button
+                    type="button"
+                    onclick="applyCoupon()"
+                >
+                    APPLY
+                </button>
+
+            </div>
+
+            <div
+                id="couponMessage"
+                style="font-size:13px;margin-bottom:10px;"
+            ></div>
+
+            <div class="checkout-summary">
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="checkoutSubtotal">₹0</span>
+                </div>
+
+                <div
+                    id="discountRow"
+                    class="summary-row"
+                    style="display:none;"
+                >
+                    <span>Discount</span>
+                    <span id="checkoutDiscount">₹0</span>
+                </div>
+
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span id="checkoutTotal">₹0</span>
+                </div>
+
+            </div>
+
+            <button
+                type="submit"
+                class="checkout-btn"
+                style="margin-top:20px;"
+            >
+                PLACE ORDER
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- SUCCESS -->
+
+<section
+    id="successPage"
+    class="success-page"
+>
+
+    <div class="success-box">
+
+        <h2>Order Placed Successfully 🎉</h2>
+
+        <p id="successMessage">
+            Your order has been placed.
+        </p>
+
+        <button
+            class="checkout-btn"
+            style="margin-top:20px;"
+            onclick="backToShop()"
+        >
+            CONTINUE SHOPPING
+        </button>
+
+    </div>
+
+</section>
+
+
+<a
+    class="whatsapp-btn"
+    href="https://wa.me/919079508505"
+    target="_blank"
+    aria-label="WhatsApp"
+>
+    ☎
+</a>
+
 
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
     getFirestore,
@@ -901,48 +1013,32 @@ import {
     serverTimestamp,
     doc,
     runTransaction
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-
-/* ================= FIREBASE CONFIG ================= */
 
 const firebaseConfig = {
 
-    apiKey:
-        "AIzaSyCZjafz8Ze5p6xSoir4j5IdKc_MJE_Eyns",
+    apiKey: "AIzaSyCZjafz8Ze5p6xSoir4j5IdKc_MJE_Eyns",
 
-    authDomain:
-        "trendy-factory.firebaseapp.com",
+    authDomain: "trendy-factory.firebaseapp.com",
 
-    projectId:
-        "trendy-factory",
+    projectId: "trendy-factory",
 
-    storageBucket:
-        "trendy-factory.firebasestorage.app",
+    storageBucket: "trendy-factory.firebasestorage.app",
 
-    messagingSenderId:
-        "811817163762",
+    messagingSenderId: "811817163762",
 
-    appId:
-        "1:811817163762:web:c9aecc5db2cb332a13696b",
+    appId: "1:811817163762:web:c9aecc5db2cb332a13696b",
 
-    measurementId:
-        "G-8YDMBE9T7C"
+    measurementId: "G-8YDMBE9T7C"
 
 };
 
 
-/* ================= INITIALIZE FIREBASE ================= */
+const app = initializeApp(firebaseConfig);
 
-const app =
-    initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-const db =
-    getFirestore(app);
-
-
-/* ================= GLOBAL VARIABLES ================= */
 
 let products = [];
 
@@ -960,26 +1056,19 @@ let appliedCoupon = null;
 
 let cart = [];
 
-
-/* ================= LOAD CART ================= */
-
-try{
+try {
 
     cart =
         JSON.parse(
-            localStorage.getItem(
-                "trendyFactoryCart"
-            )
+            localStorage.getItem("trendyFactoryCart")
         ) || [];
 
-}catch(error){
+} catch(error) {
 
     cart = [];
 
 }
 
-
-/* ================= ESCAPE HTML ================= */
 
 function escapeHtml(value){
 
@@ -993,60 +1082,53 @@ function escapeHtml(value){
 }
 
 
-/* ================= IMAGE URL ================= */
-
 function getImageUrl(product){
 
-    const images =
-        Array.isArray(product.images)
-            ? product.images
-            : [];
+    if(
+        Array.isArray(product.images) &&
+        product.images.length
+    ){
 
-    for(const image of images){
+        const firstImage =
+            product.images[0];
 
-        if(typeof image === "string" && image.trim()){
+        if(
+            typeof firstImage === "string" &&
+            firstImage.trim()
+        ){
 
-            return image.trim();
+            return firstImage;
 
         }
 
         if(
-            image &&
-            typeof image === "object" &&
-            typeof image.url === "string" &&
-            image.url.trim()
+            firstImage &&
+            typeof firstImage === "object" &&
+            firstImage.url
         ){
 
-            return image.url.trim();
+            return firstImage.url;
 
         }
 
     }
 
-    if(
-        typeof product.image === "string" &&
-        product.image.trim()
-    ){
+    if(product.image){
 
-        return product.image.trim();
+        return product.image;
 
     }
 
-    if(
-        typeof product.imageUrl === "string" &&
-        product.imageUrl.trim()
-    ){
+    if(product.imageUrl){
 
-        return product.imageUrl.trim();
+        return product.imageUrl;
 
     }
 
-    return "";
+    return "https://via.placeholder.com/600x600?text=TRENDY+FACTORY";
 
 }
 
-
-/* ================= LOAD PRODUCTS ================= */
 
 async function loadProducts(){
 
@@ -1071,11 +1153,8 @@ async function loadProducts(){
             snapshot.docs.map(function(item){
 
                 return {
-
                     id:item.id,
-
                     ...item.data()
-
                 };
 
             });
@@ -1095,9 +1174,9 @@ async function loadProducts(){
         if(grid){
 
             grid.innerHTML = `
-                <div class="empty-state">
-                    <h3>Unable to load products</h3>
-                    <p>Please try again later.</p>
+                <div class="error-message">
+                    Products load nahi ho rahe.<br>
+                    Please try again.
                 </div>
             `;
 
@@ -1107,8 +1186,6 @@ async function loadProducts(){
 
 }
 
-
-/* ================= RENDER PRODUCTS ================= */
 
 function renderProducts(){
 
@@ -1124,9 +1201,8 @@ function renderProducts(){
     if(!filteredProducts.length){
 
         grid.innerHTML = `
-            <div class="empty-state">
-                <h3>No products found</h3>
-                <p>Try another search or category.</p>
+            <div class="empty-message">
+                No products found.
             </div>
         `;
 
@@ -1143,65 +1219,32 @@ function renderProducts(){
             const image =
                 getImageUrl(product);
 
-            const imageHtml =
-                image
-                    ? `
-                        <img
-                            src="${escapeHtml(image)}"
-                            alt="${escapeHtml(product.name || "Product")}"
-                            loading="lazy"
-                        >
-                    `
-                    : `
-                        <div style="
-                            width:100%;
-                            height:100%;
-                            display:flex;
-                            align-items:center;
-                            justify-content:center;
-                            color:#777;
-                        ">
-                            No Image
-                        </div>
-                    `;
-
             return `
 
                 <div
                     class="product-card"
-                    onclick="openProduct('${String(product.id).replace(/'/g,"\\'")}')"
+                    onclick="openProduct('${product.id}')"
                 >
 
-                    <div class="product-image">
-
-                        ${imageHtml}
-
-                    </div>
+                    <img
+                        class="product-image"
+                        src="${escapeHtml(image)}"
+                        alt="${escapeHtml(product.name || "Product")}"
+                        onerror="this.src='https://via.placeholder.com/600x600?text=No+Image'"
+                    >
 
                     <div class="product-info">
 
                         <h3>
-                            ${escapeHtml(
-                                product.name || "Unnamed Product"
-                            )}
+                            ${escapeHtml(product.name || "Unnamed Product")}
                         </h3>
 
                         <div class="product-price">
                             ₹${Number(product.price || 0)}
                         </div>
 
-                        <div class="stock-text ${
-                            stock > 0
-                                ? "in-stock"
-                                : "out-stock"
-                        }">
-
-                            ${
-                                stock > 0
-                                    ? "IN STOCK"
-                                    : "OUT OF STOCK"
-                            }
-
+                        <div class="stock-text ${stock > 0 ? "in-stock" : "out-stock"}">
+                            ${stock > 0 ? "IN STOCK" : "OUT OF STOCK"}
                         </div>
 
                     </div>
@@ -1215,16 +1258,13 @@ function renderProducts(){
 }
 
 
-/* ================= CATEGORY FILTER ================= */
-
-window.setCategory =
-function(category,button){
+function setCategory(category,button){
 
     selectedCategory =
- category;
+        category;
 
     document
-        .querySelectorAll(".filter-btn")
+        .querySelectorAll(".category-btn")
         .forEach(function(item){
 
             item.classList.remove("active");
@@ -1239,53 +1279,38 @@ function(category,button){
 
     filterProducts();
 
-};
+}
 
 
-/* ================= SEARCH FILTER ================= */
-
-window.filterProducts =
-function(){
+function filterProducts(){
 
     const searchInput =
         document.getElementById("searchInput");
 
     const search =
-        String(
-            searchInput?.value || ""
-        )
-        .trim()
-        .toLowerCase();
-
+        (searchInput?.value || "")
+            .trim()
+            .toLowerCase();
 
     filteredProducts =
         products.filter(function(product){
 
             const name =
-                String(
-                    product.name || ""
-                ).toLowerCase();
+                String(product.name || "")
+                    .toLowerCase();
 
             const category =
-                String(
-                    product.category || ""
-                ).toLowerCase();
+                String(product.category || "")
+                    .toLowerCase();
 
             const matchesSearch =
                 !search ||
                 name.includes(search) ||
                 category.includes(search);
 
-            let matchesCategory = true;
-
-            if(selectedCategory !== "all"){
-
-                matchesCategory =
-                    category.includes(
-                        selectedCategory
-                    );
-
-            }
+            const matchesCategory =
+                selectedCategory === "all" ||
+                category === selectedCategory;
 
             return (
                 matchesSearch &&
@@ -1294,653 +1319,145 @@ function(){
 
         });
 
-
     renderProducts();
 
-};
- <!-- ================= PRODUCT MODAL ================= -->
-
-<div
-    id="productModal"
-    class="modal"
->
-
-    <div class="modal-content">
-
-        <button
-            class="close-modal"
-            onclick="closeProductModal()"
-        >
-            &times;
-        </button>
-
-
-        <!-- PRODUCT IMAGES -->
-
-        <div>
-
-            <div class="modal-image">
-
-                <img
-                    id="modalProductImage"
-                    src=""
-                    alt="Product"
-                >
-
-            </div>
-
-            <div id="productImageGallery"></div>
-
-        </div>
-
-
-        <!-- PRODUCT DETAILS -->
-
-        <div class="modal-details">
-
-            <h2 id="modalProductName">
-                Product
-            </h2>
-
-            <div
-                id="modalProductPrice"
-                class="modal-price"
-            >
-                ₹0
-            </div>
-
-            <p
-                id="modalProductDescription"
-                class="modal-description"
-            >
-                Product description
-            </p>
-
-
-            <!-- SIZE -->
-
-            <label class="size-label">
-                Select Size
-            </label>
-
-            <div
-                id="sizeOptions"
-                class="size-options"
-            ></div>
-
-
-            <!-- QUANTITY -->
-
-            <div class="quantity-row">
-
-                <strong>
-                    Quantity
-                </strong>
-
-                <div class="quantity-controls">
-
-                    <button
-                        type="button"
-                        onclick="changeModalQuantity(-1)"
-                    >
-                        −
-                    </button>
-
-                    <span id="modalQuantity">
-                        1
-                    </span>
-
-                    <button
-                        type="button"
-                        onclick="changeModalQuantity(1)"
-                    >
-                        +
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- ADD TO CART -->
-
-            <button
-                class="primary-btn"
-                onclick="addCurrentProductToCart()"
-            >
-                ADD TO CART
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ================= CART PANEL ================= -->
-
-<div
-    id="cartPanel"
-    class="cart-panel"
->
-
-    <div class="cart-header">
-
-        <h2>
-            Your Bag
-        </h2>
-
-        <button
-            class="cart-close"
-            onclick="closeCart()"
-        >
-            &times;
-        </button>
-
-    </div>
-
-
-    <div
-        id="cartItems"
-        class="cart-items"
-    >
-
-        <div class="empty-state">
-            Your bag is empty.
-        </div>
-
-    </div>
-
-
-    <div class="cart-footer">
-
-        <div class="cart-total">
-
-            <span>
-                Total
-            </span>
-
-            <span id="cartTotal">
-                ₹0
-            </span>
-
-        </div>
-
-        <button
-            class="primary-btn"
-            onclick="goToCheckout()"
-        >
-            PROCEED TO CHECKOUT
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- ================= CHECKOUT PAGE ================= -->
-
-<section
-    id="checkoutPage"
-    class="checkout-page"
->
-
-    <button
-        class="secondary-btn"
-        onclick="backToShop()"
-    >
-        ← Continue Shopping
-    </button>
-
-
-    <h1 class="checkout-title">
-        Checkout
-    </h1>
-
-
-    <div class="checkout-grid">
-
-
-        <!-- CUSTOMER DETAILS -->
-
-        <div class="checkout-card">
-
-            <h2>
-                Delivery Details
-            </h2>
-
-
-            <form id="checkoutForm">
-
-
-                <div class="form-group">
-
-                    <label for="customerName">
-                        Full Name
-                    </label>
-
-                    <input
-                        id="customerName"
-                        type="text"
-                        placeholder="Enter your name"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="customerPhone">
-                        Mobile Number
-                    </label>
-
-                    <input
-                        id="customerPhone"
-                        type="tel"
-                        inputmode="numeric"
-                        maxlength="10"
-                        placeholder="10 digit mobile number"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="customerEmail">
-                        Email
-                    </label>
-
-                    <input
-                        id="customerEmail"
-                        type="email"
-                        placeholder="Enter email"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="customerAddress">
-                        Full Address
-                    </label>
-
-                    <textarea
-                        id="customerAddress"
-                        placeholder="House no, street, area, city, state, pincode"
-                        required
-                    ></textarea>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="paymentMethod">
-                        Payment Method
-                    </label>
-
-                    <select
-                        id="paymentMethod"
-                        required
-                    >
-
-                        <option value="">
-                            Select Payment Method
-                        </option>
-
-                        <option value="COD">
-                            Cash on Delivery
-                        </option>
-
-                        <option value="ONLINE">
-                            Online Payment
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-            </form>
-
-        </div>
-
-
-        <!-- ORDER SUMMARY -->
-
-        <div class="checkout-card">
-
-            <h2>
-                Order Summary
-            </h2>
-
-
-            <div id="checkoutItems"></div>
-
-
-            <!-- COUPON -->
-
-            <div class="coupon-row">
-
-                <input
-                    id="couponInput"
-                    type="text"
-                    placeholder="Coupon code"
-                >
-
-                <button
-                    type="button"
-                    onclick="applyCoupon()"
-                >
-                    APPLY
-                </button>
-
-            </div>
-
-
-            <div
-                id="couponMessage"
-                class="coupon-message"
-            ></div>
-
-
-            <!-- TOTALS -->
-
-            <div class="summary-row">
-
-                <span>
-                    Subtotal
-                </span>
-
-                <span id="checkoutSubtotal">
-                    ₹0
-                </span>
-
-            </div>
-
-
-            <div
-                id="discountRow"
-                class="summary-row"
-                style="display:none;"
-            >
-
-                <span>
-                    Discount
-                </span>
-
-                <span id="checkoutDiscount">
-                    -₹0
-                </span>
-
-            </div>
-
-
-            <div class="summary-row summary-total">
-
-                <span>
-                    Total
-                </span>
-
-                <span id="checkoutTotal">
-                    ₹0
-                </span>
-
-            </div>
-
-
-            <button
-                type="button"
-                class="primary-btn"
-                style="margin-top:20px;"
-                onclick="placeOrder()"
-            >
-                PLACE ORDER
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= SUCCESS PAGE ================= -->
-
-<section
-    id="successPage"
-    class="success-page"
->
-
-    <div class="success-box">
-
-        <div class="success-icon">
-            ✓
-        </div>
-
-        <h1>
-            Order Placed Successfully!
-        </h1>
-
-        <p
-            id="successMessage"
-            style="margin:15px 0 25px;color:#665e56;"
-        >
-            Thank you for your order.
-        </p>
-
-        <button
-            class="primary-btn"
-            onclick="backToShop()"
-        >
-            CONTINUE SHOPPING
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- ================= WHATSAPP BUTTON ================= -->
-
-<a
-    class="whatsapp-float"
-    href="https://wa.me/919079508505"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Chat on WhatsApp"
->
-
-    <svg
-        viewBox="0 0 32 32"
-        fill="white"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-
-        <path d="M16 3C8.82 3 3 8.82 3 16c0 2.3.6 4.55 1.74 6.53L3 29l6.65-1.7A12.94 12.94 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.6c-2.02 0-4-.54-5.73-1.56l-.4-.24-3.95 1.01 1.05-3.85-.26-.42A10.56 10.56 0 1 1 16 26.6zm5.8-7.92c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.52-.16-.74.16-.22.32-.85 1.05-1.04 1.26-.19.22-.38.24-.7.08-.32-.16-1.35-.5-2.58-1.6-.95-.85-1.6-1.9-1.79-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.38.48-.57.16-.19.22-.32.32-.54.11-.22.05-.41-.03-.57-.08-.16-.74-1.78-1.02-2.44-.27-.65-.55-.56-.74-.57h-.63c-.22 0-.57.08-.87.41-.3.32-1.14 1.11-1.14 2.71 0 1.6 1.16 3.14 1.32 3.36.16.22 2.28 3.48 5.53 4.88.77.33 1.37.53 1.84.68.77.24 1.47.21 2.02.13.62-.09 1.9-.78 2.17-1.53.27-.76.27-1.4.19-1.53-.08-.14-.3-.22-.62-.38z"/>
-
-    </svg>
-
-</a>
-
-
-<!-- ================= JAVASCRIPT CONTINUES ================= -->
-
-
-/* ================= OPEN PRODUCT ================= */
+}
+    /* ================= PRODUCT MODAL ================= */
 
 window.openProduct = function(id){
 
     currentProduct =
         products.find(function(product){
-
             return product.id === id;
-
         });
 
-
     if(!currentProduct){
-
         return;
-
     }
-
 
     const images =
         (currentProduct.images || [])
-        .map(function(img){
+            .map(function(img){
 
-            if(typeof img === "string"){
+                return typeof img === "string"
+                    ? img
+                    : img?.url || "";
 
-                return img;
+            })
+            .filter(Boolean);
 
-            }
-
-            if(
-                img &&
-                typeof img.url === "string"
-            ){
-
-                return img.url;
-
-            }
-
-            return "";
-
-        })
-        .filter(Boolean);
-
-
-    if(
-        !images.length &&
-        currentProduct.image
-    ){
+    if(!images.length){
 
         images.push(
-            currentProduct.image
+            getImageUrl(currentProduct)
         );
 
     }
-
-
-    if(
-        !images.length &&
-        currentProduct.imageUrl
-    ){
-
-        images.push(
-            currentProduct.imageUrl
-        );
-
-    }
-
 
     const mainImage =
-        document.getElementById(
-            "modalProductImage"
-        );
-
+        document.getElementById("modalProductImage");
 
     const gallery =
-        document.getElementById(
-            "productImageGallery"
-        );
+        document.getElementById("productImageGallery");
 
+    const name =
+        document.getElementById("modalProductName");
 
-    if(images.length){
+    const price =
+        document.getElementById("modalProductPrice");
+
+    const description =
+        document.getElementById("modalProductDescription");
+
+    if(mainImage){
 
         mainImage.src =
             images[0];
 
-        mainImage.alt =
-            currentProduct.name ||
-            "Product";
+        mainImage.onerror =
+            function(){
 
+                this.src =
+                    "https://via.placeholder.com/600x600?text=No+Image";
 
-    }else{
-
-        mainImage.removeAttribute("src");
-
-        mainImage.alt =
-            "No product image";
+            };
 
     }
 
+    if(gallery){
 
-    gallery.innerHTML =
-        images.map(function(image,index){
+        gallery.innerHTML =
+            images.map(function(image){
 
-            return `
+                return `
+                    <img
+                        src="${escapeHtml(image)}"
+                        alt="Product image"
+                        onclick="changeMainImage('${escapeHtml(image)}')"
+                        onerror="this.style.display='none'"
+                    >
+                `;
 
-                <img
-                    src="${escapeHtml(image)}"
-                    alt="Product image ${index + 1}"
-                    onclick="changeMainImage('${String(image).replace(/'/g,"\\'")}')"
-                >
+            }).join("");
 
-            `;
+    }
 
-        }).join("");
+    if(name){
 
+        name.textContent =
+            currentProduct.name || "Product";
 
-    document.getElementById(
-        "modalProductName"
-    ).textContent =
-        currentProduct.name ||
-        "Product";
+    }
 
+    if(price){
 
-    document.getElementById(
-        "modalProductPrice"
-    ).textContent =
-        "₹" +
-        Number(
-            currentProduct.price || 0
-        );
+        price.textContent =
+            "₹" + Number(
+                currentProduct.price || 0
+            );
 
+    }
 
-    document.getElementById(
-        "modalProductDescription"
-    ).textContent =
-        currentProduct.description ||
-        "No description available.";
+    if(description){
 
+        description.textContent =
+            currentProduct.description ||
+            "Premium quality product.";
+
+    }
 
     selectedSize = "";
 
     modalQuantity = 1;
 
+    const quantity =
+        document.getElementById("modalQuantity");
 
-    document.getElementById(
-        "modalQuantity"
-    ).textContent =
-        "1";
+    if(quantity){
 
+        quantity.textContent =
+            modalQuantity;
+
+    }
 
     renderSizes();
 
+    const modal =
+        document.getElementById("productModal");
 
-    document.getElementById(
-        "productModal"
-    ).classList.add("active");
+    if(modal){
+
+        modal.classList.add("show");
+
+    }
 
 };
 
 
-/* ================= CHANGE MAIN IMAGE ================= */
-
-window.changeMainImage =
-function(image){
+window.changeMainImage = function(image){
 
     const mainImage =
-        document.getElementById(
-            "modalProductImage"
-        );
+        document.getElementById("modalProductImage");
 
     if(mainImage){
 
@@ -1950,33 +1467,14 @@ function(image){
     }
 
 };
- /* ================= CLOSE PRODUCT MODAL ================= */
-
-window.closeProductModal =
-function(){
-
-    const modal =
-        document.getElementById(
-            "productModal"
-        );
-
-    if(modal){
-
-        modal.classList.remove("active");
-
-    }
-
-};
 
 
-/* ================= RENDER SIZES ================= */
+/* ================= CART HTML ================= */
 
-function renderSizes(){
+function renderCheckoutItems(){
 
     const container =
-        document.getElementById(
-            "sizeOptions"
-        );
+        document.getElementById("checkoutItems");
 
     if(!container){
 
@@ -1984,60 +1482,52 @@ function renderSizes(){
 
     }
 
+    if(!cart.length){
 
-    let sizes =
-        currentProduct &&
-        currentProduct.sizes;
+        container.innerHTML =
+            "<p>Your bag is empty.</p>";
 
-
-    if(typeof sizes === "string"){
-
-        sizes =
-            sizes
-                .split(",")
-                .map(function(size){
-
-                    return size.trim();
-
-                })
-                .filter(Boolean);
+        return;
 
     }
-
-
-    if(!Array.isArray(sizes) || !sizes.length){
-
-        sizes = [
-            "S",
-            "M",
-            "L",
-            "XL"
-        ];
-
-    }
-
 
     container.innerHTML =
-        sizes.map(function(size){
+        cart.map(function(item){
 
-            const safeSize =
-                escapeHtml(size);
-
-            const active =
-                String(selectedSize) ===
-                String(size)
-                    ? "active"
-                    : "";
+            const itemTotal =
+                Number(item.price || 0) *
+                Number(item.quantity || 1);
 
             return `
 
-                <button
-                    type="button"
-                    class="size-btn ${active}"
-                    onclick="selectSize('${String(size).replace(/'/g,"\\'")}')"
+                <div
+                    style="
+                        display:flex;
+                        justify-content:space-between;
+                        gap:10px;
+                        padding:10px 0;
+                        border-bottom:1px solid #eee;
+                    "
                 >
-                    ${safeSize}
-                </button>
+
+                    <div>
+
+                        <strong>
+                            ${escapeHtml(item.name || "Product")}
+                        </strong>
+
+                        <div style="font-size:13px;color:#666;">
+                            Size: ${escapeHtml(item.size || "-")}
+                            × ${Number(item.quantity || 1)}
+                        </div>
+
+                    </div>
+
+                    <strong>
+                        ₹${itemTotal}
+                    </strong>
+
+                </div>
 
             `;
 
@@ -2046,71 +1536,304 @@ function renderSizes(){
 }
 
 
-/* ================= SELECT SIZE ================= */
+/* ================= CHECKOUT ELEMENTS ================= */
 
-window.selectSize =
-function(size){
+const checkoutPage =
+    document.getElementById("checkoutPage");
+
+const checkoutForm =
+    document.getElementById("checkoutForm");
+
+const customerName =
+    document.getElementById("customerName");
+
+const customerPhone =
+    document.getElementById("customerPhone");
+
+const customerEmail =
+    document.getElementById("customerEmail");
+
+const customerAddress =
+    document.getElementById("customerAddress");
+
+const paymentMethod =
+    document.getElementById("paymentMethod");
+
+const checkoutItems =
+    document.getElementById("checkoutItems");
+
+const couponInput =
+    document.getElementById("couponInput");
+
+const couponMessage =
+    document.getElementById("couponMessage");
+
+document.getElementById("checkoutSubtotal");
+
+const discountRow =
+    document.getElementById("discountRow");
+
+const checkoutDiscount =
+    document.getElementById("checkoutDiscount");
+
+const checkoutTotal =
+    document.getElementById("checkoutTotal");
+
+const successPage =
+    document.getElementById("successPage");
+
+const successMessage =
+    document.getElementById("successMessage");
+
+
+/* ================= CHECKOUT FORM ================= */
+
+if(checkoutForm){
+
+    checkoutForm.addEventListener(
+        "submit",
+        function(event){
+
+            event.preventDefault();
+
+            placeOrder(event);
+
+        }
+    );
+
+}
+
+
+/* ================= INITIAL CHECKOUT DISPLAY ================= */
+
+function showCheckoutPage(){
+
+    if(checkoutPage){
+
+        checkoutPage.classList.add("show");
+
+    }
+
+    const cartPanel =
+        document.getElementById("cartPanel");
+
+    if(cartPanel){
+
+        cartPanel.classList.remove("show");
+
+    }
+
+    const productModal =
+        document.getElementById("productModal");
+
+    if(productModal){
+
+        productModal.classList.remove("show");
+
+    }
+
+    renderCheckoutItems();
+
+    updateCheckoutTotals();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* ================= PAGE DISPLAY ================= */
+
+function hideCheckoutPage(){
+
+    if(checkoutPage){
+
+        checkoutPage.classList.remove("show");
+
+    }
+
+}
+
+
+function hideSuccessPage(){
+
+    if(successPage){
+
+        successPage.classList.remove("show");
+
+    }
+
+}
+
+
+/* ================= BACKGROUND MODAL ================= */
+
+const productModal =
+    document.getElementById("productModal");
+
+if(productModal){
+
+    productModal.addEventListener(
+        "click",
+        function(event){
+
+            if(event.target === productModal){
+
+                closeProductModal();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ================= ESC KEY ================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closeProductModal();
+
+            closeCart();
+
+        }
+
+    }
+);
+    /* ================= CLOSE PRODUCT MODAL ================= */
+
+window.closeProductModal = function(){
+
+    const modal =
+        document.getElementById("productModal");
+
+    if(modal){
+
+        modal.classList.remove("show");
+
+    }
+
+};
+
+
+/* ================= PRODUCT SIZES ================= */
+
+function renderSizes(){
+
+    const container =
+        document.getElementById("sizeOptions");
+
+    if(!container){
+
+        return;
+
+    }
+
+    const sizes =
+        currentProduct?.sizes || [];
+
+    let sizeList = [];
+
+    if(Array.isArray(sizes)){
+
+        sizeList = sizes;
+
+    }else if(typeof sizes === "string"){
+
+        sizeList =
+            sizes
+                .split(",")
+                .map(function(size){
+                    return size.trim();
+                })
+                .filter(Boolean);
+
+    }
+
+    if(!sizeList.length){
+
+        sizeList = [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ];
+
+    }
+
+    container.innerHTML =
+        sizeList.map(function(size){
+
+            const active =
+                selectedSize === size
+                    ? "selected"
+                    : "";
+
+            return `
+                <button
+                    type="button"
+                    class="size-btn ${active}"
+                    onclick="selectSize('${escapeHtml(size)}')"
+                >
+                    ${escapeHtml(size)}
+                </button>
+            `;
+
+        }).join("");
+
+}
+
+
+window.selectSize = function(size){
 
     selectedSize =
-        String(size);
-
+        size;
 
     renderSizes();
 
 };
 
 
-/* ================= CHANGE MODAL QUANTITY ================= */
+window.changeModalQuantity = function(change){
 
-window.changeModalQuantity =
-function(change){
-
-    if(!currentProduct){
-
-        return;
-
-    }
-
+    let newQuantity =
+        modalQuantity + Number(change);
 
     const stock =
         Number(
-            currentProduct.stock || 0
+            currentProduct?.stock || 0
         );
 
+    if(newQuantity < 1){
 
-    let nextQuantity =
-        modalQuantity +
-        Number(change);
-
-
-    if(nextQuantity < 1){
-
-        nextQuantity = 1;
+        newQuantity = 1;
 
     }
 
+    if(stock > 0 && newQuantity > stock){
 
-    if(stock > 0 && nextQuantity > stock){
-
-        nextQuantity = stock;
+        newQuantity = stock;
 
     }
-
 
     modalQuantity =
-        nextQuantity;
+        newQuantity;
 
+    const quantity =
+        document.getElementById("modalQuantity");
 
-    const quantityElement =
-        document.getElementById(
-            "modalQuantity"
-        );
+    if(quantity){
 
-
-    if(quantityElement){
-
-        quantityElement.textContent =
-            String(modalQuantity);
+        quantity.textContent =
+            modalQuantity;
 
     }
 
@@ -2142,8 +1865,7 @@ function saveCart(){
 
 /* ================= ADD TO CART ================= */
 
-window.addCurrentProductToCart =
-function(){
+window.addCurrentProductToCart = function(){
 
     if(!currentProduct){
 
@@ -2151,83 +1873,65 @@ function(){
 
     }
 
-
     const stock =
         Number(
             currentProduct.stock || 0
         );
 
-
     if(stock <= 0){
 
-        alert(
-            "This product is currently out of stock."
-        );
+        alert("This product is out of stock.");
 
         return;
 
     }
-
 
     if(!selectedSize){
 
-        alert(
-            "Please select a size."
-        );
+        alert("Please select a size.");
 
         return;
 
     }
 
-
-    const existingIndex =
-        cart.findIndex(function(item){
+    const existing =
+        cart.find(function(item){
 
             return (
-                item.productId ===
-                currentProduct.id &&
-                String(item.size) ===
-                String(selectedSize)
+                item.id === currentProduct.id &&
+                item.size === selectedSize
             );
 
         });
 
-
-    if(existingIndex >= 0){
+    if(existing){
 
         const newQuantity =
-            Number(
-                cart[existingIndex].quantity || 0
-            ) +
-            modalQuantity;
-
+            Number(existing.quantity || 0) +
+            Number(modalQuantity || 1);
 
         if(newQuantity > stock){
 
             alert(
                 "Only " +
                 stock +
-                " item(s) available."
+                " item(s) available in stock."
             );
 
             return;
 
         }
 
-
-        cart[existingIndex].quantity =
+        existing.quantity =
             newQuantity;
 
     }else{
 
         cart.push({
 
-            productId:
-                currentProduct.id,
+            id: currentProduct.id,
 
-            name:
-                currentProduct.name ||
-                "Product",
+            name: currentProduct.name || "Product",
 
             price:
                 Number(
@@ -2237,16 +1941,14 @@ function(){
             image:
                 getImageUrl(currentProduct),
 
-            size:
-                selectedSize,
+            size: selectedSize,
 
             quantity:
-                modalQuantity
+                Number(modalQuantity || 1)
 
         });
 
     }
-
 
     saveCart();
 
@@ -2254,49 +1956,42 @@ function(){
 
     closeProductModal();
 
-    alert(
-        "Product added to your bag."
-    );
+    alert("Product added to cart.");
 
 };
 
 
 /* ================= UPDATE CART ================= */
 
-window.updateCart =
-function(){
+window.updateCart = function(){
 
-    const countElement =
-        document.getElementById(
-            "cartCount"
+    const count =
+        cart.reduce(
+            function(total,item){
+
+                return total +
+                    Number(item.quantity || 0);
+
+            },
+            0
         );
 
+    const cartCount =
+        document.getElementById("cartCount");
 
-    const totalQuantity =
-        cart.reduce(function(total,item){
+    if(cartCount){
 
-            return total +
-                Number(
-                    item.quantity || 0
-                );
-
-        },0);
-
-
-    if(countElement){
-
-        countElement.textContent =
-            String(totalQuantity);
+        cartCount.textContent =
+            count;
 
     }
-
 
     renderCart();
 
 };
 
 
-/* ================= CART SUBTOTAL ================= */
+/* ================= CART TOTAL ================= */
 
 function getCartSubtotal(){
 
@@ -2305,12 +2000,8 @@ function getCartSubtotal(){
 
             return total +
                 (
-                    Number(
-                        item.price || 0
-                    ) *
-                    Number(
-                        item.quantity || 0
-                    )
+                    Number(item.price || 0) *
+                    Number(item.quantity || 0)
                 );
 
         },
@@ -2325,15 +2016,10 @@ function getCartSubtotal(){
 function renderCart(){
 
     const container =
-        document.getElementById(
-            "cartItems"
-        );
+        document.getElementById("cartItems");
 
     const totalElement =
-        document.getElementById(
-            "cartTotal"
-        );
-
+        document.getElementById("cartTotal");
 
     if(!container){
 
@@ -2341,19 +2027,19 @@ function renderCart(){
 
     }
 
-
     if(!cart.length){
 
         container.innerHTML = `
-
-            <div class="empty-state">
-
+            <div
+                style="
+                    text-align:center;
+                    padding:40px 10px;
+                    color:#777;
+                "
+            >
                 Your bag is empty.
-
             </div>
-
         `;
-
 
         if(totalElement){
 
@@ -2366,99 +2052,45 @@ function renderCart(){
 
     }
 
-
     container.innerHTML =
         cart.map(function(item,index){
 
-            const image =
-                item.image || "";
-
-
-            const quantity =
-                Number(
-                    item.quantity || 0
-                );
-
-
-            const price =
-                Number(
-                    item.price || 0
-                );
-
+            const itemTotal =
+                Number(item.price || 0) *
+                Number(item.quantity || 0);
 
             return `
 
                 <div class="cart-item">
 
-                    <div>
+                    <img
+                        src="${escapeHtml(item.image || "https://via.placeholder.com/100")}"
+                        alt="${escapeHtml(item.name || "Product")}"
+                        onerror="this.src='https://via.placeholder.com/100?text=No+Image'"
+                    >
 
-                        ${
-                            image
-                                ? `
-                                    <img
-                                        src="${escapeHtml(image)}"
-                                        alt="${escapeHtml(item.name || "Product")}"
-                                    >
-                                  `
-                                : `
-                                    <div style="
-                                        width:70px;
-                                        height:80px;
-                                        background:#eee5da;
-                                        display:flex;
-                                        align-items:center;
-                                        justify-content:center;
-                                        font-size:11px;
-                                        color:#777;
-                                        border-radius:6px;
-                                    ">
-                                        No Image
-                                    </div>
-                                  `
-                        }
+                    <div class="cart-item-info">
 
-                    </div>
+                        <h4>
+                            ${escapeHtml(item.name || "Product")}
+                        </h4>
 
-
-                    <div>
-
-                        <div class="cart-item-name">
-
-                            ${escapeHtml(
-                                item.name || "Product"
-                            )}
-
-                        </div>
-
-
-                        <div class="cart-item-details">
-
+                        <div style="font-size:13px;color:#666;">
                             Size:
-                            ${escapeHtml(
-                                item.size || "-"
-                            )}
-
-                            <br>
-
-                            Qty:
-                            ${quantity}
-
+                            ${escapeHtml(item.size || "-")}
                         </div>
 
+                        <div style="font-size:13px;color:#666;">
+                            Quantity:
+                            ${Number(item.quantity || 0)}
+                        </div>
 
                         <div class="cart-item-price">
-
-                            ₹${price * quantity}
-
+                            ₹${itemTotal}
                         </div>
 
-                    </div>
-
-
-                    <div>
-
                         <button
-                            class="remove-btn"
+                            class="remove-cart"
                             onclick="removeCartItem(${index})"
                         >
                             REMOVE
@@ -2472,12 +2104,10 @@ function renderCart(){
 
         }).join("");
 
-
     if(totalElement){
 
         totalElement.textContent =
-            "₹" +
-            getCartSubtotal();
+            "₹" + getCartSubtotal();
 
     }
 
@@ -2486,8 +2116,7 @@ function renderCart(){
 
 /* ================= REMOVE CART ITEM ================= */
 
-window.removeCartItem =
-function(index){
+window.removeCartItem = function(index){
 
     if(
         index < 0 ||
@@ -2498,37 +2127,31 @@ function(index){
 
     }
 
-
-    cart.splice(
-        index,
-        1
-    );
-
+    cart.splice(index,1);
 
     saveCart();
 
     updateCart();
+
+    renderCheckoutItems();
+
+    updateCheckoutTotals();
 
 };
 
 
 /* ================= OPEN CART ================= */
 
-window.openCart =
-function(){
+window.openCart = function(){
 
     const panel =
-        document.getElementById(
-            "cartPanel"
-        );
-
+        document.getElementById("cartPanel");
 
     if(panel){
 
-        panel.classList.add("active");
+        panel.classList.add("show");
 
     }
-
 
     renderCart();
 
@@ -2537,18 +2160,14 @@ function(){
 
 /* ================= CLOSE CART ================= */
 
-window.closeCart =
-function(){
+window.closeCart = function(){
 
     const panel =
-        document.getElementById(
-            "cartPanel"
-        );
-
+        document.getElementById("cartPanel");
 
     if(panel){
 
-        panel.classList.remove("active");
+        panel.classList.remove("show");
 
     }
 
@@ -2557,198 +2176,74 @@ function(){
 
 /* ================= GO TO CHECKOUT ================= */
 
-window.goToCheckout =
-function(){
+window.goToCheckout = function(){
 
     if(!cart.length){
 
-        alert(
-            "Your bag is empty."
-        );
+        alert("Your bag is empty.");
 
         return;
 
     }
 
-
-    closeCart();
-
-    renderCheckoutItems();
-
-
-    document
-        .getElementById("mainWebsite")
-        .style.display = "none";
-
-
-    document
-        .getElementById("successPage")
-        .classList.remove("active");
-
-
-    document
-        .getElementById("checkoutPage")
-        .classList.add("active");
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+    showCheckoutPage();
 
 };
 
 
-/* ================= RENDER CHECKOUT ITEMS ================= */
+/* ================= COUPON ================= */
 
-function renderCheckoutItems(){
-
-    const container =
-        document.getElementById(
-            "checkoutItems"
-        );
-
-
-    if(!container){
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-        cart.map(function(item){
-
-            const quantity =
-                Number(
-                    item.quantity || 0
-                );
-
-
-            const price =
-                Number(
-                    item.price || 0
-                );
-
-
-            return `
-
-                <div class="checkout-item">
-
-                    <div>
-
-                        <strong>
-                            ${escapeHtml(
-                                item.name || "Product"
-                            )}
-                        </strong>
-
-                        <br>
-
-                        <small>
-                            Size:
-                            ${escapeHtml(
-                                item.size || "-"
-                            )}
-                            |
-                            Qty:
-                            ${quantity}
-                        </small>
-
-                    </div>
-
-
-                    <strong>
-                        ₹${price * quantity}
-                    </strong>
-
-                </div>
-
-            `;
-
-        }).join("");
-
-
-    updateCheckoutTotals();
-
-}
-
-
-/* ================= APPLY COUPON ================= */
-
-window.applyCoupon =
-function(){
+window.applyCoupon = function(){
 
     const input =
-        document.getElementById(
-            "couponInput"
-        );
-
+        document.getElementById("couponInput");
 
     const message =
-        document.getElementById(
-            "couponMessage"
-        );
+        document.getElementById("couponMessage");
 
-
-    if(!input || !message){
+    if(!input){
 
         return;
 
     }
-
 
     const code =
-        String(
-            input.value || ""
-        )
-        .trim()
-        .toUpperCase();
-
-
-    if(!code){
-
-        appliedCoupon = null;
-
-        message.textContent =
-            "Please enter a coupon code.";
-
-        updateCheckoutTotals();
-
-        return;
-
-    }
-
+        input.value
+            .trim()
+            .toUpperCase();
 
     if(code === "TRENDY10"){
 
         appliedCoupon = {
-
             code:"TRENDY10",
-
             percent:10
-
         };
 
+        if(message){
 
-        message.textContent =
-            "Coupon applied: 10% discount.";
+            message.textContent =
+                "Coupon applied successfully — 10% OFF.";
 
-        message.style.color =
-            "#16803d";
+            message.style.color =
+                "#198754";
+
+        }
 
     }else{
 
         appliedCoupon = null;
 
-        message.textContent =
-            "Invalid coupon code.";
+        if(message){
 
-        message.style.color =
-            "#b3261e";
+            message.textContent =
+                "Invalid coupon code.";
+
+            message.style.color =
+                "#d9534f";
+
+        }
 
     }
-
 
     updateCheckoutTotals();
 
@@ -2762,23 +2257,19 @@ function updateCheckoutTotals(){
     const subtotal =
         getCartSubtotal();
 
-
     let discount = 0;
-
 
     if(appliedCoupon){
 
         discount =
-            Math.round(
-                subtotal *
-                (
-                    appliedCoupon.percent /
-                    100
-                )
+            subtotal *
+            (
+                Number(
+                    appliedCoupon.percent || 0
+                ) / 100
             );
 
     }
-
 
     const total =
         Math.max(
@@ -2786,39 +2277,26 @@ function updateCheckoutTotals(){
             subtotal - discount
         );
 
+    if(checkoutSubtotal){
 
-    const subtotalElement =
-        document.getElementById(
-            "checkoutSubtotal"
-        );
-
-
-    const discountRow =
-        document.getElementById(
-            "discountRow"
-        );
-
-
-    const discountElement =
-        document.getElementById(
-            "checkoutDiscount"
-        );
-
-
-    const totalElement =
-        document.getElementById(
-            "checkoutTotal"
-        );
-
-
-    if(subtotalElement){
-
-        subtotalElement.textContent =
-            "₹" +
-            subtotal;
+        checkoutSubtotal.textContent =
+            "₹" + subtotal.toFixed(2);
 
     }
 
+    if(checkoutDiscount){
+
+        checkoutDiscount.textContent =
+            "₹" + discount.toFixed(2);
+
+    }
+
+    if(checkoutTotal){
+
+        checkoutTotal.textContent =
+            "₹" + total.toFixed(2);
+
+    }
 
     if(discountRow){
 
@@ -2829,135 +2307,99 @@ function updateCheckoutTotals(){
 
     }
 
-
-    if(discountElement){
-
-        discountElement.textContent =
-            "-₹" +
-            discount;
-
-    }
-
-
-    if(totalElement){
-
-        totalElement.textContent =
-            "₹" +
-            total;
-
-    }
-
- }
+}
  /* ================= PLACE ORDER ================= */
 
-window.placeOrder =
-async function(){
+window.placeOrder = async function(event){
+
+    if(event){
+
+        event.preventDefault();
+
+    }
 
     if(!cart.length){
 
-        alert(
-            "Your bag is empty."
-        );
+        alert("Your bag is empty.");
 
         return;
 
     }
 
-
     const name =
-        document.getElementById(
-            "customerName"
-        )?.value.trim();
-
+        document.getElementById("customerName")
+            ?.value
+            .trim();
 
     const phone =
-        document.getElementById(
-            "customerPhone"
-        )?.value.trim();
-
+        document.getElementById("customerPhone")
+            ?.value
+            .trim();
 
     const email =
-        document.getElementById(
-            "customerEmail"
-        )?.value.trim();
-
+        document.getElementById("customerEmail")
+            ?.value
+            .trim();
 
     const address =
-        document.getElementById(
-            "customerAddress"
-        )?.value.trim();
+        document.getElementById("customerAddress")
+            ?.value
+            .trim();
 
-
-    const paymentMethod =
-        document.getElementById(
-            "paymentMethod"
-        )?.value;
-
+    const payment =
+        document.getElementById("paymentMethod")
+            ?.value;
 
     if(!name){
 
-        alert(
-            "Please enter your name."
-        );
+        alert("Please enter your name.");
 
         return;
 
     }
-
 
     if(!/^[0-9]{10}$/.test(phone)){
 
         alert(
-            "Please enter a valid 10 digit mobile number."
+            "Please enter a valid 10-digit mobile number."
         );
 
         return;
 
     }
-
 
     if(!address){
 
-        alert(
-            "Please enter your full address."
-        );
+        alert("Please enter your delivery address.");
 
         return;
 
     }
 
+    if(!payment){
 
-    if(!paymentMethod){
-
-        alert(
-            "Please select a payment method."
-        );
+        alert("Please select a payment method.");
 
         return;
 
     }
-
 
     const subtotal =
         getCartSubtotal();
 
-
     let discount = 0;
-
 
     if(appliedCoupon){
 
         discount =
-            Math.round(
-                subtotal *
-                (
-                    appliedCoupon.percent /
-                    100
-                )
+            subtotal *
+            (
+                Number(
+                    appliedCoupon.percent || 0
+                ) / 100
             );
 
     }
-
 
     const total =
         Math.max(
@@ -2965,139 +2407,7 @@ async function(){
             subtotal - discount
         );
 
-
-    const orderButton =
-        document.querySelector(
-            "#checkoutPage .primary-btn"
-        );
-
-
-    if(orderButton){
-
-        orderButton.disabled = true;
-
-        orderButton.textContent =
-            "PROCESSING...";
-
-    }
-
-
     try{
-
-
-        /* ================= STOCK CHECK + UPDATE ================= */
-
-        await runTransaction(
-            db,
-            async function(transaction){
-
-                const productRefs = [];
-
-
-                for(
-                    const item of cart
-                ){
-
-                    const productRef =
-                        doc(
-                            db,
-                            "products",
-                            item.productId
-                        );
-
-
-                    productRefs.push({
-                        item:item,
-                        ref:productRef
-                    });
-
-                }
-
-
-                const productSnapshots = [];
-
-
-                for(
-                    const entry of productRefs
-                ){
-
-                    const snapshot =
-                        await transaction.get(
-                            entry.ref
-                        );
-
-
-                    if(!snapshot.exists()){
-
-                        throw new Error(
-                            "Product not found: " +
-                            entry.item.name
-                        );
-
-                    }
-
-
-                    productSnapshots.push({
-                        item:entry.item,
-                        ref:entry.ref,
-                        snapshot:snapshot
-                    });
-
-                }
-
-
-                for(
-                    const entry of productSnapshots
-                ){
-
-                    const currentStock =
-                        Number(
-                            entry.snapshot.data().stock || 0
-                        );
-
-
-                    const requestedQuantity =
-                        Number(
-                            entry.item.quantity || 0
-                        );
-
-
-                    if(
-                        currentStock <
-                        requestedQuantity
-                    ){
-
-                        throw new Error(
-                            "Not enough stock for " +
-                            entry.item.name +
-                            ". Available: " +
-                            currentStock
-                        );
-
-                    }
-
-
-                    transaction.update(
-                        entry.ref,
-                        {
-
-                            stock:
-                                currentStock -
-                                requestedQuantity,
-
-                            updatedAt:
-                                serverTimestamp()
-
-                        }
-                    );
-
-                }
-
-            }
-        );
-
-
-        /* ================= ORDER ITEMS ================= */
 
         const orderItems =
             cart.map(function(item){
@@ -3105,7 +2415,7 @@ async function(){
                 return {
 
                     productId:
-                        item.productId,
+                        item.id,
 
                     name:
                         item.name,
@@ -3120,7 +2430,7 @@ async function(){
 
                     quantity:
                         Number(
-                            item.quantity || 0
+                            item.quantity || 1
                         ),
 
                     image:
@@ -3131,44 +2441,217 @@ async function(){
             });
 
 
-        /* ================= CREATE ORDER ================= */
+        /*
+         * Check stock and decrease stock
+         * inside a Firestore transaction.
+         */
+
+        await runTransaction(
+            db,
+            async function(transaction){
+
+                for(
+                    const item of cart
+/* ================= PLACE ORDER ================= */
+
+window.placeOrder = async function(event){
+
+    if(event){
+        event.preventDefault();
+    }
+
+    if(!cart.length){
+        alert("Your bag is empty.");
+        return;
+    }
+
+    const name =
+        document.getElementById("customerName")?.value.trim();
+
+    const phone =
+        document.getElementById("customerPhone")?.value.trim();
+
+    const email =
+        document.getElementById("customerEmail")?.value.trim();
+
+    const address =
+        document.getElementById("customerAddress")?.value.trim();
+
+    const payment =
+        document.getElementById("paymentMethod")?.value;
+
+    if(!name){
+        alert("Please enter your name.");
+        return;
+    }
+
+    if(!/^[0-9]{10}$/.test(phone)){
+        alert("Please enter a valid 10-digit mobile number.");
+        return;
+    }
+
+    if(!address){
+        alert("Please enter your delivery address.");
+        return;
+    }
+
+    if(!payment){
+        alert("Please select a payment method.");
+        return;
+    }
+
+    const subtotal =
+        getCartSubtotal();
+
+    let discount = 0;
+
+    if(appliedCoupon){
+
+        discount =
+            subtotal *
+            (
+                Number(appliedCoupon.percent || 0) / 100
+            );
+
+    }
+
+    const total =
+        Math.max(
+            0,
+            subtotal - discount
+        );
+
+    try{
+
+        const orderItems =
+            cart.map(function(item){
+
+                return {
+
+                    productId: item.id,
+
+                    name: item.name,
+
+                    price:
+                        Number(item.price || 0),
+
+                    size:
+                        item.size || "",
+
+                    quantity:
+                        Number(item.quantity || 1),
+
+                    image:
+                        item.image || ""
+
+                };
+
+            });
+
+
+        /* CHECK STOCK + DECREASE STOCK */
+
+        await runTransaction(
+            db,
+            async function(transaction){
+
+                for(const item of cart){
+
+                    const productRef =
+                        doc(
+                            db,
+                            "products",
+                            item.id
+                        );
+
+                    const productSnap =
+                        await transaction.get(
+                            productRef
+                        );
+
+                    if(!productSnap.exists()){
+
+                        throw new Error(
+                            "Product not found: " +
+                            item.name
+                        );
+
+                    }
+
+                    const productData =
+                        productSnap.data();
+
+                    const currentStock =
+                        Number(
+                            productData.stock || 0
+                        );
+
+                    const requestedQuantity =
+                        Number(
+                            item.quantity || 1
+                        );
+
+                    if(
+                        currentStock <
+                        requestedQuantity
+                    ){
+
+                        throw new Error(
+                            item.name +
+                            " has only " +
+                            currentStock +
+                            " item(s) left."
+                        );
+
+                    }
+
+                    transaction.update(
+                        productRef,
+                        {
+                            stock:
+                                currentStock -
+                                requestedQuantity
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* CREATE ORDER */
 
         const orderData = {
 
-            customer:{
+            customer: {
 
-                name:name,
+                name: name,
 
-                phone:phone,
+                phone: phone,
 
-                email:email || "",
+                email: email,
 
-                address:address
+                address: address
 
             },
 
-            items:
-                orderItems,
+            items: orderItems,
 
-            subtotal:
-                subtotal,
+            subtotal: subtotal,
 
-            discount:
-                discount,
+            discount: discount,
 
-            total:
-                total,
+            total: total,
 
             coupon:
                 appliedCoupon
                     ? appliedCoupon.code
                     : "",
 
-            paymentMethod:
-                paymentMethod,
+            paymentMethod: payment,
 
-            status:
-                "Pending",
+            status: "Pending",
 
             createdAt:
                 serverTimestamp()
@@ -3178,58 +2661,22 @@ async function(){
 
         const orderRef =
             await addDoc(
-                collection(
-                    db,
-                    "orders"
-                ),
+                collection(db,"orders"),
                 orderData
             );
 
 
-        /* ================= CLEAR CART ================= */
+        /* CLEAR CART */
 
         cart = [];
 
         saveCart();
 
-        updateCart();
-
-
         appliedCoupon = null;
 
+        updateCart();
 
-        const couponInput =
-            document.getElementById(
-                "couponInput"
-            );
-
-
-        const couponMessage =
-            document.getElementById(
-                "couponMessage"
-            );
-
-
-        if(couponInput){
-
-            couponInput.value = "";
-
-        }
-
-
-        if(couponMessage){
-
-            couponMessage.textContent = "";
-
-        }
-
-
-        /* ================= RESET FORM ================= */
-
-        const checkoutForm =
-            document.getElementById(
-                "checkoutForm"
-            );
+        updateCheckoutTotals();
 
 
         if(checkoutForm){
@@ -3239,78 +2686,38 @@ async function(){
         }
 
 
-        /* ================= SHOW SUCCESS ================= */
-
-        document
-            .getElementById(
-                "checkoutPage"
-            )
-            .classList.remove("active");
+        hideCheckoutPage();
 
 
-        document
-            .getElementById(
-                "mainWebsite"
-            )
-            .style.display = "none";
-
-
-        const successPage =
-            document.getElementById(
-                "successPage"
-            );
-
-
-        successPage.classList.add(
-            "active"
-        );
-
-
-        const successMessage =
-            document.getElementById(
-                "successMessage"
-            );
-
+        /* SUCCESS PAGE */
 
         if(successMessage){
 
             successMessage.innerHTML = `
+                Your order has been placed successfully.<br><br>
 
-                Thank you,
-                <strong>
-                    ${escapeHtml(name)}
-                </strong>.
+                <strong>Order ID:</strong><br>
 
-                <br><br>
-
-                Your order has been received.
-
-                <br>
-
-                Order ID:
-                <strong>
-                    ${escapeHtml(orderRef.id)}
-                </strong>
-
-                <br><br>
-
-                Total Amount:
-                <strong>
-                    ₹${total}
-                </strong>
-
+                ${escapeHtml(orderRef.id)}
             `;
 
         }
 
 
+        if(successPage){
+
+            successPage.classList.add("show");
+
+        }
+
+
         window.scrollTo({
-            top:0,
-            behavior:"smooth"
+            top: 0,
+            behavior: "smooth"
         });
 
 
-        /* ================= REFRESH PRODUCTS ================= */
+        /* REFRESH PRODUCTS */
 
         await loadProducts();
 
@@ -3322,22 +2729,10 @@ async function(){
             error
         );
 
-
         alert(
-            error?.message ||
-            "Unable to place order. Please try again."
+            error.message ||
+            "Order place nahi ho saka. Please try again."
         );
-
-    }finally{
-
-        if(orderButton){
-
-            orderButton.disabled = false;
-
-            orderButton.textContent =
-                "PLACE ORDER";
-
-        }
 
     }
 
@@ -3346,82 +2741,25 @@ async function(){
 
 /* ================= BACK TO SHOP ================= */
 
-window.backToShop =
-function(){
+window.backToShop = function(){
 
-    document
-        .getElementById(
-            "checkoutPage"
-        )
-        .classList.remove("active");
+    hideSuccessPage();
 
-
-    document
-        .getElementById(
-            "successPage"
-        )
-        .classList.remove("active");
-
-
-    document
-        .getElementById(
-            "mainWebsite"
-        )
-        .style.display = "";
-
+    hideCheckoutPage();
 
     window.scrollTo({
-        top:0,
-        behavior:"smooth"
+        top: 0,
+        behavior: "smooth"
     });
+
+    updateCart();
+
+    loadProducts();
 
 };
 
 
-/* ================= MODAL BACKGROUND CLOSE ================= */
-
-document.addEventListener(
-    "click",
-    function(event){
-
-        const modal =
-            document.getElementById(
-                "productModal"
-            );
-
-
-        if(
-            modal &&
-            event.target === modal
-        ){
-
-            closeProductModal();
-
-        }
-
-    }
-);
-
-
-/* ================= ESC KEY ================= */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Escape"){
-
-            closeProductModal();
-
-            closeCart();
-
-        }
-
-    }
-);
-
-
-/* ================= START WEBSITE ================= */
+/* ================= START STORE ================= */
 
 document.addEventListener(
     "DOMContentLoaded",
@@ -3433,7 +2771,6 @@ document.addEventListener(
 
     }
 );
-
 
 </script>
 
