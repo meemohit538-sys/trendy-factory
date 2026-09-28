@@ -727,7 +727,29 @@ padding:10px;
 .modal-content{
 padding:18px;
 }
+.modal-image > img{
+    width:100%;
+    height:380px;
+    object-fit:cover;
+}
 
+#productImageGallery{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    padding:8px;
+    background:white;
+}
+
+#productImageGallery img{
+    width:65px !important;
+    height:65px !important;
+    object-fit:cover !important;
+    border-radius:6px;
+    cursor:pointer;
+    border:1px solid #ddd;
+    margin:0 !important;
+  }
 .whatsapp-float{
 width:54px;
 height:54px;
@@ -798,6 +820,9 @@ oninput="filterProducts()">
 
 <div class="modal-image">
 <img id="modalProductImage" src="" alt="Product">
+
+<div id="productImageGallery"></div>
+
 </div>
 
 <div class="modal-details">
